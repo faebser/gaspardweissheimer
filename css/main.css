@@ -89,6 +89,10 @@ textarea {
    Author's custom styles
    fabian.frei@esf-frei.ch
    ========================================================================== */
+html {
+  overflow: hidden;
+}
+
 html,
 body,
 #main {
@@ -98,23 +102,43 @@ body,
   padding: 0;
 }
 
+#outerWrapper {
+  width: 210%;
+  min-height: 100%;
+}
+
 #main {
   list-style-type: none;
+  width: 95.238095238%;
+  overflow: hidden;
 }
 #main li {
-  width: 100%;
+  width: 50%;
   height: 100%;
+  float: left;
 }
 #main li .top {
   width: 100%;
   height: 100%;
+  background-attachment: fixed;
+  background-size: cover;
 }
 #main li .top h1,
 #main li .top h2 {
   text-align: center;
+  color: #fff;
+}
+#main li .top h2 {
+  margin-top: 0;
 }
 #main li#eins .top {
   background-image: url("../img/IMG_0058.jpg");
+}
+#main li#zwei .top {
+  background-image: url("../img/IMG_1135.JPG");
+}
+#main li .low {
+  padding: 5%;
 }
 
 /* ==========================================================================

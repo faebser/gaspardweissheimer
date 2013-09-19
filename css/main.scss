@@ -98,6 +98,10 @@ textarea {
    fabian.frei@esf-frei.ch
    ========================================================================== */
 
+html {
+    overflow: hidden;
+}
+
 html,
 body,
 #main {
@@ -107,24 +111,41 @@ body,
     padding: 0;
 }
 
+#outerWrapper {
+    width: 210%;
+    min-height: 100%;
+}
+
 #main {
     list-style-type: none;
+    width: 95.238095238%;
+    overflow: hidden;
     li {
-        width: 100%;
+        width: 50%;
         height: 100%;
+        float: left;
         .top {
             width: 100%;
             height: 100%;
+            background-attachment: fixed;
+            background-size: cover;
             h1,
             h2 {
                 text-align: center;
+                color: #fff;
+            }
+            h2 {
+                margin-top: 0;
             }
         }
         &#eins .top {
             background-image: url("../img/IMG_0058.jpg");
         }
         &#zwei .top {
-
+            background-image: url("../img/IMG_1135.JPG");
+        }
+        .low {
+            padding: 5%;
         }
     }
 }
