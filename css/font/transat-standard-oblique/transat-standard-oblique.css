@@ -1,0 +1,26 @@
+/*
+Font: 		Transat
+Style: 		Standard Oblique
+URL: 		http://www.youworkforthem.com/product.php?sku=T4279
+Foundry: 	Typetanic Fonts
+Foundry: 	http://www.youworkforthem.com/designer/359/typetanic-fonts
+Copyright:	Copyright (c) 2011-2013 by Greg Shutters & Typetanic Fonts. All rights reserved.
+Version: 	1.2
+Created:	July 15, 2013
+License: 	http://www.youworkforthem.com/font-license 
+License: 	The WebFont(s) listed in this document must follow the YouWorkForThem
+			WebFont license rules. All other parties are strictly restricted 
+			from using the WebFonts(s) listed without a purchased license. 
+			All details above must always remain unaltered and visible in your CSS.
+*/
+
+@font-face {
+	font-family: 'Transat Standard Oblique';
+	src: url('transat-standard-oblique.eot');
+	src: url('transat-standard-oblique.eot?#iefix') format('embedded-opentype'),
+	     url('transat-standard-oblique.woff') format('woff'),
+	     url('transat-standard-oblique.ttf') format('truetype'),
+	     url('transat-standard-oblique.svg#ywftsvg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
