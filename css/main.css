@@ -89,56 +89,201 @@ textarea {
    Author's custom styles
    fabian.frei@esf-frei.ch
    ========================================================================== */
-html {
-  overflow: hidden;
+@font-face {
+  font-family: 'Transat Black';
+  src: url("font/transat-black/transat-black.eot");
+  src: url("font/transat-black/transat-black.eot?#iefix") format("embedded-opentype"), url("font/transat-black/transat-black.woff") format("woff"), url("font/transat-black/transat-black.ttf") format("truetype"), url("font/transat-black/transat-black.svg#ywftsvg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Transat Standard Oblique';
+  src: url("font/transat-standard-oblique/transat-standard-oblique.eot");
+  src: url("font/transat-standard-oblique/transat-standard-oblique.eot?#iefix") format("embedded-opentype"), url("font/transat-standard-oblique/transat-standard-oblique.woff") format("woff"), url("font/transat-standard-oblique/transat-standard-oblique.ttf") format("truetype"), url("font/transat-standard-oblique/transat-standard-oblique.svg#ywftsvg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Transat Light';
+  src: url("font/transat-light/transat-light.eot");
+  src: url("font/transat-light/transat-light.eot?#iefix") format("embedded-opentype"), url("font/transat-light/transat-light.woff") format("woff"), url("font/transat-light/transat-light.ttf") format("truetype"), url("font/transat-light/transat-light.svg#ywftsvg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Transat Bold';
+  src: url("font/transat-bold/transat-bold.eot");
+  src: url("font/transat-bold/transat-bold.eot?#iefix") format("embedded-opentype"), url("font/transat-bold/transat-bold.woff") format("woff"), url("font/transat-bold/transat-bold.ttf") format("truetype"), url("font/transat-bold/transat-bold.svg#ywftsvg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+*, *:before, *:after {
+  /* sane box model */
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
-body,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #main {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
-#outerWrapper {
-  width: 210%;
-  min-height: 100%;
+#navAndLogo {
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  font-family: 'Transat Bold', arial;
+  font-weight: normal;
+  font-style: normal;
+}
+#navAndLogo .wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1em 1em 0 1em;
+}
+#navAndLogo nav {
+  text-transform: uppercase;
+  float: left;
+  position: relative;
+}
+#navAndLogo nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#navAndLogo nav ul li {
+  display: inline-block;
+}
+#navAndLogo nav ul li a {
+  color: black;
+  text-decoration: none;
+}
+#navAndLogo nav #indicator {
+  width: 4.8125em;
+  height: 0.5em;
+  position: absolute;
+  bottom: -0.5em;
+  left: 0;
+  background-color: #000;
+}
+#navAndLogo #logo {
+  float: right;
+}
+#navAndLogo #logo p {
+  margin: 0;
+  padding: 0;
+}
+#navAndLogo #logo p span {
+  font-size: 2em;
+  text-transform: uppercase;
+}
+
+#mainWrapper {
+  position: relative;
+  overflow: hidden;
 }
 
 #main {
   list-style-type: none;
-  width: 95.238095238%;
-  overflow: hidden;
+  width: 200%;
 }
 #main li {
   width: 50%;
-  height: 100%;
+  min-height: 100%;
   float: left;
 }
 #main li .top {
   width: 100%;
   height: 100%;
-  background-attachment: fixed;
   background-size: cover;
 }
 #main li .top h1,
 #main li .top h2 {
   text-align: center;
   color: #fff;
+  display: block;
+  text-shadow: 0 0 20px #fff;
+  margin: 0;
+}
+#main li .top h1 {
+  font-size: 3.125em;
+  font-family: 'Transat Black', arial;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: 0.2em;
 }
 #main li .top h2 {
+  letter-spacing: 0.2em;
   margin-top: 0;
+  font-size: 1.875em;
+  font-family: 'Transat Standard Oblique', arial;
+  font-weight: normal;
+  font-style: normal;
+  padding-top: 25%;
+  margin-bottom: 0.5em;
 }
 #main li#eins .top {
-  background-image: url("../img/IMG_0058.jpg");
+  background-image: url("../img/IMG_1135_small.JPG");
 }
 #main li#zwei .top {
-  background-image: url("../img/IMG_1135.JPG");
+  background-image: url("../img/IMG_0058_small.JPG");
 }
 #main li .low {
   padding: 5%;
+  font-family: 'Transat Light', arial;
+  font-weight: normal;
+  font-style: normal;
+}
+#main li .low p,
+#main li .low img {
+  margin: 2% 0;
+}
+#main li .low img {
+  max-width: 100%;
+}
+#main li .low .left {
+  width: 48%;
+  margin-right: 4%;
+  float: left;
+}
+#main li .low .right {
+  width: 48%;
+  float: right;
+}
+
+#verticalNav {
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  left: 0;
+}
+#verticalNav ul {
+  font-size: 3em;
+  color: #fff;
+  margin: 0 auto;
+  padding: 0;
+}
+#verticalNav ul li {
+  display: inline-block;
+  cursor: pointer;
 }
 
 /* ==========================================================================
