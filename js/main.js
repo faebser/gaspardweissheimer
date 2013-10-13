@@ -34,7 +34,6 @@ var gaspi = (function ($) {
 			console.log(i * scrollingAmount);
 			li.data("scroll", i * scrollingAmount);
 			li.click(function () {
-				console.log($(this).data('scroll') * -1 + "%");
 				main.transition({
 					'x' : $(this).data("scroll") * -1 + "%"
 				}, 1000, 'snap');
