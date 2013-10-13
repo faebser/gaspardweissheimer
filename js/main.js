@@ -5,8 +5,8 @@ var gaspi = (function ($) {
 	// private vars
 	var module = {},
 		win = $(window),
-		tops = $('.top'),
 		main = $('#main'),
+		tops = main.find("li"),
 		verticalNav = $('#verticalNav'),
 		bullets = {
 			"active" : "&bull;",
@@ -31,12 +31,10 @@ var gaspi = (function ($) {
 			}
 			var li = $('<li/>').html(bullet);
 			ul.append(li);
-			console.log(i * scrollingAmount);
-			li.data("scroll", i * scrollingAmount);
 			li.click(function () {
 				main.transition({
 					'x' : $(this).data("scroll") * -1 + "%"
-				}, 1000, 'snap');
+				}, 1500, 'snap');
 			});
 			width += parseInt(li.width());
 		}
