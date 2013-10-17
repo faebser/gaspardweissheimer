@@ -6,7 +6,8 @@ var gaspi = (function ($) {
 	var module = {},
 		win = $(window),
 		main = $('#main'),
-		tops = main.find("li"),
+		navElements = main.find('li'),
+		tops = $('.top'),
 		verticalNav = $('#verticalNav'),
 		bullets = {
 			"active" : "&bull;",
@@ -20,7 +21,7 @@ var gaspi = (function ($) {
 
 	},
 	verticalNavInit = function (winHeight) {
-		var length = tops.length,
+		var length = navElements.length,
 			ul = verticalNav.find('ul'),
 			width = 0,
 			scrollingAmount = 100 / length;
@@ -30,8 +31,10 @@ var gaspi = (function ($) {
 				bullet = bullets.active;
 			}
 			var li = $('<li/>').html(bullet);
+			li.data("scroll", scrollingAmount * i);
 			ul.append(li);
 			li.click(function () {
+				console.log("$(this).data(scroll)", $(this).data("scroll"));
 				main.transition({
 					'x' : $(this).data("scroll") * -1 + "%"
 				}, 1500, 'snap');

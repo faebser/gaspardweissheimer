@@ -83,17 +83,6 @@ textarea {
 }
 
 /* ==========================================================================
-   Browse Happy prompt
-   ========================================================================== */
-
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
-
-/* ==========================================================================
    Author's custom styles
    fabian.frei@esf-frei.ch
    ========================================================================== */
@@ -168,7 +157,26 @@ textarea {
 
 *, *:before, *:after { /* sane box model */
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
- }
+}
+
+.headerLine {
+    text-align: center;
+    margin: 0;
+    display: block;
+    text-transform: uppercase;
+}
+
+.headerLineH1 {
+    @include transatBlack;
+    letter-spacing: 0.2em;
+}
+
+.headerLineH2 {
+    @include transatStdObl;
+    margin-bottom: 0.5em;
+    letter-spacing: 0.2em;
+    margin-top: 0;
+}
 
 html,
 body {
@@ -196,7 +204,7 @@ body {
     .wrapper {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 1em 1em 0 1em;
+        padding: 1em 10em 0 0em;
     }
     nav {
         text-transform: uppercase;
@@ -254,24 +262,18 @@ body {
             background-size: cover;
             h1,
             h2 {
-                text-align: center;
-                color: #fff;
-                display: block;
+                @extend .headerLine;
                 text-shadow: 0 0 20px #fff;
-                margin: 0;
+                color: #fff;
             }
             h1 {
+                @extend .headerLineH1;
                 font-size: 3.125em;
-                @include transatBlack;
-                letter-spacing: 0.2em;
             }
             h2 {
-                letter-spacing: 0.2em;
-                margin-top: 0;
-                font-size: 1.875em;
-                @include transatStdObl;
                 padding-top: 25%;
-                margin-bottom: 0.5em;
+                @extend .headerLineH2;
+                font-size: 1.875em;
             }
         }
         &#eins .top {
@@ -290,29 +292,22 @@ body {
                 div {
                     width: 40%;
                     float: left;
-                    display: table;
                 }
                 h1,
                 h2 {
-                    display: table-cell;
+                    @extend .headerLine;
+                    display: block;
                     vertical-align: middle; 
                     text-align: center;
                     color: #000;
-                    display: block;
-                    margin: 0;
                 }
                 h1 {
-                    font-size: 2em;
-                    @include transatBlack;
-                    letter-spacing: 0.2em;
+                    @extend .headerLineH1;
                     height: 50%;
                 }
                 h2 {
-                    letter-spacing: 0.2em;
-                    margin-top: 0;
-                    font-size: 1em;
-                    @include transatStdObl;
-                    margin-bottom: 0.5em;
+                    @extend .headerLineH2;
+                    padding-top: 0;
                 }
             }
             p {
@@ -347,6 +342,62 @@ body {
     }
 }
 
+#overview {
+    width: 100%;
+    padding-top: 120px;
+    #overviewInnerWrapper {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+.overviewRow {
+    .entry {
+        display: inline-block;
+        vertical-align: bottom;
+        position: relative;
+        margin-left: 1%;
+        color: #fff;
+        &.first {
+            margin-left: 0;
+        }
+        &:hover {
+            .hover {
+                display: block;
+            }
+        }
+        &.test1 {
+            width: 59%;
+        }
+        &.test2 {
+            width: 19%;
+        }
+        img {
+            max-width: 100%;
+        }
+        .hover {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #72898F;
+            background-color: rgba(68, 82, 85, 0.5);
+            h1,
+            h2 {
+                @extend .headerLine;
+            }
+            h1 {
+                @extend .headerLineH1;
+            }
+            h2 {
+                @extend .headerLineH2;
+            }
+        }
+    }
+}
 
 
 

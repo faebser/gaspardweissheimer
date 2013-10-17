@@ -76,16 +76,6 @@ textarea {
 }
 
 /* ==========================================================================
-   Browse Happy prompt
-   ========================================================================== */
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
-
-/* ==========================================================================
    Author's custom styles
    fabian.frei@esf-frei.ch
    ========================================================================== */
@@ -128,6 +118,32 @@ textarea {
   box-sizing: border-box;
 }
 
+.headerLine, #main li .top h1,
+#main li .top h2, #main li .low .lowerHeadline h1,
+#main li .low .lowerHeadline h2, .overviewRow .entry .hover h1,
+.overviewRow .entry .hover h2 {
+  text-align: center;
+  margin: 0;
+  display: block;
+  text-transform: uppercase;
+}
+
+.headerLineH1, #main li .top h1, #main li .low .lowerHeadline h1, .overviewRow .entry .hover h1 {
+  font-family: 'Transat Black', arial;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: 0.2em;
+}
+
+.headerLineH2, #main li .top h2, #main li .low .lowerHeadline h2, .overviewRow .entry .hover h2 {
+  font-family: 'Transat Standard Oblique', arial;
+  font-weight: normal;
+  font-style: normal;
+  margin-bottom: 0.5em;
+  letter-spacing: 0.2em;
+  margin-top: 0;
+}
+
 html,
 body {
   margin: 0;
@@ -157,7 +173,7 @@ body {
 #navAndLogo .wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1em 1em 0 1em;
+  padding: 1em 10em 0 0em;
 }
 #navAndLogo nav {
   text-transform: uppercase;
@@ -217,28 +233,15 @@ body {
 }
 #main li .top h1,
 #main li .top h2 {
-  text-align: center;
-  color: #fff;
-  display: block;
   text-shadow: 0 0 20px #fff;
-  margin: 0;
+  color: #fff;
 }
 #main li .top h1 {
   font-size: 3.125em;
-  font-family: 'Transat Black', arial;
-  font-weight: normal;
-  font-style: normal;
-  letter-spacing: 0.2em;
 }
 #main li .top h2 {
-  letter-spacing: 0.2em;
-  margin-top: 0;
-  font-size: 1.875em;
-  font-family: 'Transat Standard Oblique', arial;
-  font-weight: normal;
-  font-style: normal;
   padding-top: 25%;
-  margin-bottom: 0.5em;
+  font-size: 1.875em;
 }
 #main li#eins .top {
   background-image: url("../img/_MG_1558.jpg");
@@ -260,33 +263,19 @@ body {
 #main li .low .lowerHeadline div {
   width: 40%;
   float: left;
-  display: table;
 }
 #main li .low .lowerHeadline h1,
 #main li .low .lowerHeadline h2 {
-  display: table-cell;
+  display: block;
   vertical-align: middle;
   text-align: center;
   color: #000;
-  display: block;
-  margin: 0;
 }
 #main li .low .lowerHeadline h1 {
-  font-size: 2em;
-  font-family: 'Transat Black', arial;
-  font-weight: normal;
-  font-style: normal;
-  letter-spacing: 0.2em;
   height: 50%;
 }
 #main li .low .lowerHeadline h2 {
-  letter-spacing: 0.2em;
-  margin-top: 0;
-  font-size: 1em;
-  font-family: 'Transat Standard Oblique', arial;
-  font-weight: normal;
-  font-style: normal;
-  margin-bottom: 0.5em;
+  padding-top: 0;
 }
 #main li .low p {
   margin-top: 0;
@@ -316,6 +305,49 @@ body {
 #verticalNav ul li {
   display: inline-block;
   cursor: pointer;
+}
+
+#overview {
+  width: 100%;
+  padding-top: 120px;
+}
+#overview #overviewInnerWrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.overviewRow .entry {
+  display: inline-block;
+  vertical-align: bottom;
+  position: relative;
+  margin-left: 1%;
+  color: #fff;
+}
+.overviewRow .entry.first {
+  margin-left: 0;
+}
+.overviewRow .entry:hover .hover {
+  display: block;
+}
+.overviewRow .entry.test1 {
+  width: 59%;
+}
+.overviewRow .entry.test2 {
+  width: 19%;
+}
+.overviewRow .entry img {
+  max-width: 100%;
+}
+.overviewRow .entry .hover {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #72898F;
+  background-color: rgba(68, 82, 85, 0.5);
 }
 
 /* ==========================================================================
