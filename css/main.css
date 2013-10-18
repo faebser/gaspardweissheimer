@@ -118,13 +118,23 @@ textarea {
   box-sizing: border-box;
 }
 
-.headerLine, #main li .top h1,
-#main li .top h2, #main li .low .lowerHeadline h1,
-#main li .low .lowerHeadline h2, .overviewRow .entry .hover h1,
-.overviewRow .entry .hover h2 {
+.headerParent, #main li .top, #main li .low .lowerHeadline, .overviewRow .entry .hover {
+  text-align: center;
+}
+.headerParent:before, #main li .top:before, #main li .low .lowerHeadline:before, .overviewRow .entry .hover:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+  /* Adjusts for spacing */
+}
+
+.headerLine, #main li .top hgroup, #main li .low .lowerHeadline hgroup, .overviewRow .entry .hover hgroup {
   text-align: center;
   margin: 0;
-  display: block;
+  display: inline-block;
+  vertical-align: middle;
   text-transform: uppercase;
 }
 
@@ -228,11 +238,10 @@ body {
 }
 #main li .top {
   width: 100%;
-  height: 100%;
   background-size: cover;
+  background-attachment: fixed;
 }
-#main li .top h1,
-#main li .top h2 {
+#main li .top hgroup {
   text-shadow: 0 0 20px #fff;
   color: #fff;
 }
@@ -240,7 +249,6 @@ body {
   font-size: 3.125em;
 }
 #main li .top h2 {
-  padding-top: 25%;
   font-size: 1.875em;
 }
 #main li#eins .top {
@@ -260,16 +268,10 @@ body {
 #main li .low .lowerHeadline {
   width: 100%;
 }
-#main li .low .lowerHeadline div {
+#main li .low .lowerHeadline hgroup {
+  color: #000;
   width: 40%;
   float: left;
-}
-#main li .low .lowerHeadline h1,
-#main li .low .lowerHeadline h2 {
-  display: block;
-  vertical-align: middle;
-  text-align: center;
-  color: #000;
 }
 #main li .low .lowerHeadline h1 {
   height: 50%;
@@ -317,6 +319,9 @@ body {
   margin: 0 auto;
 }
 
+.overviewRow {
+  margin-bottom: 2%;
+}
 .overviewRow .entry {
   display: inline-block;
   vertical-align: bottom;
@@ -335,6 +340,15 @@ body {
 }
 .overviewRow .entry.test2 {
   width: 19%;
+}
+.overviewRow .entry.test3 {
+  width: 100%;
+}
+.overviewRow .entry.test4 {
+  width: 39%;
+}
+.overviewRow .entry.test5 {
+  width: 59%;
 }
 .overviewRow .entry img {
   max-width: 100%;

@@ -159,10 +159,22 @@ textarea {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
+.headerParent {
+    text-align: center;
+    &:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+      margin-right: -0.25em; /* Adjusts for spacing */
+    }
+}
+
 .headerLine {
     text-align: center;
     margin: 0;
-    display: block;
+    display: inline-block;
+    vertical-align: middle;
     text-transform: uppercase;
 }
 
@@ -258,10 +270,10 @@ body {
         float: left;
         .top {
             width: 100%;
-            height: 100%;
             background-size: cover;
-            h1,
-            h2 {
+            background-attachment: fixed;
+            @extend .headerParent;
+            hgroup {
                 @extend .headerLine;
                 text-shadow: 0 0 20px #fff;
                 color: #fff;
@@ -271,7 +283,6 @@ body {
                 font-size: 3.125em;
             }
             h2 {
-                padding-top: 25%;
                 @extend .headerLineH2;
                 font-size: 1.875em;
             }
@@ -289,17 +300,12 @@ body {
             @include transatLight;
             .lowerHeadline {
                 width: 100%;
-                div {
+                @extend .headerParent;
+                hgroup {
+                    @extend .headerLine;
+                    color: #000;
                     width: 40%;
                     float: left;
-                }
-                h1,
-                h2 {
-                    @extend .headerLine;
-                    display: block;
-                    vertical-align: middle; 
-                    text-align: center;
-                    color: #000;
                 }
                 h1 {
                     @extend .headerLineH1;
@@ -353,6 +359,7 @@ body {
 }
 
 .overviewRow {
+    margin-bottom: 2%;
     .entry {
         display: inline-block;
         vertical-align: bottom;
@@ -373,6 +380,15 @@ body {
         &.test2 {
             width: 19%;
         }
+        &.test3 {
+            width: 100%;
+        }
+        &.test4 {
+            width: 39%;
+        }
+        &.test5 {
+            width: 59%;
+        }
         img {
             max-width: 100%;
         }
@@ -385,8 +401,8 @@ body {
             height: 100%;
             background-color: #72898F;
             background-color: rgba(68, 82, 85, 0.5);
-            h1,
-            h2 {
+            @extend .headerParent;
+            hgroup {
                 @extend .headerLine;
             }
             h1 {
