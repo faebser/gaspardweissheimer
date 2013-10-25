@@ -263,15 +263,16 @@ body {
 
 #main {
     list-style-type: none;
-    width: 300%;
+    width: 400%;
     li {
-        width: 33.33333%;
+        width: 25%;
         min-height: 100%;
-        float: left;
+        display: inline-block;
+        vertical-align: top;
         .top {
             width: 100%;
             background-size: cover;
-            background-attachment: fixed;
+            //background-attachment: fixed;
             @extend .headerParent;
             hgroup {
                 @extend .headerLine;
@@ -288,10 +289,13 @@ body {
             }
         }
         &#eins .top {
-            background-image: url("../img/_MG_1558.jpg");
+            background-image: url("../img/Bildbank_AndresBally/20100118_bänke_gw__MG_2535-2.jpg");
         }
         &#zwei .top {
             background-image: url("../img/IMG_0058_small.JPG");
+        }
+        &#drei .top {
+            background-image: url("../img/MaennerstimmenBasel_TontraegerN1/gaspard_weissheimer__MG_1286.jpg");
         }
         .low {
             padding: 5% 0 0 0;
@@ -325,8 +329,12 @@ body {
             }
             img {
                 display: block;
+                height: auto;
                 max-width: 100%;
                 margin: 0 auto;
+            }
+            iframe {
+                width: 100%;
             }
         }
     }
@@ -384,10 +392,17 @@ body {
             width: 100%;
         }
         &.test4 {
+            float: left;
             width: 39%;
         }
         &.test5 {
             width: 59%;
+            &.up {
+                vertical-align: top;
+            }
+            &.down {
+                vertical-align: bottom;
+            }
         }
         img {
             max-width: 100%;
