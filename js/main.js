@@ -9,6 +9,8 @@ var gaspi = (function ($) {
 		navElements = main.find('li'),
 		tops = $('.top'),
 		verticalNav = $('#verticalNav'),
+		topElementsToSwitchColor = $('nav li a, #logo'),
+		topElementsToSwitchBack = $("#indicator"),
 		bullets = {
 			"active" : "&bull;",
 			"inactive" : "&#9702;" 
@@ -42,6 +44,21 @@ var gaspi = (function ($) {
 				main.transition({
 					'x' : $(this).data("scroll") * -1 + "%"
 				}, 1500, 'snap');
+				// TODO recode this shit & init
+				var color = "";
+				if (typeof $(this).data("color") === 'undefined') {
+					color = "#000"
+				}
+				else {
+					color = $(this).data("color");
+				};
+				topElementsToSwitchColor.css({
+					"color" : color
+				});
+				topElementsToSwitchBack.css({
+					"background-color" : color
+				});
+				return;
 			});
 			width += parseInt(li.width());
 		}

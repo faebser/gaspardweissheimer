@@ -175,9 +175,19 @@ body {
       #navAndLogo nav ul li {
         display: inline-block; }
         #navAndLogo nav ul li a {
+          -webkit-transition: color 1.3s ease;
+          -moz-transition: color 1.3s ease;
+          -ms-transition: color 1.3s ease;
+          -o-transition: color 1.3s ease;
+          transition: color 1.3s ease;
           color: black;
           text-decoration: none; }
     #navAndLogo nav #indicator {
+      -webkit-transition: background-color 1.3s ease;
+      -moz-transition: background-color 1.3s ease;
+      -ms-transition: background-color 1.3s ease;
+      -o-transition: background-color 1.3s ease;
+      transition: background-color 1.3s ease;
       width: 4.8125em;
       height: 0.5em;
       position: absolute;
@@ -185,7 +195,12 @@ body {
       left: 0;
       background-color: #000; }
   #navAndLogo #logo {
-    float: right; }
+    float: right;
+    -webkit-transition: color 1.3s ease;
+    -moz-transition: color 1.3s ease;
+    -ms-transition: color 1.3s ease;
+    -o-transition: color 1.3s ease;
+    transition: color 1.3s ease; }
     #navAndLogo #logo p {
       margin: 0;
       padding: 0; }

@@ -155,6 +155,14 @@ textarea {
     font-style: normal;
 }
 
+@mixin transition ($attribute, $duration, $ease) {
+    -webkit-transition: $attribute $duration $ease;
+    -moz-transition: $attribute $duration $ease;
+    -ms-transition: $attribute $duration $ease;
+    -o-transition: $attribute $duration $ease;
+    transition: $attribute $duration $ease;
+}
+
 *, *:before, *:after { /* sane box model */
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
@@ -229,12 +237,14 @@ body {
             li {
                     display: inline-block;
                 a {
+                    @include transition(color, 1.3s, ease);
                     color: black;
                     text-decoration: none;
                 }
             }
         }
         #indicator {
+            @include transition(background-color, 1.3s, ease);
             width: 4.8125em;
             height: 0.5em;
             position: absolute;
@@ -245,6 +255,7 @@ body {
     }
     #logo {
         float: right;
+        @include transition(color, 1.3s, ease);
         p {
             span {
                 font-size: 2em;
@@ -273,11 +284,7 @@ body {
             width: 100%;
             background-size: cover;
             //background-attachment: fixed;
-            -webkit-transition: opacity 0.5s ease;
-            -moz-transition: opacity 0.5s ease;
-            -ms-transition: opacity 0.5s ease;
-            -o-transition: opacity 0.5s ease;
-            transition: opacity 0.5s ease;
+            @include transition(opacity, 0.5s, ease);
             @extend .headerParent;
             hgroup {
                 @extend .headerLine;
