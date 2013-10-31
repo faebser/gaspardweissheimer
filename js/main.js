@@ -1,3 +1,31 @@
+var loader = (function ($) {
+	// javascript module pattern
+	"use strict"; // enable strict mode for javascript module
+	// private vars
+	var module = {},
+		images = Array(),
+		smallOffset = $(window).height() - 20,
+		selector = 'img';
+	// private methods
+	var check = function () {
+		
+	};
+	// public methods
+	module.init = function () {
+		// unbind eventhandler
+		$(window).scroll(function(event) {
+			check();
+		});
+	},
+	module.checkForImages = function(parent) {
+		parent.find(selector).each(function(index, el) {
+			images.push($(el).offset().top - smallOffset);
+			return;
+		});
+	};
+	//return the module
+	return module;
+}(jQuery));
 
 var gaspi = (function ($) {
 	// javascript module pattern
