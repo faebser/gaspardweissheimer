@@ -12,8 +12,8 @@ var gaspi = (function ($) {
 		topElementsToSwitchColor = $('nav li a, #logo'),
 		topElementsToSwitchBack = $("#indicator"),
 		bullets = {
-			"active" : "&bull;",
-			"inactive" : "&#9702;" 
+			"active" : "0xe800",
+			"inactive" : "0xe801" 
 		};
 	// private methods
 	var init = function () {
@@ -71,7 +71,6 @@ var gaspi = (function ($) {
 	},
 	clickHandlers = function (winHeight) {
 		win.scroll(function(event) {
-			console.log(win.scrollTop() / winHeight);
 			tops.css({
 				"opacity" : 1 - win.scrollTop() / winHeight 
 			})

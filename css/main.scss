@@ -87,6 +87,68 @@ textarea {
    fabian.frei@esf-frei.ch
    ========================================================================== */
 
+/* fontello */
+
+@font-face {
+  font-family: 'fontello';
+  src: url('../font/fontello.eot?3023062');
+  src: url('../font/fontello.eot?3023062#iefix') format('embedded-opentype'),
+       url('../font/fontello.woff?3023062') format('woff'),
+       url('../font/fontello.ttf?3023062') format('truetype'),
+       url('../font/fontello.svg?3023062#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?3023062#fontello') format('svg');
+  }
+}
+*/
+ 
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+     
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.icon-circle:before { content: '\e800'; } /* '' */
+.icon-circle-empty:before { content: '\e801'; } /* '' */
+.icon-layout:before { content: '\e802'; } /* '' */
+.icon-th-thumb:before { content: '\e803'; } /* '' */
+.icon-th-thumb-empty:before { content: '\e804'; } /* '' */
+.icon-cancel:before { content: '\e805'; } /* '' */
+
+
 @font-face {
     font-family: 'Transat Black';
     src: url('font/transat-black/transat-black.eot');
@@ -216,16 +278,18 @@ body {
     transform: translate3d(0,0,0);
 }
 
+.wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1em 1em 0em 1em;
+    }
+
 #navAndLogo {
     width: 100%;
     position: fixed;
     z-index: 10;
     @include transatBold;
-    .wrapper {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 1em 10em 0 0em;
-    }
+    
     nav {
         text-transform: uppercase;
         float: left;
@@ -270,6 +334,7 @@ body {
 #mainWrapper {
     position: relative;
     overflow: hidden;
+    padding-bottom: 14em;
 }
 
 #main {
@@ -307,10 +372,10 @@ body {
             background-image: url("../img/IMG_0058_small.JPG");
         }
         &#drei .top {
-            background-image: url("../img/MaennerstimmenBasel_TontraegerN1/gaspard_weissheimer__MG_1286.jpg");
+            background-image: url("../img/VJP_Jahresbericht_2012/gaspard_weissheimer__MG_4093.jpg");
         }
         .low {
-            padding: 5% 0 0 0;
+            padding: 13em 0 0 0;
             max-width: 1200px;
             margin: 0 auto;
             @include transatLight;
@@ -344,6 +409,7 @@ body {
                 height: auto;
                 max-width: 100%;
                 margin: 0 auto;
+                margin-bottom: 0.5em;
             }
             iframe {
                 width: 100%;
@@ -370,7 +436,7 @@ body {
 
 #overview {
     width: 100%;
-    padding-top: 120px;
+    padding-top: 13em;
     #overviewInnerWrapper {
         width: 100%;
         max-width: 1200px;
@@ -442,20 +508,49 @@ body {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+footer {
+    width: 100%;
+    height: 13em;
+    position: absolute;
+    bottom: 0;
+    @include transatLight;
+    .wrapper {
+        height: 13em;
+        ul {
+            list-style-type: none;
+            float: left;
+            margin: 4.3em 0 0 0;
+            padding: 0;
+            height: 4.3em;
+            width: 40%;
+            li {
+                display: inline-block;
+                vertical-align: top;
+                margin-right: 1em;
+                p,
+                h3 {
+                    margin: 0;
+                    font-size: 1em;
+                    line-height: 1.4;
+                }
+                h3 {
+                    @include transatBold;
+                    span {
+                        text-transform: uppercase;
+                    }
+                }
+                a {
+                    color: #222;
+                    text-decoration: none;
+                    font-style: italic;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
 
 /* ==========================================================================
    Helper classes
