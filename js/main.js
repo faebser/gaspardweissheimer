@@ -3,9 +3,10 @@ var loader = (function ($) {
 	"use strict"; // enable strict mode for javascript module
 	// private vars
 	var module = {},
-		images = Array(),
+		images = {},
 		smallOffset = $(window).height() - 20,
-		selector = 'img';
+		selector = 'img',
+		loaded = 'loaded';
 	// private methods
 	var check = function () {
 		
@@ -13,15 +14,22 @@ var loader = (function ($) {
 	// public methods
 	module.init = function () {
 		// unbind eventhandler
-		$(window).scroll(function(event) {
-			check();
-		});
+		// $(window).bind('scroll', check);
+		// find all images with a certain class and use them
 	},
 	module.checkForImages = function(parent) {
 		parent.find(selector).each(function(index, el) {
-			images.push($(el).offset().top - smallOffset);
+			var e = $(el);
+			console.log(e);
+			// images.push(e.offset().top - smallOffset);
+			images[e.offset().top - smallOffset] = e;
+			e.hide().attr('src', '');
 			return;
 		});
+	},
+	module.reset = function() {
+		images.clear();
+		$(window).unbind('scroll', check);
 	};
 	//return the module
 	return module;
@@ -49,7 +57,6 @@ var gaspi = (function ($) {
 		tops.height(winHeight);
 		verticalNavInit(winHeight);
 		clickHandlers(winHeight);
-
 	},
 	verticalNavInit = function (winHeight) {
 		var length = navElements.length,
@@ -69,6 +76,9 @@ var gaspi = (function ($) {
 			});
 			ul.append(li);
 			li.click(function () {
+				var e = $(this);
+				console.log(loader);
+				loader.checkForImages(navElements.eq(e.index()));
 				main.transition({
 					'x' : $(this).data("scroll") * -1 + "%"
 				}, 1500, 'snap');
@@ -114,4 +124,5 @@ var gaspi = (function ($) {
 
 jQuery(document).ready(function($) {
 	gaspi.init();
+	loader.init();
 });
