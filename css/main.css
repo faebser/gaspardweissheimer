@@ -401,6 +401,120 @@ body {
       height: 100%;
       background-color: #72898F;
       background-color: rgba(68, 82, 85, 0.5); }
+}
+.overviewRow.order50-25-25 .entry-1 {
+  width: 50%;
+  margin-right: 1%;
+}
+.overviewRow.order50-25-25 .entry-2 {
+  width: 24%;
+  margin-right: 1%;
+}
+.overviewRow.order50-25-25 .entry-3 {
+  width: 24%;
+}
+.overviewRow.order50-25-25.rtl .entry {
+  margin-right: 0;
+}
+.overviewRow.order50-25-25.rtl .entry-1 {
+  width: 24%;
+}
+.overviewRow.order50-25-25.rtl .entry-2 {
+  width: 24%;
+  margin-left: 1%;
+}
+.overviewRow.order50-25-25.rtl .entry-3 {
+  width: 50%;
+  margin-left: 1%;
+}
+.overviewRow.order50-50 .entry-1 {
+  width: 50%;
+  float: right;
+}
+.overviewRow.order50-50.rtl .entry-1 {
+  float: none;
+}
+.overviewRow.order40-60 .entry-1 {
+  width: 39.5%;
+  margin-right: 1%;
+}
+.overviewRow.order40-60 .entry-2 {
+  width: 59.5%;
+}
+.overviewRow.order40-60.rtl .entry-1 {
+  width: 59.5%;
+}
+.overviewRow.order40-60.rtl .entry-2 {
+  width: 39.5%;
+}
+.overviewRow.order40-60-60 .entry-1 {
+  width: 39.5%;
+  margin-right: 1%;
+}
+.overviewRow.order40-60-60 .entry-container {
+  width: 59.5%;
+  display: inline-block;
+  vertical-align: top;
+}
+.overviewRow.order40-60-60 .entry-container .entry-2 {
+  margin-bottom: 0.5em;
+}
+.overviewRow.order40-60-60.rtl .entry-1 {
+  margin-right: 0;
+  margin-left: 1%;
+}
+.overviewRow.order100 .entry-1 {
+  width: 100%;
+}
+.overviewRow .entry {
+  display: inline-block;
+  vertical-align: bottom;
+  position: relative;
+  color: #fff;
+  /* tests */
+}
+.overviewRow .entry.first {
+  margin-left: 0;
+}
+.overviewRow .entry:hover .hover {
+  display: block;
+}
+.overviewRow .entry.test1 {
+  width: 59%;
+}
+.overviewRow .entry.test2 {
+  width: 19%;
+}
+.overviewRow .entry.test3 {
+  width: 100%;
+}
+.overviewRow .entry.test4 {
+  float: left;
+  width: 39%;
+}
+.overviewRow .entry.test5 {
+  width: 59%;
+}
+.overviewRow .entry.test5.up {
+  vertical-align: top;
+}
+.overviewRow .entry.test5.down {
+  vertical-align: bottom;
+}
+.overviewRow .entry img {
+  max-width: 100%;
+}
+.overviewRow .entry .hover {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #72898F;
+  background-color: rgba(68, 82, 85, 0.5);
+}
+>>>>>>> dbdb73e1cbf74a12771568b9521cd1bc14594068
 
 footer {
   width: 100%;
@@ -510,22 +624,35 @@ footer {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-.clearfix:before,
-.clearfix:after {
+.clearfix:before, .overviewRow.order50-50:before,
+.clearfix:after,
+.overviewRow.order50-50:after {
   content: " ";
   /* 1 */
   display: table;
   /* 2 */ }
 
+<<<<<<< HEAD
 .clearfix:after {
   clear: both; }
+=======
+.clearfix:after, .overviewRow.order50-50:after {
+  clear: both;
+}
+>>>>>>> dbdb73e1cbf74a12771568b9521cd1bc14594068
 
 /*
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
+<<<<<<< HEAD
 .clearfix {
   *zoom: 1; }
+=======
+.clearfix, .overviewRow.order50-50 {
+  *zoom: 1;
+}
+>>>>>>> dbdb73e1cbf74a12771568b9521cd1bc14594068
 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.

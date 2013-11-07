@@ -129,5 +129,5 @@ var gaspi = (function ($) {
 
 jQuery(document).ready(function($) {
 	gaspi.init();
-	loader.init();
+	//loader.init();
 });
