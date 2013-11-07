@@ -425,14 +425,78 @@ body {
 }
 
 .overviewRow {
-  margin-bottom: 2%;
+  margin-bottom: 1.5em;
+}
+.overviewRow.order50-25-25 .entry-1 {
+  width: 50%;
+  margin-right: 1%;
+}
+.overviewRow.order50-25-25 .entry-2 {
+  width: 24%;
+  margin-right: 1%;
+}
+.overviewRow.order50-25-25 .entry-3 {
+  width: 24%;
+}
+.overviewRow.order50-25-25.rtl .entry {
+  margin-right: 0;
+}
+.overviewRow.order50-25-25.rtl .entry-1 {
+  width: 24%;
+}
+.overviewRow.order50-25-25.rtl .entry-2 {
+  width: 24%;
+  margin-left: 1%;
+}
+.overviewRow.order50-25-25.rtl .entry-3 {
+  width: 50%;
+  margin-left: 1%;
+}
+.overviewRow.order50-50 .entry-1 {
+  width: 50%;
+  float: right;
+}
+.overviewRow.order50-50.rtl .entry-1 {
+  float: none;
+}
+.overviewRow.order40-60 .entry-1 {
+  width: 39.5%;
+  margin-right: 1%;
+}
+.overviewRow.order40-60 .entry-2 {
+  width: 59.5%;
+}
+.overviewRow.order40-60.rtl .entry-1 {
+  width: 59.5%;
+}
+.overviewRow.order40-60.rtl .entry-2 {
+  width: 39.5%;
+}
+.overviewRow.order40-60-60 .entry-1 {
+  width: 39.5%;
+  margin-right: 1%;
+}
+.overviewRow.order40-60-60 .entry-container {
+  width: 59.5%;
+  display: inline-block;
+  vertical-align: top;
+}
+.overviewRow.order40-60-60 .entry-container .entry-2 {
+  margin-bottom: 0.5em;
+}
+.overviewRow.order40-60-60.rtl .entry-1 {
+  margin-right: 0;
+  margin-left: 1%;
+}
+.overviewRow.order100 .entry-1 {
+  width: 100%;
 }
 .overviewRow .entry {
   display: inline-block;
   vertical-align: bottom;
   position: relative;
-  margin-left: 1%;
   color: #fff;
+  /* tests */
 }
 .overviewRow .entry.first {
   margin-left: 0;
@@ -599,15 +663,16 @@ footer .wrapper ul li a:hover {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-.clearfix:before,
-.clearfix:after {
+.clearfix:before, .overviewRow.order50-50:before,
+.clearfix:after,
+.overviewRow.order50-50:after {
   content: " ";
   /* 1 */
   display: table;
   /* 2 */
 }
 
-.clearfix:after {
+.clearfix:after, .overviewRow.order50-50:after {
   clear: both;
 }
 
@@ -615,7 +680,7 @@ footer .wrapper ul li a:hover {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-.clearfix {
+.clearfix, .overviewRow.order50-50 {
   *zoom: 1;
 }
 

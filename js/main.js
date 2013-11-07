@@ -78,7 +78,7 @@ var gaspi = (function ($) {
 			li.click(function () {
 				var e = $(this);
 				console.log(loader);
-				loader.checkForImages(navElements.eq(e.index()));
+				//loader.checkForImages(navElements.eq(e.index()));
 				main.transition({
 					'x' : $(this).data("scroll") * -1 + "%"
 				}, 1500, 'snap');
@@ -124,5 +124,5 @@ var gaspi = (function ($) {
 
 jQuery(document).ready(function($) {
 	gaspi.init();
-	loader.init();
+	//loader.init();
 });
