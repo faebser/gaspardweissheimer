@@ -48,8 +48,14 @@ var gaspi = (function ($) {
 		topElementsToSwitchColor = $('nav li a, #logo'),
 		topElementsToSwitchBack = $("#indicator"),
 		bullets = {
-			"active" : "0xe800",
-			"inactive" : "0xe801" 
+			"active" : $('<i/>').attr({
+				"class" : "icon-circle",
+				"aria-hidden" : "true"
+			}),
+			"inactive" : $('<i/>').attr({
+				"class" : "icon-circle-empty",
+				"aria-hidden" : "true"
+			}) 
 		};
 	// private methods
 	var init = function () {
@@ -65,9 +71,9 @@ var gaspi = (function ($) {
 			scrollingAmount = 100 / length;
 
 		for(var i = 0; i < length; i++) {
-			var bullet = bullets.inactive;
+			var bullet = bullets.inactive.clone();
 			if(i == 0) {
-				bullet = bullets.active;
+				bullet = bullets.active.clone();
 			}
 			var li = $('<li/>').html(bullet);
 			li.data({
@@ -77,8 +83,7 @@ var gaspi = (function ($) {
 			ul.append(li);
 			li.click(function () {
 				var e = $(this);
-				console.log(loader);
-				loader.checkForImages(navElements.eq(e.index()));
+				//loader.checkForImages(navElements.eq(e.index()));
 				main.transition({
 					'x' : $(this).data("scroll") * -1 + "%"
 				}, 1500, 'snap');
