@@ -476,7 +476,22 @@ body {
             cursor: pointer;
             font-size: 20px;
             margin-right: 1.2em;
+            //&:last-child {
+              //  margin-right: 0;
+            //}
         }
+    }
+    #scrollIndicator {
+        color: #fff;
+        opacity: 0;
+        @include transition(opacity, 0.75s, ease);
+        p {
+            @include transatLight;
+            text-align: center;
+        }
+    }
+    &:hover #scrollIndicator {
+        opacity: 1;
     }
 }
 
@@ -484,9 +499,8 @@ body {
     width: 100%;
     padding-top: 13em;
     #overviewInnerWrapper {
+        @extend .wrapper;
         width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
     }
 }
 
@@ -586,29 +600,6 @@ body {
         &:hover {
             .hover {
                 display: block;
-            }
-        }
-        /* tests */
-        &.test1 {
-            width: 59%;
-        }
-        &.test2 {
-            width: 19%;
-        }
-        &.test3 {
-            width: 100%;
-        }
-        &.test4 {
-            float: left;
-            width: 39%;
-        }
-        &.test5 {
-            width: 59%;
-            &.up {
-                vertical-align: top;
-            }
-            &.down {
-                vertical-align: bottom;
             }
         }
         img {

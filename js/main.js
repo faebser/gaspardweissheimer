@@ -45,6 +45,7 @@ var gaspi = (function ($) {
 		navElements = main.find('li'),
 		tops = $('.top'),
 		verticalNav = $('#verticalNav'),
+		scrollIndicator = $('#scrollIndicator'),
 		topElementsToSwitchColor = $('nav li a, #logo'),
 		topElementsToSwitchBack = $("#indicator"),
 		bullets = {
@@ -55,7 +56,11 @@ var gaspi = (function ($) {
 			"inactive" : $('<i/>').attr({
 				"class" : "icon-circle-empty",
 				"aria-hidden" : "true"
-			}) 
+			}) ,
+			"overview" : $('<i/>').attr({
+				"class" : "icon-layout",
+				"aria-hidden" : "true"
+			})
 		};
 	// private methods
 	var init = function () {
@@ -74,6 +79,9 @@ var gaspi = (function ($) {
 			var bullet = bullets.inactive.clone();
 			if(i == 0) {
 				bullet = bullets.active.clone();
+			}
+			if (navElements.eq(i).attr('id') === 'overview') {
+				bullet = bullets.overview.clone();
 			}
 			var li = $('<li/>').html(bullet);
 			li.data({
@@ -110,6 +118,9 @@ var gaspi = (function ($) {
 		});
 		verticalNav.css({
 			"top" : winHeight - 150
+		});
+		scrollIndicator.css({
+			"top" : winHeight - 90 - 100
 		});
 	},
 	clickHandlers = function (winHeight) {
