@@ -166,15 +166,29 @@ textarea {
   font-weight: normal;
   font-style: normal; }
 
+@font-face {
+  font-family: 'Transat Standard';
+  src: url("font/transat-standard/transat-standard.eot");
+  src: url("font/transat-standard/transat-standard.eot?#iefix") format("embedded-opentype"), url("font/transat-standard/transat-standard.woff") format("woff"), url("font/transat-standard/transat-standard.ttf") format("truetype"), url("font/transat-standard/transat-standard.svg#ywftsvg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Transat Medium';
+  src: url("font/transat-medium/transat-medium.eot");
+  src: url("font/transat-medium/transat-medium.eot?#iefix") format("embedded-opentype"), url("font/transat-medium/transat-medium.woff") format("woff"), url("font/transat-medium/transat-medium.ttf") format("truetype"), url("font/transat-medium/transat-medium.svg#ywftsvg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
 *, *:before, *:after {
   /* sane box model */
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-.headerParent, #main li .top, #main li .low .lowerHeadline, .overviewRow .entry .hover {
+.headerParent, #main li .top, .overviewRow .entry .hover {
   text-align: center; }
-  .headerParent:before, #main li .top:before, #main li .low .lowerHeadline:before, .overviewRow .entry .hover:before {
+  .headerParent:before, #main li .top:before, .overviewRow .entry .hover:before {
     content: '';
     display: inline-block;
     height: 100%;
@@ -182,20 +196,20 @@ textarea {
     margin-right: -0.25em;
     /* Adjusts for spacing */ }
 
-.headerLine, #main li .top hgroup, #main li .low .lowerHeadline hgroup, .overviewRow .entry .hover hgroup {
+.headerLine, #main li .top hgroup, .overviewRow .entry .hover hgroup {
   text-align: center;
   margin: 0;
   display: inline-block;
   vertical-align: middle;
   text-transform: uppercase; }
 
-.headerLineH1, #main li .top h1, #main li .low .lowerHeadline h1, .overviewRow .entry .hover h1 {
+.headerLineH1, #main li .top h1, .overviewRow .entry .hover h1 {
   font-family: 'Transat Black', arial;
   font-weight: normal;
   font-style: normal;
   letter-spacing: 0.2em; }
 
-.headerLineH2, #main li .top h2, #main li .low .lowerHeadline h2, .overviewRow .entry .hover h2 {
+.headerLineH2, #main li .top h2, .overviewRow .entry .hover h2 {
   font-family: 'Transat Standard Oblique', arial;
   font-weight: normal;
   font-style: normal;
@@ -206,7 +220,8 @@ textarea {
 html,
 body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  background-color: #F6F5EE; }
 
 #main {
   height: 100%;
@@ -222,25 +237,31 @@ body {
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1em 1em 0em 1em; }
+  padding: 2.0625em 1.875em 0em 1.875em; }
 
 #navAndLogo {
   width: 100%;
   position: fixed;
   z-index: 10;
-  font-family: 'Transat Bold', arial;
-  font-weight: normal;
-  font-style: normal; }
+  color: #000; }
   #navAndLogo nav {
     text-transform: uppercase;
-    float: left;
-    position: relative; }
+    float: right;
+    position: relative;
+    font-family: 'Transat Standard', arial;
+    font-weight: normal;
+    font-weight: normal;
+    font-size: 1.125em; }
     #navAndLogo nav ul {
       list-style-type: none;
       padding: 0;
       margin: 0; }
       #navAndLogo nav ul li {
-        display: inline-block; }
+        display: inline-block;
+        letter-spacing: 0.25em;
+        margin-right: 0.45em; }
+        #navAndLogo nav ul li:last-child {
+          margin-right: 0; }
         #navAndLogo nav ul li a {
           -webkit-transition: color 1.3s ease;
           -moz-transition: color 1.3s ease;
@@ -256,24 +277,30 @@ body {
       -o-transition: background-color 1.3s ease;
       transition: background-color 1.3s ease;
       width: 4.8125em;
-      height: 0.5em;
+      height: 0.0625em;
       position: absolute;
-      bottom: -0.5em;
+      bottom: 0.2em;
       left: 0;
       background-color: #000; }
   #navAndLogo #logo {
-    float: right;
+    text-transform: uppercase;
+    float: left;
+    font-size: 1.25em;
     -webkit-transition: color 1.3s ease;
     -moz-transition: color 1.3s ease;
     -ms-transition: color 1.3s ease;
     -o-transition: color 1.3s ease;
-    transition: color 1.3s ease; }
+    transition: color 1.3s ease;
+    font-family: 'Transat Light', arial;
+    font-weight: normal;
+    font-style: normal; }
     #navAndLogo #logo p {
       margin: 0;
       padding: 0; }
       #navAndLogo #logo p span {
-        font-size: 2em;
-        text-transform: uppercase; }
+        font-family: 'Transat Medium', arial;
+        font-weight: normal;
+        font-weight: normal; }
 
 #mainWrapper {
   position: relative;
@@ -310,7 +337,7 @@ body {
     #main li#drei .top {
       background-image: url("../img/VJP_Jahresbericht_2012/gaspard_weissheimer__MG_4093.jpg"); }
     #main li .low {
-      padding: 13em 0 0 0;
+      padding: 13em 1.875em 0 1.875em;
       max-width: 1200px;
       margin: 0 auto;
       font-family: 'Transat Light', arial;
@@ -323,9 +350,19 @@ body {
           width: 40%;
           float: left; }
         #main li .low .lowerHeadline h1 {
-          height: 50%; }
+          height: 50%;
+          margin: 0;
+          font-family: 'Transat Bold', arial;
+          font-weight: normal;
+          font-style: normal;
+          font-size: 1.25em; }
         #main li .low .lowerHeadline h2 {
-          padding-top: 0; }
+          padding-top: 0;
+          margin: 0;
+          font-family: 'Transat Standard', arial;
+          font-weight: normal;
+          font-weight: normal;
+          font-size: 1.25em; }
       #main li .low p {
         margin-top: 0;
         margin-bottom: 2em;
@@ -353,7 +390,9 @@ body {
     padding: 0; }
     #verticalNav ul li {
       display: inline-block;
-      cursor: pointer; }
+      cursor: pointer;
+      font-size: 20px;
+      margin-right: 1.2em; }
 
 #overview {
   width: 100%;
@@ -364,13 +403,59 @@ body {
     margin: 0 auto; }
 
 .overviewRow {
-  margin-bottom: 2%; }
+  margin-bottom: 1.5em; }
+  .overviewRow.order50-25-25 .entry-1 {
+    width: 50%;
+    margin-right: 1%; }
+  .overviewRow.order50-25-25 .entry-2 {
+    width: 24%;
+    margin-right: 1%; }
+  .overviewRow.order50-25-25 .entry-3 {
+    width: 24%; }
+  .overviewRow.order50-25-25.rtl .entry {
+    margin-right: 0; }
+  .overviewRow.order50-25-25.rtl .entry-1 {
+    width: 24%; }
+  .overviewRow.order50-25-25.rtl .entry-2 {
+    width: 24%;
+    margin-left: 1%; }
+  .overviewRow.order50-25-25.rtl .entry-3 {
+    width: 50%;
+    margin-left: 1%; }
+  .overviewRow.order50-50 .entry-1 {
+    width: 50%;
+    float: right; }
+  .overviewRow.order50-50.rtl .entry-1 {
+    float: none; }
+  .overviewRow.order40-60 .entry-1 {
+    width: 39.5%;
+    margin-right: 1%; }
+  .overviewRow.order40-60 .entry-2 {
+    width: 59.5%; }
+  .overviewRow.order40-60.rtl .entry-1 {
+    width: 59.5%; }
+  .overviewRow.order40-60.rtl .entry-2 {
+    width: 39.5%; }
+  .overviewRow.order40-60-60 .entry-1 {
+    width: 39.5%;
+    margin-right: 1%; }
+  .overviewRow.order40-60-60 .entry-container {
+    width: 59.5%;
+    display: inline-block;
+    vertical-align: top; }
+    .overviewRow.order40-60-60 .entry-container .entry-2 {
+      margin-bottom: 0.5em; }
+  .overviewRow.order40-60-60.rtl .entry-1 {
+    margin-right: 0;
+    margin-left: 1%; }
+  .overviewRow.order100 .entry-1 {
+    width: 100%; }
   .overviewRow .entry {
     display: inline-block;
     vertical-align: bottom;
     position: relative;
-    margin-left: 1%;
-    color: #fff; }
+    color: #fff;
+    /* tests */ }
     .overviewRow .entry.first {
       margin-left: 0; }
     .overviewRow .entry:hover .hover {
@@ -401,120 +486,6 @@ body {
       height: 100%;
       background-color: #72898F;
       background-color: rgba(68, 82, 85, 0.5); }
-}
-.overviewRow.order50-25-25 .entry-1 {
-  width: 50%;
-  margin-right: 1%;
-}
-.overviewRow.order50-25-25 .entry-2 {
-  width: 24%;
-  margin-right: 1%;
-}
-.overviewRow.order50-25-25 .entry-3 {
-  width: 24%;
-}
-.overviewRow.order50-25-25.rtl .entry {
-  margin-right: 0;
-}
-.overviewRow.order50-25-25.rtl .entry-1 {
-  width: 24%;
-}
-.overviewRow.order50-25-25.rtl .entry-2 {
-  width: 24%;
-  margin-left: 1%;
-}
-.overviewRow.order50-25-25.rtl .entry-3 {
-  width: 50%;
-  margin-left: 1%;
-}
-.overviewRow.order50-50 .entry-1 {
-  width: 50%;
-  float: right;
-}
-.overviewRow.order50-50.rtl .entry-1 {
-  float: none;
-}
-.overviewRow.order40-60 .entry-1 {
-  width: 39.5%;
-  margin-right: 1%;
-}
-.overviewRow.order40-60 .entry-2 {
-  width: 59.5%;
-}
-.overviewRow.order40-60.rtl .entry-1 {
-  width: 59.5%;
-}
-.overviewRow.order40-60.rtl .entry-2 {
-  width: 39.5%;
-}
-.overviewRow.order40-60-60 .entry-1 {
-  width: 39.5%;
-  margin-right: 1%;
-}
-.overviewRow.order40-60-60 .entry-container {
-  width: 59.5%;
-  display: inline-block;
-  vertical-align: top;
-}
-.overviewRow.order40-60-60 .entry-container .entry-2 {
-  margin-bottom: 0.5em;
-}
-.overviewRow.order40-60-60.rtl .entry-1 {
-  margin-right: 0;
-  margin-left: 1%;
-}
-.overviewRow.order100 .entry-1 {
-  width: 100%;
-}
-.overviewRow .entry {
-  display: inline-block;
-  vertical-align: bottom;
-  position: relative;
-  color: #fff;
-  /* tests */
-}
-.overviewRow .entry.first {
-  margin-left: 0;
-}
-.overviewRow .entry:hover .hover {
-  display: block;
-}
-.overviewRow .entry.test1 {
-  width: 59%;
-}
-.overviewRow .entry.test2 {
-  width: 19%;
-}
-.overviewRow .entry.test3 {
-  width: 100%;
-}
-.overviewRow .entry.test4 {
-  float: left;
-  width: 39%;
-}
-.overviewRow .entry.test5 {
-  width: 59%;
-}
-.overviewRow .entry.test5.up {
-  vertical-align: top;
-}
-.overviewRow .entry.test5.down {
-  vertical-align: bottom;
-}
-.overviewRow .entry img {
-  max-width: 100%;
-}
-.overviewRow .entry .hover {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #72898F;
-  background-color: rgba(68, 82, 85, 0.5);
-}
->>>>>>> dbdb73e1cbf74a12771568b9521cd1bc14594068
 
 footer {
   width: 100%;
@@ -632,27 +603,15 @@ footer {
   display: table;
   /* 2 */ }
 
-<<<<<<< HEAD
-.clearfix:after {
-  clear: both; }
-=======
 .clearfix:after, .overviewRow.order50-50:after {
-  clear: both;
-}
->>>>>>> dbdb73e1cbf74a12771568b9521cd1bc14594068
+  clear: both; }
 
 /*
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-<<<<<<< HEAD
-.clearfix {
-  *zoom: 1; }
-=======
 .clearfix, .overviewRow.order50-50 {
-  *zoom: 1;
-}
->>>>>>> dbdb73e1cbf74a12771568b9521cd1bc14594068
+  *zoom: 1; }
 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.

@@ -103,7 +103,7 @@ var gaspi = (function ($) {
 				});
 				return;
 			});
-			width += parseInt(li.width());
+			width += parseInt(li.outerWidth(true));
 		}
 		ul.css({
 			"width" : width
