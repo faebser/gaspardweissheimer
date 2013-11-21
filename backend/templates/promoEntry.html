@@ -1,0 +1,21 @@
+<li id="{{id}}" class="{{color}}">
+    <div class="top">
+        <hgroup>
+            <h2>{{category}}</h2>
+            <h1>{{title}}</h1>
+        </hgroup>
+    </div>
+    <div class="low">
+        <div class="lowerHeadline clearfix">
+            <hgroup>
+                <h1>{{title}}</h1>
+                <h2>{{category}}</h2>
+            </hgroup>
+            <p>{{abstract}}</p>
+        </div>
+
+        {{#images}}
+          <img {{#class}}class="{{class}}"{{/class}} src="{{image.link}}" width="{{image.width}}" height="{{image.height}}">
+        {{/images}}
+    </div>
+</li>
