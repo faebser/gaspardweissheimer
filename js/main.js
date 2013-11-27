@@ -142,4 +142,3 @@ jQuery(document).ready(function($) {
 	gaspi.init();
 	//loader.init();
 });
-
