@@ -1,0 +1,8 @@
+{
+    "imageSizes" : {
+		"normal" : ["width", 1140],
+		"mobile" : ["height", 1000],
+		"landscape" : ["width", 1200],
+		"highres" : ["width", 2280]
+    }
+}
