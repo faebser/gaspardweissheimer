@@ -1,9 +1,26 @@
 class Config(object):
     imageSizes = {}
+    paths = {}
+
+    def addPath(self, name, path):
+        self.paths[name] = path
+
+    def getPath(self, name):
+        return self.paths[name]
 
     def addImageSize(self, json):
-        print json
+        for element, value in json.iteritems():
+            if value[0] is 'width':
+                height = None
+                width = value[1]
+            else:
+                height = value[1]
+                width = None
+            self.imageSizes[element] = ImageSize(height, width)
         return None
+
+    def getAllImageSizes(self):
+        return self.imageSizes.keys()
 
 
 class ImageSize(object):

@@ -3,23 +3,21 @@
 	"subtitle" : "Stuff",
 	"text" : "Die preisgekr&ouml;nten M&auml;nnerstimmen Basel, sind ein junger M&auml;nnerchor aus Basel. Ihr erstes Album unter dem Namen &bdquo;TONTR&Auml;GER N&deg;1&ldquo; ist im Janaur 2010 erschienen. Das Artwork ist in schlichten Braunt&ouml;nen gehalten und als Kartonh&uuml;lle umgesetzt.",
 	"posterImage" : {
-		"normal" : "1-normal.jpg",
-		"mobile" : "1-mobile.jpg",
-		"landscape" : "1-landscape.jpg",
-		"highres" : "1-highres.jpg"
+	    "1-highres.jpg" : ["normal", "mobile", "highres"],
+	    "1-landscape.jpg" : ["landscape"]
 	},
 	"overviewImage" : {
-		"normal" : "overview-normal.jpg",
-		"mobile" : "overview-mobile.jpg",
-		"landscape" : "overview-landscape.jpg",
-		"highres" : "overview-highres.jpg"
+		"overview-highres.jpg" : ["normal", "mobile", "highres"],
+	    "overview-landscape.jpg" : ["landscape"]
 	},
 	"images" : [
 		{
-			"normal" : "2-normal.jpg",
-			"mobile" : "2-mobile.jpg",
-			"landscape" : "2-landscape.jpg",
-			"highres" : "2-highres.jpg"
-		},
+            "overview-highres.jpg" : ["normal", "mobile", "highres"],
+            "overview-landscape.jpg" : ["landscape"]
+	    },
+	    {
+            "overview-highres.jpg" : ["normal", "mobile", "highres"],
+            "overview-landscape.jpg" : ["landscape"]
+	    }
 	]
 }
