@@ -8,7 +8,7 @@ class Config(object):
     def getPath(self, name):
         return self.paths[name]
 
-    def addImageSize(self, json):
+    def addImageSizes(self, json):
         for element, value in json.iteritems():
             if value[0] is 'width':
                 height = None

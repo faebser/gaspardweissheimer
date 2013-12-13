@@ -6,38 +6,43 @@ from os import path, walk, remove
 from shutil import copytree
 import json
 from classes.config import Config
+from classes.entry import Entry
 
 #logging
 log.basicConfig(format='%(levelname)s: %(message)s', level=log.DEBUG)
 
-# basic vars
+# loading config
+config = Config()
+
+# paths
 currentPath = path.dirname(path.realpath(__file__))
-templatePath = path.join(currentPath, "templates")
-partialsPath = path.join(currentPath, "templates", "partials")
-contentPath = path.join(currentPath, "content")
+config.addPath("templatePath", path.join(currentPath, "templates"))
+config.addPath("partialsPath", path.join(currentPath, "templates", "partials"))
+config.addPath("contentPath", path.join(currentPath, "content"))
 
 log.debug("-- paths --")
 log.debug("currentPath: " + currentPath)
-log.debug("templatePath: " + templatePath)
-log.debug("partialsPath: " + partialsPath)
-log.debug("contentPath: " + contentPath)
+log.debug("templatePath: " + config.getPath("templatePath"))
+log.debug("partialsPath: " + config.getPath("partialsPath"))
+log.debug("contentPath: " + config.getPath("contentPath"))
 
-
-# loading config
-config = Config()
+#add image sizes
 configJsonFile = json.loads(open(path.join(currentPath, "config.json")).read())
-log.debug("jsonFile: " + str(configJsonFile))
-config.addImageSize(configJsonFile["imageSizes"])
-log.debug("conifg: " + str(config))
+config.addImageSizes(configJsonFile["imageSizes"])
 
-#log.debug("config:" + str(config))
+#load content
+currentProjectPath = path.join(config.getPath("contentPath"), "promoted_stuff", "01_projekt1")
+contentJsonFile = json.loads(open(path.join(currentProjectPath, "data.json")).read())
+testEntry = Entry()
+testEntry.simpleFillWithDict(contentJsonFile)
 
+log.debug(str(Entry))
 
 # partials
-partials = {"entry-1": open(path.join(partialsPath, "partial-entry-1.html")).read(), "entry-2": open(path.join(partialsPath, "partial-entry-2.html")).read(), "entry-3": open(path.join(partialsPath, "partial-entry-3.html")).read()}
+partials = {"entry-1": open(path.join(config.getPath("partialsPath"), "partial-entry-1.html")).read(), "entry-2": open(path.join(config.getPath("partialsPath"), "partial-entry-2.html")).read(), "entry-3": open(path.join(config.getPath("partialsPath"), "partial-entry-3.html")).read()}
 
 # pystache renderer init
-renderer = pystache.Renderer(search_dirs=templatePath, file_extension="html", partials=partials)
+renderer = pystache.Renderer(search_dirs=config.getPath("templatePath"), file_extension="html", partials=partials)
 
 # load templates
 renderer.load_template("overviewRow")
