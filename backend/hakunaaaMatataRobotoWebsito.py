@@ -7,6 +7,7 @@ from shutil import copytree
 import json
 from classes.config import Config
 from classes.entry import Entry
+from PIL import Image, ImageOps
 
 #logging
 log.basicConfig(format='%(levelname)s: %(message)s', level=log.DEBUG)
@@ -19,6 +20,7 @@ currentPath = path.dirname(path.realpath(__file__))
 config.addPath("templatePath", path.join(currentPath, "templates"))
 config.addPath("partialsPath", path.join(currentPath, "templates", "partials"))
 config.addPath("contentPath", path.join(currentPath, "content"))
+config.addPath("website", path.join(currentPath, "website"))
 
 log.debug("-- paths --")
 log.debug("currentPath: " + currentPath)
@@ -35,8 +37,18 @@ currentProjectPath = path.join(config.getPath("contentPath"), "promoted_stuff", 
 contentJsonFile = json.loads(open(path.join(currentProjectPath, "data.json")).read())
 testEntry = Entry()
 testEntry.simpleFillWithDict(contentJsonFile)
+# get pictures
+for element, value in contentJsonFile['posterImage'].iteritems():
+    log.debug(str(element) + ": " + str(value))
+    image = Image.open(path.join(currentProjectPath, element))
+    ImageOps.fit()
+log.debug(contentJsonFile['posterImage'])
+log.debug(contentJsonFile['overviewImage'])
 
-log.debug(str(Entry))
+#get all content from promoted stuff and input into the template
+#get all content from overview and generate pages
+#get all content from pages and generate pages
+
 
 # partials
 partials = {"entry-1": open(path.join(config.getPath("partialsPath"), "partial-entry-1.html")).read(), "entry-2": open(path.join(config.getPath("partialsPath"), "partial-entry-2.html")).read(), "entry-3": open(path.join(config.getPath("partialsPath"), "partial-entry-3.html")).read()}

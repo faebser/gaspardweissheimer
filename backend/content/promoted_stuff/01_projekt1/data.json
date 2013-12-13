@@ -4,11 +4,11 @@
 	"text" : "Die preisgekrönten Männerstimmen Basel, sind ein junger Männerchor aus Basel. Ihr erstes Album unter dem Namen „TONTRÄGER N°1“ ist im Janaur 2010 erschienen. Das Artwork ist in schlichten Brauntönen gehalten und als Kartonhülle umgesetzt.",
 	"posterImage" : {
 	    "files/20100118.jpg" : ["normal", "mobile", "highres"],
-	    "files/20100118.jpg" : ["landscape"]
+	    "files/2540-2.jpg" : ["landscape"]
 	},
 	"overviewImage" : {
 		"files/2540-2.jpg" : ["normal", "mobile", "highres"],
-	    "files/2540-2.jpg" : ["landscape"]
+	    "files/2540-3.jpg" : ["landscape"]
 	},
 	"images" : [
 		{
