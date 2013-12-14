@@ -2,7 +2,7 @@ import pystache
 import logging as log
 import markdown2 as markdown
 from bs4 import BeautifulSoup as soup
-from os import path, walk, remove, makedirs
+from os import path, walk, remove, makedirs, listdir
 from shutil import copytree
 import json
 from classes.config import Config, ImageSize
@@ -23,6 +23,9 @@ config.addPath("partialsPath", path.join(currentPath, "templates", "partials"))
 config.addPath("contentPath", path.join(currentPath, "content"))
 config.addPath("website", path.join(currentPath, "website"))
 config.addPath("images", path.join(config.getPath("website"), 'img'))
+config.addPath("overview", path.join(config.getPath("contentPath"), 'overview'))
+config.addPath("pages", path.join(config.getPath("contentPath"), 'pages'))
+config.addPath("promoted", path.join(config.getPath("contentPath"), 'promoted_stuff'))
 
 log.debug("-- paths --")
 log.debug("currentPath: " + currentPath)
@@ -30,20 +33,40 @@ log.debug("templatePath: " + config.getPath("templatePath"))
 log.debug("partialsPath: " + config.getPath("partialsPath"))
 log.debug("contentPath: " + config.getPath("contentPath"))
 
+def iterateOverPosterImages(projectName, currentProjectPath, entry):
+    pass
 
+def iterateOverOverviewImages(projectName, currentProjectPath, entry):
+    pass
+
+def iterateOverAllImages(projectName, currentProjectPath, entry):
+    pass
+
+def iterateOverImages(projectname, currentProjectPath, entry, nodeName):
+    pass
 
 #add image sizes
 configJsonFile = json.loads(open(path.join(currentPath, "config.json")).read())
 config.addImageSizes(configJsonFile["imageSizes"])
 
 #load content
+promotedDirs = listdir(config.getPath('promoted'))
+log.debug("list of dirs: " + str(promotedDirs))
+
+for currentDir in promotedDirs:
+    projectName = currentDir
+    currentProjectPath = path.join(config.getPath('promoted'), projectName)
+    currentJsonFile = json.loads(open(path.join(currentProjectPath, 'data.json')).read())
+    currentEntry = Entry()
+    currentEntry.simpleFillWithDict(currentJsonFile)
+
+
 projectName = "01_projekt1"
 currentProjectPath = path.join(config.getPath("contentPath"), "promoted_stuff", projectName)
 contentJsonFile = json.loads(open(path.join(currentProjectPath, "data.json")).read())
 testEntry = Entry()
 testEntry.simpleFillWithDict(contentJsonFile)
 # get pictures
-
 
 for element, value in contentJsonFile['posterImage'].iteritems():
     results = fromJsonToImage(element, value, config.getPath("images"), log, config, projectName, currentProjectPath)
