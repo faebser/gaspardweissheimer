@@ -33,66 +33,39 @@ log.debug("templatePath: " + config.getPath("templatePath"))
 log.debug("partialsPath: " + config.getPath("partialsPath"))
 log.debug("contentPath: " + config.getPath("contentPath"))
 
-def iterateOverPosterImages(projectName, currentProjectPath, entry):
-    pass
 
-def iterateOverOverviewImages(projectName, currentProjectPath, entry):
-    pass
-
-def iterateOverAllImages(projectName, currentProjectPath, entry):
-    pass
-
-def iterateOverImages(projectname, currentProjectPath, entry, nodeName):
-    pass
-
-#add image sizes
-configJsonFile = json.loads(open(path.join(currentPath, "config.json")).read())
-config.addImageSizes(configJsonFile["imageSizes"])
-
-#load content
-promotedDirs = listdir(config.getPath('promoted'))
-log.debug("list of dirs: " + str(promotedDirs))
-
-for currentDir in promotedDirs:
-    projectName = currentDir
-    currentProjectPath = path.join(config.getPath('promoted'), projectName)
-    currentJsonFile = json.loads(open(path.join(currentProjectPath, 'data.json')).read())
-    currentEntry = Entry()
-    currentEntry.simpleFillWithDict(currentJsonFile)
+# functions depending on global config object. Pretty ugly, I know
+def iterateOverPosterImages(projectName, currentProjectPath, entry, jsonFile):
+    iterateOverImages(projectName, currentProjectPath, entry, 'posterImage', jsonFile)
 
 
-projectName = "01_projekt1"
-currentProjectPath = path.join(config.getPath("contentPath"), "promoted_stuff", projectName)
-contentJsonFile = json.loads(open(path.join(currentProjectPath, "data.json")).read())
-testEntry = Entry()
-testEntry.simpleFillWithDict(contentJsonFile)
-# get pictures
+def iterateOverOverviewImages(projectName, currentProjectPath, entry, jsonFile):
+    iterateOverImages(projectName, currentProjectPath, entry, 'overviewImage', jsonFile)
 
-for element, value in contentJsonFile['posterImage'].iteritems():
-    results = fromJsonToImage(element, value, config.getPath("images"), log, config, projectName, currentProjectPath)
-    for imageSize, imagePath in results.iteritems():
-        testEntry.addPosterImage(imageSize, imagePath)
 
-for element, value in contentJsonFile['overviewImage'].iteritems():
-    results = fromJsonToImage(element, value, config.getPath("images"), log, config, projectName, currentProjectPath)
-    for imageSize, imagePath in results.iteritems():
-        testEntry.addOverViewImage(imageSize, imagePath)
-
-for object in contentJsonFile['images']:
-    index = contentJsonFile['images'].index(object)
-    for element, value in object.iteritems():
+def iterateOverImages(projectName, currentProjectPath, entry, nodeName, jsonFile):
+    for element, value in jsonFile[nodeName].iteritems():
         results = fromJsonToImage(element, value, config.getPath("images"), log, config, projectName, currentProjectPath)
         for imageSize, imagePath in results.iteritems():
-            pass
-            testEntry.addImage(index, {imageSize, imagePath})
+            entry.addPosterImage(imageSize, imagePath)
 
-#log.debug(contentJsonFile['posterImage'])
-#log.debug(contentJsonFile['overviewImage'])
 
-#get all content from promoted stuff and input into the template
-#get all content from overview and generate pages
-#get all content from pages and generate pages
+def iterateOverAllImages(projectName, currentProjectPath, entry, jsonFile):
+    for imageObject in jsonFile['images']:
+        index = jsonFile['images'].index(imageObject)
+        for element, value in imageObject.iteritems():
+            results = fromJsonToImage(element, value, config.getPath("images"), log, config, projectName, currentProjectPath)
+            if index is 0:
+                entryData = {}
+            else:
+                entryData = {'class': 'ajax'}
+            for imageSize, imagePath in results.iteritems():
+                entryData[imageSize] = imagePath
+            entry.addImage(index, entryData)
 
+# main starts here
+configJsonFile = json.loads(open(path.join(currentPath, "config.json")).read())
+config.addImageSizes(configJsonFile["imageSizes"])
 
 # partials
 partials = {"entry-1": open(path.join(config.getPath("partialsPath"), "partial-entry-1.html")).read(),
@@ -105,6 +78,37 @@ renderer = pystache.Renderer(search_dirs=config.getPath("templatePath"), file_ex
 # load templates
 renderer.load_template("overviewRow")
 renderer.load_template("promoEntryAndPage")
+
+
+#load content
+promotedDirs = listdir(config.getPath('promoted'))
+log.debug("list of dirs: " + str(promotedDirs))
+
+for currentDir in promotedDirs:
+    projectName = currentDir
+    currentProjectPath = path.join(config.getPath('promoted'), projectName)
+    currentJsonFile = json.loads(open(path.join(currentProjectPath, 'data.json')).read())
+    currentEntry = Entry()
+    currentEntry.simpleFillWithDict(currentJsonFile)
+    currentEntry.setId(projectName)
+    iterateOverPosterImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
+    iterateOverOverviewImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
+    iterateOverAllImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
+    log.debug(currentEntry)
+    content = renderer.render_name('promoEntryAndPage', currentEntry)
+    log.debug("content: " + content)
+
+
+
+#log.debug(contentJsonFile['posterImage'])
+#log.debug(contentJsonFile['overviewImage'])
+
+#get all content from promoted stuff and input into the template
+#get all content from overview and generate pages
+#get all content from pages and generate pages
+
+
+
 
 # find out how json with python works - done
 # find out how image manip in python works

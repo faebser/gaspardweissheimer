@@ -1,7 +1,7 @@
-<li id="{{id}}" class="{{color}}">
+<li id="{{cssId}}" class="{{color}}">
     <div class="top">
         <hgroup>
-            <h2>{{category}}</h2>
+            <h2>{{subtitle}}</h2>
             <h1>{{title}}</h1>
         </hgroup>
     </div>
@@ -11,11 +11,11 @@
                 <h1>{{title}}</h1>
                 <h2>{{category}}</h2>
             </hgroup>
-            <p>{{abstract}}</p>
+            <p>{{text}}</p>
         </div>
 
         {{#images}}
-          <img {{#class}}class="{{class}}"{{/class}} src="{{image.link}}" width="{{image.width}}" height="{{image.height}}" data-mobile="{{image.mobile}}" data-highres="{{image.highres}}" data-landscape="{{image.landscape}}">
+          <img {{#class}}class="{{class}}"{{/class}} src="{{normal}}" width="{{width}}" height="{{height}}" data-mobile="{{mobile}}" data-highres="{{highres}}" data-landscape="{{landscape}}">
         {{/images}}
     </div>
 </li>

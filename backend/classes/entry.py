@@ -1,13 +1,18 @@
 class Entry(object):
+
     title = ""
     subtitle = ""
     text = ""
+    cssId = ""
     posterImage = {}
     overViewImage = {}
-    images = {}
+    images = []
 
     def __init__(self):
         pass
+
+    def __str__(self):
+        return str(self.images)
 
     def setTitle(self, title):
         self.title = title
@@ -37,10 +42,16 @@ class Entry(object):
         self.overViewImage[imageSize] = path
 
     def addImage(self, index, data):
-        self.images[index] = data
+        self.images.insert(index, data)
 
     def getImageAt(self, index):
         return self.images[index]
+
+    def setId(self, cssId):
+        self.cssId = cssId
+
+    def getId(self):
+        return self.cssId
 
     def simpleFillWithDict(self, jsonDict):
         if 'title' in jsonDict:

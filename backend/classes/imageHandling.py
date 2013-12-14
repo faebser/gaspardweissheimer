@@ -1,5 +1,5 @@
 from os import path, makedirs
-from PIL import Image, ImageOps
+from PIL import Image
 
 def fromJsonToImage(jsonFileName, imageSizes, imagesPath, log, config, projectName, projectPath):
     log.debug(str(jsonFileName) + ":")
@@ -33,7 +33,6 @@ def fromJsonToImage(jsonFileName, imageSizes, imagesPath, log, config, projectNa
             try:
                 tempPath = path.join(pathForImage , fileName + "_" + imageSizeName + extension)
                 log.info("writing file: " + tempPath)
-                #testEntry.addPosterImage(imageSizeName, path.join(pathForImage , fileName + "_" + imageSizeName + extension))
                 resizedImage.save(tempPath)
                 returnDict[imageSizeName] = tempPath
             except KeyError:
