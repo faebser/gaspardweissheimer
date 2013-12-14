@@ -10,7 +10,7 @@ class Config(object):
 
     def addImageSizes(self, json):
         for element, value in json.iteritems():
-            if value[0] is 'width':
+            if value[0] in 'width':
                 height = None
                 width = value[1]
             else:
@@ -22,6 +22,11 @@ class Config(object):
     def getAllImageSizes(self):
         return self.imageSizes.keys()
 
+    def getImageSizeOrNone(self, name):
+        if name in self.imageSizes:
+            return self.imageSizes[name]
+        else:
+            return None
 
 class ImageSize(object):
     def __init__(self, height, width):

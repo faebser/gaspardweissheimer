@@ -2,11 +2,12 @@ import pystache
 import logging as log
 import markdown2 as markdown
 from bs4 import BeautifulSoup as soup
-from os import path, walk, remove
+from os import path, walk, remove, makedirs
 from shutil import copytree
 import json
-from classes.config import Config
+from classes.config import Config, ImageSize
 from classes.entry import Entry
+from classes.imageHandling import fromJsonToImage
 from PIL import Image, ImageOps
 
 #logging
@@ -21,6 +22,7 @@ config.addPath("templatePath", path.join(currentPath, "templates"))
 config.addPath("partialsPath", path.join(currentPath, "templates", "partials"))
 config.addPath("contentPath", path.join(currentPath, "content"))
 config.addPath("website", path.join(currentPath, "website"))
+config.addPath("images", path.join(config.getPath("website"), 'img'))
 
 log.debug("-- paths --")
 log.debug("currentPath: " + currentPath)
@@ -28,22 +30,41 @@ log.debug("templatePath: " + config.getPath("templatePath"))
 log.debug("partialsPath: " + config.getPath("partialsPath"))
 log.debug("contentPath: " + config.getPath("contentPath"))
 
+
+
 #add image sizes
 configJsonFile = json.loads(open(path.join(currentPath, "config.json")).read())
 config.addImageSizes(configJsonFile["imageSizes"])
 
 #load content
-currentProjectPath = path.join(config.getPath("contentPath"), "promoted_stuff", "01_projekt1")
+projectName = "01_projekt1"
+currentProjectPath = path.join(config.getPath("contentPath"), "promoted_stuff", projectName)
 contentJsonFile = json.loads(open(path.join(currentProjectPath, "data.json")).read())
 testEntry = Entry()
 testEntry.simpleFillWithDict(contentJsonFile)
 # get pictures
+
+
 for element, value in contentJsonFile['posterImage'].iteritems():
-    log.debug(str(element) + ": " + str(value))
-    image = Image.open(path.join(currentProjectPath, element))
-    ImageOps.fit()
-log.debug(contentJsonFile['posterImage'])
-log.debug(contentJsonFile['overviewImage'])
+    results = fromJsonToImage(element, value, config.getPath("images"), log, config, projectName, currentProjectPath)
+    for imageSize, imagePath in results.iteritems():
+        testEntry.addPosterImage(imageSize, imagePath)
+
+for element, value in contentJsonFile['overviewImage'].iteritems():
+    results = fromJsonToImage(element, value, config.getPath("images"), log, config, projectName, currentProjectPath)
+    for imageSize, imagePath in results.iteritems():
+        testEntry.addOverViewImage(imageSize, imagePath)
+
+for object in contentJsonFile['images']:
+    index = contentJsonFile['images'].index(object)
+    for element, value in object.iteritems():
+        results = fromJsonToImage(element, value, config.getPath("images"), log, config, projectName, currentProjectPath)
+        for imageSize, imagePath in results.iteritems():
+            pass
+            testEntry.addImage(index, {imageSize, imagePath})
+
+#log.debug(contentJsonFile['posterImage'])
+#log.debug(contentJsonFile['overviewImage'])
 
 #get all content from promoted stuff and input into the template
 #get all content from overview and generate pages
@@ -51,7 +72,9 @@ log.debug(contentJsonFile['overviewImage'])
 
 
 # partials
-partials = {"entry-1": open(path.join(config.getPath("partialsPath"), "partial-entry-1.html")).read(), "entry-2": open(path.join(config.getPath("partialsPath"), "partial-entry-2.html")).read(), "entry-3": open(path.join(config.getPath("partialsPath"), "partial-entry-3.html")).read()}
+partials = {"entry-1": open(path.join(config.getPath("partialsPath"), "partial-entry-1.html")).read(),
+            "entry-2": open(path.join(config.getPath("partialsPath"), "partial-entry-2.html")).read(),
+            "entry-3": open(path.join(config.getPath("partialsPath"), "partial-entry-3.html")).read()}
 
 # pystache renderer init
 renderer = pystache.Renderer(search_dirs=config.getPath("templatePath"), file_extension="html", partials=partials)
@@ -67,3 +90,4 @@ renderer.load_template("promoEntryAndPage")
 # write all the css templates into main.css
 # grab the data, build object, push them through the template
 # add the returned thing to the skeleton
+

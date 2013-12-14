@@ -1,8 +1,8 @@
 {
     "imageSizes" : {
-		"normal" : ["width", 1140],
-		"mobile" : ["height", 1000],
-		"landscape" : ["width", 1200],
+		"normal" : ["width", 800],
+		"mobile" : ["height", 200],
+		"landscape" : ["width", 10],
 		"highres" : ["width", 2000]
     }
 }
