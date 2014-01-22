@@ -78,7 +78,7 @@ renderer = pystache.Renderer(search_dirs=config.getPath("templatePath"), file_ex
 # load templates
 renderer.load_template("overviewRow")
 renderer.load_template("promoEntryAndPage")
-
+#renderer.load_template("skeleton")
 
 #load content
 promotedDirs = listdir(config.getPath('promoted'))
@@ -98,7 +98,7 @@ for currentDir in promotedDirs:
     content = renderer.render_name('promoEntryAndPage', currentEntry)
     log.debug("content: " + content)
 
-
+#ouput = renderer
 
 #log.debug(contentJsonFile['posterImage'])
 #log.debug(contentJsonFile['overviewImage'])

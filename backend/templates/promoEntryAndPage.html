@@ -1,4 +1,4 @@
-<li id="{{cssId}}" class="{{color}}">
+<li id="{{cssId}}" class="{{color}}" style="background-image: url('{{posterImage.normal}}')">
     <div class="top">
         <hgroup>
             <h2>{{subtitle}}</h2>
@@ -15,7 +15,7 @@
         </div>
 
         {{#images}}
-          <img {{#class}}class="{{class}}"{{/class}} src="{{normal}}" width="{{width}}" height="{{height}}" data-mobile="{{mobile}}" data-highres="{{highres}}" data-landscape="{{landscape}}">
+          <img {{#class}}class="{{class}}" {{/class}}src="{{normal}}" width="{{width}}" height="{{height}}" data-mobile="{{mobile}}" data-highres="{{highres}}" data-landscape="{{landscape}}">
         {{/images}}
     </div>
 </li>
