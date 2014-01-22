@@ -779,6 +779,20 @@ footer {
    Modify as content requires.
    ========================================================================== */
 
+
+@mixin breakpoint($point) {
+  @if $point == highres {
+    @media (max-width: 1600px) { @content; }
+  }
+  @else if $point == landscape {
+    @media (max-width: 1250px) { @content; }
+  }
+  @else if $point == mobile {
+    @media (max-width: 650px)  { @content; }
+  }
+}
+
+
 @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */
 }

@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup as soup
 from os import path, walk, remove, makedirs, listdir
 from shutil import copytree
 import json
+from pystache.tests.test_renderer import Renderer_MakeRenderEngineTests
 from classes.config import Config, ImageSize
 from classes.entry import Entry
 from classes.imageHandling import fromJsonToImage
@@ -44,9 +45,12 @@ def iterateOverOverviewImages(projectName, currentProjectPath, entry, jsonFile):
 
 
 def iterateOverImages(projectName, currentProjectPath, entry, nodeName, jsonFile):
+    log.debug("values: " + str(jsonFile[nodeName]))
     for element, value in jsonFile[nodeName].iteritems():
         results = fromJsonToImage(element, value, config.getPath("images"), log, config, projectName, currentProjectPath)
+        log.debug("results: " + str(results))
         for imageSize, imagePath in results.iteritems():
+            log.debug("image: " + imageSize + " / " + imagePath)
             entry.addPosterImage(imageSize, imagePath)
 
 
@@ -78,11 +82,15 @@ renderer = pystache.Renderer(search_dirs=config.getPath("templatePath"), file_ex
 # load templates
 renderer.load_template("overviewRow")
 renderer.load_template("promoEntryAndPage")
+renderer.load_template("backgrounds")
 #renderer.load_template("skeleton")
 
 #load content
 promotedDirs = listdir(config.getPath('promoted'))
 log.debug("list of dirs: " + str(promotedDirs))
+
+htmlContent = ''
+cssContent = ''
 
 for currentDir in promotedDirs:
     projectName = currentDir
@@ -90,13 +98,15 @@ for currentDir in promotedDirs:
     currentJsonFile = json.loads(open(path.join(currentProjectPath, 'data.json')).read())
     currentEntry = Entry()
     currentEntry.simpleFillWithDict(currentJsonFile)
-    currentEntry.setId(projectName)
+    currentEntry.setId(currentJsonFile['title'])
     iterateOverPosterImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
     iterateOverOverviewImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
-    iterateOverAllImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
-    log.debug(currentEntry)
-    content = renderer.render_name('promoEntryAndPage', currentEntry)
-    log.debug("content: " + content)
+    #iterateOverAllImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
+    #log.debug(currentEntry)
+    htmlContent += renderer.render_name('promoEntryAndPage', currentEntry)
+    cssContent += renderer.render_name('backgrounds', currentEntry)
+    #log.debug("css: " + cssContent)
+    #log.debug("content: " + content)
 
 #ouput = renderer
 

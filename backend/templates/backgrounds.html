@@ -1,0 +1,9 @@
+
+{{posterImage}}
+
+#{{cssId}} {
+    background-image: url('{{posterImage.normal}}');
+    @include breakpoint(highres) { background-image: url('{{posterImage.highres}}'); }
+    @include breakpoint(landscape) { background-image: url('{{posterImage.landscape}}'); }
+    @include breakpoint(mobile) { background-image: url('{{posterImage.mobile}}'); }
+}
