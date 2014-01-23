@@ -1,0 +1,22 @@
+{
+	"title" : "Jonas L&ouml;ffler",
+	"subtitle" : "Grafik Design",
+	"text" : "Das zweite Album des jungen und preisgekr&ouml;nten Gitarristen Jonas L&ouml;ffler ist vollendet: 'Terra' mit Musik von Bach, Murail, Dowland, de Falla, Ohana und Sor.",
+	"posterImage" : {
+	    "files/20140121_gw_loeffler__MG_0226.jpg" : ["normal", "mobile", "highres", "landscape"]
+	},
+	"overviewImage" : {
+		"files/20140121_gw_loeffler__MG_0227.jpg" : ["normal", "mobile", "highres", "landscape"]
+	},
+	"images" : [
+		{
+            "files/20140121_gw_loeffler__MG_0231.jpg" : ["normal", "mobile", "highres"]
+	    },
+	    {
+            "files/20140121_gw_loeffler__MG_0233" : ["normal", "mobile", "highres"]
+	    },
+	    {
+            "files/20140121_gw_loeffler__MG_0235.jpg" : ["normal", "mobile", "highres"]
+	    }
+	]
+}
