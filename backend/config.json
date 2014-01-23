@@ -4,5 +4,15 @@
 		"mobile" : ["height", 200],
 		"landscape" : ["width", 10],
 		"highres" : ["width", 2000]
+    },
+    "rowTypes" : {
+        "50-25-25" : "order50-25-25",
+        "50-25-25 rtl" : "order50-25-25 rtl",
+        "50-50" : "order50-50",
+        "50-50 rtl" : "order50-50 rtl",
+        "40-60" : "order40-60",
+        "40-60 rtl" : "order40-60 rtl",
+        "40-60-60" : "order40-60-60",
+        "40-60-60 rtl" : "order40-60-60 rtl"
     }
 }

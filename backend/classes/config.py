@@ -1,6 +1,7 @@
 class Config(object):
     imageSizes = {}
     paths = {}
+    rowTypes = {}
 
     def addPath(self, name, path):
         self.paths[name] = path
@@ -27,6 +28,17 @@ class Config(object):
             return self.imageSizes[name]
         else:
             return None
+
+    def addRowTypes(self, json):
+        for element, value in json.iteritems():
+            self.rowTypes[element] = value
+
+    def getRowTypeOrNone(self, name):
+        if name in self.rowTypes:
+            return self.rowTypes[name]
+        else:
+            return None
+
 
 class ImageSize(object):
     def __init__(self, height, width):

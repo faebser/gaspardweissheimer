@@ -1,12 +1,12 @@
 {
     "rows" : [
         {
-            "type" : "1",
-            "entries" : [ "5", "6"]
+            "type" : "50-25-25",
+            "entries" : [ "01_projekt1", "02_projekt2", "03_projekt3"]
         },
         {
-            "type" : "2",
-            "entries" : [ "6", "7"]
+            "type" : "40-60",
+            "entries" : [ "02_projekt2", "03_projekt3"]
         }
     ]
 }

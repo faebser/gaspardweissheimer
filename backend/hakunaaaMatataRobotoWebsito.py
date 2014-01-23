@@ -48,9 +48,7 @@ def iterateOverImages(projectName, currentProjectPath, entry, nodeName, jsonFile
     log.debug("values: " + str(jsonFile[nodeName]))
     for element, value in jsonFile[nodeName].iteritems():
         results = fromJsonToImage(element, value, config.getPath("images"), log, config, projectName, currentProjectPath)
-        log.debug("results: " + str(results))
         for imageSize, imagePath in results.iteritems():
-            log.debug("image: " + imageSize + " / " + imagePath)
             entry.addPosterImage(imageSize, imagePath)
 
 
@@ -70,6 +68,7 @@ def iterateOverAllImages(projectName, currentProjectPath, entry, jsonFile):
 # main starts here
 configJsonFile = json.loads(open(path.join(currentPath, "config.json")).read())
 config.addImageSizes(configJsonFile["imageSizes"])
+config.addRowTypes(configJsonFile["rowTypes"])
 
 # partials
 partials = {"entry-1": open(path.join(config.getPath("partialsPath"), "partial-entry-1.html")).read(),
@@ -85,8 +84,9 @@ renderer.load_template("promoEntryAndPage")
 renderer.load_template("backgrounds")
 #renderer.load_template("skeleton")
 
-#load content
+#load promoted content
 promotedDirs = listdir(config.getPath('promoted'))
+promotedDirs.sort()
 log.debug("list of dirs: " + str(promotedDirs))
 
 htmlContent = ''
@@ -106,7 +106,31 @@ for currentDir in promotedDirs:
     htmlContent += renderer.render_name('promoEntryAndPage', currentEntry)
     cssContent += renderer.render_name('backgrounds', currentEntry)
     #log.debug("css: " + cssContent)
-    #log.debug("content: " + content)
+    log.debug("content: " + htmlContent)
+
+#load overview content
+
+overviewJsonFile = json.loads(open(path.join(config.getPath('overview'), 'overview.json')).read())
+
+for row in overviewJsonFile['rows']:
+    templateContent = {}
+    rowType = config.getRowTypeOrNone(row['type'])
+    if rowType is None:
+        log.error("Invalid Type with value: " + row['type'] + " in overview.json")
+        pass
+    else:
+        for index, entry in enumerate(row['entries']):
+            log.debug("entry and index: " + str(index) + " / " + str(entry))
+            overviewEntry = Entry()
+            overviewEntry.simpleFillWithDict(currentJsonFile)
+            overviewEntry.setId(currentJsonFile['title'])
+            iterateOverPosterImages(projectName, currentProjectPath, overviewEntry, currentJsonFile)
+            iterateOverOverviewImages(projectName, currentProjectPath, overviewEntry, currentJsonFile)
+            templateContent['entry-' + index] = overviewEntry
+
+
+
+
 
 #ouput = renderer
 
