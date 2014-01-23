@@ -5,11 +5,9 @@ from bs4 import BeautifulSoup as soup
 from os import path, walk, remove, makedirs, listdir
 from shutil import copytree
 import json
-from pystache.tests.test_renderer import Renderer_MakeRenderEngineTests
 from classes.config import Config, ImageSize
 from classes.entry import Entry
 from classes.imageHandling import fromJsonToImage
-from PIL import Image, ImageOps
 
 #logging
 log.basicConfig(format='%(levelname)s: %(message)s', level=log.DEBUG)
@@ -93,20 +91,23 @@ htmlContent = ''
 cssContent = ''
 
 for currentDir in promotedDirs:
-    projectName = currentDir
-    currentProjectPath = path.join(config.getPath('promoted'), projectName)
-    currentJsonFile = json.loads(open(path.join(currentProjectPath, 'data.json')).read())
-    currentEntry = Entry()
-    currentEntry.simpleFillWithDict(currentJsonFile)
-    currentEntry.setId(currentJsonFile['title'])
-    iterateOverPosterImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
-    iterateOverOverviewImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
-    #iterateOverAllImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
-    #log.debug(currentEntry)
-    htmlContent += renderer.render_name('promoEntryAndPage', currentEntry)
-    cssContent += renderer.render_name('backgrounds', currentEntry)
-    #log.debug("css: " + cssContent)
-    log.debug("content: " + htmlContent)
+    if currentDir.startswith("."):
+        pass
+    else:
+        projectName = currentDir
+        currentProjectPath = path.join(config.getPath('promoted'), projectName)
+        currentJsonFile = json.loads(open(path.join(currentProjectPath, 'data.json')).read())
+        currentEntry = Entry()
+        currentEntry.simpleFillWithDict(currentJsonFile)
+        currentEntry.setId(currentJsonFile['title'])
+        iterateOverPosterImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
+        iterateOverOverviewImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
+        #iterateOverAllImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
+        #log.debug(currentEntry)
+        htmlContent += renderer.render_name('promoEntryAndPage', currentEntry)
+        cssContent += renderer.render_name('backgrounds', currentEntry)
+        #log.debug("css: " + cssContent)
+        log.debug("content: " + htmlContent)
 
 #load overview content
 
@@ -126,7 +127,7 @@ for row in overviewJsonFile['rows']:
             overviewEntry.setId(currentJsonFile['title'])
             iterateOverPosterImages(projectName, currentProjectPath, overviewEntry, currentJsonFile)
             iterateOverOverviewImages(projectName, currentProjectPath, overviewEntry, currentJsonFile)
-            templateContent['entry-' + index] = overviewEntry
+            templateContent['entry-' + str(index)] = overviewEntry
 
 
 
