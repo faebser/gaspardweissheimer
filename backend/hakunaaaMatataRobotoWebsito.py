@@ -43,16 +43,20 @@ def iterateOverOverviewImages(projectName, currentProjectPath, entry, jsonFile):
 
 
 def iterateOverImages(projectName, currentProjectPath, entry, nodeName, jsonFile):
-    log.debug("values: " + str(jsonFile[nodeName]))
     for element, value in jsonFile[nodeName].iteritems():
         results = fromJsonToImage(element, value, config.getPath("images"), log, config, projectName, currentProjectPath)
         for imageSize, imagePath in results.iteritems():
-            entry.addPosterImage(imageSize, imagePath)
+            if 'overviewImage' in nodeName:
+                entry.addOverViewImage(imageSize, imagePath)
+            elif 'posterImage' in nodeName:
+                entry.addPosterImage(imageSize, imagePath)
+            else:
+                entry.addImage(index, {imageSize, imagePath})
 
 
-def iterateOverAllImages(projectName, currentProjectPath, entry, jsonFile):
-    for imageObject in jsonFile['images']:
-        index = jsonFile['images'].index(imageObject)
+def iterateOverAllImages(projectName, currentProjectPath, entry, imageList):
+    for imageObject in imageList:
+        index = imageList.index(imageObject)
         for element, value in imageObject.iteritems():
             results = fromJsonToImage(element, value, config.getPath("images"), log, config, projectName, currentProjectPath)
             if index is 0:
@@ -96,13 +100,25 @@ for currentDir in promotedDirs:
     else:
         projectName = currentDir
         currentProjectPath = path.join(config.getPath('promoted'), projectName)
-        currentJsonFile = json.loads(open(path.join(currentProjectPath, 'data.json')).read())
+        try:
+            currentJsonFile = json.loads(open(path.join(currentProjectPath, 'data.json')).read())
+        except ValueError:
+            log.exception("Error while reading json-file: " + path.join(currentProjectPath, 'data.json'))
         currentEntry = Entry()
         currentEntry.simpleFillWithDict(currentJsonFile)
         currentEntry.setId(currentJsonFile['title'])
         iterateOverPosterImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
         iterateOverOverviewImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
-        #iterateOverAllImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
+        if isinstance(currentJsonFile['images'], (unicode, str)):
+            imageSizes = config.getAllImageSizes()
+            imageDict = []
+            for subdir, dirs, files in walk(path.join(currentProjectPath, currentJsonFile['images'])):
+                for image in files:
+                    log.debug(image)
+                    imageDict.extend({image: imageSizes})
+            #iterateOverAllImages(projectName, currentProjectPath, currentEntry, imageDict)
+        else:
+            iterateOverAllImages(projectName, currentProjectPath, currentEntry, currentJsonFile['images'])
         #log.debug(currentEntry)
         htmlContent += renderer.render_name('promoEntryAndPage', currentEntry)
         cssContent += renderer.render_name('backgrounds', currentEntry)
@@ -128,10 +144,6 @@ for row in overviewJsonFile['rows']:
             iterateOverPosterImages(projectName, currentProjectPath, overviewEntry, currentJsonFile)
             iterateOverOverviewImages(projectName, currentProjectPath, overviewEntry, currentJsonFile)
             templateContent['entry-' + str(index)] = overviewEntry
-
-
-
-
 
 #ouput = renderer
 
