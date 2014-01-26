@@ -1,7 +1,7 @@
 {
 	"title" : "Kalender 2014",
 	"subtitle" : "Risograph",
-	"text" : "Limitierte Auflage (50 Stück) des 2014 Risograph Kalender (Ausverkauft): Konzept: Gaspard Weissheimer & Diana Pfammatter | Gestaltung: WEISSHEIMER Grafik Design | Fotos: Aus Schweizer Brokenhäusern | Druck: 2-Farben Riso-Druck | Papier: Munken Print White | Holzleisten/Aufhängung: Anna-Lena Weissheimer",
+	"text" : "Limitierte Auflage (50 St&uuml;ck) des 2014 Risograph Kalender (Ausverkauft): Konzept: Gaspard Weissheimer &amp; Diana Pfammatter | Gestaltung: WEISSHEIMER Grafik Design | Fotos: Aus Schweizer Brokenh&auml;usern | Druck: 2-Farben Riso-Druck | Papier: Munken Print White | Holzleisten/Aufh&auml;ngung: Anna-Lena Weissheimer",
 	"posterImage" : {
 	    "files/dias_kalender2_0010.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
@@ -17,7 +17,7 @@
 	    },
 	    {
             "files/20131212_gw_kalender__MG_9747.jpg" : ["normal", "mobile", "highres"]
-	    }
+	    },
 	    {
             "files/20131215_gw_kalender__MG_9756.jpg" : ["normal", "mobile", "highres"]
 	    },
@@ -26,7 +26,7 @@
 	    },
 	    {
             "files/20131215_gw_kalender__MG_9766.jpg" : ["normal", "mobile", "highres"]
-	    }
+	    },
 	    {
             "files/20131215_gw_kalender__MG_9768.jpg" : ["normal", "mobile", "highres"]
 	    },
@@ -35,11 +35,9 @@
 	    },
 	    {
             "files/20131215_gw_kalender__MG_9789.jpg" : ["normal", "mobile", "highres"]
-	    }
+	    },
 	    {
             "files/dias_kalender2_0010.jpg" : ["normal", "mobile", "highres"]
 	    }
-	    
-          
 	]
 }

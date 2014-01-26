@@ -104,6 +104,7 @@ for currentDir in promotedDirs:
             currentJsonFile = json.loads(open(path.join(currentProjectPath, 'data.json')).read())
         except ValueError:
             log.exception("Error while reading json-file: " + path.join(currentProjectPath, 'data.json'))
+            exit(1)
         currentEntry = Entry()
         currentEntry.simpleFillWithDict(currentJsonFile)
         currentEntry.setId(currentJsonFile['title'])
