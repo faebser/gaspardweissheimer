@@ -114,10 +114,17 @@ for currentDir in promotedDirs:
             imageSizes = config.getAllImageSizes()
             imageDict = []
             for subdir, dirs, files in walk(path.join(currentProjectPath, currentJsonFile['images'])):
+                posterImages = [path.split(key)[1] for key in currentJsonFile['posterImage'].keys()]
+                overviewImages = [path.split(key)[1] for key in currentJsonFile['overviewImage'].keys()]
+                log.debug(posterImages)
+                log.debug(overviewImages)
                 for image in files:
                     log.debug(image)
-                    imageDict.extend({image: imageSizes})
-            #iterateOverAllImages(projectName, currentProjectPath, currentEntry, imageDict)
+                    if not image in posterImages and not image in overviewImages:
+                        imageDict.extend({image: imageSizes})
+                    else:
+                        log.debug("image already used: " + str(image))
+            iterateOverAllImages(projectName, currentProjectPath, currentEntry, imageDict)
         else:
             iterateOverAllImages(projectName, currentProjectPath, currentEntry, currentJsonFile['images'])
         #log.debug(currentEntry)

@@ -8,15 +8,5 @@
 	"overviewImage" : {
 		"files/20140121_gw_loeffler__MG_0227.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
-	"images" : [
-		{
-            "files/20140121_gw_loeffler__MG_0231.jpg" : ["normal", "mobile", "highres"]
-	    },
-	    {
-            "files/20140121_gw_loeffler__MG_0233.jpg" : ["normal", "mobile", "highres"]
-	    },
-	    {
-            "files/20140121_gw_loeffler__MG_0235.jpg" : ["normal", "mobile", "highres"]
-	    }
-	]
+	"images" : "files/"
 }
