@@ -1,7 +1,7 @@
 from os import path, makedirs
 from PIL import Image
 
-def fromJsonToImage(jsonFileName, imageSizes, imagesPath, log, config, projectName, projectPath):
+def fromJsonToImage(jsonFileName, imageSizes, log, projectName, projectPath, config):
     #log.debug(str(jsonFileName) + ":")
     fileName, extension = path.splitext(path.basename(jsonFileName))
     pathForImage = path.join(config.getPath('images'), projectName)
@@ -16,7 +16,7 @@ def fromJsonToImage(jsonFileName, imageSizes, imagesPath, log, config, projectNa
         imageSize = config.getImageSizeOrNone(imageSizeName)
         tempPath = path.join(pathForImage, fileName + "_" + imageSizeName + extension)
         if not path.exists(tempPath):
-            if imageSizeName is None:
+            if not imageSizeName in imageSizes:
                 log.error("imageSize not know: " + imageSizeName)
                 exit(1)
             else:

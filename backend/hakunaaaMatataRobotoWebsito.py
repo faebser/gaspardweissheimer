@@ -10,34 +10,33 @@ from classes.entry import Entry
 from classes.imageHandling import fromJsonToImage
 
 
-# functions depending on global config object. Pretty ugly, I know
-def iterateOverPosterImages(projectName, currentProjectPath, entry, jsonFile):
-    iterateOverImages(projectName, currentProjectPath, entry, 'posterImage', jsonFile)
 
 
-def iterateOverOverviewImages(projectName, currentProjectPath, entry, jsonFile):
-    iterateOverImages(projectName, currentProjectPath, entry, 'overviewImage', jsonFile)
+def iterateOverPosterImages(projectName, currentProjectPath, entry, imageList):
+    iterateOverImages(projectName, currentProjectPath, entry, 'posterImage', imageList)
 
 
-def iterateOverImages(projectName, currentProjectPath, entry, nodeName, jsonFile):
-    for element, value in jsonFile[nodeName].iteritems():
-        results = fromJsonToImage(element, value, config.getPath("images"), log, config, projectName,
-                                  currentProjectPath)
+def iterateOverOverviewImages(projectName, currentProjectPath, entry, imageList):
+    iterateOverImages(projectName, currentProjectPath, entry, 'overviewImage', imageList)
+
+
+def iterateOverImages(projectName, currentProjectPath, entry, nodeName, imageList):
+    for element, value in imageList.iteritems():
+        results = fromJsonToImage(element, value, log, projectName, currentProjectPath, config)
         for imageSize, imagePath in results.iteritems():
             if 'overviewImage' in nodeName:
                 entry.addOverViewImage(imageSize, imagePath)
             elif 'posterImage' in nodeName:
                 entry.addPosterImage(imageSize, imagePath)
             else:
-                entry.addImage(index, {imageSize, imagePath})
+                entry.addImage(results.index(imageSize), {imageSize, imagePath})
 
 
 def iterateOverAllImages(projectName, currentProjectPath, entry, imageList):
     for imageObject in imageList:
         index = imageList.index(imageObject)
         for element, value in imageObject.iteritems():
-            results = fromJsonToImage(element, value, config.getPath("images"), log, config, projectName,
-                                      currentProjectPath)
+            results = fromJsonToImage(element, value, log, projectName, currentProjectPath, config)
             if index is 0:
                 entryData = {}
             else:
@@ -46,12 +45,9 @@ def iterateOverAllImages(projectName, currentProjectPath, entry, imageList):
                 entryData[imageSize] = imagePath
             entry.addImage(index, entryData)
 
-def main():
-    #logging
-    log.basicConfig(format='%(levelname)s: %(message)s', level=log.DEBUG)
 
-    # loading config
-    config = Config()
+def main():
+
 
     # paths
     currentPath = path.dirname(path.realpath(__file__))
@@ -110,8 +106,8 @@ def main():
             currentEntry = Entry()
             currentEntry.simpleFillWithDict(currentJsonFile)
             currentEntry.setId(currentJsonFile['title'])
-            iterateOverPosterImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
-            iterateOverOverviewImages(projectName, currentProjectPath, currentEntry, currentJsonFile)
+            iterateOverPosterImages(projectName, currentProjectPath, currentEntry, currentJsonFile['posterImage'])
+            iterateOverOverviewImages(projectName, currentProjectPath, currentEntry, currentJsonFile['overviewImage'])
             if isinstance(currentJsonFile['images'], (unicode, str)):
                 imageSizes = config.getAllImageSizes()
                 imageDict = []
@@ -123,7 +119,7 @@ def main():
                     for image in files:
                         log.debug(image)
                         if not image in posterImages and not image in overviewImages:
-                            imageDict.extend({image: imageSizes})
+                            imageDict.append({currentJsonFile['images'] + image: imageSizes})
                         else:
                             log.debug("image already used: " + str(image))
                 iterateOverAllImages(projectName, currentProjectPath, currentEntry, imageDict)
@@ -151,10 +147,16 @@ def main():
                 overviewEntry = Entry()
                 overviewEntry.simpleFillWithDict(currentJsonFile)
                 overviewEntry.setId(currentJsonFile['title'])
-                iterateOverPosterImages(projectName, currentProjectPath, overviewEntry, currentJsonFile)
-                iterateOverOverviewImages(projectName, currentProjectPath, overviewEntry, currentJsonFile)
+                iterateOverPosterImages(projectName, currentProjectPath, overviewEntry, currentJsonFile['posterImage'])
+                iterateOverOverviewImages(projectName, currentProjectPath, overviewEntry, currentJsonFile['overviewImage'])
                 templateContent['entry-' + str(index)] = overviewEntry
 
+    log.debug("main finished")
+
+# loading config and make it globally available
+config = Config()
+#logging
+log.basicConfig(format='%(levelname)s: %(message)s', level=log.DEBUG)
 
 if __name__ == "__main__":
     log.debug("main called")
