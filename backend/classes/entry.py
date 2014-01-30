@@ -1,3 +1,6 @@
+from re import sub
+
+
 class Entry(object):
 
     title = ""
@@ -7,6 +10,7 @@ class Entry(object):
     posterImage = {}
     overViewImage = {}
     images = []
+    cssTitle = ""
 
     def __init__(self):
         pass
@@ -48,7 +52,12 @@ class Entry(object):
         return self.images[index]
 
     def setId(self, cssId):
-        self.cssId = cssId
+        """
+        @param cssId: str
+        @return: void
+        """
+        self.cssId = sub('[&.!,;]', '', cssId.lower().lstrip('1234567890').replace(' ', '_'))
+        pass
 
     def getId(self):
         return self.cssId
@@ -56,6 +65,7 @@ class Entry(object):
     def simpleFillWithDict(self, jsonDict):
         if 'title' in jsonDict:
             self.setTitle(jsonDict['title'])
+            self.setId(self.title)
         if 'subtitle' in jsonDict:
             self.setSubtitle(jsonDict['subtitle'])
         if 'text' in jsonDict:

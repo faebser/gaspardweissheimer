@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup as soup
 from os import path, walk, remove, makedirs, listdir
 from shutil import copytree
 import json
+
 from classes.config import Config, ImageSize
 from classes.entry import Entry
 from classes.imageHandling import fromJsonToImage
@@ -105,7 +106,6 @@ def main():
                 exit(1)
             currentEntry = Entry()
             currentEntry.simpleFillWithDict(currentJsonFile)
-            currentEntry.setId(currentJsonFile['title'])
             iterateOverPosterImages(projectName, currentProjectPath, currentEntry, currentJsonFile['posterImage'])
             iterateOverOverviewImages(projectName, currentProjectPath, currentEntry, currentJsonFile['overviewImage'])
             if isinstance(currentJsonFile['images'], (unicode, str)):
@@ -146,7 +146,6 @@ def main():
                 log.debug("entry and index: " + str(index) + " / " + str(entry))
                 overviewEntry = Entry()
                 overviewEntry.simpleFillWithDict(currentJsonFile)
-                overviewEntry.setId(currentJsonFile['title'])
                 iterateOverPosterImages(projectName, currentProjectPath, overviewEntry, currentJsonFile['posterImage'])
                 iterateOverOverviewImages(projectName, currentProjectPath, overviewEntry, currentJsonFile['overviewImage'])
                 templateContent['entry-' + str(index)] = overviewEntry
