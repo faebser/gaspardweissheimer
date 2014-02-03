@@ -43,5 +43,5 @@ def fromJsonToImage(jsonFileName, imageSizes, log, projectName, projectPath, con
                     log.error("file-format could not be written in: " + projectPath + " with imageSize " + imageSizeName)
         else:
             returnDict[imageSizeName] = tempPath
-            log.info("file already exists: " + tempPath)
+            #log.debug("file already exists: " + tempPath)
     return returnDict
