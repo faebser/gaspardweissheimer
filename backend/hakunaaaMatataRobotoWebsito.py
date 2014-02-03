@@ -146,10 +146,9 @@ def main():
     cssBackgroundsFile = codecs.open(path.join(config.getPath('css'), 'backgrounds.css'), 'w+', encoding='utf-8')
     cssBackgroundsFile.write(cssContent)
     cssBackgroundsFile.close()'''
+
     #load overview content
-
-    overviewJsonFile = json.loads(open(path.join(config.getPath('overview'), 'overview.json')).read())
-
+    '''overviewJsonFile = json.loads(open(path.join(config.getPath('overview'), 'overview.json')).read())
     for row in overviewJsonFile['rows']:
         templateContent = {}
         templateContent['type'] = config.getRowTypeOrNone(row['type'])
@@ -178,13 +177,23 @@ def main():
                 #generate page for each
     log.debug(htmlContent['overview'])
     with codecs.open(path.join(config.getPath("website"), 'index.html'), 'w+', encoding='utf-8') as indexFile:
-        indexFile.write(renderer.render_name('skeleton', htmlContent))
-
+        indexFile.write(renderer.render_name('skeleton', htmlContent))'''
 
     #pages
-
-
-    log.debug("main finished")
+    pagesDir = listdir(config.getPath('pages'))
+    pagesDir.sort()
+    for currentDir in pagesDir:
+        if currentDir.startswith('.'):
+            pass
+        else:
+            pageJson = json.loads(open(path.join(config.getPath('pages'), currentDir, 'data.json')).read())
+            with codecs.open(path.join(config.getPath('pages'), currentDir, pageJson['text']), 'r', encoding='utf-8') as mdFile:
+                page = {
+                    'name': currentDir,
+                    'title': pageJson['title'],
+                    'text': unicode(markdown.markdown(mdFile.read()))
+                }
+                log.debug("page: " + str(page))
 
 # loading config and make it globally available
 config = Config()
