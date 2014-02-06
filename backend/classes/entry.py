@@ -13,7 +13,9 @@ class Entry(object):
     cssTitle = ""
 
     def __init__(self):
-        pass
+        self.posterImage.clear()
+        self.overViewImage.clear()
+        self.images = []
 
     def __str__(self):
         return str(self.images)

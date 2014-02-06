@@ -134,6 +134,7 @@ def main():
             except ValueError:
                 log.exception("Error while reading json-file: " + path.join(currentProjectPath, 'data.json'))
                 exit(1)
+            currentEntry = None
             currentEntry = Entry()
             currentEntry.simpleFillWithDict(currentJsonFile)
             iterateOverPosterImages(projectName, currentProjectPath, currentEntry, currentJsonFile['posterImage'])
@@ -174,6 +175,7 @@ def main():
                 templateContent['entry-' + str(index)] = overviewEntry
                 with codecs.open(path.join(config.getPath("website"), overviewEntry.getId() + ".html"), 'w+', encoding='utf-8') as indexFile:
                     indexFile.write(renderer.render_name('skeleton', {"promo": renderer.render_name('promoEntryAndPage', overviewEntry)}))
+                overviewEntry = None
             htmlContent['overview'] += renderer.render_name('overviewRow', templateContent)
 
                 #generate page for each
