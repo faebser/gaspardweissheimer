@@ -34,23 +34,12 @@
             </div>
         </div>
         <div id="mainWrapper">
-            <ul id="main" class="clearfix">
-                {{{promo}}}
-                {{#overview}}
-                <li id="overview">
-                    {{{overview}}}
-                </li>
-                {{/overview}}
-            </ul>
-            <div id="verticalNav">
-                <ul>
-                </ul>
-                <div id="scrollIndicator">
-                    <p>&darr;</p>
-                    <p>scroll down</p>
-                </div>
+            <div id="mainContent">
+                {{# page.title}}
+                    <h1>{{page.title}}</h1>
+                {{/ page.title}}
+                {{page.text}}
             </div>
-
             <footer>
                 <div class="wrapper clearfix">
                     <ul>

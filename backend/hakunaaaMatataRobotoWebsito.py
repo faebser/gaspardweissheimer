@@ -92,7 +92,8 @@ def main():
     # partials
     partials = {"entry-1": open(path.join(config.getPath("partialsPath"), "partial-entry-1.html")).read(),
                 "entry-2": open(path.join(config.getPath("partialsPath"), "partial-entry-2.html")).read(),
-                "entry-3": open(path.join(config.getPath("partialsPath"), "partial-entry-3.html")).read()}
+                "entry-3": open(path.join(config.getPath("partialsPath"), "partial-entry-3.html")).read(),
+                "nav": open(path.join(config.getPath("partialsPath"), "nav.html")).read()}
 
     # pystache renderer init
     renderer = pystache.Renderer(search_dirs=config.getPath("templatePath"), file_extension="html", partials=partials)
@@ -102,6 +103,7 @@ def main():
     renderer.load_template("promoEntryAndPage")
     renderer.load_template("backgrounds")
     renderer.load_template("skeleton")
+    renderer.load_template("page")
 
     # add removal of website dir
     if path.exists(config.getPath("website")):
@@ -121,7 +123,7 @@ def main():
 
     """TODO: add colors to css"""
 
-    '''for currentDir in promotedDirs:
+    for currentDir in promotedDirs:
         if currentDir.startswith("."):
             pass
         else:
@@ -145,10 +147,10 @@ def main():
     makedirs(config.getPath('css'), 0755)
     cssBackgroundsFile = codecs.open(path.join(config.getPath('css'), 'backgrounds.css'), 'w+', encoding='utf-8')
     cssBackgroundsFile.write(cssContent)
-    cssBackgroundsFile.close()'''
+    cssBackgroundsFile.close()
 
     #load overview content
-    '''overviewJsonFile = json.loads(open(path.join(config.getPath('overview'), 'overview.json')).read())
+    overviewJsonFile = json.loads(open(path.join(config.getPath('overview'), 'overview.json')).read())
     for row in overviewJsonFile['rows']:
         templateContent = {}
         templateContent['type'] = config.getRowTypeOrNone(row['type'])
@@ -177,7 +179,7 @@ def main():
                 #generate page for each
     log.debug(htmlContent['overview'])
     with codecs.open(path.join(config.getPath("website"), 'index.html'), 'w+', encoding='utf-8') as indexFile:
-        indexFile.write(renderer.render_name('skeleton', htmlContent))'''
+        indexFile.write(renderer.render_name('skeleton', htmlContent))
 
     #pages
     pagesDir = listdir(config.getPath('pages'))
@@ -193,7 +195,9 @@ def main():
                     'title': pageJson['title'],
                     'text': unicode(markdown.markdown(mdFile.read()))
                 }
-                log.debug("page: " + str(page))
+                with codecs.open(path.join(config.getPath("website"), page['name'].lower() + ".html"), 'w+', encoding='utf-8') as indexFile:
+                    indexFile.write(renderer.render_name('page', page))
+    # build nav
 
 # loading config and make it globally available
 config = Config()
