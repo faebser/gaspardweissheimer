@@ -44,7 +44,7 @@ def iterateOverAllImages(projectName, currentProjectPath, entry, imageList, bloc
         imageList = []
         for subdir, dirs, files in walk(path.join(currentProjectPath, imagePath)):
             for image in files:
-                if not image in blockList:
+                if not image in blockList and not path.basename(image).startswith('.'):
                     imageList.append({imagePath + image: imageSizes})
                 else:
                     log.debug("image already used: " + str(image))
