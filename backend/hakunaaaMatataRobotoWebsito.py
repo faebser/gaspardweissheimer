@@ -208,8 +208,8 @@ def main():
                     'text': unicode(markdown.markdown(mdFile.read())),
                 }
                 htmlContent['nav'].append({
-                    'link': page['title'],
-                    'name': page['name']
+                    'link': page['name'],
+                    'name': page['title']
                 })
                 with codecs.open(path.join(config.getPath("website"), page['name'].lower() + ".html"), 'w+', encoding='utf-8') as indexFile:
                     indexFile.write(renderer.render_name('page', page))

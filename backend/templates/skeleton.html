@@ -35,10 +35,10 @@
         </div>
         <div id="mainWrapper">
             <ul id="main" class="clearfix">
-                {{{promo}}}
-                {{#overview}}
-                <li id="overview">
-                    {{{overview}}}
+                {{{promo}}}{{#overview}}<li id="overview">
+                    <div id="overviewInnerWrapper">
+                        {{{overview}}}
+                    </div>
                 </li>
                 {{/overview}}
             </ul>
