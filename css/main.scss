@@ -1,3 +1,5 @@
+@import 'normalize.css';
+
 /*
  * HTML5 Boilerplate
  *
@@ -381,9 +383,9 @@ body {
 
 #main {
     list-style-type: none;
-    width: 400%;
+    width: $mainWidth;
     li {
-        width: 25%;
+        width: $promoWidth;
         min-height: 100%;
         display: inline-block;
         vertical-align: top;
@@ -406,15 +408,6 @@ body {
                 @extend .headerLineH2;
                 font-size: 1.875em;
             }
-        }
-        &#eins .top {
-            background-image: url("../img/Bildbank_AndresBally/20100118_bänke_gw__MG_2535-2.jpg");
-        }
-        &#zwei .top {
-            background-image: url("../img/IMG_0058_small.JPG");
-        }
-        &#drei .top {
-            background-image: url("../img/VJP_Jahresbericht_2012/gaspard_weissheimer__MG_4093.jpg");
         }
         .low {
             padding: 13em 1.875em 0 1.875em;
@@ -792,6 +785,7 @@ footer {
   }
 }
 
+@import 'backgrounds';
 
 @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */

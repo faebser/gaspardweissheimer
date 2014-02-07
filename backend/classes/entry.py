@@ -1,5 +1,4 @@
-from re import sub
-
+# -*- coding: utf-8 -*-
 
 class Entry(object):
 
@@ -58,7 +57,7 @@ class Entry(object):
         @param cssId: str
         @return: void
         """
-        self.cssId = sub('[&.!,;]', '', cssId.lower().lstrip('1234567890').replace(' ', '_'))
+        self.cssId = cssId.lower().lstrip('1234567890_').replace(' ', '_')
         pass
 
     def getId(self):
@@ -67,7 +66,6 @@ class Entry(object):
     def simpleFillWithDict(self, jsonDict):
         if 'title' in jsonDict:
             self.setTitle(jsonDict['title'])
-            self.setId(self.title)
         if 'subtitle' in jsonDict:
             self.setSubtitle(jsonDict['subtitle'])
         if 'text' in jsonDict:

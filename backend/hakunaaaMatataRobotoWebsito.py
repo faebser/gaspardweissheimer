@@ -7,7 +7,8 @@ from os import path, walk, remove, makedirs, listdir
 from shutil import copytree
 import json
 import codecs
-
+from scss import Scss
+from scss import config as scssconifg
 from classes.config import Config, ImageSize
 from classes.entry import Entry
 from classes.imageHandling import fromJsonToImage
@@ -75,6 +76,7 @@ def main():
     config.addPath("website", path.join(currentPath, "website"))
     config.addPath("images", path.join(config.getPath("website"), 'img'))
     config.addPath("css", path.join(config.getPath("website"), 'css'))
+    config.addPath("js", path.join(config.getPath("website"), 'js'))
     config.addPath("overview", path.join(config.getPath("contentPath"), 'overview'))
     config.addPath("pages", path.join(config.getPath("contentPath"), 'pages'))
     config.addPath("promoted", path.join(config.getPath("contentPath"), 'promoted_stuff'))
@@ -109,6 +111,12 @@ def main():
     if path.exists(config.getPath("website")):
         log.error("Please remove website-folder")
         exit(1)
+    else:
+        makedirs(config.getPath('website'), 0755)
+
+    # copy stuff over
+    copytree('../js', config.getPath('js'))
+    copytree('../css', config.getPath('css'))
 
     #load promoted content
     promotedDirs = listdir(config.getPath('promoted'))
@@ -117,9 +125,18 @@ def main():
 
     htmlContent = {
         'promo': '',
-        'overview': ''
+        'overview': '',
+        'nav': [
+            {
+                'link': 'someJsCode',
+                'name': 'Arbeiten'
+            }
+        ]
     }
+    promoAmount = 1 # add one for overview
     cssContent = ''
+    pages = []
+
 
     """TODO: add colors to css"""
 
@@ -127,6 +144,7 @@ def main():
         if currentDir.startswith("."):
             pass
         else:
+            promoAmount += 1
             projectName = currentDir
             currentProjectPath = path.join(config.getPath('promoted'), projectName)
             try:
@@ -134,19 +152,15 @@ def main():
             except ValueError:
                 log.exception("Error while reading json-file: " + path.join(currentProjectPath, 'data.json'))
                 exit(1)
-            currentEntry = None
             currentEntry = Entry()
             currentEntry.simpleFillWithDict(currentJsonFile)
+            currentEntry.setId(projectName)
             iterateOverPosterImages(projectName, currentProjectPath, currentEntry, currentJsonFile['posterImage'])
             iterateOverOverviewImages(projectName, currentProjectPath, currentEntry, currentJsonFile['overviewImage'])
             iterateOverAllImages(projectName, currentProjectPath, currentEntry, currentJsonFile['images'], buildBlockingList(currentJsonFile['posterImage'], currentJsonFile['overviewImage']))
             htmlContent['promo'] += renderer.render_name('promoEntryAndPage', currentEntry)
             cssContent += renderer.render_name('backgrounds', currentEntry)
-            #log.debug("css: " + cssContent)
-            #log.debug("content: " + htmlContent)
-
-    makedirs(config.getPath('css'), 0755)
-    cssBackgroundsFile = codecs.open(path.join(config.getPath('css'), 'backgrounds.css'), 'w+', encoding='utf-8')
+    cssBackgroundsFile = codecs.open(path.join(config.getPath('css'), 'backgrounds.scss'), 'w+', encoding='utf-8')
     cssBackgroundsFile.write(cssContent)
     cssBackgroundsFile.close()
 
@@ -169,6 +183,7 @@ def main():
                 projectName = entry
                 overviewEntry = Entry()
                 overviewEntry.simpleFillWithDict(currentJsonFile)
+                overviewEntry.setId(projectName)
                 iterateOverPosterImages(projectName, currentProjectPath, overviewEntry, currentJsonFile['posterImage'])
                 iterateOverOverviewImages(projectName, currentProjectPath, overviewEntry, currentJsonFile['overviewImage'])
                 iterateOverAllImages(projectName, currentProjectPath, overviewEntry, currentJsonFile['images'], buildBlockingList(currentJsonFile['posterImage'], currentJsonFile['overviewImage']))
@@ -178,12 +193,7 @@ def main():
                 overviewEntry = None
             htmlContent['overview'] += renderer.render_name('overviewRow', templateContent)
 
-                #generate page for each
-    log.debug(htmlContent['overview'])
-    with codecs.open(path.join(config.getPath("website"), 'index.html'), 'w+', encoding='utf-8') as indexFile:
-        indexFile.write(renderer.render_name('skeleton', htmlContent))
-
-    #pages
+    #pages - rewrite
     pagesDir = listdir(config.getPath('pages'))
     pagesDir.sort()
     for currentDir in pagesDir:
@@ -195,11 +205,29 @@ def main():
                 page = {
                     'name': currentDir,
                     'title': pageJson['title'],
-                    'text': unicode(markdown.markdown(mdFile.read()))
+                    'text': unicode(markdown.markdown(mdFile.read())),
                 }
+                htmlContent['nav'].append({
+                    'link': page['title'],
+                    'name': page['name']
+                })
                 with codecs.open(path.join(config.getPath("website"), page['name'].lower() + ".html"), 'w+', encoding='utf-8') as indexFile:
                     indexFile.write(renderer.render_name('page', page))
-    # build nav
+
+    # generate index page with content from overview and promoted
+    with codecs.open(path.join(config.getPath("website"), 'index.html'), 'w+', encoding='utf-8') as indexFile:
+        indexFile.write(renderer.render_name('skeleton', htmlContent))
+    # parse main.scss into main.css
+    if path.exists(path.join(config.getPath('css'), 'main.css')):
+        remove(path.join(config.getPath('css'), 'main.css'))
+    with codecs.open(path.join(config.getPath("css"), 'main.css'), 'w+', encoding='utf-8') as mainCssFile:
+        scssconifg.LOAD_PATHS = config.getPath('css')
+        compiler = Scss(scss_opts=dict(compress=True), scss_vars={
+            '$mainWidth': str(promoAmount * 100) + '%',
+            '$promoWidth': str(100 / float(promoAmount)) + '%'
+        })
+        mainCssFile.write(compiler.compile(codecs.open(path.join(config.getPath('css'), 'main.scss'), 'r', encoding='utf-8').read()))
+
 
 # loading config and make it globally available
 config = Config()
@@ -207,7 +235,6 @@ config = Config()
 log.basicConfig(format='%(levelname)s: %(message)s', level=log.DEBUG)
 
 if __name__ == "__main__":
-    log.debug("main called")
     main()
 
 #ouput = renderer
