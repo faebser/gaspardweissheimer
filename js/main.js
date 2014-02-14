@@ -48,6 +48,7 @@ var gaspi = (function ($) {
 		scrollIndicator = $('#scrollIndicator'),
 		topElementsToSwitchColor = $('nav li a, #logo'),
 		topElementsToSwitchBack = $("#indicator"),
+		promoElements = $('.promo'),
 		bullets = {
 			"active" : $('<i/>').attr({
 				"class" : "icon-circle",
@@ -61,6 +62,15 @@ var gaspi = (function ($) {
 				"class" : "icon-layout",
 				"aria-hidden" : "true"
 			})
+		},
+		c = {
+			'big' : 'big',
+			'small' : 'small',
+			'hide' : 'hide',
+			'show' : 'show'
+		},
+		c_ = function(selector) {
+			return c[selector];
 		};
 	// private methods
 	var init = function () {
@@ -68,6 +78,10 @@ var gaspi = (function ($) {
 		tops.height(winHeight);
 		verticalNavInit(winHeight);
 		clickHandlers(winHeight);
+		$('#overview').css({
+			'height' : 0,
+			'overflow' : 'hidden'
+		})
 	},
 	verticalNavInit = function (winHeight) {
 		var length = navElements.length,
@@ -79,6 +93,7 @@ var gaspi = (function ($) {
 			var bullet = bullets.inactive.clone();
 			if(i == 0) {
 				bullet = bullets.active.clone();
+				promoElements.eq(i).addClass('active');
 			}
 			if (navElements.eq(i).attr('id') === 'overview') {
 				bullet = bullets.overview.clone();
@@ -92,6 +107,8 @@ var gaspi = (function ($) {
 			li.click(function () {
 				var e = $(this);
 				//loader.checkForImages(navElements.eq(e.index()));
+				promoElements.removeClass('active');
+				promoElements.eq(e.index()).addClass('active');
 				main.transition({
 					'x' : $(this).data("scroll") * -1 + "%"
 				}, 1500, 'snap');
@@ -123,11 +140,25 @@ var gaspi = (function ($) {
 			"top" : winHeight - 90 - 100
 		});
 	},
+	scrollDown = function (promoElement) {
+		var e = promoElement;
+		e.find('.top').addClass(c.small);
+		e.find('.low').addClass(c.big);
+		// e.find('.top').transition({
+		// 	'height' : 0,
+		// 	'opacity' : 0
+		// }, 750, 'linear');
+		// e.find('.low').transition({
+		// 	'height': '100%'
+		// }, 750, 'linear');
+	},
 	clickHandlers = function (winHeight) {
 		win.scroll(function(event) {
-			tops.css({
-				"opacity" : 1 - win.scrollTop() / winHeight 
-			})
+			// check state
+			scrollDown(promoElements.filter('.active'));
+		});
+		scrollIndicator.click(function() {
+			scrollDown(promoElements.filter('.active'));
 		});
 	};
 	// public methods

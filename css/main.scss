@@ -251,12 +251,12 @@ textarea {
     font-weight: normal;
 }
 
-@mixin transition ($attribute, $duration, $ease) {
-    -webkit-transition: $attribute $duration $ease;
-    -moz-transition: $attribute $duration $ease;
-    -ms-transition: $attribute $duration $ease;
-    -o-transition: $attribute $duration $ease;
-    transition: $attribute $duration $ease;
+@mixin transition ($input...) {
+    -webkit-transition: $input;
+    -moz-transition: $input;
+    -ms-transition: $input;
+    -o-transition: $input;
+    transition: $input;
 }
 
 *, *:before, *:after { /* sane box model */
@@ -343,14 +343,14 @@ body {
                     margin-right: 0;
                 }
                 a {
-                    @include transition(color, 1.3s, ease);
+                    @include transition(color 1.3s ease);
                     color: black;
                     text-decoration: none;
                 }
             }
         }
         #indicator {
-            @include transition(background-color, 1.3s, ease);
+            @include transition(background-color 1.3s ease);
             width: 4.8125em;
             height: 0.0625em;
             position: absolute;
@@ -363,7 +363,7 @@ body {
         text-transform: uppercase;
         float: left;
         font-size: 1.25em;
-        @include transition(color, 1.3s, ease);
+        @include transition(color 1.3s ease);
         @include transatLight;
         p {
             span {
@@ -381,6 +381,8 @@ body {
     padding-bottom: 14em;
 }
 
+$scrollDuration: 0.75s;
+
 #main {
     list-style-type: none;
     width: $mainWidth;
@@ -392,8 +394,11 @@ body {
         .top {
             width: 100%;
             background-size: cover;
-            //background-attachment: fixed;
-            @include transition(opacity, 0.5s, ease);
+            &.small {
+                height: 0 !important;
+                opacity: 0;
+            }
+            @include transition(opacity 0.5s ease, height $scrollDuration linear);
             @extend .headerParent;
             hgroup {
                 @extend .headerLine;
@@ -410,9 +415,17 @@ body {
             }
         }
         .low {
+            overflow: hidden;
             padding: 13em 1.875em 0 1.875em;
             max-width: 1200px;
             margin: 0 auto;
+            &.small {
+                height: 0;
+            }
+            &.big {
+                height: 100%;
+            }
+            @include transition(height $scrollDuration linear);
             @include transatLight;
             .lowerHeadline {
                 width: 100%;
@@ -477,9 +490,9 @@ body {
     #scrollIndicator {
         color: #fff;
         opacity: 0;
-        @include transition(opacity, 0.75s, ease);
+        @include transition(opacity 0.75s ease);
         p {
-            @include transatLight;
+            @include transatMedium;
             text-align: center;
         }
     }
