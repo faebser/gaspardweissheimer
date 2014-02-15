@@ -144,7 +144,6 @@ def main():
         if currentDir.startswith("."):
             pass
         else:
-            promoAmount += 1
             projectName = currentDir
             currentProjectPath = path.join(config.getPath('promoted'), projectName)
             try:
@@ -155,11 +154,15 @@ def main():
             currentEntry = Entry()
             currentEntry.simpleFillWithDict(currentJsonFile)
             currentEntry.setId(projectName)
+            currentEntry.addClass('promo')
+            if promoAmount is 1:
+                currentEntry.addClass('active')
             iterateOverPosterImages(projectName, currentProjectPath, currentEntry, currentJsonFile['posterImage'])
             iterateOverOverviewImages(projectName, currentProjectPath, currentEntry, currentJsonFile['overviewImage'])
             iterateOverAllImages(projectName, currentProjectPath, currentEntry, currentJsonFile['images'], buildBlockingList(currentJsonFile['posterImage'], currentJsonFile['overviewImage']))
             htmlContent['promo'] += renderer.render_name('promoEntryAndPage', currentEntry)
             cssContent += renderer.render_name('backgrounds', currentEntry)
+            promoAmount += 1
     cssBackgroundsFile = codecs.open(path.join(config.getPath('css'), 'backgrounds.scss'), 'w+', encoding='utf-8')
     cssBackgroundsFile.write(cssContent)
     cssBackgroundsFile.close()

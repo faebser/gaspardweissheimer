@@ -10,11 +10,13 @@ class Entry(object):
     overViewImage = {}
     images = []
     cssTitle = ""
+    classes = []
 
     def __init__(self):
         self.posterImage.clear()
         self.overViewImage.clear()
         self.images = []
+        self.classes = []
 
     def __str__(self):
         return str(self.images)
@@ -62,6 +64,9 @@ class Entry(object):
 
     def getId(self):
         return self.cssId
+
+    def addClass(self, cssClass):
+        self.classes.append(cssClass)
 
     def simpleFillWithDict(self, jsonDict):
         if 'title' in jsonDict:
