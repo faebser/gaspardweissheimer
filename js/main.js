@@ -67,7 +67,9 @@ var gaspi = (function ($) {
 			'big' : 'big',
 			'small' : 'small',
 			'hide' : 'hide',
-			'show' : 'show'
+			'show' : 'show',
+			'top' : 'top',
+			'low' : 'low'
 		},
 		c_ = function(selector) {
 			return c[selector];
@@ -141,9 +143,16 @@ var gaspi = (function ($) {
 		});
 	},
 	scrollDown = function (promoElement) {
-		var e = promoElement;
-		e.find('.top').addClass(c.small);
-		e.find('.low').addClass(c.big);
+		var e = promoElement,
+			state = e.find(c_('top').hasClass(c.small));
+		if(state) {
+			e.find(c_('top')).addClass(c.small);
+			e.find(c_('low')).addClass(c.big);
+		}
+		else {
+			e.find(c_('top')).addClass(c.big);
+			e.find(c_('low')).addClass(c.small);
+		}
 		// e.find('.top').transition({
 		// 	'height' : 0,
 		// 	'opacity' : 0
