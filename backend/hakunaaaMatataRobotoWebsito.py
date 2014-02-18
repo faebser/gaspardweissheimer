@@ -14,8 +14,6 @@ from classes.entry import Entry
 from classes.imageHandling import fromJsonToImage
 
 
-
-
 def iterateOverPosterImages(projectName, currentProjectPath, entry, imageList):
     iterateOverImages(projectName, currentProjectPath, entry, 'posterImage', imageList)
 
