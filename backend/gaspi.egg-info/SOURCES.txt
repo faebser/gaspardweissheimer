@@ -1,0 +1,9 @@
+classes/__init__.py
+classes/config.py
+classes/entry.py
+classes/imageHandling.py
+gaspi.egg-info/PKG-INFO
+gaspi.egg-info/SOURCES.txt
+gaspi.egg-info/dependency_links.txt
+gaspi.egg-info/requires.txt
+gaspi.egg-info/top_level.txt
