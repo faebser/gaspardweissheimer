@@ -9,5 +9,5 @@ setup(
     author='faebser',
     author_email='fabian.frei@esf-frei.ch',
     description='gaspi.ch',
-    install_requires=['pystache', 'logging', 'markdown2', 'scss', 'PIL']
+    install_requires=['pystache', 'logging', 'markdown2', 'scss', 'Pillow']
 )
