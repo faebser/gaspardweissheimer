@@ -8,10 +8,5 @@
 	"overviewImage" : {
 		"files/20130831_gw_jkf2013__MG_7527.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
-	"images" : [
-		{
-            "files/" : ["normal", "mobile", "highres"]
-	    }
-          
-	]
+	"images" : "files/"
 }

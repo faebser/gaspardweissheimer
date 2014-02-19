@@ -2,14 +2,11 @@
 	"title" : "Männerstimmen Basel",
 	"subtitle" : "Webdesign",
 	"text" : "Kleidung aus den 50er-Jahren, Knickerbocker, Hosenträger, Cordjacken: äußerlich sind die Männerstimmen Basel bewusst altbacken, doch in den Kleidern stecken junge Männer, die meisten unter 30, die sich mit Herz und Seele der Männerchorliteratur verschrieben haben. Ein bunt gemischter Haufen, dessen Qualitäten Wettbewerbsjurys im In- und Ausland beeindrucken, wie der Sieg in der Kategorie „Männerchöre“ an den World Choir Games in Cincinnati 2012, der Preis für die beste Interpretation eines zeitgenössischen Werkes bei der 'Fleischmann International Trophy Competition' in Cork 2011 und zahlreiche weitere Auszeichnungen belegen. www.maennerstimmen.ch / Programming: Jonas Balsiger",
-",
 	"posterImage" : {
 	    "files/maennerstimmen_web.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"overviewImage" : {
 		"files/maennerstimmen_web5.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
-	"images" : [
-		{
-            "files/" : ["normal", "mobile", "highres"]
-	    }
+	"images" : "files/"
+}

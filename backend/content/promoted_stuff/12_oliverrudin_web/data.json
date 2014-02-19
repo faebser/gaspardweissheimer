@@ -8,7 +8,5 @@
 	"overviewImage" : {
 		"files/oliverrudin_web.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
-	"images" : [
-		{
-            "files/" : ["normal", "mobile", "highres"]
-	    }
+	"images" : "files/"
+}
