@@ -49,6 +49,7 @@ var gaspi = (function ($) {
 		topElementsToSwitchColor = $('nav li a, #logo'),
 		topElementsToSwitchBack = $("#indicator"),
 		promoElements = $('.promo'),
+		overview = $("#overview"),
 		bullets = {
 			"active" : $('<i/>').attr({
 				"class" : "icon-circle",
@@ -69,10 +70,11 @@ var gaspi = (function ($) {
 			'hide' : 'hide',
 			'show' : 'show',
 			'top' : 'top',
-			'low' : 'low'
+			'low' : 'low',
+			'overview' : 'icon-layout'
 		},
 		c_ = function(selector) {
-			return c[selector];
+			return '.' + c[selector];
 		};
 	// private methods
 	var init = function () {
@@ -80,9 +82,10 @@ var gaspi = (function ($) {
 		tops.height(winHeight);
 		verticalNavInit(winHeight);
 		clickHandlers(winHeight);
-		$('#overview').css({
+		overview.css({
 			'height' : 0,
-			'overflow' : 'hidden'
+			'overflow' : 'hidden',
+			'opacity' : 0
 		})
 	},
 	verticalNavInit = function (winHeight) {
@@ -111,9 +114,17 @@ var gaspi = (function ($) {
 				//loader.checkForImages(navElements.eq(e.index()));
 				promoElements.removeClass('active');
 				promoElements.eq(e.index()).addClass('active');
-				main.transition({
-					'x' : $(this).data("scroll") * -1 + "%"
-				}, 1500, 'snap');
+				
+				if(e.find('i').hasClass(c.overview)) {
+					main.transition({
+						'x' : $(this).data("scroll") * -1 + "%"
+					}, 1500, 'snap', activateOverview);
+				}
+				else {
+					main.transition({
+						'x' : $(this).data("scroll") * -1 + "%"
+					}, 1500, 'snap');
+				}
 				// TODO recode this shit & init
 				var color = "";
 				if (typeof $(this).data("color") === 'undefined') {
@@ -144,14 +155,14 @@ var gaspi = (function ($) {
 	},
 	scrollDown = function (promoElement) {
 		var e = promoElement,
-			state = e.find(c_('top').hasClass(c.small));
+			state = e.find(c_('top')).hasClass(c.small);
 		if(state) {
-			e.find(c_('top')).addClass(c.small);
-			e.find(c_('low')).addClass(c.big);
-		}
-		else {
 			e.find(c_('top')).addClass(c.big);
 			e.find(c_('low')).addClass(c.small);
+		}
+		else {
+			e.find(c_('top')).addClass(c.small);
+			e.find(c_('low')).addClass(c.big);
 		}
 		// e.find('.top').transition({
 		// 	'height' : 0,
@@ -160,6 +171,20 @@ var gaspi = (function ($) {
 		// e.find('.low').transition({
 		// 	'height': '100%'
 		// }, 750, 'linear');
+	},
+	activateOverview = function () {
+		verticalNav.transition({
+			'opacity' : 0
+		}, 500, 'linear', function () {
+			verticalNav.css('display', 'none');
+		});
+		overview.css({
+			'height' : 'auto',
+			'overflow' : 'visible'
+		});
+		overview.transition({
+			'opacity' : 1
+		}, 500, 'linear')
 	},
 	clickHandlers = function (winHeight) {
 		win.scroll(function(event) {
