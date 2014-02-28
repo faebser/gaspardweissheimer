@@ -2,11 +2,11 @@
     "rows" : [
         {
             "type" : "50-25-25",
-            "entries" : [ "01_projekt1", "02_projekt2", "03_projekt3"]
+            "entries" : [ "01_finkenschlag", "02_kalender2014", "03_loeffler"]
         },
         {
             "type" : "40-60",
-            "entries" : [ "02_projekt2", "03_projekt3"]
+            "entries" : [ "01_finkenschlag", "02_kalender2014"]
         }
     ]
 }
