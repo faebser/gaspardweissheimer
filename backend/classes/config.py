@@ -2,6 +2,7 @@ class Config(object):
     imageSizes = {}
     paths = {}
     rowTypes = {}
+    threads = 1
 
     def addPath(self, name, path):
         self.paths[name] = path
