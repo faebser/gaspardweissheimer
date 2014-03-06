@@ -164,13 +164,6 @@ var gaspi = (function ($) {
 			e.find(c_('top')).addClass(c.small);
 			e.find(c_('low')).addClass(c.big);
 		}
-		// e.find('.top').transition({
-		// 	'height' : 0,
-		// 	'opacity' : 0
-		// }, 750, 'linear');
-		// e.find('.low').transition({
-		// 	'height': '100%'
-		// }, 750, 'linear');
 	},
 	activateOverview = function () {
 		verticalNav.transition({
@@ -188,7 +181,6 @@ var gaspi = (function ($) {
 	},
 	clickHandlers = function (winHeight) {
 		win.scroll(function(event) {
-			// check state
 			scrollDown(promoElements.filter('.active'));
 		});
 		scrollIndicator.click(function() {

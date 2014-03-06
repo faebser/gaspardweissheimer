@@ -1,8 +1,11 @@
 from os import path, makedirs
 from PIL import Image
+from os.path import relpath
+
+def multiThreadedFromJsonToImage(inputVars):
+    return fromJsonToImage(inputVars[0], inputVars[1], inputVars[2], inputVars[3], inputVars[4], inputVars[5])
 
 def fromJsonToImage(jsonFileName, imageSizes, log, projectName, projectPath, config):
-    #log.debug(str(jsonFileName) + ":")
     fileName, extension = path.splitext(path.basename(jsonFileName))
     pathForImage = path.join(config.getPath('images'), projectName)
     returnDict = {}
@@ -35,6 +38,7 @@ def fromJsonToImage(jsonFileName, imageSizes, log, projectName, projectPath, con
                 try:
                     log.info("writing file: " + tempPath)
                     resizedImage.save(tempPath)
+                    tempPath = relpath(tempPath, config.getPath("website"))
                     returnDict[imageSizeName] = tempPath
                 except KeyError:
                     log.error("file-format unknown in: " + projectPath + " with imageSize " + imageSizeName)

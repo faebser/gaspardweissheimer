@@ -6,36 +6,43 @@ from bs4 import BeautifulSoup as soup
 from os import path, walk, remove, makedirs, listdir
 from shutil import copytree
 import json
+from multiprocessing import Pool
+from multiprocessing.dummy import Pool as ThreadPool
 import codecs
 from scss import Scss
 from scss import config as scssconifg
 from classes.config import Config, ImageSize
 from classes.entry import Entry
-from classes.imageHandling import fromJsonToImage
+from classes.imageHandling import fromJsonToImage, multiThreadedFromJsonToImage
 
 
-def iterateOverPosterImages(projectName, currentProjectPath, entry, imageList):
-    iterateOverImages(projectName, currentProjectPath, entry, 'posterImage', imageList)
+def iterateOverPosterImages(projectName, currentProjectPath, imageList):
+    returning = iterateOverImages(projectName, currentProjectPath, imageList)
+    for element, value in returning[0].iteritems():
+        returning[0][str(element)] = '../' + value
+    return returning
 
 
-def iterateOverOverviewImages(projectName, currentProjectPath, entry, imageList):
-    iterateOverImages(projectName, currentProjectPath, entry, 'overviewImage', imageList)
+def iterateOverOverviewImages(projectName, currentProjectPath, imageList):
+    return iterateOverImages(projectName, currentProjectPath, imageList)
 
 
-def iterateOverImages(projectName, currentProjectPath, entry, nodeName, imageList):
+def iterateOverImages(projectName, currentProjectPath, imageList):
+    pool = ThreadPool(4)
+    #build list
+    threadList = []
     for element, value in imageList.iteritems():
-        results = fromJsonToImage(element, value, log, projectName, currentProjectPath, config)
-        for imageSize, imagePath in results.iteritems():
-            if 'overviewImage' in nodeName:
-                entry.addOverViewImage(imageSize, imagePath)
-            elif 'posterImage' in nodeName:
-                entry.addPosterImage(imageSize, imagePath)
-            else:
-                entry.addImage(results.index(imageSize), {imageSize, imagePath})
+        threadList.append([element, value, log, projectName, currentProjectPath, config])
+    results = pool.map(multiThreadedFromJsonToImage, threadList)
+    pool.close()
+    return results
 
 
-def iterateOverAllImages(projectName, currentProjectPath, entry, imageList, blockList):
+def iterateOverAllImages(projectName, currentProjectPath, imageList, blockList):
     # if imageList ist Path
+    pool = ThreadPool(4)
+    #build list
+    threadList = []
     if isinstance(imageList, (unicode, str)):
         imagePath = imageList
         imageSizes = config.getAllImageSizes()
@@ -47,22 +54,23 @@ def iterateOverAllImages(projectName, currentProjectPath, entry, imageList, bloc
                 else:
                     log.debug("image already used: " + str(image))
     for imageObject in imageList:
-        index = imageList.index(imageObject)
         for element, value in imageObject.iteritems():
-            #fromJsonToImage(jsonFileName, imageSizes, log, projectName, projectPath, config):
-            results = fromJsonToImage(element, value, log, projectName, currentProjectPath, config)
-            if index is 0:
-                entryData = {}
-            else:
-                entryData = {'class': 'ajax'}
-            for imageSize, imagePath in results.iteritems():
-                entryData[imageSize] = imagePath
-            entry.addImage(index, entryData)
+            threadList.append([element, value, log, projectName, currentProjectPath, config])
+    results = pool.map(multiThreadedFromJsonToImage, threadList)
+    pool.close()
+    #fromJsonToImage(jsonFileName, imageSizes, log, projectName, projectPath, config):
+    #results = fromJsonToImage(element, value, log, projectName, currentProjectPath, config)
+    returnList = []
+    for index, imageObject in enumerate(results):
+        #imageSize, imagePath
+        if index is not 0:
+            imageObject['class'] = 'ajax'
+        returnList.append(imageObject)
+    return returnList
 
 def buildBlockingList(posterImages, overviewImages):
     returnList = [path.split(key)[1] for key in posterImages.keys()] + [path.split(key)[1] for key in overviewImages.keys()]
     return returnList
-
 
 def main():
 
@@ -136,8 +144,6 @@ def main():
     pages = []
 
 
-    """TODO: add colors to css"""
-
     for currentDir in promotedDirs:
         if currentDir.startswith("."):
             pass
@@ -155,9 +161,9 @@ def main():
             currentEntry.addClass('promo')
             if promoAmount is 1:
                 currentEntry.addClass('active')
-            iterateOverPosterImages(projectName, currentProjectPath, currentEntry, currentJsonFile['posterImage'])
-            iterateOverOverviewImages(projectName, currentProjectPath, currentEntry, currentJsonFile['overviewImage'])
-            iterateOverAllImages(projectName, currentProjectPath, currentEntry, currentJsonFile['images'], buildBlockingList(currentJsonFile['posterImage'], currentJsonFile['overviewImage']))
+            currentEntry.posterImage = iterateOverPosterImages(projectName, currentProjectPath, currentJsonFile['posterImage'])
+            currentEntry.overViewImage = iterateOverOverviewImages(projectName, currentProjectPath, currentJsonFile['overviewImage'])
+            currentEntry.images = iterateOverAllImages(projectName, currentProjectPath, currentJsonFile['images'], buildBlockingList(currentJsonFile['posterImage'], currentJsonFile['overviewImage']))
             htmlContent['promo'] += renderer.render_name('promoEntryAndPage', currentEntry)
             cssContent += renderer.render_name('backgrounds', currentEntry)
             promoAmount += 1
@@ -168,8 +174,7 @@ def main():
     #load overview content
     overviewJsonFile = json.loads(open(path.join(config.getPath('overview'), 'overview.json')).read())
     for row in overviewJsonFile['rows']:
-        templateContent = {}
-        templateContent['type'] = config.getRowTypeOrNone(row['type'])
+        templateContent = {'type': config.getRowTypeOrNone(row['type'])}
         if templateContent['type'] is None:
             log.error("Invalid Type with value: " + row['type'] + " in overview.json")
         else:
@@ -182,16 +187,15 @@ def main():
                     exit(1)
                 currentProjectPath = path.join(config.getPath('overview'), entry)
                 projectName = entry
-                overviewEntry = Entry()
-                overviewEntry.simpleFillWithDict(currentJsonFile)
-                overviewEntry.setId(projectName)
-                iterateOverPosterImages(projectName, currentProjectPath, overviewEntry, currentJsonFile['posterImage'])
-                iterateOverOverviewImages(projectName, currentProjectPath, overviewEntry, currentJsonFile['overviewImage'])
-                iterateOverAllImages(projectName, currentProjectPath, overviewEntry, currentJsonFile['images'], buildBlockingList(currentJsonFile['posterImage'], currentJsonFile['overviewImage']))
-                templateContent['entry-' + str(index)] = overviewEntry
-                with codecs.open(path.join(config.getPath("website"), overviewEntry.getId() + ".html"), 'w+', encoding='utf-8') as indexFile:
-                    indexFile.write(renderer.render_name('skeleton', {"promo": renderer.render_name('promoEntryAndPage', overviewEntry)}))
-                overviewEntry = None
+                templateContent['entry-' + str(index)] = Entry()
+                templateContent['entry-' + str(index)].simpleFillWithDict(currentJsonFile)
+                templateContent['entry-' + str(index)].setId(projectName)
+                templateContent['entry-' + str(index)].posterImage = iterateOverPosterImages(projectName, currentProjectPath, currentJsonFile['posterImage'])
+                templateContent['entry-' + str(index)].overViewImage = iterateOverOverviewImages(projectName, currentProjectPath, currentJsonFile['overviewImage'])
+                templateContent['entry-' + str(index)].images = iterateOverAllImages(projectName, currentProjectPath, currentJsonFile['images'], buildBlockingList(currentJsonFile['posterImage'], currentJsonFile['overviewImage']))
+                with codecs.open(path.join(config.getPath("website"), templateContent['entry-' + str(index)].getId() + ".html"), 'w+', encoding='utf-8') as indexFile:
+                    indexFile.write(renderer.render_name('skeleton', {"promo": renderer.render_name('promoEntryAndPage', templateContent['entry-' + str(index)])}))
+                #overviewEntry = None
             htmlContent['overview'] += renderer.render_name('overviewRow', templateContent)
 
     #pages - rewrite
