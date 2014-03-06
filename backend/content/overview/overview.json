@@ -1,12 +1,20 @@
 {
     "rows" : [
         {
-            "type" : "60-40",
-            "entries" : [ "01_finkenschlag", "02_kalender2014"]
+            "type" : "50-25-25",
+            "entries" : [ "01_finkenschlag", "02_kalender2014", "03_loeffler"]
+        },
+        {
+            "type" : "0-50",
+            "entries" : [ "03_LOEFFLER", "02_kalender2014"]
         },
         {
             "type" : "40-60",
-            "entries" : [ "01_finkenschlag", "02_kalender2014"]
+            "entries" : [ "01_finkenschlag", "03_loeffler"]
+        },
+        {
+            "type" : "40-25-0",
+            "entries" : [ "01_finkenschlag", "03_loeffler"]
         }
     ]
 }
