@@ -1,0 +1,12 @@
+{
+	"title" : "Andreas Meier",
+	"subtitle" : "Webdesign",
+	"text" : "1980 in Basel geboren, begann Andreas Meier seine musikalische Ausbildung bei der Knabenkantorei Basel. Zahlreiche Konzertreisen, die Mitwirkung in Produktionen am Theater Basel sowie die Aufführung sinfonisch besetzter Chorwerke prägten ihn stark. www.andreas-meier.com / Programming: Jonas Balsiger",
+	"posterImage" : {
+	    "files/andreasmeier_web.jpg" : ["normal", "mobile", "highres", "landscape"]
+	},
+	"overviewImage" : {
+		"files/andreasmeier_web2.jpg" : ["normal", "mobile", "highres", "landscape"]
+	},
+	"images" : "files/"
+}

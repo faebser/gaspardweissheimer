@@ -1,0 +1,13 @@
+{
+	"title" : "1 Liter Licht",
+	"subtitle" : "Objekte",
+	"text" : "'1 Liter Licht' sind im Atelier hergestellte Lampen aus recycleten Siebdruck-Farbbehältern, die vor dem Abfall behütet wurden. Als zweite Lebensaufgabe wurden sie zu Lichtgebern umfunktioniert. Erhältlich im SHOP oder direkt im Atelier.",
+	"posterImage" : {
+	    "files/20140219_gw_lampe__MG_0454.jpg" : ["normal", "mobile", "highres", "landscape"]
+	},
+	"overviewImage" : {
+		"files/20140219_gw_lampe__MG_0454_OW.jpg" : ["normal", "mobile", "highres", "landscape"]
+	},
+	"images" : "files/"
+	
+}
