@@ -18,8 +18,8 @@ from classes.imageHandling import fromJsonToImage, multiThreadedFromJsonToImage
 
 def iterateOverPosterImages(projectName, currentProjectPath, imageList):
     returning = iterateOverImages(projectName, currentProjectPath, imageList)
-    for element, value in returning[0].iteritems():
-        returning[0][str(element)] = '../' + value
+    for element, value in returning.iteritems():
+        returning[str(element)] = '../' + value
     return returning
 
 
@@ -35,7 +35,7 @@ def iterateOverImages(projectName, currentProjectPath, imageList):
         threadList.append([element, value, log, projectName, currentProjectPath, config])
     results = pool.map(multiThreadedFromJsonToImage, threadList)
     pool.close()
-    return results
+    return results[0] #ugly hack, watch out
 
 
 def iterateOverAllImages(projectName, currentProjectPath, imageList, blockList):
@@ -195,7 +195,6 @@ def main():
                 templateContent['entry-' + str(index)].images = iterateOverAllImages(projectName, currentProjectPath, currentJsonFile['images'], buildBlockingList(currentJsonFile['posterImage'], currentJsonFile['overviewImage']))
                 with codecs.open(path.join(config.getPath("website"), templateContent['entry-' + str(index)].getId() + ".html"), 'w+', encoding='utf-8') as indexFile:
                     indexFile.write(renderer.render_name('skeleton', {"promo": renderer.render_name('promoEntryAndPage', templateContent['entry-' + str(index)])}))
-                #overviewEntry = None
             htmlContent['overview'] += renderer.render_name('overviewRow', templateContent)
 
     #pages - rewrite
