@@ -1,22 +1,22 @@
 {
     "rows" : [
         {
-<<<<<<< HEAD
             "type" : "60-0",
-            "entries" : [ "01_finkenschlag"]
+            "entries" : [ "01_loeffler"]
         },
         {
             "type" : "50-0",
-            "entries" : [ "02_kalender2014"]
+            "entries" : [ "04_kalender2014"]
         },
         {
             "type" : "0-60",
-            "entries" : [ "02_kalender2014"]
+            "entries" : [ "04_kalender2014"]
         },
         {
             "type" : "50-0",
-            "entries" : [ "02_kalender2014"]
-=======
+            "entries" : [ "10_imfluss2013"]
+        },
+        {
             "type" : "50-25-25",
             "entries" : [ "01_loeffler", "02_finkenschlag", "03_transatlantic"]
         },
@@ -39,8 +39,6 @@
         {
             "type" : "50-25-25",
             "entries" : [ "11_maennerstimmen_web", "12_oliverrudin_web", "14_maennerstimmen_cd"]
->>>>>>> 2c8f842439f392156c47683ca649a35ab5cdd057
         }
-
     ]
 }

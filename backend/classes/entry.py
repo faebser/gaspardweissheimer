@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 class Entry(object):
 
     title = ""
@@ -11,6 +12,9 @@ class Entry(object):
     images = []
     cssTitle = ""
     classes = []
+    path = ''
+    pageTitle = ''
+    bodyId = ''
 
     def __init__(self):
         self.posterImage.clear()

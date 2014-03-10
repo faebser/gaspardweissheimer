@@ -23,7 +23,6 @@ def fromJsonToImage(jsonFileName, imageSizes, log, projectName, projectPath, con
                 log.error("imageSize not know: " + imageSizeName)
                 exit(1)
             else:
-                #log.debug(str(imageSize.height) + " " + str(imageSize.width))
                 size = [0, 0]
                 if imageSize.height is 0:
                     size[0] = imageSize.width
@@ -31,9 +30,6 @@ def fromJsonToImage(jsonFileName, imageSizes, log, projectName, projectPath, con
                 elif imageSize.width is 0:
                     size[0] = int(float((float(imageSize.height) / float(imageHeight))) * imageWidth)
                     size[1] = imageSize.height
-                #write image to disk
-                #log.debug("math: " + str())
-                #log.debug("newSize: " + str(size[0]) + "/" + str(size[1]))
                 resizedImage = image.resize(size, Image.ANTIALIAS)
                 try:
                     log.info("writing file: " + tempPath)

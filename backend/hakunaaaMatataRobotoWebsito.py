@@ -133,6 +133,7 @@ def main():
     htmlContent = {
         'promo': '',
         'overview': '',
+        'bodyId': 'home',
         'nav': [
             {
                 'link': 'someJsCode',
@@ -191,11 +192,18 @@ def main():
                 templateContent['entry-' + str(index)] = Entry()
                 templateContent['entry-' + str(index)].simpleFillWithDict(currentJsonFile)
                 templateContent['entry-' + str(index)].setId(projectName)
+                templateContent['entry-' + str(index)].addClass('promo')
+                templateContent['entry-' + str(index)].addClass('active')
                 templateContent['entry-' + str(index)].posterImage = iterateOverPosterImages(projectName, currentProjectPath, currentJsonFile['posterImage'])
                 templateContent['entry-' + str(index)].overViewImage = iterateOverOverviewImages(projectName, currentProjectPath, currentJsonFile['overviewImage'])
                 templateContent['entry-' + str(index)].images = iterateOverAllImages(projectName, currentProjectPath, currentJsonFile['images'], buildBlockingList(currentJsonFile['posterImage'], currentJsonFile['overviewImage']))
+                templateContent['entry-' + str(index)].path = templateContent['entry-' + str(index)].getId() + ".html"
                 with codecs.open(path.join(config.getPath("website"), templateContent['entry-' + str(index)].getId() + ".html"), 'w+', encoding='utf-8') as indexFile:
-                    indexFile.write(renderer.render_name('skeleton', {"promo": renderer.render_name('promoEntryAndPage', templateContent['entry-' + str(index)])}))
+                    indexFile.write(renderer.render_name('skeleton', {
+                            "promo": renderer.render_name('promoEntryAndPage', templateContent['entry-' + str(index)]),
+                            "bodyId": templateContent['entry-' + str(index)].getId(),
+                            "pageTitle": templateContent['entry-' + str(index)].title
+                        }))
             htmlContent['overview'] += renderer.render_name('overviewRow', templateContent)
 
     #pages - rewrite
@@ -246,24 +254,3 @@ log.basicConfig(format='%(levelname)s: %(message)s', level=log.DEBUG)
 
 if __name__ == "__main__":
     main()
-
-#ouput = renderer
-
-#log.debug(contentJsonFile['posterImage'])
-#log.debug(contentJsonFile['overviewImage'])
-
-#get all content from promoted stuff and input into the template
-#get all content from overview and generate pages
-#get all content from pages and generate pages
-
-
-
-
-# find out how json with python works - done
-# find out how image manip in python works
-# define sizes of the images, put them in a folder and remember the path
-# write the path into the template and also make some css templates
-# write all the css templates into main.css
-# grab the data, build object, push them through the template
-# add the returned thing to the skeleton
-

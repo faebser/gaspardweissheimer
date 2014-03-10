@@ -20,5 +20,5 @@
         "0-50" : "order50-0 rtl",
         "100" : "order100"
     },
-    "threads" : 4
+    "threads" : 8
 }

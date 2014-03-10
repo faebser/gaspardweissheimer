@@ -41,6 +41,7 @@ var gaspi = (function ($) {
 	// private vars
 	var module = {},
 		win = $(window),
+		body = $("body"),
 		main = $('#main'),
 		navElements = main.find('li'),
 		tops = $('.top'),
@@ -80,13 +81,16 @@ var gaspi = (function ($) {
 	var init = function () {
 		var winHeight = parseInt(win.height());
 		tops.height(winHeight);
-		verticalNavInit(winHeight);
+		if(body.attr('id') === "home") {
+			verticalNavInit(winHeight);
+			overview.css({
+				'height' : 0,
+				'overflow' : 'hidden',
+				'opacity' : 0
+			})
+		}
 		clickHandlers(winHeight);
-		overview.css({
-			'height' : 0,
-			'overflow' : 'hidden',
-			'opacity' : 0
-		})
+		
 	},
 	verticalNavInit = function (winHeight) {
 		var length = navElements.length,

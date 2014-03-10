@@ -1,11 +1,13 @@
 <div class="entry entry-2">
-    {{#entry-2.overViewImage}}
-        <img src="{{normal}}" data-mobile="{{mobile}}" data-highres="{{highres}}" data-landscape="{{landscape}}" alt="{{entry-2.title}}">
-    {{/entry-2.overViewImage}}
-    <div class="hover">
-        <hgroup>
-            <h2>{{entry-2.subtitle}}</h2>
-            <h1>{{entry-2.title}}</h1>
-        </hgroup>
-    </div>
+    <a href="{{path}}">
+        {{#entry-2.overViewImage}}
+            <img src="{{normal}}" data-mobile="{{mobile}}" data-highres="{{highres}}" data-landscape="{{landscape}}" alt="{{entry-2.title}}">
+        {{/entry-2.overViewImage}}
+        <div class="hover">
+            <hgroup>
+                <h2>{{entry-2.subtitle}}</h2>
+                <h1>{{entry-2.title}}</h1>
+            </hgroup>
+        </div>
+    </a>
 </div>
