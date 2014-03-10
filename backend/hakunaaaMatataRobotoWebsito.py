@@ -14,6 +14,7 @@ from scss import config as scssconifg
 from classes.config import Config, ImageSize
 from classes.entry import Entry
 from classes.imageHandling import fromJsonToImage, multiThreadedFromJsonToImage
+import time
 
 
 def iterateOverPosterImages(projectName, currentProjectPath, imageList):
@@ -28,7 +29,7 @@ def iterateOverOverviewImages(projectName, currentProjectPath, imageList):
 
 
 def iterateOverImages(projectName, currentProjectPath, imageList):
-    pool = ThreadPool(4)
+    pool = ThreadPool(config.threads)
     #build list
     threadList = []
     for element, value in imageList.iteritems():
@@ -40,7 +41,7 @@ def iterateOverImages(projectName, currentProjectPath, imageList):
 
 def iterateOverAllImages(projectName, currentProjectPath, imageList, blockList):
     # if imageList ist Path
-    pool = ThreadPool(4)
+    pool = ThreadPool(config.threads)
     #build list
     threadList = []
     if isinstance(imageList, (unicode, str)):
@@ -58,8 +59,6 @@ def iterateOverAllImages(projectName, currentProjectPath, imageList, blockList):
             threadList.append([element, value, log, projectName, currentProjectPath, config])
     results = pool.map(multiThreadedFromJsonToImage, threadList)
     pool.close()
-    #fromJsonToImage(jsonFileName, imageSizes, log, projectName, projectPath, config):
-    #results = fromJsonToImage(element, value, log, projectName, currentProjectPath, config)
     returnList = []
     for index, imageObject in enumerate(results):
         #imageSize, imagePath
@@ -73,7 +72,8 @@ def buildBlockingList(posterImages, overviewImages):
     return returnList
 
 def main():
-
+    # time it
+    starttime = time.time()
     # paths
     currentPath = path.dirname(path.realpath(__file__))
     config.addPath("templatePath", path.join(currentPath, "templates"))
@@ -96,6 +96,7 @@ def main():
     configJsonFile = json.loads(open(path.join(currentPath, "config.json")).read())
     config.addImageSizes(configJsonFile["imageSizes"])
     config.addRowTypes(configJsonFile["rowTypes"])
+    config.threads = configJsonFile['threads']
 
     # partials
     partials = {"entry-1": open(path.join(config.getPath("partialsPath"), "partial-entry-1.html")).read(),
@@ -231,6 +232,11 @@ def main():
             '$promoWidth': str(100 / float(promoAmount)) + '%'
         })
         mainCssFile.write(compiler.compile(codecs.open(path.join(config.getPath('css'), 'main.scss'), 'r', encoding='utf-8').read()))
+
+    endtime = time.time()
+    duration = endtime-starttime
+
+    log.info("generated in: " + str(duration / 60) + " minutes")
 
 
 # loading config and make it globally available

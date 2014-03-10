@@ -1,6 +1,7 @@
 {
     "rows" : [
         {
+<<<<<<< HEAD
             "type" : "60-0",
             "entries" : [ "01_finkenschlag"]
         },
@@ -15,6 +16,31 @@
         {
             "type" : "50-0",
             "entries" : [ "02_kalender2014"]
+=======
+            "type" : "50-25-25",
+            "entries" : [ "01_loeffler", "02_finkenschlag", "03_transatlantic"]
+        },
+        {
+            "type" : "40-60",
+            "entries" : [ "04_kalender2014", "05_Getreideverpackung Riederenhof"]
+        },
+        {
+            "type" : "60-40",
+            "entries" : [ "06_depotbasel", "07_theglue_songbook"]
+        },
+        {
+            "type" : "25-25-50",
+            "entries" : [ "08_theglue_gluebalisation", "09_jkf2013", "10_imfluss2013"]
+        },
+        {
+            "type" : "100",
+            "entries" : [ "15_1literlicht"]
+        },
+        {
+            "type" : "50-25-25",
+            "entries" : [ "11_maennerstimmen_web", "12_oliverrudin_web", "14_maennerstimmen_cd"]
+>>>>>>> 2c8f842439f392156c47683ca649a35ab5cdd057
         }
+
     ]
 }
