@@ -511,6 +511,9 @@ $scrollDuration: 0.75s;
 }
 
 .overviewRow {
+    a {
+        display: block;
+    }
     margin-bottom: 1.5em;
     &.order50-25-25 {
         .entry-1 {
@@ -593,6 +596,28 @@ $scrollDuration: 0.75s;
     &.order100 {
         .entry-1 {
             width: 100%;
+        }
+    }
+    &.order60-0 {
+        @extend .clearfix;
+        .entry-1 {
+            width: 60%;
+        }
+        &.rtl {
+            .entry-1 {
+                float: right;
+            }
+        }
+    }
+    &.order50-0 {
+        @extend .clearfix;
+        .entry-1 {
+            width: 50%;
+        }
+        &.rtl {
+            .entry-1 {
+                float: right;
+            }
         }
     }
     .entry {
