@@ -1,28 +1,12 @@
 {
     "rows" : [
         {
-            "type" : "60-0",
-            "entries" : [ "01_loeffler"]
-        },
-        {
-            "type" : "50-0",
-            "entries" : [ "04_kalender2014"]
-        },
-        {
-            "type" : "0-60",
-            "entries" : [ "04_kalender2014"]
-        },
-        {
-            "type" : "50-0",
-            "entries" : [ "10_imfluss2013"]
-        },
-        {
             "type" : "50-25-25",
             "entries" : [ "01_loeffler", "02_finkenschlag", "03_transatlantic"]
         },
         {
-            "type" : "40-60",
-            "entries" : [ "04_kalender2014", "05_Getreideverpackung Riederenhof"]
+            "type" : "0-60",
+            "entries" : [ "04_kalender2014"]
         },
         {
             "type" : "60-40",
