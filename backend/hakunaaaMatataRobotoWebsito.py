@@ -20,7 +20,7 @@ import time
 def iterateOverPosterImages(projectName, currentProjectPath, imageList):
     returning = iterateOverImages(projectName, currentProjectPath, imageList)
     for element, value in returning.iteritems():
-        returning[str(element)] = '../' + value
+        returning[str(element)]['path'] = '../' + value['path']
     return returning
 
 
@@ -201,7 +201,7 @@ def main():
                 with codecs.open(path.join(config.getPath("website"), templateContent['entry-' + str(index)].getId() + ".html"), 'w+', encoding='utf-8') as indexFile:
                     indexFile.write(renderer.render_name('skeleton', {
                             "promo": renderer.render_name('promoEntryAndPage', templateContent['entry-' + str(index)]),
-                            "bodyId": templateContent['entry-' + str(index)].getId(),
+                            "bodyId": 'page',
                             "pageTitle": templateContent['entry-' + str(index)].title
                         }))
             htmlContent['overview'] += renderer.render_name('overviewRow', templateContent)

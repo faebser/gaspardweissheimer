@@ -35,13 +35,23 @@ def fromJsonToImage(jsonFileName, imageSizes, log, projectName, projectPath, con
                     log.info("writing file: " + tempPath)
                     resizedImage.save(tempPath)
                     tempPath = relpath(tempPath, config.getPath("website"))
-                    returnDict[imageSizeName] = tempPath
+                    returnDict[imageSizeName] = {
+                        'path': tempPath,
+                        'width': size[0],
+                        'height': size[1]
+                    }
                 except KeyError:
                     log.error("file-format unknown in: " + projectPath + " with imageSize " + imageSizeName)
                     pass
                 except IOError:
                     log.error("file-format could not be written in: " + projectPath + " with imageSize " + imageSizeName)
         else:
-            returnDict[imageSizeName] = tempPath
+            image = Image.open(tempPath)
+            size = image.size
+            returnDict[imageSizeName] = {
+                'path': tempPath,
+                'width': size[0],
+                'height': size[1]
+            }
             #log.debug("file already exists: " + tempPath)
     return returnDict

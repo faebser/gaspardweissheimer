@@ -415,6 +415,7 @@ $scrollDuration: 0.75s;
             }
         }
         .low {
+            position: relative;
             overflow: hidden;
             padding: 13em 1.875em 0 1.875em;
             max-width: 1200px;
@@ -460,8 +461,16 @@ $scrollDuration: 0.75s;
                 max-width: 100%;
                 margin: 0 auto;
                 margin-bottom: 0.5em;
+                opacity: 1;
+                @include transition(opacity 0.2s linear);
+                &.notLoaded {
+                    opacity: 0;
+                    background-color: #72898F;
+                    background-color: rgba(68, 82, 85, 0.5);
+                }
             }
             iframe {
+                height: auto;
                 width: 100%;
             }
         }

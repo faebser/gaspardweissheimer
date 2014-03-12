@@ -1,6 +1,6 @@
 #{{cssId}} .top {
-    background-image: url('{{posterImage.normal}}');
-    @include breakpoint(highres) { background-image: url('{{posterImage.highres}}'); }
-    @include breakpoint(landscape) { background-image: url('{{posterImage.landscape}}'); }
-    @include breakpoint(mobile) { background-image: url('{{posterImage.mobile}}'); }
+    background-image: url('{{posterImage.normal.path}}');
+    @include breakpoint(highres) { background-image: url('{{posterImage.highres.path}}'); }
+    @include breakpoint(landscape) { background-image: url('{{posterImage.landscape.path}}'); }
+    @include breakpoint(mobile) { background-image: url('{{posterImage.mobile.path}}'); }
 }

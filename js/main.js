@@ -5,31 +5,88 @@ var loader = (function ($) {
 	var module = {},
 		images = {},
 		smallOffset = $(window).height() - 20,
-		selector = 'img',
-		loaded = 'loaded';
+		selector = 'img.ajax',
+		body = $('body'),
+		doc = $(document),
+		main = $('#main'),
+		loaded = 'loaded',
+		next = 0,
+		activeParentId = false,
+		c = {
+			'home': 'home',
+			'page': 'page',
+			'notLoaded': 'notLoaded'
+		}
 	// private methods
 	var check = function () {
-		
+		if (activeParentId) {
+			var scrollOffset = doc.scrollTop(); // maybe implement next?
+			console.log("balabala called at: " + scrollOffset);
+			if(next === 0) { // setup check
+				setupCheck();
+			}
+			// check
+			if(scrollOffset >= next) { // we hit an image
+				runImage(images[activeParentId][0]);
+				// run again, just in case we scrolled alot
+				setupCheck();
+				check();
+			}
+		};
+	},
+	setupCheck = function () { // maybe make this smart?
+		next = images[activeParentId][0].offset; // error when array empty
+	},
+	runImage = function (image) {
+		var e = image.element;
+		e.attr('src', e.data('src')).imagesLoaded(function (instance) {
+			console.log(e);
+			console.log(this);
+			console.log("loaded");
+			console.log(instance);
+			e.removeClass(c.notLoaded);
+		});
+		images[activeParentId].splice(0, 1);
+		console.log(images[activeParentId]);
+	},
+	addImage = function (el, parent) {
+		var id = parent.attr('id');
+		if(!images.hasOwnProperty(id)) {
+			images[id] = [];
+		}
+		images[id].push({
+			'offset' : el.position().top - smallOffset,
+			'element' : el
+		});
 	};
 	// public methods
-	module.init = function () {
-		// unbind eventhandler
-		// $(window).bind('scroll', check);
-		// find all images with a certain class and use them
-	},
 	module.checkForImages = function(parent) {
-		parent.find(selector).each(function(index, el) {
-			var e = $(el);
-			console.log(e);
+		parent.find('li').each(function(index, parent) {
+			var p = $(parent);
+			p.find(selector).each(function(cIndex, el){
+				var e = $(el);
+				addImage(e, p);
+				e.css('height', e.height()).data('src', e.attr('src')).attr('src', '').addClass(c.notLoaded); // the height is the same for all images
+			});
 			// images.push(e.offset().top - smallOffset);
-			images[e.offset().top - smallOffset] = e;
-			e.hide().attr('src', '');
+			// images[e.offset().top - smallOffset] = e;
+			// e.hide().attr('src', '');
 			return;
 		});
+		console.log(images);
+		$(document).on('scroll', check);
 	},
 	module.reset = function() {
 		images.clear();
-		$(window).unbind('scroll', check);
+		$(document).off('scroll', check);
+	},
+	module.setActiveParent = function (parentID) {
+		activeParentId = parentID;
+	},
+	module.init = function () {
+		if(body.attr('id') === c.home) {
+			module.checkForImages(main);
+		}
 	};
 	//return the module
 	return module;
@@ -72,7 +129,8 @@ var gaspi = (function ($) {
 			'show' : 'show',
 			'top' : 'top',
 			'low' : 'low',
-			'overview' : 'icon-layout'
+			'overview' : 'icon-layout',
+			'active' : 'active'
 		},
 		c_ = function(selector) {
 			return '.' + c[selector];
@@ -90,7 +148,6 @@ var gaspi = (function ($) {
 			})
 		}
 		clickHandlers(winHeight);
-		
 	},
 	verticalNavInit = function (winHeight) {
 		var length = navElements.length,
@@ -118,6 +175,7 @@ var gaspi = (function ($) {
 				//loader.checkForImages(navElements.eq(e.index()));
 				promoElements.removeClass('active');
 				promoElements.eq(e.index()).addClass('active');
+				loader.setActiveParent($('#main li.active').attr('id'));
 				
 				if(e.find('i').hasClass(c.overview)) {
 					main.transition({
@@ -200,6 +258,7 @@ var gaspi = (function ($) {
 }(jQuery));
 
 jQuery(document).ready(function($) {
+	loader.init();
+	loader.setActiveParent($('#main li.active').attr('id'));
 	gaspi.init();
-	//loader.init();
 });
