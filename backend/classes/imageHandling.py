@@ -53,5 +53,5 @@ def fromJsonToImage(jsonFileName, imageSizes, log, projectName, projectPath, con
                 'width': size[0],
                 'height': size[1]
             }
-            #log.debug("file already exists: " + tempPath)
+            log.debug("file already exists: " + tempPath)
     return returnDict
