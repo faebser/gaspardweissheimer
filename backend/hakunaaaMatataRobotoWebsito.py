@@ -36,8 +36,16 @@ def iterateOverImages(projectName, currentProjectPath, imageList):
         threadList.append([element, value, log, projectName, currentProjectPath, config])
     results = pool.map(multiThreadedFromJsonToImage, threadList)
     pool.close()
-    return results[0] #ugly hack, watch out
+    return results[0] # ugly hack, watch out
 
+def fromPythonToJson(imageObject):
+    returnObject = {}
+    for element, value in imageObject.iteritems():
+        if element == 'normal' or element == 'class':
+            returnObject[element] = value
+        else:
+            returnObject[element] = json.dumps(value)
+    return returnObject
 
 def iterateOverAllImages(projectName, currentProjectPath, imageList, blockList):
     # if imageList ist Path
@@ -59,17 +67,21 @@ def iterateOverAllImages(projectName, currentProjectPath, imageList, blockList):
             threadList.append([element, value, log, projectName, currentProjectPath, config])
     results = pool.map(multiThreadedFromJsonToImage, threadList)
     pool.close()
+
+    #run json on python objects
     returnList = []
     for index, imageObject in enumerate(results):
         #imageSize, imagePath
         if index is not 0:
             imageObject['class'] = 'ajax'
-        returnList.append(imageObject)
+        returnList.append(fromPythonToJson(imageObject))
     return returnList
+
 
 def buildBlockingList(posterImages, overviewImages):
     returnList = [path.split(key)[1] for key in posterImages.keys()] + [path.split(key)[1] for key in overviewImages.keys()]
     return returnList
+
 
 def main():
     # time it

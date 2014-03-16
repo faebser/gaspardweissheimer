@@ -10,7 +10,9 @@ var loader = (function ($) {
 		doc = $(document),
 		main = $('#main'),
 		loaded = 'loaded',
+		m = false,
 		next = 0,
+		state = 'normal',
 		activeParentId = false,
 		c = {
 			'home': 'home',
@@ -20,13 +22,12 @@ var loader = (function ($) {
 	// private methods
 	var check = function () {
 		if (activeParentId) {
-			var scrollOffset = doc.scrollTop(); // maybe implement next?
-			console.log("balabala called at: " + scrollOffset);
+			var scrollOffset = doc.scrollTop();
 			if(next === 0) { // setup check
 				setupCheck();
 			}
 			// check
-			if(scrollOffset >= next) { // we hit an image
+			if(next != false && scrollOffset >= next) { // we hit an image
 				runImage(images[activeParentId][0]);
 				// run again, just in case we scrolled alot
 				setupCheck();
@@ -35,15 +36,16 @@ var loader = (function ($) {
 		};
 	},
 	setupCheck = function () { // maybe make this smart?
-		next = images[activeParentId][0].offset; // error when array empty
+		if(images[activeParentId].length > 0) {
+			next = images[activeParentId][0].offset; // error when array empty
+		}
+		else {
+			next = false;
+		}
 	},
 	runImage = function (image) {
 		var e = image.element;
-		e.attr('src', e.data('src')).imagesLoaded(function (instance) {
-			console.log(e);
-			console.log(this);
-			console.log("loaded");
-			console.log(instance);
+		e.attr('src', e.data(state + '-src')).imagesLoaded(function (instance) {
 			e.removeClass(c.notLoaded);
 		});
 		images[activeParentId].splice(0, 1);
@@ -58,6 +60,11 @@ var loader = (function ($) {
 			'offset' : el.position().top - smallOffset,
 			'element' : el
 		});
+	},
+	setMediaState = function (Modernizr) {
+		// test mediaqueries
+		// set state
+		//state = 'mobile';
 	};
 	// public methods
 	module.checkForImages = function(parent) {
@@ -66,11 +73,18 @@ var loader = (function ($) {
 			p.find(selector).each(function(cIndex, el){
 				var e = $(el);
 				addImage(e, p);
-				e.css('height', e.height()).data('src', e.attr('src')).attr('src', '').addClass(c.notLoaded); // the height is the same for all images
+				if (state !== 'normal') {
+					// unpack values
+					var data = e.data(state);
+					e.css( {
+						'height' : data.height,
+						'width' : data.width
+					}).data(state + '-src', data.path).attr('src', '').addClass(c.notLoaded);
+				}
+				else {
+					e.css('height', e.height()).data('normal-src', e.attr('src')).attr('src', '').addClass(c.notLoaded); // the height is the same for all images
+				}
 			});
-			// images.push(e.offset().top - smallOffset);
-			// images[e.offset().top - smallOffset] = e;
-			// e.hide().attr('src', '');
 			return;
 		});
 		console.log(images);
@@ -81,9 +95,11 @@ var loader = (function ($) {
 		$(document).off('scroll', check);
 	},
 	module.setActiveParent = function (parentID) {
+		next = 0;
 		activeParentId = parentID;
 	},
-	module.init = function () {
+	module.init = function (Modernizr) {
+		setMediaState(Modernizr);
 		if(body.attr('id') === c.home) {
 			module.checkForImages(main);
 		}
@@ -258,7 +274,7 @@ var gaspi = (function ($) {
 }(jQuery));
 
 jQuery(document).ready(function($) {
-	loader.init();
+	loader.init(Modernizr);
 	loader.setActiveParent($('#main li.active').attr('id'));
 	gaspi.init();
 });
