@@ -146,7 +146,9 @@ var gaspi = (function ($) {
 			'top' : 'top',
 			'low' : 'low',
 			'overview' : 'icon-layout',
-			'active' : 'active'
+			'active' : 'active',
+			'empty' : 'icon-circle-empty',
+			'circle' : 'icon-circle'
 		},
 		c_ = function(selector) {
 			return '.' + c[selector];
@@ -192,6 +194,7 @@ var gaspi = (function ($) {
 				promoElements.removeClass('active');
 				promoElements.eq(e.index()).addClass('active');
 				loader.setActiveParent($('#main li.active').attr('id'));
+				e.find('i').toggleClass(c.empty).toggleClass(c.circle);
 				
 				if(e.find('i').hasClass(c.overview)) {
 					main.transition({
