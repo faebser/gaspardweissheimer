@@ -1,0 +1,12 @@
+{
+	"title" : "Gatto Nero Visitenkarten",
+	"subtitle" : "Risograph",
+	"text" : "Neue Visitenkarten für die  gemütliche Kleinbasler Bar und Paninoteca Gatto Nero, die seit 2013 italienisches Flair ins Quartier bringt.",
+	"posterImage" : {
+	    "files/20140321_gw_gattonero__MG_0565.jpg" : ["normal", "mobile", "highres", "landscape"]
+	},
+	"overviewImage" : {
+		"files/20140321_gw_gattonero__MG_0562.jpg" : ["normal", "mobile", "highres", "landscape"]
+	},
+	"images" : "files/"
+}
