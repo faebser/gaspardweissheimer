@@ -675,7 +675,7 @@ $scrollDuration: 0.75s;
         }
         &:hover {
             .hover {
-                display: block;
+                opacity: 1;
             }
         }
         img {
@@ -684,7 +684,7 @@ $scrollDuration: 0.75s;
             width: auto;
         }
         .hover {
-            display: none;
+            opacity: 0;
             position: absolute;
             top: 0;
             left: 0;
@@ -692,6 +692,7 @@ $scrollDuration: 0.75s;
             height: 100%;
             background-color: #72898F;
             background-color: rgba(68, 82, 85, 0.5);
+            @include transition(opacity 0.75s ease-in);
             hgroup {
                 @extend .headerLine;
             }
