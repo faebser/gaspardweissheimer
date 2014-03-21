@@ -233,7 +233,7 @@ def main():
                     'text': unicode(markdown.markdown(mdFile.read())),
                 }
                 htmlContent['nav'].append({
-                    'link': page['name'],
+                    'link': page['name'] + ".html",
                     'name': page['title']
                 })
                 with codecs.open(path.join(config.getPath("website"), page['name'].lower() + ".html"), 'w+', encoding='utf-8') as indexFile:
