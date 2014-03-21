@@ -265,10 +265,15 @@ $promoWidth: 6.66667%;
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
-.headerParent {
+.headerParent,
+#main li .top,
+.overviewRow .entry .hover {
     text-align: center;
 }
-.headerParent:before {
+
+.headerParent:before,
+#main li .top:before,
+.overviewRow .entry .hover:before {
   content: '';
   display: inline-block;
   height: 100%;
@@ -401,7 +406,7 @@ $scrollDuration: 0.75s;
                 opacity: 0;
             }
             @include transition(opacity 0.5s ease, height $scrollDuration linear);
-            @extend .headerParent;
+            //@extend .headerParent;
             hgroup {
                 @extend .headerLine;
                 text-shadow: 0 0 20px #fff;
@@ -419,9 +424,21 @@ $scrollDuration: 0.75s;
         .low {
             position: relative;
             overflow: hidden;
-            padding: 13em 1.875em 0 1.875em;
+            padding: 0 1.875em 0 1.875em;
             max-width: 1200px;
             margin: 0 auto;
+            .scrollHeader {
+                margin-bottom: 13em;
+                overflow: hidden;
+                @include transition(height 0.1s linear);
+                p {
+                    float: none;
+                    width: 100%;
+                    text-align: center;
+                    font-size: 1em;
+                    margin: 1em 0;
+                }
+            }
             &.small {
                 height: 0;
             }
@@ -680,7 +697,7 @@ $scrollDuration: 0.75s;
             height: 100%;
             background-color: #72898F;
             background-color: rgba(68, 82, 85, 0.5);
-            @extend .headerParent;
+            //@extend .headerParent;
             hgroup {
                 @extend .headerLine;
             }

@@ -1,899 +1,287 @@
 @charset "UTF-8";
 @import url(normalize.css);
-/*
- * HTML5 Boilerplate
- *
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-html,
-button,
-input,
-select,
-textarea {
-  color: #222; }
+/* HTML5 Boilerplate  What follows is the result of much research on cross-browser styling. Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal, Kroc Camen, and the H5BP dev community and team. */
+/* ========================================================================== Base styles: opinionated defaults ========================================================================== */
+html, button, input, select, textarea { color: #222; }
 
-body {
-  font-size: 1em;
-  line-height: 1.4; }
+body { font-size: 1em; line-height: 1.4; }
 
-/*
- * Remove text-shadow in selection highlight: h5bp.com/i
- * These selection rule sets have to be separate.
- * Customize the background color to match your design.
- */
-::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none; }
+/* Remove text-shadow in selection highlight: h5bp.com/i These selection rule sets have to be separate. Customize the background color to match your design. */
+::-moz-selection { background: #b3d4fc; text-shadow: none; }
 
-::selection {
-  background: #b3d4fc;
-  text-shadow: none; }
+::selection { background: #b3d4fc; text-shadow: none; }
 
-/*
- * A better looking default horizontal rule
- */
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0; }
+/* A better looking default horizontal rule */
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
 
-/*
- * Remove the gap between images, videos, audio and canvas and the bottom of
- * their containers: h5bp.com/i/440
- */
-audio,
-canvas,
-img,
-video {
-  vertical-align: middle; }
+/* Remove the gap between images, videos, audio and canvas and the bottom of their containers: h5bp.com/i/440 */
+audio, canvas, img, video { vertical-align: middle; }
 
-/*
- * Remove default fieldset styles.
- */
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0; }
+/* Remove default fieldset styles. */
+fieldset { border: 0; margin: 0; padding: 0; }
 
-/*
- * Allow only vertical resizing of textareas.
- */
-textarea {
-  resize: vertical; }
+/* Allow only vertical resizing of textareas. */
+textarea { resize: vertical; }
 
-/* ==========================================================================
-   Author's custom styles
-   fabian.frei@esf-frei.ch
-   ========================================================================== */
+/* ========================================================================== Author's custom styles fabian.frei@esf-frei.ch ========================================================================== */
 /* fontello */
-@font-face {
-  font-family: 'fontello';
-  src: url("font/fontello/fontello.eot?3023062");
-  src: url("font/fontello/fontello.eot?3023062#iefix") format("embedded-opentype"), url("font/fontello/fontello.woff?3023062") format("woff"), url("font/fontello/fontello.ttf?3023062") format("truetype"), url("font/fontello/fontello.svg?3023062#fontello") format("svg");
-  font-weight: normal;
-  font-style: normal; }
+@font-face { font-family: 'fontello'; src: url("font/fontello/fontello.eot?3023062"); src: url("font/fontello/fontello.eot?3023062#iefix") format("embedded-opentype"), url("font/fontello/fontello.woff?3023062") format("woff"), url("font/fontello/fontello.ttf?3023062") format("truetype"), url("font/fontello/fontello.svg?3023062#fontello") format("svg"); font-weight: normal; font-style: normal; }
 
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
 /*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'fontello';
-    src: url('../font/fontello.svg?3023062#fontello') format('svg');
-  }
+@media screen and (-webkit-min-device-pixel-ratio:0) { @font-face { font-family: 'fontello'; src: url('../font/fontello.svg?3023062#fontello') format('svg'); }
 }
 */
-[class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-  /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
-  /* font-size: 120%; */
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
+[class^="icon-"]:before, [class*=" icon-"]:before { font-family: "fontello"; font-style: normal; font-weight: normal; speak: none; display: inline-block; text-decoration: inherit; width: 1em; margin-right: .2em; text-align: center; /* opacity: .8; */ /* For safety - reset parent styles, that can break glyph codes*/ font-variant: normal; text-transform: none; /* fix buttons height, for twitter bootstrap */ line-height: 1em; /* Animation center compensation - margins should be symmetric */ /* remove if not needed */ margin-left: .2em; /* you can be more comfortable with increased icons size */ /* font-size: 120%; */ /* Uncomment for 3D effect */ /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
-.icon-circle:before {
-  content: '\e800'; }
+.icon-circle:before { content: '\e800'; }
 
 /* '' */
-.icon-circle-empty:before {
-  content: '\e801'; }
+.icon-circle-empty:before { content: '\e801'; }
 
 /* '' */
-.icon-layout:before {
-  content: '\e802'; }
+.icon-layout:before { content: '\e802'; }
 
 /* '' */
-.icon-th-thumb:before {
-  content: '\e803'; }
+.icon-th-thumb:before { content: '\e803'; }
 
 /* '' */
-.icon-th-thumb-empty:before {
-  content: '\e804'; }
+.icon-th-thumb-empty:before { content: '\e804'; }
 
 /* '' */
-.icon-cancel:before {
-  content: '\e805'; }
+.icon-cancel:before { content: '\e805'; }
 
 /* '' */
-@font-face {
-  font-family: 'Transat Black';
-  src: url("font/transat-black/transat-black.eot");
-  src: url("font/transat-black/transat-black.eot?#iefix") format("embedded-opentype"), url("font/transat-black/transat-black.woff") format("woff"), url("font/transat-black/transat-black.ttf") format("truetype"), url("font/transat-black/transat-black.svg#ywftsvg") format("svg");
-  font-weight: normal;
-  font-style: normal; }
+@font-face { font-family: 'Transat Black'; src: url("font/transat-black/transat-black.eot"); src: url("font/transat-black/transat-black.eot?#iefix") format("embedded-opentype"), url("font/transat-black/transat-black.woff") format("woff"), url("font/transat-black/transat-black.ttf") format("truetype"), url("font/transat-black/transat-black.svg#ywftsvg") format("svg"); font-weight: normal; font-style: normal; }
 
-@font-face {
-  font-family: 'Transat Standard Oblique';
-  src: url("font/transat-standard-oblique/transat-standard-oblique.eot");
-  src: url("font/transat-standard-oblique/transat-standard-oblique.eot?#iefix") format("embedded-opentype"), url("font/transat-standard-oblique/transat-standard-oblique.woff") format("woff"), url("font/transat-standard-oblique/transat-standard-oblique.ttf") format("truetype"), url("font/transat-standard-oblique/transat-standard-oblique.svg#ywftsvg") format("svg");
-  font-weight: normal;
-  font-style: normal; }
+@font-face { font-family: 'Transat Standard Oblique'; src: url("font/transat-standard-oblique/transat-standard-oblique.eot"); src: url("font/transat-standard-oblique/transat-standard-oblique.eot?#iefix") format("embedded-opentype"), url("font/transat-standard-oblique/transat-standard-oblique.woff") format("woff"), url("font/transat-standard-oblique/transat-standard-oblique.ttf") format("truetype"), url("font/transat-standard-oblique/transat-standard-oblique.svg#ywftsvg") format("svg"); font-weight: normal; font-style: normal; }
 
-@font-face {
-  font-family: 'Transat Light';
-  src: url("font/transat-light/transat-light.eot");
-  src: url("font/transat-light/transat-light.eot?#iefix") format("embedded-opentype"), url("font/transat-light/transat-light.woff") format("woff"), url("font/transat-light/transat-light.ttf") format("truetype"), url("font/transat-light/transat-light.svg#ywftsvg") format("svg");
-  font-weight: normal;
-  font-style: normal; }
+@font-face { font-family: 'Transat Light'; src: url("font/transat-light/transat-light.eot"); src: url("font/transat-light/transat-light.eot?#iefix") format("embedded-opentype"), url("font/transat-light/transat-light.woff") format("woff"), url("font/transat-light/transat-light.ttf") format("truetype"), url("font/transat-light/transat-light.svg#ywftsvg") format("svg"); font-weight: normal; font-style: normal; }
 
-@font-face {
-  font-family: 'Transat Bold';
-  src: url("font/transat-bold/transat-bold.eot");
-  src: url("font/transat-bold/transat-bold.eot?#iefix") format("embedded-opentype"), url("font/transat-bold/transat-bold.woff") format("woff"), url("font/transat-bold/transat-bold.ttf") format("truetype"), url("font/transat-bold/transat-bold.svg#ywftsvg") format("svg");
-  font-weight: normal;
-  font-style: normal; }
+@font-face { font-family: 'Transat Bold'; src: url("font/transat-bold/transat-bold.eot"); src: url("font/transat-bold/transat-bold.eot?#iefix") format("embedded-opentype"), url("font/transat-bold/transat-bold.woff") format("woff"), url("font/transat-bold/transat-bold.ttf") format("truetype"), url("font/transat-bold/transat-bold.svg#ywftsvg") format("svg"); font-weight: normal; font-style: normal; }
 
-@font-face {
-  font-family: 'Transat Standard';
-  src: url("font/transat-standard/transat-standard.eot");
-  src: url("font/transat-standard/transat-standard.eot?#iefix") format("embedded-opentype"), url("font/transat-standard/transat-standard.woff") format("woff"), url("font/transat-standard/transat-standard.ttf") format("truetype"), url("font/transat-standard/transat-standard.svg#ywftsvg") format("svg");
-  font-weight: normal;
-  font-style: normal; }
+@font-face { font-family: 'Transat Standard'; src: url("font/transat-standard/transat-standard.eot"); src: url("font/transat-standard/transat-standard.eot?#iefix") format("embedded-opentype"), url("font/transat-standard/transat-standard.woff") format("woff"), url("font/transat-standard/transat-standard.ttf") format("truetype"), url("font/transat-standard/transat-standard.svg#ywftsvg") format("svg"); font-weight: normal; font-style: normal; }
 
-@font-face {
-  font-family: 'Transat Medium';
-  src: url("font/transat-medium/transat-medium.eot");
-  src: url("font/transat-medium/transat-medium.eot?#iefix") format("embedded-opentype"), url("font/transat-medium/transat-medium.woff") format("woff"), url("font/transat-medium/transat-medium.ttf") format("truetype"), url("font/transat-medium/transat-medium.svg#ywftsvg") format("svg");
-  font-weight: normal;
-  font-style: normal; }
+@font-face { font-family: 'Transat Medium'; src: url("font/transat-medium/transat-medium.eot"); src: url("font/transat-medium/transat-medium.eot?#iefix") format("embedded-opentype"), url("font/transat-medium/transat-medium.woff") format("woff"), url("font/transat-medium/transat-medium.ttf") format("truetype"), url("font/transat-medium/transat-medium.svg#ywftsvg") format("svg"); font-weight: normal; font-style: normal; }
 
-*, *:before, *:after {
-  /* sane box model */
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
+*, *:before, *:after { /* sane box model */ -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-.headerParent, #main li .top, .overviewRow .entry .hover {
-  text-align: center; }
-  .headerParent:before, #main li .top:before, .overviewRow .entry .hover:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    margin-right: -0.25em;
-    /* Adjusts for spacing */ }
+.headerParent, #main li .top, .overviewRow .entry .hover { text-align: center; }
 
-.headerLine, #main li .top hgroup, .overviewRow .entry .hover hgroup {
-  text-align: center;
-  margin: 0;
-  display: inline-block;
-  vertical-align: middle;
-  text-transform: uppercase; }
+.headerParent:before, #main li .top:before, .overviewRow .entry .hover:before { content: ''; display: inline-block; height: 100%; vertical-align: middle; margin-right: -0.25em; /* Adjusts for spacing */ }
 
-.headerLineH1, #main li .top h1, .overviewRow .entry .hover h1 {
-  font-family: 'Transat Black', arial;
-  font-weight: normal;
-  font-style: normal;
-  letter-spacing: 0.2em; }
+.headerLine, #main li .top hgroup, .overviewRow .entry .hover hgroup { text-align: center; margin: 0; display: inline-block; vertical-align: middle; text-transform: uppercase; }
 
-.headerLineH2, #main li .top h2, .overviewRow .entry .hover h2 {
-  font-family: 'Transat Standard Oblique', arial;
-  font-weight: normal;
-  font-style: normal;
-  margin-bottom: 0.5em;
-  letter-spacing: 0.2em;
-  margin-top: 0; }
+.headerLineH1, #main li .top h1, .overviewRow .entry .hover h1 { font-family: 'Transat Black', arial; font-weight: normal; font-style: normal; letter-spacing: 0.2em; }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #F6F5EE; }
+.headerLineH2, #main li .top h2, .overviewRow .entry .hover h2 { font-family: 'Transat Standard Oblique', arial; font-weight: normal; font-style: normal; margin-bottom: 0.5em; letter-spacing: 0.2em; margin-top: 0; }
 
-#main {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0); }
+html, body { margin: 0; padding: 0; background-color: #F6F5EE; }
 
-.wrapper, #overview #overviewInnerWrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2.0625em 1.875em 0em 1.875em; }
+#main { height: 100%; width: 100%; margin: 0; padding: 0; -webkit-transform: translate3d(0, 0, 0); -moz-transform: translate3d(0, 0, 0); -ms-transform: translate3d(0, 0, 0); -o-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
 
-#navAndLogo {
-  width: 100%;
-  position: fixed;
-  z-index: 10;
-  color: #000; }
-  #navAndLogo nav {
-    text-transform: uppercase;
-    float: right;
-    position: relative;
-    font-family: 'Transat Standard', arial;
-    font-weight: normal;
-    font-weight: normal;
-    font-size: 1.125em; }
-    #navAndLogo nav ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0; }
-      #navAndLogo nav ul li {
-        display: inline-block;
-        letter-spacing: 0.25em;
-        margin-right: 0.45em; }
-        #navAndLogo nav ul li:last-child {
-          margin-right: 0; }
-        #navAndLogo nav ul li a {
-          -webkit-transition: color 1.3s ease;
-          -moz-transition: color 1.3s ease;
-          -ms-transition: color 1.3s ease;
-          -o-transition: color 1.3s ease;
-          transition: color 1.3s ease;
-          color: black;
-          text-decoration: none; }
-    #navAndLogo nav #indicator {
-      -webkit-transition: background-color 1.3s ease;
-      -moz-transition: background-color 1.3s ease;
-      -ms-transition: background-color 1.3s ease;
-      -o-transition: background-color 1.3s ease;
-      transition: background-color 1.3s ease;
-      width: 4.8125em;
-      height: 0.0625em;
-      position: absolute;
-      bottom: 0.2em;
-      left: 0;
-      background-color: #000; }
-  #navAndLogo #logo {
-    text-transform: uppercase;
-    float: left;
-    font-size: 1.25em;
-    -webkit-transition: color 1.3s ease;
-    -moz-transition: color 1.3s ease;
-    -ms-transition: color 1.3s ease;
-    -o-transition: color 1.3s ease;
-    transition: color 1.3s ease;
-    font-family: 'Transat Light', arial;
-    font-weight: normal;
-    font-style: normal; }
-    #navAndLogo #logo p {
-      margin: 0;
-      padding: 0; }
-      #navAndLogo #logo p span {
-        font-family: 'Transat Medium', arial;
-        font-weight: normal;
-        font-weight: normal; }
+.wrapper, #overview #overviewInnerWrapper { max-width: 1200px; margin: 0 auto; padding: 2.0625em 1.875em 0em 1.875em; }
 
-#mainWrapper {
-  position: relative;
-  overflow: hidden;
-  padding-bottom: 14em; }
+#navAndLogo { width: 100%; position: fixed; z-index: 10; color: #000; }
+#navAndLogo nav { text-transform: uppercase; float: right; position: relative; font-family: 'Transat Standard', arial; font-weight: normal; font-weight: normal; font-size: 1.125em; }
+#navAndLogo nav ul { list-style-type: none; padding: 0; margin: 0; }
+#navAndLogo nav ul li { display: inline-block; letter-spacing: 0.25em; margin-right: 0.45em; }
+#navAndLogo nav ul li:last-child { margin-right: 0; }
+#navAndLogo nav ul li a { -webkit-transition: color 1.3s ease; -moz-transition: color 1.3s ease; -ms-transition: color 1.3s ease; -o-transition: color 1.3s ease; transition: color 1.3s ease; color: black; text-decoration: none; }
+#navAndLogo nav #indicator { -webkit-transition: background-color 1.3s ease; -moz-transition: background-color 1.3s ease; -ms-transition: background-color 1.3s ease; -o-transition: background-color 1.3s ease; transition: background-color 1.3s ease; width: 4.8125em; height: 0.0625em; position: absolute; bottom: 0.2em; left: 0; background-color: #000; }
+#navAndLogo #logo { text-transform: uppercase; float: left; font-size: 1.25em; -webkit-transition: color 1.3s ease; -moz-transition: color 1.3s ease; -ms-transition: color 1.3s ease; -o-transition: color 1.3s ease; transition: color 1.3s ease; font-family: 'Transat Light', arial; font-weight: normal; font-style: normal; }
+#navAndLogo #logo p { margin: 0; padding: 0; }
+#navAndLogo #logo p span { font-family: 'Transat Medium', arial; font-weight: normal; font-weight: normal; }
 
-#main {
-  list-style-type: none;
-  width: 1500%; }
-  #main li {
-    width: 6.66667%;
-    min-height: 100%;
-    display: inline-block;
-    vertical-align: top; }
-    #main li .top {
-      width: 100%;
-      background-size: cover;
-      -webkit-transition: opacity 0.5s ease, height 0.75s linear;
-      -moz-transition: opacity 0.5s ease, height 0.75s linear;
-      -ms-transition: opacity 0.5s ease, height 0.75s linear;
-      -o-transition: opacity 0.5s ease, height 0.75s linear;
-      transition: opacity 0.5s ease, height 0.75s linear; }
-      #main li .top.small, #main li .overviewRow.order50-25-25 .top.entry-2, .overviewRow.order50-25-25 #main li .top.entry-2,
-      #main li .overviewRow.order50-25-25 .top.entry-3,
-      .overviewRow.order50-25-25 #main li .top.entry-3, #main li .overviewRow.order50-25-25.rtl .top.entry-1, .overviewRow.order50-25-25.rtl #main li .top.entry-1 {
-        height: 0 !important;
-        opacity: 0; }
-      #main li .top hgroup {
-        text-shadow: 0 0 20px #fff;
-        color: #fff; }
-      #main li .top h1 {
-        font-size: 3.125em; }
-      #main li .top h2 {
-        font-size: 1.875em; }
-    #main li .low {
-      position: relative;
-      overflow: hidden;
-      padding: 13em 1.875em 0 1.875em;
-      max-width: 1200px;
-      margin: 0 auto;
-      -webkit-transition: height 0.75s linear;
-      -moz-transition: height 0.75s linear;
-      -ms-transition: height 0.75s linear;
-      -o-transition: height 0.75s linear;
-      transition: height 0.75s linear;
-      font-family: 'Transat Light', arial;
-      font-weight: normal;
-      font-style: normal; }
-      #main li .low.small, #main li .overviewRow.order50-25-25 .low.entry-2, .overviewRow.order50-25-25 #main li .low.entry-2,
-      #main li .overviewRow.order50-25-25 .low.entry-3,
-      .overviewRow.order50-25-25 #main li .low.entry-3, #main li .overviewRow.order50-25-25.rtl .low.entry-1, .overviewRow.order50-25-25.rtl #main li .low.entry-1 {
-        height: 0; }
-      #main li .low.big {
-        height: 100%; }
-      #main li .low .lowerHeadline {
-        width: 100%; }
-        #main li .low .lowerHeadline hgroup {
-          color: #000;
-          width: 40%;
-          float: left; }
-        #main li .low .lowerHeadline h1 {
-          height: 50%;
-          margin: 0;
-          font-family: 'Transat Bold', arial;
-          font-weight: normal;
-          font-style: normal;
-          font-size: 1.25em; }
-        #main li .low .lowerHeadline h2 {
-          padding-top: 0;
-          margin: 0;
-          font-family: 'Transat Standard', arial;
-          font-weight: normal;
-          font-weight: normal;
-          font-size: 1.25em; }
-      #main li .low p {
-        margin-top: 0;
-        margin-bottom: 2em;
-        float: right;
-        width: 55%;
-        font-size: 2em; }
-      #main li .low img {
-        display: block;
-        height: auto;
-        max-width: 100%;
-        margin: 0 auto;
-        margin-bottom: 0.5em;
-        opacity: 1;
-        -webkit-transition: opacity 0.2s linear;
-        -moz-transition: opacity 0.2s linear;
-        -ms-transition: opacity 0.2s linear;
-        -o-transition: opacity 0.2s linear;
-        transition: opacity 0.2s linear; }
-        #main li .low img.notLoaded {
-          opacity: 0;
-          background-color: #72898F;
-          background-color: rgba(68, 82, 85, 0.5); }
-      #main li .low iframe {
-        height: auto;
-        width: 100%; }
+#mainWrapper { position: relative; overflow: hidden; padding-bottom: 14em; }
 
-#verticalNav {
-  width: 100%;
-  position: absolute;
-  top: 100px;
-  left: 0; }
-  #verticalNav ul {
-    font-size: 3em;
-    color: #fff;
-    margin: 0 auto;
-    padding: 0; }
-    #verticalNav ul li {
-      display: inline-block;
-      cursor: pointer;
-      font-size: 20px;
-      margin-right: 1.2em; }
-  #verticalNav #scrollIndicator {
-    color: #fff;
-    opacity: 0;
-    -webkit-transition: opacity 0.75s ease;
-    -moz-transition: opacity 0.75s ease;
-    -ms-transition: opacity 0.75s ease;
-    -o-transition: opacity 0.75s ease;
-    transition: opacity 0.75s ease; }
-    #verticalNav #scrollIndicator p {
-      font-family: 'Transat Medium', arial;
-      font-weight: normal;
-      font-weight: normal;
-      text-align: center; }
-  #verticalNav:hover #scrollIndicator {
-    opacity: 1; }
+#main { list-style-type: none; width: 1500%; }
+#main li { width: 6.66667%; min-height: 100%; display: inline-block; vertical-align: top; }
+#main li .top { width: 100%; background-size: cover; -webkit-transition: opacity 0.5s ease, height 0.75s linear; -moz-transition: opacity 0.5s ease, height 0.75s linear; -ms-transition: opacity 0.5s ease, height 0.75s linear; -o-transition: opacity 0.5s ease, height 0.75s linear; transition: opacity 0.5s ease, height 0.75s linear; }
+#main li .top.small, #main li .overviewRow.order50-25-25 .top.entry-2, .overviewRow.order50-25-25 #main li .top.entry-2, #main li .overviewRow.order50-25-25 .top.entry-3, .overviewRow.order50-25-25 #main li .top.entry-3, #main li .overviewRow.order50-25-25.rtl .top.entry-1, .overviewRow.order50-25-25.rtl #main li .top.entry-1 { height: 0 !important; opacity: 0; }
+#main li .top hgroup { text-shadow: 0 0 20px #fff; color: #fff; }
+#main li .top h1 { font-size: 3.125em; }
+#main li .top h2 { font-size: 1.875em; }
+#main li .low { position: relative; overflow: hidden; padding: 0 1.875em 0 1.875em; max-width: 1200px; margin: 0 auto; -webkit-transition: height 0.75s linear; -moz-transition: height 0.75s linear; -ms-transition: height 0.75s linear; -o-transition: height 0.75s linear; transition: height 0.75s linear; font-family: 'Transat Light', arial; font-weight: normal; font-style: normal; }
+#main li .low .scrollHeader { margin-bottom: 13em; overflow: hidden; -webkit-transition: height 0.1s linear; -moz-transition: height 0.1s linear; -ms-transition: height 0.1s linear; -o-transition: height 0.1s linear; transition: height 0.1s linear; }
+#main li .low .scrollHeader p { float: none; width: 100%; text-align: center; font-size: 1em; margin: 1em 0; }
+#main li .low.small, #main li .overviewRow.order50-25-25 .low.entry-2, .overviewRow.order50-25-25 #main li .low.entry-2, #main li .overviewRow.order50-25-25 .low.entry-3, .overviewRow.order50-25-25 #main li .low.entry-3, #main li .overviewRow.order50-25-25.rtl .low.entry-1, .overviewRow.order50-25-25.rtl #main li .low.entry-1 { height: 0; }
+#main li .low.big { height: 100%; }
+#main li .low .lowerHeadline { width: 100%; }
+#main li .low .lowerHeadline hgroup { color: #000; width: 40%; float: left; }
+#main li .low .lowerHeadline h1 { height: 50%; margin: 0; font-family: 'Transat Bold', arial; font-weight: normal; font-style: normal; font-size: 1.25em; }
+#main li .low .lowerHeadline h2 { padding-top: 0; margin: 0; font-family: 'Transat Standard', arial; font-weight: normal; font-weight: normal; font-size: 1.25em; }
+#main li .low p { margin-top: 0; margin-bottom: 2em; float: right; width: 55%; font-size: 2em; }
+#main li .low img { display: block; height: auto; max-width: 100%; margin: 0 auto; margin-bottom: 0.5em; opacity: 1; -webkit-transition: opacity 0.2s linear; -moz-transition: opacity 0.2s linear; -ms-transition: opacity 0.2s linear; -o-transition: opacity 0.2s linear; transition: opacity 0.2s linear; }
+#main li .low img.notLoaded { opacity: 0; background-color: #72898F; background-color: rgba(68, 82, 85, 0.5); }
+#main li .low iframe { height: auto; width: 100%; }
 
-#overview {
-  width: 100%;
-  padding-top: 13em; }
-  #overview #overviewInnerWrapper {
-    width: 100%; }
+#verticalNav { width: 100%; position: absolute; top: 100px; left: 0; }
+#verticalNav ul { font-size: 3em; color: #fff; margin: 0 auto; padding: 0; }
+#verticalNav ul li { display: inline-block; cursor: pointer; font-size: 20px; margin-right: 1.2em; }
+#verticalNav #scrollIndicator { color: #fff; opacity: 0; -webkit-transition: opacity 0.75s ease; -moz-transition: opacity 0.75s ease; -ms-transition: opacity 0.75s ease; -o-transition: opacity 0.75s ease; transition: opacity 0.75s ease; }
+#verticalNav #scrollIndicator p { font-family: 'Transat Medium', arial; font-weight: normal; font-weight: normal; text-align: center; }
+#verticalNav:hover #scrollIndicator { opacity: 1; }
 
-.overviewRow {
-  margin-bottom: 1.5em; }
-  .overviewRow a {
-    display: block; }
-  .overviewRow .small h1, .overviewRow.order50-25-25 .entry-2 h1,
-  .overviewRow.order50-25-25 .entry-3 h1, .overviewRow.order50-25-25.rtl .entry-1 h1 {
-    font-size: 1.25em; }
-  .overviewRow .small h2, .overviewRow.order50-25-25 .entry-2 h2,
-  .overviewRow.order50-25-25 .entry-3 h2, .overviewRow.order50-25-25.rtl .entry-1 h2 {
-    font-size: 1em; }
-  .overviewRow.order50-25-25 .entry-1 {
-    width: 50%;
-    margin-right: 1%; }
-  .overviewRow.order50-25-25 .entry-2 {
-    width: 24%;
-    margin-right: 1%; }
-  .overviewRow.order50-25-25 .entry-3 {
-    width: 24%; }
-  .overviewRow.order50-25-25.rtl .entry {
-    margin-right: 0; }
-  .overviewRow.order50-25-25.rtl .entry-1 {
-    width: 24%; }
-  .overviewRow.order50-25-25.rtl .entry-2 {
-    width: 24%;
-    margin-left: 1%; }
-  .overviewRow.order50-25-25.rtl .entry-3 {
-    width: 50%;
-    margin-left: 1%; }
-    .overviewRow.order50-25-25.rtl .entry-3 h1 {
-      font-size: 2em; }
-    .overviewRow.order50-25-25.rtl .entry-3 h2 {
-      font-size: 1.5em; }
-  .overviewRow.order50-50 .entry-1 {
-    width: 50%;
-    float: right; }
-  .overviewRow.order50-50.rtl .entry-1 {
-    float: none; }
-  .overviewRow.order40-60 .entry-1 {
-    width: 39.5%;
-    margin-right: 1%; }
-  .overviewRow.order40-60 .entry-2 {
-    width: 59.5%; }
-  .overviewRow.order40-60.rtl .entry-1 {
-    width: 59.5%; }
-  .overviewRow.order40-60.rtl .entry-2 {
-    width: 39.5%; }
-  .overviewRow.order40-60-60 .entry-1 {
-    width: 39.5%;
-    margin-right: 1%; }
-  .overviewRow.order40-60-60 .entry-container {
-    width: 59.5%;
-    display: inline-block;
-    vertical-align: top; }
-    .overviewRow.order40-60-60 .entry-container .entry-2 {
-      margin-bottom: 0.5em; }
-  .overviewRow.order40-60-60.rtl .entry-1 {
-    margin-right: 0;
-    margin-left: 1%; }
-  .overviewRow.order100 .entry-1 {
-    width: 100%; }
-  .overviewRow.order60-0 .entry-1 {
-    width: 60%; }
-  .overviewRow.order60-0.rtl .entry-1 {
-    float: right; }
-  .overviewRow.order50-0 .entry-1 {
-    width: 50%; }
-  .overviewRow.order50-0.rtl .entry-1 {
-    float: right; }
-  .overviewRow .entry {
-    display: inline-block;
-    vertical-align: bottom;
-    position: relative; }
-    .overviewRow .entry a,
-    .overviewRow .entry a:visited {
-      color: #fff; }
-    .overviewRow .entry.first {
-      margin-left: 0; }
-    .overviewRow .entry:hover .hover {
-      display: block; }
-    .overviewRow .entry img {
-      max-width: 100%;
-      height: auto;
-      width: auto; }
-    .overviewRow .entry .hover {
-      display: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #72898F;
-      background-color: rgba(68, 82, 85, 0.5); }
+#overview { width: 100%; padding-top: 13em; }
+#overview #overviewInnerWrapper { width: 100%; }
 
-footer {
-  width: 100%;
-  height: 13em;
-  position: absolute;
-  bottom: 0;
-  font-family: 'Transat Light', arial;
-  font-weight: normal;
-  font-style: normal; }
-  footer .wrapper, footer #overview #overviewInnerWrapper, #overview footer #overviewInnerWrapper {
-    height: 13em; }
-    footer .wrapper ul, footer #overview #overviewInnerWrapper ul, #overview footer #overviewInnerWrapper ul {
-      list-style-type: none;
-      float: left;
-      margin: 4.3em 0 0 0;
-      padding: 0;
-      height: 4.3em;
-      width: 40%; }
-      footer .wrapper ul li, footer #overview #overviewInnerWrapper ul li, #overview footer #overviewInnerWrapper ul li {
-        display: inline-block;
-        vertical-align: top;
-        margin-right: 1em; }
-        footer .wrapper ul li p, footer #overview #overviewInnerWrapper ul li p, #overview footer #overviewInnerWrapper ul li p,
-        footer .wrapper ul li h3,
-        footer #overview #overviewInnerWrapper ul li h3,
-        #overview footer #overviewInnerWrapper ul li h3 {
-          margin: 0;
-          font-size: 1em;
-          line-height: 1.4; }
-        footer .wrapper ul li h3, footer #overview #overviewInnerWrapper ul li h3, #overview footer #overviewInnerWrapper ul li h3 {
-          font-family: 'Transat Bold', arial;
-          font-weight: normal;
-          font-style: normal; }
-          footer .wrapper ul li h3 span, footer #overview #overviewInnerWrapper ul li h3 span, #overview footer #overviewInnerWrapper ul li h3 span {
-            text-transform: uppercase; }
-        footer .wrapper ul li a, footer #overview #overviewInnerWrapper ul li a, #overview footer #overviewInnerWrapper ul li a {
-          color: #222;
-          text-decoration: none;
-          font-style: italic; }
-          footer .wrapper ul li a:hover, footer #overview #overviewInnerWrapper ul li a:hover, #overview footer #overviewInnerWrapper ul li a:hover {
-            text-decoration: underline; }
+.overviewRow { margin-bottom: 1.5em; }
+.overviewRow a { display: block; }
+.overviewRow .small h1, .overviewRow.order50-25-25 .entry-2 h1, .overviewRow.order50-25-25 .entry-3 h1, .overviewRow.order50-25-25.rtl .entry-1 h1 { font-size: 1.25em; }
+.overviewRow .small h2, .overviewRow.order50-25-25 .entry-2 h2, .overviewRow.order50-25-25 .entry-3 h2, .overviewRow.order50-25-25.rtl .entry-1 h2 { font-size: 1em; }
+.overviewRow.order50-25-25 .entry-1 { width: 50%; margin-right: 1%; }
+.overviewRow.order50-25-25 .entry-2 { width: 24%; margin-right: 1%; }
+.overviewRow.order50-25-25 .entry-3 { width: 24%; }
+.overviewRow.order50-25-25.rtl .entry { margin-right: 0; }
+.overviewRow.order50-25-25.rtl .entry-1 { width: 24%; }
+.overviewRow.order50-25-25.rtl .entry-2 { width: 24%; margin-left: 1%; }
+.overviewRow.order50-25-25.rtl .entry-3 { width: 50%; margin-left: 1%; }
+.overviewRow.order50-25-25.rtl .entry-3 h1 { font-size: 2em; }
+.overviewRow.order50-25-25.rtl .entry-3 h2 { font-size: 1.5em; }
+.overviewRow.order50-50 .entry-1 { width: 50%; float: right; }
+.overviewRow.order50-50.rtl .entry-1 { float: none; }
+.overviewRow.order40-60 .entry-1 { width: 39.5%; margin-right: 1%; }
+.overviewRow.order40-60 .entry-2 { width: 59.5%; }
+.overviewRow.order40-60.rtl .entry-1 { width: 59.5%; }
+.overviewRow.order40-60.rtl .entry-2 { width: 39.5%; }
+.overviewRow.order40-60-60 .entry-1 { width: 39.5%; margin-right: 1%; }
+.overviewRow.order40-60-60 .entry-container { width: 59.5%; display: inline-block; vertical-align: top; }
+.overviewRow.order40-60-60 .entry-container .entry-2 { margin-bottom: 0.5em; }
+.overviewRow.order40-60-60.rtl .entry-1 { margin-right: 0; margin-left: 1%; }
+.overviewRow.order100 .entry-1 { width: 100%; }
+.overviewRow.order60-0 .entry-1 { width: 60%; }
+.overviewRow.order60-0.rtl .entry-1 { float: right; }
+.overviewRow.order50-0 .entry-1 { width: 50%; }
+.overviewRow.order50-0.rtl .entry-1 { float: right; }
+.overviewRow .entry { display: inline-block; vertical-align: bottom; position: relative; }
+.overviewRow .entry a, .overviewRow .entry a:visited { color: #fff; }
+.overviewRow .entry.first { margin-left: 0; }
+.overviewRow .entry:hover .hover { display: block; }
+.overviewRow .entry img { max-width: 100%; height: auto; width: auto; }
+.overviewRow .entry .hover { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #72898F; background-color: rgba(68, 82, 85, 0.5); }
 
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-/*
- * Image replacement
- */
-.ir {
-  background-color: transparent;
-  border: 0;
-  overflow: hidden;
-  /* IE 6/7 fallback */
-  *text-indent: -9999px; }
+footer { width: 100%; height: 13em; position: absolute; bottom: 0; font-family: 'Transat Light', arial; font-weight: normal; font-style: normal; }
+footer .wrapper, footer #overview #overviewInnerWrapper, #overview footer #overviewInnerWrapper { height: 13em; }
+footer .wrapper ul, footer #overview #overviewInnerWrapper ul, #overview footer #overviewInnerWrapper ul { list-style-type: none; float: left; margin: 4.3em 0 0 0; padding: 0; height: 4.3em; width: 40%; }
+footer .wrapper ul li, footer #overview #overviewInnerWrapper ul li, #overview footer #overviewInnerWrapper ul li { display: inline-block; vertical-align: top; margin-right: 1em; }
+footer .wrapper ul li p, footer #overview #overviewInnerWrapper ul li p, #overview footer #overviewInnerWrapper ul li p, footer .wrapper ul li h3, footer #overview #overviewInnerWrapper ul li h3, #overview footer #overviewInnerWrapper ul li h3 { margin: 0; font-size: 1em; line-height: 1.4; }
+footer .wrapper ul li h3, footer #overview #overviewInnerWrapper ul li h3, #overview footer #overviewInnerWrapper ul li h3 { font-family: 'Transat Bold', arial; font-weight: normal; font-style: normal; }
+footer .wrapper ul li h3 span, footer #overview #overviewInnerWrapper ul li h3 span, #overview footer #overviewInnerWrapper ul li h3 span { text-transform: uppercase; }
+footer .wrapper ul li a, footer #overview #overviewInnerWrapper ul li a, #overview footer #overviewInnerWrapper ul li a { color: #222; text-decoration: none; font-style: italic; }
+footer .wrapper ul li a:hover, footer #overview #overviewInnerWrapper ul li a:hover, #overview footer #overviewInnerWrapper ul li a:hover { text-decoration: underline; }
 
-.ir:before {
-  content: "";
-  display: block;
-  width: 0;
-  height: 150%; }
+/* ========================================================================== Helper classes ========================================================================== */
+/* Image replacement */
+.ir { background-color: transparent; border: 0; overflow: hidden; /* IE 6/7 fallback */ *text-indent: -9999px; }
 
-/*
- * Hide from both screenreaders and browsers: h5bp.com/u
- */
-.hidden {
-  display: none !important;
-  visibility: hidden; }
+.ir:before { content: ""; display: block; width: 0; height: 150%; }
 
-/*
- * Hide only visually, but have it available for screenreaders: h5bp.com/v
- */
-.visuallyhidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px; }
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden { display: none !important; visibility: hidden; }
 
-/*
- * Extends the .visuallyhidden class to allow the element to be focusable
- * when navigated to via the keyboard: h5bp.com/p
- */
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  width: auto; }
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
 
-/*
- * Hide visually and from screenreaders, but maintain layout
- */
-.invisible {
-  visibility: hidden; }
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
 
-/*
- * Clearfix: contain floats
- *
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-.clearfix:before, .overviewRow.order50-50:before, .overviewRow.order60-0:before, .overviewRow.order50-0:before,
-.clearfix:after,
-.overviewRow.order50-50:after,
-.overviewRow.order60-0:after,
-.overviewRow.order50-0:after {
-  content: " ";
-  /* 1 */
-  display: table;
-  /* 2 */ }
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
 
-.clearfix:after, .overviewRow.order50-50:after, .overviewRow.order60-0:after, .overviewRow.order50-0:after {
-  clear: both; }
+/* Clearfix: contain floats  For modern browsers 1. The space content is one way to avoid an Opera bug when the `contenteditable` attribute is included anywhere else in the document. Otherwise it causes space to appear at the top and bottom of elements that receive the `clearfix` class. 2. The use of `table` rather than `block` is only necessary if using `:before` to contain the top-margins of child elements. */
+.clearfix:before, .overviewRow.order50-50:before, .overviewRow.order60-0:before, .overviewRow.order50-0:before, .clearfix:after, .overviewRow.order50-50:after, .overviewRow.order60-0:after, .overviewRow.order50-0:after { content: " "; /* 1 */ display: table; /* 2 */ }
 
-/*
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
-.clearfix, .overviewRow.order50-50, .overviewRow.order60-0, .overviewRow.order50-0 {
-  *zoom: 1; }
+.clearfix:after, .overviewRow.order50-50:after, .overviewRow.order60-0:after, .overviewRow.order50-0:after { clear: both; }
 
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-#loeffler .top {
-  background-image: url("../img/01_loeffler/20140121_gw_loeffler__MG_0226_normal.jpg"); }
-  @media (max-width: 1600px) {
-    #loeffler .top {
-      background-image: url("../img/01_loeffler/20140121_gw_loeffler__MG_0226_highres.jpg"); } }
-  @media (max-width: 1250px) {
-    #loeffler .top {
-      background-image: url("../img/01_loeffler/20140121_gw_loeffler__MG_0226_landscape.jpg"); } }
-  @media (max-width: 650px) {
-    #loeffler .top {
-      background-image: url("../img/01_loeffler/20140121_gw_loeffler__MG_0226_mobile.jpg"); } }
+/* For IE 6/7 only Include this rule to trigger hasLayout and contain floats. */
+.clearfix, .overviewRow.order50-50, .overviewRow.order60-0, .overviewRow.order50-0 { *zoom: 1; }
 
-#finkenschlag .top {
-  background-image: url("../img/02_finkenschlag/20131128_gw_finkenschlag__MG_9651_normal.jpg"); }
-  @media (max-width: 1600px) {
-    #finkenschlag .top {
-      background-image: url("../img/02_finkenschlag/20131128_gw_finkenschlag__MG_9651_highres.jpg"); } }
-  @media (max-width: 1250px) {
-    #finkenschlag .top {
-      background-image: url("../img/02_finkenschlag/20131128_gw_finkenschlag__MG_9651_landscape.jpg"); } }
-  @media (max-width: 650px) {
-    #finkenschlag .top {
-      background-image: url("../img/02_finkenschlag/20131128_gw_finkenschlag__MG_9651_mobile.jpg"); } }
+/* ========================================================================== EXAMPLE Media Queries for Responsive Design. These examples override the primary ('mobile first') styles. Modify as content requires. ========================================================================== */
+#loeffler .top { background-image: url("../img/01_loeffler/20140121_gw_loeffler__MG_0226_normal.jpg"); }
+@media (max-width: 1600px) { #loeffler .top { background-image: url("../img/01_loeffler/20140121_gw_loeffler__MG_0226_highres.jpg"); } }
+@media (max-width: 1250px) { #loeffler .top { background-image: url("../img/01_loeffler/20140121_gw_loeffler__MG_0226_landscape.jpg"); } }
+@media (max-width: 650px) { #loeffler .top { background-image: url("../img/01_loeffler/20140121_gw_loeffler__MG_0226_mobile.jpg"); } }
 
-#transatlantic .top {
-  background-image: url("../img/03_transatlantic/20080218_transatlantic_gw__MG_3128_normal.jpg"); }
-  @media (max-width: 1600px) {
-    #transatlantic .top {
-      background-image: url("../img/03_transatlantic/20080218_transatlantic_gw__MG_3128_highres.jpg"); } }
-  @media (max-width: 1250px) {
-    #transatlantic .top {
-      background-image: url("../img/03_transatlantic/20080218_transatlantic_gw__MG_3128_landscape.jpg"); } }
-  @media (max-width: 650px) {
-    #transatlantic .top {
-      background-image: url("../img/03_transatlantic/20080218_transatlantic_gw__MG_3128_mobile.jpg"); } }
+#finkenschlag .top { background-image: url("../img/02_finkenschlag/20131128_gw_finkenschlag__MG_9651_normal.jpg"); }
+@media (max-width: 1600px) { #finkenschlag .top { background-image: url("../img/02_finkenschlag/20131128_gw_finkenschlag__MG_9651_highres.jpg"); } }
+@media (max-width: 1250px) { #finkenschlag .top { background-image: url("../img/02_finkenschlag/20131128_gw_finkenschlag__MG_9651_landscape.jpg"); } }
+@media (max-width: 650px) { #finkenschlag .top { background-image: url("../img/02_finkenschlag/20131128_gw_finkenschlag__MG_9651_mobile.jpg"); } }
 
-#kalender2014 .top {
-  background-image: url("../img/04_kalender2014/dias_kalender2_0010_normal.jpg"); }
-  @media (max-width: 1600px) {
-    #kalender2014 .top {
-      background-image: url("../img/04_kalender2014/dias_kalender2_0010_highres.jpg"); } }
-  @media (max-width: 1250px) {
-    #kalender2014 .top {
-      background-image: url("../img/04_kalender2014/dias_kalender2_0010_landscape.jpg"); } }
-  @media (max-width: 650px) {
-    #kalender2014 .top {
-      background-image: url("../img/04_kalender2014/dias_kalender2_0010_mobile.jpg"); } }
+#transatlantic .top { background-image: url("../img/03_transatlantic/20080218_transatlantic_gw__MG_3128_normal.jpg"); }
+@media (max-width: 1600px) { #transatlantic .top { background-image: url("../img/03_transatlantic/20080218_transatlantic_gw__MG_3128_highres.jpg"); } }
+@media (max-width: 1250px) { #transatlantic .top { background-image: url("../img/03_transatlantic/20080218_transatlantic_gw__MG_3128_landscape.jpg"); } }
+@media (max-width: 650px) { #transatlantic .top { background-image: url("../img/03_transatlantic/20080218_transatlantic_gw__MG_3128_mobile.jpg"); } }
 
-#getreideverpackung_riederenhof .top {
-  background-image: url("../img/05_Getreideverpackung Riederenhof/20140121_gw_riederenhof__MG_0285_normal.jpg"); }
-  @media (max-width: 1600px) {
-    #getreideverpackung_riederenhof .top {
-      background-image: url("../img/05_Getreideverpackung Riederenhof/20140121_gw_riederenhof__MG_0285_highres.jpg"); } }
-  @media (max-width: 1250px) {
-    #getreideverpackung_riederenhof .top {
-      background-image: url("../img/05_Getreideverpackung Riederenhof/20140121_gw_riederenhof__MG_0285_landscape.jpg"); } }
-  @media (max-width: 650px) {
-    #getreideverpackung_riederenhof .top {
-      background-image: url("../img/05_Getreideverpackung Riederenhof/20140121_gw_riederenhof__MG_0285_mobile.jpg"); } }
+#kalender2014 .top { background-image: url("../img/04_kalender2014/dias_kalender2_0010_normal.jpg"); }
+@media (max-width: 1600px) { #kalender2014 .top { background-image: url("../img/04_kalender2014/dias_kalender2_0010_highres.jpg"); } }
+@media (max-width: 1250px) { #kalender2014 .top { background-image: url("../img/04_kalender2014/dias_kalender2_0010_landscape.jpg"); } }
+@media (max-width: 650px) { #kalender2014 .top { background-image: url("../img/04_kalender2014/dias_kalender2_0010_mobile.jpg"); } }
 
-#depotbasel .top {
-  background-image: url("../img/06_depotbasel/20130817_gw_depotbasel__MG_3610_normal.jpg"); }
-  @media (max-width: 1600px) {
-    #depotbasel .top {
-      background-image: url("../img/06_depotbasel/20130817_gw_depotbasel__MG_3610_highres.jpg"); } }
-  @media (max-width: 1250px) {
-    #depotbasel .top {
-      background-image: url("../img/06_depotbasel/20130817_gw_depotbasel__MG_3610_landscape.jpg"); } }
-  @media (max-width: 650px) {
-    #depotbasel .top {
-      background-image: url("../img/06_depotbasel/20130817_gw_depotbasel__MG_3610_mobile.jpg"); } }
+#getreideverpackung_riederenhof .top { background-image: url("../img/05_Getreideverpackung Riederenhof/20140121_gw_riederenhof__MG_0285_normal.jpg"); }
+@media (max-width: 1600px) { #getreideverpackung_riederenhof .top { background-image: url("../img/05_Getreideverpackung Riederenhof/20140121_gw_riederenhof__MG_0285_highres.jpg"); } }
+@media (max-width: 1250px) { #getreideverpackung_riederenhof .top { background-image: url("../img/05_Getreideverpackung Riederenhof/20140121_gw_riederenhof__MG_0285_landscape.jpg"); } }
+@media (max-width: 650px) { #getreideverpackung_riederenhof .top { background-image: url("../img/05_Getreideverpackung Riederenhof/20140121_gw_riederenhof__MG_0285_mobile.jpg"); } }
 
-#theglue_songbook .top {
-  background-image: url("../img/07_theglue_songbook/20140214_gw_gluebalisation__MG_0418_normal.jpg"); }
-  @media (max-width: 1600px) {
-    #theglue_songbook .top {
-      background-image: url("../img/07_theglue_songbook/20140214_gw_gluebalisation__MG_0418_highres.jpg"); } }
-  @media (max-width: 1250px) {
-    #theglue_songbook .top {
-      background-image: url("../img/07_theglue_songbook/20140214_gw_gluebalisation__MG_0418_landscape.jpg"); } }
-  @media (max-width: 650px) {
-    #theglue_songbook .top {
-      background-image: url("../img/07_theglue_songbook/20140214_gw_gluebalisation__MG_0418_mobile.jpg"); } }
+#depotbasel .top { background-image: url("../img/06_depotbasel/20130817_gw_depotbasel__MG_3610_normal.jpg"); }
+@media (max-width: 1600px) { #depotbasel .top { background-image: url("../img/06_depotbasel/20130817_gw_depotbasel__MG_3610_highres.jpg"); } }
+@media (max-width: 1250px) { #depotbasel .top { background-image: url("../img/06_depotbasel/20130817_gw_depotbasel__MG_3610_landscape.jpg"); } }
+@media (max-width: 650px) { #depotbasel .top { background-image: url("../img/06_depotbasel/20130817_gw_depotbasel__MG_3610_mobile.jpg"); } }
 
-#theglue_gluebalisation .top {
-  background-image: url("../img/08_theglue_gluebalisation/20140214_gw_gluebalisation__MG_0365_normal.jpg"); }
-  @media (max-width: 1600px) {
-    #theglue_gluebalisation .top {
-      background-image: url("../img/08_theglue_gluebalisation/20140214_gw_gluebalisation__MG_0365_highres.jpg"); } }
-  @media (max-width: 1250px) {
-    #theglue_gluebalisation .top {
-      background-image: url("../img/08_theglue_gluebalisation/20140214_gw_gluebalisation__MG_0365_landscape.jpg"); } }
-  @media (max-width: 650px) {
-    #theglue_gluebalisation .top {
-      background-image: url("../img/08_theglue_gluebalisation/20140214_gw_gluebalisation__MG_0365_mobile.jpg"); } }
+#theglue_songbook .top { background-image: url("../img/07_theglue_songbook/20140214_gw_gluebalisation__MG_0418_normal.jpg"); }
+@media (max-width: 1600px) { #theglue_songbook .top { background-image: url("../img/07_theglue_songbook/20140214_gw_gluebalisation__MG_0418_highres.jpg"); } }
+@media (max-width: 1250px) { #theglue_songbook .top { background-image: url("../img/07_theglue_songbook/20140214_gw_gluebalisation__MG_0418_landscape.jpg"); } }
+@media (max-width: 650px) { #theglue_songbook .top { background-image: url("../img/07_theglue_songbook/20140214_gw_gluebalisation__MG_0418_mobile.jpg"); } }
 
-#jkf2013 .top {
-  background-image: url("../img/09_jkf2013/20130831_gw_jkf2013__MG_7536_normal.jpg"); }
-  @media (max-width: 1600px) {
-    #jkf2013 .top {
-      background-image: url("../img/09_jkf2013/20130831_gw_jkf2013__MG_7536_highres.jpg"); } }
-  @media (max-width: 1250px) {
-    #jkf2013 .top {
-      background-image: url("../img/09_jkf2013/20130831_gw_jkf2013__MG_7536_landscape.jpg"); } }
-  @media (max-width: 650px) {
-    #jkf2013 .top {
-      background-image: url("../img/09_jkf2013/20130831_gw_jkf2013__MG_7536_mobile.jpg"); } }
+#theglue_gluebalisation .top { background-image: url("../img/08_theglue_gluebalisation/20140214_gw_gluebalisation__MG_0365_normal.jpg"); }
+@media (max-width: 1600px) { #theglue_gluebalisation .top { background-image: url("../img/08_theglue_gluebalisation/20140214_gw_gluebalisation__MG_0365_highres.jpg"); } }
+@media (max-width: 1250px) { #theglue_gluebalisation .top { background-image: url("../img/08_theglue_gluebalisation/20140214_gw_gluebalisation__MG_0365_landscape.jpg"); } }
+@media (max-width: 650px) { #theglue_gluebalisation .top { background-image: url("../img/08_theglue_gluebalisation/20140214_gw_gluebalisation__MG_0365_mobile.jpg"); } }
 
-#imfluss2013 .top {
-  background-image: url("../img/10_imfluss2013/20130814_gw_lesreinesprochaines__MG_2207_normal.jpg"); }
-  @media (max-width: 1600px) {
-    #imfluss2013 .top {
-      background-image: url("../img/10_imfluss2013/20130814_gw_lesreinesprochaines__MG_2207_highres.jpg"); } }
-  @media (max-width: 1250px) {
-    #imfluss2013 .top {
-      background-image: url("../img/10_imfluss2013/20130814_gw_lesreinesprochaines__MG_2207_landscape.jpg"); } }
-  @media (max-width: 650px) {
-    #imfluss2013 .top {
-      background-image: url("../img/10_imfluss2013/20130814_gw_lesreinesprochaines__MG_2207_mobile.jpg"); } }
+#jkf2013 .top { background-image: url("../img/09_jkf2013/20130831_gw_jkf2013__MG_7536_normal.jpg"); }
+@media (max-width: 1600px) { #jkf2013 .top { background-image: url("../img/09_jkf2013/20130831_gw_jkf2013__MG_7536_highres.jpg"); } }
+@media (max-width: 1250px) { #jkf2013 .top { background-image: url("../img/09_jkf2013/20130831_gw_jkf2013__MG_7536_landscape.jpg"); } }
+@media (max-width: 650px) { #jkf2013 .top { background-image: url("../img/09_jkf2013/20130831_gw_jkf2013__MG_7536_mobile.jpg"); } }
 
-#maennerstimmen_web .top {
-  background-image: url("../img/11_maennerstimmen_web/maennerstimmen_web_normal.jpg"); }
-  @media (max-width: 1600px) {
-    #maennerstimmen_web .top {
-      background-image: url("../img/11_maennerstimmen_web/maennerstimmen_web_highres.jpg"); } }
-  @media (max-width: 1250px) {
-    #maennerstimmen_web .top {
-      background-image: url("../img/11_maennerstimmen_web/maennerstimmen_web_landscape.jpg"); } }
-  @media (max-width: 650px) {
-    #maennerstimmen_web .top {
-      background-image: url("../img/11_maennerstimmen_web/maennerstimmen_web_mobile.jpg"); } }
+#imfluss2013 .top { background-image: url("../img/10_imfluss2013/20130814_gw_lesreinesprochaines__MG_2207_normal.jpg"); }
+@media (max-width: 1600px) { #imfluss2013 .top { background-image: url("../img/10_imfluss2013/20130814_gw_lesreinesprochaines__MG_2207_highres.jpg"); } }
+@media (max-width: 1250px) { #imfluss2013 .top { background-image: url("../img/10_imfluss2013/20130814_gw_lesreinesprochaines__MG_2207_landscape.jpg"); } }
+@media (max-width: 650px) { #imfluss2013 .top { background-image: url("../img/10_imfluss2013/20130814_gw_lesreinesprochaines__MG_2207_mobile.jpg"); } }
 
-#oliverrudin_web .top {
-  background-image: url("../img/12_oliverrudin_web/oliverrudin_web4_normal.jpg"); }
-  @media (max-width: 1600px) {
-    #oliverrudin_web .top {
-      background-image: url("../img/12_oliverrudin_web/oliverrudin_web4_highres.jpg"); } }
-  @media (max-width: 1250px) {
-    #oliverrudin_web .top {
-      background-image: url("../img/12_oliverrudin_web/oliverrudin_web4_landscape.jpg"); } }
-  @media (max-width: 650px) {
-    #oliverrudin_web .top {
-      background-image: url("../img/12_oliverrudin_web/oliverrudin_web4_mobile.jpg"); } }
+#maennerstimmen_web .top { background-image: url("../img/11_maennerstimmen_web/maennerstimmen_web_normal.jpg"); }
+@media (max-width: 1600px) { #maennerstimmen_web .top { background-image: url("../img/11_maennerstimmen_web/maennerstimmen_web_highres.jpg"); } }
+@media (max-width: 1250px) { #maennerstimmen_web .top { background-image: url("../img/11_maennerstimmen_web/maennerstimmen_web_landscape.jpg"); } }
+@media (max-width: 650px) { #maennerstimmen_web .top { background-image: url("../img/11_maennerstimmen_web/maennerstimmen_web_mobile.jpg"); } }
 
-#andreasmeier_web .top {
-  background-image: url("../img/13_andreasmeier_web/andreasmeier_web_normal.jpg"); }
-  @media (max-width: 1600px) {
-    #andreasmeier_web .top {
-      background-image: url("../img/13_andreasmeier_web/andreasmeier_web_highres.jpg"); } }
-  @media (max-width: 1250px) {
-    #andreasmeier_web .top {
-      background-image: url("../img/13_andreasmeier_web/andreasmeier_web_landscape.jpg"); } }
-  @media (max-width: 650px) {
-    #andreasmeier_web .top {
-      background-image: url("../img/13_andreasmeier_web/andreasmeier_web_mobile.jpg"); } }
+#oliverrudin_web .top { background-image: url("../img/12_oliverrudin_web/oliverrudin_web4_normal.jpg"); }
+@media (max-width: 1600px) { #oliverrudin_web .top { background-image: url("../img/12_oliverrudin_web/oliverrudin_web4_highres.jpg"); } }
+@media (max-width: 1250px) { #oliverrudin_web .top { background-image: url("../img/12_oliverrudin_web/oliverrudin_web4_landscape.jpg"); } }
+@media (max-width: 650px) { #oliverrudin_web .top { background-image: url("../img/12_oliverrudin_web/oliverrudin_web4_mobile.jpg"); } }
 
-#maennerstimmen_cd .top {
-  background-image: url("../img/14_maennerstimmen_cd/20140106_gw_tontraeger_n2__MG_0100-Bearbeitet_normal.jpg"); }
-  @media (max-width: 1600px) {
-    #maennerstimmen_cd .top {
-      background-image: url("../img/14_maennerstimmen_cd/20140106_gw_tontraeger_n2__MG_0100-Bearbeitet_highres.jpg"); } }
-  @media (max-width: 1250px) {
-    #maennerstimmen_cd .top {
-      background-image: url("../img/14_maennerstimmen_cd/20140106_gw_tontraeger_n2__MG_0100-Bearbeitet_landscape.jpg"); } }
-  @media (max-width: 650px) {
-    #maennerstimmen_cd .top {
-      background-image: url("../img/14_maennerstimmen_cd/20140106_gw_tontraeger_n2__MG_0100-Bearbeitet_mobile.jpg"); } }
+#andreasmeier_web .top { background-image: url("../img/13_andreasmeier_web/andreasmeier_web_normal.jpg"); }
+@media (max-width: 1600px) { #andreasmeier_web .top { background-image: url("../img/13_andreasmeier_web/andreasmeier_web_highres.jpg"); } }
+@media (max-width: 1250px) { #andreasmeier_web .top { background-image: url("../img/13_andreasmeier_web/andreasmeier_web_landscape.jpg"); } }
+@media (max-width: 650px) { #andreasmeier_web .top { background-image: url("../img/13_andreasmeier_web/andreasmeier_web_mobile.jpg"); } }
 
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */ }
-@media print, (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */ }
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid required HTTP connection: h5bp.com/r
-   ========================================================================== */
-@media print {
-  * {
-    background: transparent !important;
-    color: #000 !important;
-    /* Black prints faster: h5bp.com/s */
-    box-shadow: none !important;
-    text-shadow: none !important; }
+#maennerstimmen_cd .top { background-image: url("../img/14_maennerstimmen_cd/20140106_gw_tontraeger_n2__MG_0100-Bearbeitet_normal.jpg"); }
+@media (max-width: 1600px) { #maennerstimmen_cd .top { background-image: url("../img/14_maennerstimmen_cd/20140106_gw_tontraeger_n2__MG_0100-Bearbeitet_highres.jpg"); } }
+@media (max-width: 1250px) { #maennerstimmen_cd .top { background-image: url("../img/14_maennerstimmen_cd/20140106_gw_tontraeger_n2__MG_0100-Bearbeitet_landscape.jpg"); } }
+@media (max-width: 650px) { #maennerstimmen_cd .top { background-image: url("../img/14_maennerstimmen_cd/20140106_gw_tontraeger_n2__MG_0100-Bearbeitet_mobile.jpg"); } }
 
-  a,
-  a:visited {
-    text-decoration: underline; }
-
-  a[href]:after {
-    content: " (" attr(href) ")"; }
-
-  abbr[title]:after {
-    content: " (" attr(title) ")"; }
-
-  /*
-   * Don't show links for images, or javascript/internal links
-   */
-  .ir a:after,
-  a[href^="javascript:"]:after,
-  a[href^="#"]:after {
-    content: ""; }
-
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid; }
-
-  thead {
-    display: table-header-group;
-    /* h5bp.com/t */ }
-
-  tr,
-  img {
-    page-break-inside: avoid; }
-
-  img {
-    max-width: 100% !important; }
-
-  @page {
-    margin: 0.5cm; }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3; }
-
-  h2,
-  h3 {
-    page-break-after: avoid; } }
+@media only screen and (min-width: 35em) { /* Style adjustments for viewports that meet the condition */ }
+@media print, (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) { /* Style adjustments for high resolution devices */ }
+/* ========================================================================== Print styles. Inlined to avoid required HTTP connection: h5bp.com/r ========================================================================== */
+@media print { * { background: transparent !important; color: #000 !important; /* Black prints faster: h5bp.com/s */ box-shadow: none !important; text-shadow: none !important; }
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  /* Don't show links for images, or javascript/internal links */
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; /* h5bp.com/t */ }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; } }
