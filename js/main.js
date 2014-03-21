@@ -124,6 +124,7 @@ var gaspi = (function ($) {
 		topElementsToSwitchBack = $("#indicator"),
 		promoElements = $('.promo'),
 		overview = $("#overview"),
+		scrollUpThreshold = 0,
 		bullets = {
 			"active" : $('<i/>').attr({
 				"class" : "icon-circle",
@@ -149,6 +150,7 @@ var gaspi = (function ($) {
 			'active' : 'active',
 			'empty' : 'icon-circle-empty',
 			'circle' : 'icon-circle'
+			'scrollHeader': 'scrollHeader'
 		},
 		c_ = function(selector) {
 			return '.' + c[selector];
@@ -190,7 +192,6 @@ var gaspi = (function ($) {
 			ul.append(li);
 			li.click(function () {
 				var e = $(this);
-				//loader.checkForImages(navElements.eq(e.index()));
 				promoElements.removeClass('active');
 				promoElements.eq(e.index()).addClass('active');
 				loader.setActiveParent($('#main li.active').attr('id'));
@@ -236,15 +237,27 @@ var gaspi = (function ($) {
 	},
 	scrollDown = function (promoElement) {
 		var e = promoElement,
-			state = e.find(c_('top')).hasClass(c.small);
+			state = e.find(c_('top')).hasClass(c.big);
+			console.log('stuff: ' + state);
 		if(state) {
-			e.find(c_('top')).addClass(c.big);
-			e.find(c_('low')).addClass(c.small);
-		}
-		else {
-			e.find(c_('top')).addClass(c.small);
+			e.find(c_('top')).addClass(c.small).removeClass(c.big);
 			e.find(c_('low')).addClass(c.big);
+			win.scrollTop(10);
+			console.log('stuff');
 		}
+	},
+	scrollUp = function (promoElement) {
+		// var e = promoElement,
+		// 	state = e.find(c_('top')).hasClass(c.small);
+		// if(state) { // 92px
+		// 	var scrollValue = win.scrollTop();
+		// 	console.log("stuff: " + win.scrollTop());
+		// 	if(scrollValue <= 10) {
+		// 		var scrollElement = e.find(c_('scrollHeader'));
+		// 		scrollElement.height(scrollElement.height() + 10);
+		// 		win.scrollTop(10);
+		// 	}
+		// }
 	},
 	activateOverview = function () {
 		verticalNav.transition({
@@ -263,6 +276,7 @@ var gaspi = (function ($) {
 	clickHandlers = function (winHeight) {
 		win.scroll(function(event) {
 			scrollDown(promoElements.filter('.active'));
+			scrollUp(promoElements.filter('.active'));
 		});
 		scrollIndicator.click(function() {
 			scrollDown(promoElements.filter('.active'));
