@@ -5,6 +5,10 @@
             "entries" : [ "01_loeffler", "02_finkenschlag", "03_transatlantic"]
         },
         {
+            "type" : "0-50",
+            "entries" : [ "16_gattonero_vk"]
+        },
+        {
             "type" : "60-40",
             "entries" : [ "06_depotbasel", "07_theglue_songbook"]
         },
@@ -14,7 +18,7 @@
         },
         {
             "type" : "100",
-            "entries" : [ "12_oliverrudin_web"]
+            "entries" : [ "15_notitzbuch"]
         },
         {
             "type" : "50-25-25",
