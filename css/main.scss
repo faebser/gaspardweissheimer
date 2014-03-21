@@ -536,6 +536,8 @@ $scrollDuration: 0.75s;
 }
 
 .overviewRow {
+    $margin: 0.711914063em;
+    margin-bottom: $margin;
     a {
         display: block;
     }
@@ -547,15 +549,14 @@ $scrollDuration: 0.75s;
             font-size: 1em;
         }
     }
-    margin-bottom: 1.5em;
     &.order50-25-25 {
         .entry-1 {
             width: 50%;
-            margin-right: 1%;
+            margin-right: $margin;
         }
         .entry-2 {
             width: 24%;
-            margin-right: 1%;
+            margin-right: $margin;
         }
         .entry-3 {
             width: 24%;
@@ -574,11 +575,11 @@ $scrollDuration: 0.75s;
             }
             .entry-2 {
                 width: 24%;
-                margin-left: 1%;
+                margin-left: $margin;
             }
             .entry-3 {
                 width: 50%;
-                margin-left: 1%;
+                margin-left: $margin;
                 h1 {
                     font-size: 2em;
                 }
@@ -602,7 +603,7 @@ $scrollDuration: 0.75s;
     &.order40-60 {
         .entry-1 {
             width: 39.5%;
-            margin-right: 1%;
+            margin-right: $margin;
         }
         .entry-2 {
             width: 59.5%;
@@ -619,7 +620,7 @@ $scrollDuration: 0.75s;
     &.order40-60-60 {
         .entry-1 {
             width: 39.5%;
-            margin-right: 1%;
+            margin-right: $margin;
         }
         .entry-container {
             width: 59.5%;
@@ -632,7 +633,7 @@ $scrollDuration: 0.75s;
         &.rtl {
             .entry-1 {
                 margin-right: 0;
-                margin-left: 1%;
+                margin-left: $margin;
             }
         }
     }
@@ -691,7 +692,6 @@ $scrollDuration: 0.75s;
             height: 100%;
             background-color: #72898F;
             background-color: rgba(68, 82, 85, 0.5);
-            //@extend .headerParent;
             hgroup {
                 @extend .headerLine;
             }
