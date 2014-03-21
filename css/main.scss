@@ -150,6 +150,8 @@ textarea {
 .icon-th-thumb-empty:before { content: '\e804'; } /* '' */
 .icon-cancel:before { content: '\e805'; } /* '' */
 
+$mainWidth: 1500%;
+$promoWidth: 6.66667%;
 
 @font-face {
     font-family: 'Transat Black';
@@ -265,13 +267,13 @@ textarea {
 
 .headerParent {
     text-align: center;
-    &:before {
-      content: '';
-      display: inline-block;
-      height: 100%;
-      vertical-align: middle;
-      margin-right: -0.25em; /* Adjusts for spacing */
-    }
+}
+.headerParent:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
 }
 
 .headerLine {
@@ -523,6 +525,14 @@ $scrollDuration: 0.75s;
     a {
         display: block;
     }
+    .small {
+        h1 {
+            font-size: 1.25em;
+        }
+        h2 {
+            font-size: 1em;
+        }
+    }
     margin-bottom: 1.5em;
     &.order50-25-25 {
         .entry-1 {
@@ -536,12 +546,17 @@ $scrollDuration: 0.75s;
         .entry-3 {
             width: 24%;
         }
+        .entry-2,
+        .entry-3 {
+            @extend .small;
+        }
         &.rtl {
             .entry {
                 margin-right: 0;
             }
             .entry-1 {
                 width: 24%;
+                @extend .small;
             }
             .entry-2 {
                 width: 24%;
@@ -550,6 +565,12 @@ $scrollDuration: 0.75s;
             .entry-3 {
                 width: 50%;
                 margin-left: 1%;
+                h1 {
+                    font-size: 2em;
+                }
+                h2 {
+                    font-size: 1.5em;
+                }
             }
         }
     }
@@ -633,7 +654,10 @@ $scrollDuration: 0.75s;
         display: inline-block;
         vertical-align: bottom;
         position: relative;
-        color: #fff;
+        a,
+        a:visited {
+            color: #fff;
+        }
         &.first {
             margin-left: 0;
         }
@@ -644,7 +668,6 @@ $scrollDuration: 0.75s;
         }
         img {
             max-width: 100%;
-            max-height: 100%;
             height: auto;
             width: auto;
         }
