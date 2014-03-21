@@ -202,7 +202,8 @@ var gaspi = (function ($) {
 				if(e.find('i').hasClass(c.overview)) {
 					main.transition({
 						'x' : $(this).data("scroll") * -1 + "%"
-					}, 1500, 'snap', activateOverview);
+					}, 1500, 'snap');
+					activateOverview(1500);
 				}
 				else {
 					main.transition({
@@ -261,7 +262,7 @@ var gaspi = (function ($) {
 		// 	}
 		// }
 	},
-	activateOverview = function () {
+	activateOverview = function (duration) {
 		verticalNav.transition({
 			'opacity' : 0
 		}, 500, 'linear', function () {
@@ -273,7 +274,7 @@ var gaspi = (function ($) {
 		});
 		overview.transition({
 			'opacity' : 1
-		}, 500, 'linear')
+		}, duration + 500, 'linear')
 	},
 	clickHandlers = function (winHeight) {
 		win.scroll(function(event) {
