@@ -195,7 +195,9 @@ var gaspi = (function ($) {
 				promoElements.removeClass('active');
 				promoElements.eq(e.index()).addClass('active');
 				loader.setActiveParent($('#main li.active').attr('id'));
+				verticalNav.find('i.' + c.circle).toggleClass(c.circle).toggleClass(c.empty);
 				e.find('i').toggleClass(c.empty).toggleClass(c.circle);
+				console.log(navElements.find('i.' + c.circle));
 				
 				if(e.find('i').hasClass(c.overview)) {
 					main.transition({
