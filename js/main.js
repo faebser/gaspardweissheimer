@@ -149,7 +149,7 @@ var gaspi = (function ($) {
 			'overview' : 'icon-layout',
 			'active' : 'active',
 			'empty' : 'icon-circle-empty',
-			'circle' : 'icon-circle'
+			'circle' : 'icon-circle',
 			'scrollHeader': 'scrollHeader'
 		},
 		c_ = function(selector) {
