@@ -589,7 +589,6 @@ $scrollDuration: 0.75s;
         }
     }
     &.order50-50 {
-        @extend .clearfix;
         .entry-1 {
             width: 50%;
             float: right;
@@ -643,7 +642,6 @@ $scrollDuration: 0.75s;
         }
     }
     &.order60-0 {
-        @extend .clearfix;
         .entry-1 {
             width: 60%;
         }
@@ -654,7 +652,6 @@ $scrollDuration: 0.75s;
         }
     }
     &.order50-0 {
-        @extend .clearfix;
         .entry-1 {
             width: 50%;
         }
