@@ -1,20 +1,21 @@
 body.page {
 	#mainContent {
-        padding: 0 1.875em 0 1.875em;
-        max-width: 1200px;
-        margin: 12.5em auto 0 auto;
-        @include transatBold;
-        text-align: center;
-        text-transform: uppercase;
-        p,
-        li {
-        	font-size: 1.25em;
-        	line-height: 1.75em;
-        }
-        ul {
-        	li {
-        		list-style-type: none;
-        	}
-        }
+		padding: 0 1.875em 0 1.875em;
+		max-width: 1200px;
+		margin: 12.5em auto 0 auto;
+		@include transatBold;
+		text-align: center;
+		text-transform: uppercase;
+		p,
+		li {
+			font-size: 1.25em;
+			line-height: 1.75em;
+			padding: 0;
+		}
+		ul {
+			li {
+				list-style-type: none;
+			}
+		}
 	}
 }

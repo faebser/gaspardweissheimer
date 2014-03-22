@@ -369,12 +369,16 @@ body {
         font-size: 1.25em;
         @include transition(color 1.3s ease);
         @include transatLight;
-        p {
-            span {
-                @include transatMedium;
+        a {
+            text-decoration: none;
+            color: black;
+            p {
+                span {
+                    @include transatMedium;
+                }
+                margin: 0;
+                padding: 0;
             }
-            margin: 0;
-            padding: 0;
         }
     }
 }
