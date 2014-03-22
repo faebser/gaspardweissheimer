@@ -1,0 +1,16 @@
+body#page {
+	#main {
+		position: relative;
+        overflow: hidden;
+        padding: 0 1.875em 0 1.875em;
+        max-width: 1200px;
+        margin: 0 auto;
+        h1,
+        h2 {
+        	@include transatBlack;
+        }
+        p {
+        	@include transatLight;
+        }
+	}
+}

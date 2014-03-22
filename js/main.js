@@ -198,6 +198,10 @@ var gaspi = (function ($) {
 				verticalNav.find('i.' + c.circle).toggleClass(c.circle).toggleClass(c.empty);
 				e.find('i').toggleClass(c.empty).toggleClass(c.circle);
 				console.log(navElements.find('i.' + c.circle));
+
+				verticalNav.transition({
+					'opacity' : 0
+				}, 500, 'linear');
 				
 				if(e.find('i').hasClass(c.overview)) {
 					main.transition({

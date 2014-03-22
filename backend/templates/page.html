@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
-    <body>
+    <body id="page">
         <div id="navAndLogo">
             <div class="wrapper clearfix">
             <div id="logo">
@@ -35,10 +35,12 @@
         </div>
         <div id="mainWrapper">
             <div id="mainContent">
-                {{# title}}
-                    <h1>{{title}}</h1>
-                {{/ title}}
-                {{text}}
+                <div id="main">
+                    {{# title}}
+                        <h1>{{{title}}}</h1>
+                    {{/ title}}
+                    {{{text}}}
+                </div>
             </div>
             <footer>
                 <div class="wrapper clearfix">
