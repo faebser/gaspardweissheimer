@@ -1,16 +1,20 @@
-body#page {
-	#main {
-		position: relative;
-        overflow: hidden;
+body.page {
+	#mainContent {
         padding: 0 1.875em 0 1.875em;
         max-width: 1200px;
-        margin: 0 auto;
-        h1,
-        h2 {
-        	@include transatBlack;
+        margin: 12.5em auto 0 auto;
+        @include transatBold;
+        text-align: center;
+        text-transform: uppercase;
+        p,
+        li {
+        	font-size: 1.25em;
+        	line-height: 1.75em;
         }
-        p {
-        	@include transatLight;
+        ul {
+        	li {
+        		list-style-type: none;
+        	}
         }
 	}
 }

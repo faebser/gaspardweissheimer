@@ -231,6 +231,7 @@ def main():
                     'name': currentDir,
                     'title': pageJson['title'],
                     'text': unicode(markdown.markdown(mdFile.read())),
+                    'id': pageJson['title'].lower()
                 }
                 htmlContent['nav'].append({
                     'link': page['name'] + ".html",
