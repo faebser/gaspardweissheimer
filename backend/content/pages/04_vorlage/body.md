@@ -15,7 +15,7 @@ dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. 
 
 ## <span name="angebot">Angebot</span>
 
-<form action="//api.formspree.com/mail@weissheimer.ch">
+<form action="https://forms.brace.io/mail@weissheimer.ch" method="POST">
 	<hr>
     <input type="text" name="titel" placeholder="TITEL">
     <input type="text" name="material" placeholder="MATERIAL / BEDRUCKSTOFF">

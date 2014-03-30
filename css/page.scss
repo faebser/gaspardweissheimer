@@ -17,6 +17,24 @@ body.page {
 				list-style-type: none;
 			}
 		}
-		
+		form {
+
+		}
+		a[href*="#"],
+		a[href*="#"]:visited { // link boxes
+			line-height: 1;
+			display: inline-block;
+			@include transatBold;
+			font-size: 2em;
+			border: 1px solid #72898F;
+			color: #72898F;
+			text-decoration: none;
+			padding: 0.5em 0.3em;
+			-moz-box-shadow: 0.1em 0.1em 0 0 #72898F;
+			-webkit-box-shadow: 0.1em 0.1em 0 0 #72898F;
+			-o-box-shadow: 0.1em 0.1em 0 0 #72898F;
+			box-shadow: 0.1em 0.1em 0 0 #72898F;
+			margin-right: 1em;
+		}
 	}
 }
