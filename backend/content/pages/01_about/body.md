@@ -2,7 +2,7 @@
 
 Das ist normaler Text. Hier kann man auch links und normales HTML (z.b. für die Map reinmachen)
 
-	"<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2691.9810126325788!2d7.58863065!3d47.568157850000006!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4791b9a3e1a0fee9%3A0xb2910ba7b5adad15!2sWEISSHEIMER+Grafik+Design!5e0!3m2!1sde!2s!4v1395645576750" width="600" height="450" frameborder="0" style="border:0"></iframe>""
+	<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2691.9810126325788!2d7.58863065!3d47.568157850000006!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4791b9a3e1a0fee9%3A0xb2910ba7b5adad15!2sWEISSHEIMER+Grafik+Design!5e0!3m2!1sde!2s!4v1395645576750" width="600" height="450" frameborder="0" style="border:0"></iframe>
 
 
 ## eine kleine &Uuml;berschrift

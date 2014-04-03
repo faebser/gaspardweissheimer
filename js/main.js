@@ -150,7 +150,8 @@ var gaspi = (function ($) {
 			'active' : 'active',
 			'empty' : 'icon-circle-empty',
 			'circle' : 'icon-circle',
-			'scrollHeader': 'scrollHeader'
+			'scrollHeader': 'scrollHeader',
+			'page' : 'page'
 		},
 		c_ = function(selector) {
 			return '.' + c[selector];
@@ -166,6 +167,9 @@ var gaspi = (function ($) {
 				'overflow' : 'hidden',
 				'opacity' : 0
 			})
+		}
+		if(body.hasClass(page)) {
+			pageScroller();
 		}
 		clickHandlers(winHeight);
 	},
@@ -288,6 +292,9 @@ var gaspi = (function ($) {
 		scrollIndicator.click(function() {
 			scrollDown(promoElements.filter('.active'));
 		});
+	},
+	pageScroller= function () {
+
 	};
 	// public methods
 	module.init = function () {

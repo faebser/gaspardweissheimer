@@ -6,15 +6,15 @@ Bitte kontaktieren Sie mich für Projektanfragen in den Bereichen Grafik Design,
 [Angebot](#angebot)
 [Titel 3](#titel3)
 
-## <span name="title1">Titel 1</span>
+## <a name="title1"></a>Titel 1
 
 dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium
 
-## <span name="title2">Titel 2</span> 
+## <a name="title2"></a>Titel 2 
 
 dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium
 
-## <span name="angebot">Angebot</span>
+## <a name="angebot"></a>Angebot
 
 <form action="https://forms.brace.io/mail@weissheimer.ch" method="POST">
 	<hr>
@@ -27,10 +27,10 @@ dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. 
     <input type="text" name="name" placeholder="NAME / VORNAME">
     <input type="text" name="telefon" placeholder="Telefon">
     <input type="email" name="_replyto" placeholder="MAIL">
-    <textarea name="bemerkungen">Bemerkungen</textarea>
-    <input type="submit" value="ANgebot anfordern">
+    <textarea name="bemerkungen" placeholder="Bemerkungen"></textarea>
+    <button type="submit">ANgebot anfordern</button>
 </form>
 
-## <span name="titel3">Titel 3</span>
+## <a name="titel3"></a>Titel 3
 
 dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium

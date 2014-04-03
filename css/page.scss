@@ -1,3 +1,22 @@
+
+$pageColor: #72898F;
+
+%boxes {
+	line-height: 1;
+	display: inline-block;
+	@include transatBold;
+	font-size: 2em;
+	border: 1px solid $pageColor;
+	color: $pageColor;
+	text-decoration: none;
+	padding: 0.5em 0.3em;
+	-moz-box-shadow: 0.1em 0.1em 0 0 $pageColor;
+	-webkit-box-shadow: 0.1em 0.1em 0 0 $pageColor;
+	-o-box-shadow: 0.1em 0.1em 0 0 $pageColor;
+	box-shadow: 0.1em 0.1em 0 0 $pageColor;
+	margin-right: 1em;
+}
+
 body.page {
 	#mainContent {
 		padding: 0 1.875em 0 1.875em;
@@ -18,23 +37,63 @@ body.page {
 			}
 		}
 		form {
-
+			width: 51.228070175%;
+			margin: 0 auto;
+			hr {
+				border-top: 1px dotted #ccc;
+				margin: 1em 0 2em 0;
+			}
+			input + hr {
+				margin: 2em 0;
+			}
+			input,
+			textarea {
+				width: 90%;
+				display: block;
+				border: 1px solid $pageColor;
+				background-color: transparent;
+				@include transatBold;
+				font-size: 1.25em;
+				margin: 0 auto 0.7em auto;
+				padding: 0.53125em 0 0.53125em 0.5em;
+				text-align: center;
+				text-transform: uppercase;
+				&:focus {
+					text-align: left;
+				}
+			}
+			button {
+				@extend %boxes;
+				font-size: 1.25em;
+				background-color: $pageColor;
+				color: #F6F5EE;
+				text-align: center;
+				margin-right: 0;
+				-moz-box-shadow: none;
+				-webkit-box-shadow: none;
+				-o-box-shadow: none;
+				box-shadow: none;
+				text-transform: uppercase;
+			}
 		}
-		a[href*="#"],
-		a[href*="#"]:visited { // link boxes
-			line-height: 1;
-			display: inline-block;
-			@include transatBold;
-			font-size: 2em;
-			border: 1px solid #72898F;
-			color: #72898F;
-			text-decoration: none;
-			padding: 0.5em 0.3em;
-			-moz-box-shadow: 0.1em 0.1em 0 0 #72898F;
-			-webkit-box-shadow: 0.1em 0.1em 0 0 #72898F;
-			-o-box-shadow: 0.1em 0.1em 0 0 #72898F;
-			box-shadow: 0.1em 0.1em 0 0 #72898F;
-			margin-right: 1em;
+		h2 {
+			@extend %boxes;
+			margin-right: 0;
+			position: relative;
+			a {
+				display: block;
+				position: absolute;
+				top: -15px;
+			}
+		}
+		p {
+			a[href*="#"],
+			a[href*="#"]:visited { // link boxes
+				@extend %boxes;
+				&:last-of-type {
+					margin-right: 0;
+				}
+			}
 		}
 	}
 }
