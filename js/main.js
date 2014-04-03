@@ -168,7 +168,7 @@ var gaspi = (function ($) {
 				'opacity' : 0
 			})
 		}
-		if(body.hasClass(page)) {
+		if(body.hasClass(c.page)) {
 			pageScroller();
 		}
 		clickHandlers(winHeight);
@@ -294,7 +294,16 @@ var gaspi = (function ($) {
 		});
 	},
 	pageScroller= function () {
-
+		body.find('a[href*="#"]').click(function(event) {
+			event.preventDefault();
+			var target = $("[name=" + $(this).attr("href").slice(1) + "]"),
+				href = $(this).attr("href");
+			$('html,body').animate({
+          		scrollTop: target.offset().top
+        	}, 1000, function () {
+        		location.hash = href;
+        	});
+		});
 	};
 	// public methods
 	module.init = function () {
