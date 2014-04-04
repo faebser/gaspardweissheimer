@@ -1,5 +1,6 @@
 
 $pageColor: #72898F;
+$background: #F6F5EE;
 
 %boxes {
 	line-height: 1;
@@ -10,11 +11,19 @@ $pageColor: #72898F;
 	color: $pageColor;
 	text-decoration: none;
 	padding: 0.5em 0.3em;
-	-moz-box-shadow: 0.1em 0.1em 0 0 $pageColor;
-	-webkit-box-shadow: 0.1em 0.1em 0 0 $pageColor;
-	-o-box-shadow: 0.1em 0.1em 0 0 $pageColor;
-	box-shadow: 0.1em 0.1em 0 0 $pageColor;
+	@include transition(-moz-box-shadow .5s linear, -webkit-box-shadow 0.5s linear, -o-box-shadow 0.5s linear, box-shadow 0.5s linear);
+	-moz-box-shadow: 0.1em 0.1em 0 0 $background;
+	-webkit-box-shadow: 0.1em 0.1em 0 0 $background;
+	-o-box-shadow: 0.1em 0.1em 0 0 $background;
+	box-shadow: 0.1em 0.1em 0 0 $background;
 	margin-right: 1em;
+	&:hover {
+		-moz-box-shadow: 0.1em 0.1em 0 0 $pageColor;
+		-webkit-box-shadow: 0.1em 0.1em 0 0 $pageColor;
+		-o-box-shadow: 0.1em 0.1em 0 0 $pageColor;
+		box-shadow: 0.1em 0.1em 0 0 $pageColor;
+		margin-right: 1em;
+	}
 }
 
 body.page {
