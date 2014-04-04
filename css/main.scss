@@ -258,6 +258,8 @@ textarea {
     transition: $input;
 }
 
+$background: #F6F5EE;
+
 *, *:before, *:after { /* sane box model */
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
@@ -302,7 +304,7 @@ html,
 body {
     margin: 0;
     padding: 0;
-    background-color: #F6F5EE;
+    background-color: $background;
 }
 
 #main {
@@ -711,6 +713,52 @@ $scrollDuration: 0.75s;
 }
 
 @import "page";
+
+@mixin boxes ($color) {
+    line-height: 1;
+    display: inline-block;
+    @include transatBold;
+    font-size: 2em;
+    border: 1px solid $color;
+    color: $color;
+    text-decoration: none;
+    padding: 0.5em 0.3em;
+    margin-right: 1em;
+    -moz-box-shadow: 0.1em 0.1em 0 0 $color;
+    -webkit-box-shadow: 0.1em 0.1em 0 0 $color;
+    -o-box-shadow: 0.1em 0.1em 0 0 $color;
+    box-shadow: 0.1em 0.1em 0 0 $color;
+}
+
+@mixin boxes-hover ($color) {
+    @include transition(box-shadow 0.5s linear);
+    -moz-box-shadow: 0.1em 0.1em 0 0 $background;
+    -webkit-box-shadow: 0.1em 0.1em 0 0 $background;
+    -o-box-shadow: 0.1em 0.1em 0 0 $background;
+    box-shadow: 0.1em 0.1em 0 0 $background;
+    &:hover {
+        -moz-box-shadow: 0.1em 0.1em 0 0 $color;
+        -webkit-box-shadow: 0.1em 0.1em 0 0 $color;
+        -o-box-shadow: 0.1em 0.1em 0 0 $color;
+        box-shadow: 0.1em 0.1em 0 0 $color;
+    }
+}
+
+@mixin boxes-active ($color) {
+    @include transition(box-shadow 0.5s linear);
+    -moz-box-shadow: 0.1em 0.1em 0 0 $background;
+    -webkit-box-shadow: 0.1em 0.1em 0 0 $background;
+    -o-box-shadow: 0.1em 0.1em 0 0 $background;
+    box-shadow: 0.1em 0.1em 0 0 $background;
+    &.active {
+        -moz-box-shadow: 0.1em 0.1em 0 0 $color;
+        -webkit-box-shadow: 0.1em 0.1em 0 0 $color;
+        -o-box-shadow: 0.1em 0.1em 0 0 $color;
+        box-shadow: 0.1em 0.1em 0 0 $color;
+    }
+}
+
+@import "pageColor";
 
 footer {
     width: 100%;

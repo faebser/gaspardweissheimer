@@ -1,0 +1,30 @@
+#{{id}} {
+	#mainContent {
+		input,
+		textarea {
+			border: 1px solid {{color}};
+		}
+	}
+	form {
+		button {
+			@include boxes({{color}});
+			background-color: {{color}};
+			$shadow: 0.1em 0.1em 0 0 $background, 0.2em 0.2em 0 0 {{color}};
+			-moz-box-shadow: $shadow;
+			-webkit-box-shadow: $shadow;
+			-o-box-shadow: $shadow;
+			box-shadow: $shadow;
+		}
+	}
+	h2 {
+		@include boxes({{color}});
+		@include boxes-active({{color}});
+	}
+	p {
+		a[href*="#"],
+		a[href*="#"]:visited {
+			@include boxes({{color}});
+			@include boxes-hover({{color}});
+		}
+	}
+}

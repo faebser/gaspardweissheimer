@@ -125,6 +125,7 @@ def main():
     renderer.load_template("backgrounds")
     renderer.load_template("skeleton")
     renderer.load_template("page")
+    renderer.load_template("pageColor")
 
     # add removal of website dir
     if path.exists(config.getPath("website")):
@@ -215,11 +216,12 @@ def main():
                             "promo": renderer.render_name('promoEntryAndPage', templateContent['entry-' + str(index)]),
                             "bodyId": 'page',
                             "pageTitle": templateContent['entry-' + str(index)].title
-                        }))
+                    }))
             htmlContent['overview'] += renderer.render_name('overviewRow', templateContent)
 
     #pages - rewrite
     pagesDir = listdir(config.getPath('pages'))
+    pageColorContent = ''
     pagesDir.sort()
     for currentDir in pagesDir:
         if currentDir.startswith('.'):
@@ -231,14 +233,20 @@ def main():
                     'name': currentDir,
                     'title': pageJson['title'],
                     'text': unicode(markdown.markdown(mdFile.read())),
-                    'id': pageJson['title'].lower()
+                    'id': pageJson['title'].lower(),
+                    'color': pageJson.get('color', '#72898F')
                 }
                 htmlContent['nav'].append({
                     'link': page['name'] + ".html",
                     'name': page['title']
                 })
+                pageColorContent += renderer.render_name('pageColor', page)
                 with codecs.open(path.join(config.getPath("website"), page['name'].lower() + ".html"), 'w+', encoding='utf-8') as indexFile:
                     indexFile.write(renderer.render_name('page', page))
+    # add colors from pages to template
+    cssPageColorsFile = codecs.open(path.join(config.getPath('css'), 'pageColor.scss'), 'w+', encoding='utf-8')
+    cssPageColorsFile.write(pageColorContent)
+    cssPageColorsFile.close()
 
     # generate index page with content from overview and promoted
     with codecs.open(path.join(config.getPath("website"), 'index.html'), 'w+', encoding='utf-8') as indexFile:

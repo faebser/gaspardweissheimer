@@ -302,6 +302,11 @@ var gaspi = (function ($) {
           		scrollTop: target.offset().top
         	}, 1000, function () {
         		location.hash = href;
+        		body.find(c_(c.active)).removeClass(c.active);
+        		target.parent().addClass(c.active);
+        		window.setTimeout(function() {
+        			target.parent().removeClass(c.active);
+        		}, 2000);
         	});
 		});
 	};

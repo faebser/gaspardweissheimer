@@ -1,8 +1,6 @@
+//$pageColor: #72898F;
 
-$pageColor: #72898F;
-$background: #F6F5EE;
-
-%boxes {
+/*%boxes {
 	line-height: 1;
 	display: inline-block;
 	@include transatBold;
@@ -11,20 +9,40 @@ $background: #F6F5EE;
 	color: $pageColor;
 	text-decoration: none;
 	padding: 0.5em 0.3em;
-	@include transition(-moz-box-shadow .5s linear, -webkit-box-shadow 0.5s linear, -o-box-shadow 0.5s linear, box-shadow 0.5s linear);
+	margin-right: 1em;
+	-moz-box-shadow: 0.1em 0.1em 0 0 $pageColor;
+	-webkit-box-shadow: 0.1em 0.1em 0 0 $pageColor;
+	-o-box-shadow: 0.1em 0.1em 0 0 $pageColor;
+	box-shadow: 0.1em 0.1em 0 0 $pageColor;
+}
+
+%boxes-hover {
+	@include transition(box-shadow 0.5s linear);
 	-moz-box-shadow: 0.1em 0.1em 0 0 $background;
 	-webkit-box-shadow: 0.1em 0.1em 0 0 $background;
 	-o-box-shadow: 0.1em 0.1em 0 0 $background;
 	box-shadow: 0.1em 0.1em 0 0 $background;
-	margin-right: 1em;
 	&:hover {
 		-moz-box-shadow: 0.1em 0.1em 0 0 $pageColor;
 		-webkit-box-shadow: 0.1em 0.1em 0 0 $pageColor;
 		-o-box-shadow: 0.1em 0.1em 0 0 $pageColor;
 		box-shadow: 0.1em 0.1em 0 0 $pageColor;
-		margin-right: 1em;
 	}
 }
+
+%boxes-active {
+	@include transition(box-shadow 0.5s linear);
+	-moz-box-shadow: 0.1em 0.1em 0 0 $background;
+	-webkit-box-shadow: 0.1em 0.1em 0 0 $background;
+	-o-box-shadow: 0.1em 0.1em 0 0 $background;
+	box-shadow: 0.1em 0.1em 0 0 $background;
+	&.active {
+		-moz-box-shadow: 0.1em 0.1em 0 0 $pageColor;
+		-webkit-box-shadow: 0.1em 0.1em 0 0 $pageColor;
+		-o-box-shadow: 0.1em 0.1em 0 0 $pageColor;
+		box-shadow: 0.1em 0.1em 0 0 $pageColor;
+	}
+}*/
 
 body.page {
 	#mainContent {
@@ -47,7 +65,7 @@ body.page {
 		}
 		form {
 			width: 51.228070175%;
-			margin: 0 auto;
+			margin: 1em auto;
 			hr {
 				border-top: 1px dotted #ccc;
 				margin: 1em 0 2em 0;
@@ -59,7 +77,7 @@ body.page {
 			textarea {
 				width: 90%;
 				display: block;
-				border: 1px solid $pageColor;
+				//border: 1px solid $pageColor;
 				background-color: transparent;
 				@include transatBold;
 				font-size: 1.25em;
@@ -72,33 +90,42 @@ body.page {
 				}
 			}
 			button {
-				@extend %boxes;
+				//@extend %boxes;
 				font-size: 1.25em;
-				background-color: $pageColor;
-				color: #F6F5EE;
+				//background-color: $pageColor;
+				color: $background;
 				text-align: center;
 				margin-right: 0;
+				margin-top: 0.7em;
 				-moz-box-shadow: none;
 				-webkit-box-shadow: none;
 				-o-box-shadow: none;
 				box-shadow: none;
 				text-transform: uppercase;
+				//$shadow: 0.1em 0.1em 0 0 $background, 0.2em 0.2em 0 0 $pageColor;
+				//-moz-box-shadow: $shadow;
+				//-webkit-box-shadow: $shadow;
+				//-o-box-shadow: $shadow;
+				//box-shadow: $shadow;
 			}
 		}
 		h2 {
-			@extend %boxes;
+			//@extend %boxes;
+			//@extend %boxes-active;
 			margin-right: 0;
+			margin-top: 3.2em;
 			position: relative;
 			a {
 				display: block;
 				position: absolute;
-				top: -15px;
+				top: -61px;
 			}
 		}
 		p {
 			a[href*="#"],
-			a[href*="#"]:visited { // link boxes
-				@extend %boxes;
+			a[href*="#"]:visited {
+				//@extend %boxes;
+				//@extend %boxes-hover;
 				&:last-of-type {
 					margin-right: 0;
 				}
