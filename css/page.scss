@@ -1,49 +1,3 @@
-//$pageColor: #72898F;
-
-/*%boxes {
-	line-height: 1;
-	display: inline-block;
-	@include transatBold;
-	font-size: 2em;
-	border: 1px solid $pageColor;
-	color: $pageColor;
-	text-decoration: none;
-	padding: 0.5em 0.3em;
-	margin-right: 1em;
-	-moz-box-shadow: 0.1em 0.1em 0 0 $pageColor;
-	-webkit-box-shadow: 0.1em 0.1em 0 0 $pageColor;
-	-o-box-shadow: 0.1em 0.1em 0 0 $pageColor;
-	box-shadow: 0.1em 0.1em 0 0 $pageColor;
-}
-
-%boxes-hover {
-	@include transition(box-shadow 0.5s linear);
-	-moz-box-shadow: 0.1em 0.1em 0 0 $background;
-	-webkit-box-shadow: 0.1em 0.1em 0 0 $background;
-	-o-box-shadow: 0.1em 0.1em 0 0 $background;
-	box-shadow: 0.1em 0.1em 0 0 $background;
-	&:hover {
-		-moz-box-shadow: 0.1em 0.1em 0 0 $pageColor;
-		-webkit-box-shadow: 0.1em 0.1em 0 0 $pageColor;
-		-o-box-shadow: 0.1em 0.1em 0 0 $pageColor;
-		box-shadow: 0.1em 0.1em 0 0 $pageColor;
-	}
-}
-
-%boxes-active {
-	@include transition(box-shadow 0.5s linear);
-	-moz-box-shadow: 0.1em 0.1em 0 0 $background;
-	-webkit-box-shadow: 0.1em 0.1em 0 0 $background;
-	-o-box-shadow: 0.1em 0.1em 0 0 $background;
-	box-shadow: 0.1em 0.1em 0 0 $background;
-	&.active {
-		-moz-box-shadow: 0.1em 0.1em 0 0 $pageColor;
-		-webkit-box-shadow: 0.1em 0.1em 0 0 $pageColor;
-		-o-box-shadow: 0.1em 0.1em 0 0 $pageColor;
-		box-shadow: 0.1em 0.1em 0 0 $pageColor;
-	}
-}*/
-
 body.page {
 	#mainContent {
 		padding: 0 1.875em 0 1.875em;
@@ -129,6 +83,10 @@ body.page {
 				&:last-of-type {
 					margin-right: 0;
 				}
+			}
+			img {
+				width: 100%;
+				height: auto;
 			}
 		}
 	}
