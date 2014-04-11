@@ -1,10 +1,9 @@
 WEISSHEIMER Grafik Design ist ein Designstudio aus Basel in der Schweiz.
 Bitte kontaktieren Sie mich für Projektanfragen in den Bereichen Grafik Design, Print, Siebdruck oder Fotografie. Gerne suche ich auch nach geeigneten Lösungen welche über das Kernangebot hinausgehen und arbeite nach Bedarf mit professionellen Partener zusammen.
 
-[GRAFIK](#GRAFIK)
-[FOTO](#FOTO)
-[SIEBDRUCK](#SIEBDRUCK)
-[RISOGRAPHIE](#RISOGRAPHIE)
+[GRAFIK DESIGN](#GRAFIK) [FOTOGRAFIE](#FOTO) [SIEBDRUCK](#SIEBDRUCK) [RISOGRAPHIE](#RISOGRAPHIE)
+
+![test image](img/07_theglue_songbook/20140214_gw_gluebalisation__MG_0394_normal.jpg)
 
 ## <a name="GRAFIK"></a>GRAFIK
 
@@ -53,7 +52,7 @@ Durch ihre Mobilität kann sie an jedem beliebigen Ort in Form von Workshops ode
     <button type="submit">ANgebot anfordern</button>
 </form>
 
-## <a name="RISOGRAFIE"></a>RISOGRAFIE 
+## <a name="RISOGRAPHIE"></a>RISOGRAPHIE 
 
 Die Risographie ist ein im Zylinderdruckverfahren durchgeführtes Schablonendruckverfahren nach Art der Siebdrucktechnik. Risographie zeichnet sich dadurch aus, dass die Farbe ohne Anwendung von Chemikalien und Hitze auf das Papier gebracht wird. Der ökologische Vorteil wird von günstigen Verbrauchskosten begleitet.
 
