@@ -125,6 +125,7 @@ var gaspi = (function ($) {
 		promoElements = $('.promo'),
 		overview = $("#overview"),
 		scrollUpThreshold = 0,
+		scrollTimeOut = 0,
 		bullets = {
 			"active" : $('<i/>').attr({
 				"class" : "icon-circle",
@@ -202,10 +203,6 @@ var gaspi = (function ($) {
 				verticalNav.find('i.' + c.circle).toggleClass(c.circle).toggleClass(c.empty);
 				e.find('i').toggleClass(c.empty).toggleClass(c.circle);
 				console.log(navElements.find('i.' + c.circle));
-
-				verticalNav.transition({
-					'opacity' : 0
-				}, 500, 'linear');
 				
 				if(e.find('i').hasClass(c.overview)) {
 					main.transition({
@@ -249,26 +246,61 @@ var gaspi = (function ($) {
 	scrollDown = function (promoElement) {
 		var e = promoElement,
 			state = e.find(c_('top')).hasClass(c.big);
-			console.log('stuff: ' + state);
-		if(state) {
+		if(state && win.scrollTop() > 20) {
 			e.find(c_('top')).addClass(c.small).removeClass(c.big);
 			e.find(c_('low')).addClass(c.big);
-			win.scrollTop(10);
-			console.log('stuff');
+			var scroll = e.find(c_('scrollHeader')).height();
+			win.scrollTop(scroll);
+			win.off('scroll');
+			win.on('scroll', function(event) {
+				scrollUp(promoElements.filter('.active'));
+			});
 		}
+		verticalNav.transition({
+			'opacity' : 0
+		}, 500, 'linear', function () {
+			verticalNav.css('display', 'none');
+		});
+	},
+	doScrollUp = function (promoElement) {
+		win.off('scroll');
+		var e = promoElement;
+		e.find(c_('low')).addClass(c.small).removeClass(c.big);
+		e.find(c_('top')).addClass(c.big).removeClass(c.small);
+		verticalNav.css('display', 'block');
+		verticalNav.transition({
+			'opacity' : 1
+		}, 500, 'linear', function() {
+			win.scroll('on', function(event) {
+				scrollDown(promoElements.filter('.active'));
+			});
+		});
 	},
 	scrollUp = function (promoElement) {
-		// var e = promoElement,
-		// 	state = e.find(c_('top')).hasClass(c.small);
-		// if(state) { // 92px
-		// 	var scrollValue = win.scrollTop();
-		// 	console.log("stuff: " + win.scrollTop());
-		// 	if(scrollValue <= 10) {
-		// 		var scrollElement = e.find(c_('scrollHeader'));
-		// 		scrollElement.height(scrollElement.height() + 10);
-		// 		win.scrollTop(10);
-		// 	}
-		// }
+		var e = promoElement,
+		state = e.find(c_('top')).hasClass(c.small);
+		if(state) {
+			var scrollValue = win.scrollTop();
+			if(scrollValue === 0) {
+				doScrollUp(e);
+				if(scrollTimeOut !== 0) window.clearTimeout(scrollTimeOut);
+			}
+			else {
+				if(scrollTimeOut !== 0) window.clearTimeout(scrollTimeOut);
+				scrollTimeOut = window.setTimeout(function() {
+					var scrollHeaderHeight = e.find(c_('scrollHeader')).height();
+					if(scrollValue < 5) {
+						// scrollToTop
+						doScrollUp(e);
+					}
+					else if (scrollValue > 5 && scrollValue < scrollHeaderHeight) {
+						body.animate({
+							scrollTop: scrollHeaderHeight,
+						}, 750);
+					}
+				}, 700);
+			}
+		}
 	},
 	activateOverview = function (duration) {
 		verticalNav.transition({
@@ -285,9 +317,8 @@ var gaspi = (function ($) {
 		}, duration + 500, 'linear')
 	},
 	clickHandlers = function (winHeight) {
-		win.scroll(function(event) {
+		win.on('scroll', function(event) {
 			scrollDown(promoElements.filter('.active'));
-			scrollUp(promoElements.filter('.active'));
 		});
 		scrollIndicator.click(function() {
 			scrollDown(promoElements.filter('.active'));
