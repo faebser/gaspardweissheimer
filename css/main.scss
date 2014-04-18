@@ -429,8 +429,9 @@ $scrollDuration: 0.75s;
             overflow: hidden;
             padding: 0 1.875em 0 1.875em;
             max-width: 1200px;
-            margin: 13em auto 0 auto;
-            .scrollHeader {                
+            margin: 0 auto 0 auto;
+            .scrollHeader {
+                margin-bottom: 13em;                
                 overflow: hidden;
                 background-color: $background;
                 @include transition(height 0.1s linear);
