@@ -5,6 +5,10 @@
             "entries" : [ "01_loeffler", "02_finkenschlag", "03_transatlantic"]
         },
         {
+            "type" : "50-0",
+            "entries" : [ "18_knickerbockerbier"]
+        },
+        {
             "type" : "0-50",
             "entries" : [ "16_gattonero_vk"]
         },
@@ -26,3 +30,4 @@
         }
     ]
 }
+
