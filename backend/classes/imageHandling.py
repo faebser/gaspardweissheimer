@@ -48,6 +48,7 @@ def fromJsonToImage(jsonFileName, imageSizes, log, projectName, projectPath, con
         else:
             image = Image.open(tempPath)
             size = image.size
+            tempPath = relpath(tempPath, config.getPath("website"))
             returnDict[imageSizeName] = {
                 'path': tempPath,
                 'width': size[0],
