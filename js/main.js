@@ -255,11 +255,7 @@ var gaspi = (function ($) {
 			win.on('scroll', function(event) {
 				scrollUp(promoElements.filter('.active'));
 			});
-			verticalNav.transition({
-			'opacity' : 0
-			}, 500, 'linear', function () {
-				verticalNav.css('display', 'none');
-			});
+			hideVerticalNav();
 		}
 		
 	},
@@ -269,9 +265,7 @@ var gaspi = (function ($) {
 		e.find(c_('low')).addClass(c.small).removeClass(c.big);
 		e.find(c_('top')).addClass(c.big).removeClass(c.small);
 		verticalNav.css('display', 'block');
-		verticalNav.transition({
-			'opacity' : 1
-		}, 500, 'linear', function() {
+		showVerticalNav(function() {
 			win.scroll('on', function(event) {
 				scrollDown(promoElements.filter('.active'));
 			});
@@ -304,11 +298,7 @@ var gaspi = (function ($) {
 		}
 	},
 	activateOverview = function (duration) {
-		verticalNav.transition({
-			'opacity' : 0
-		}, 500, 'linear', function () {
-			verticalNav.css('display', 'none');
-		});
+		hideVerticalNav();
 		overview.css({
 			'height' : 'auto',
 			'overflow' : 'visible'
@@ -335,6 +325,22 @@ var gaspi = (function ($) {
 	},
 	enableScrolling = function () {
 		window.onmousewheel = document.onmousewheel = null;
+	},
+	hideVerticalNav = function (callback) {
+		verticalNav.transition({
+			'opacity' : 0
+		}, 500, 'linear', function () {
+			verticalNav.css('display', 'none');
+			if(callback) callback();
+		});
+	},
+	showVerticalNav = function (callback) {
+		verticalNav.css('display', 'block');
+		verticalNav.transition({
+			'opacity' : 1
+		}, 500, 'linear', function() {
+			if(callback) callback();
+		});
 	},
 	pageScroller = function () {
 		body.find('a[href*="#"]').click(function(event) {
