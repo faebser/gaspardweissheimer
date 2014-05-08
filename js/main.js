@@ -255,12 +255,13 @@ var gaspi = (function ($) {
 			win.on('scroll', function(event) {
 				scrollUp(promoElements.filter('.active'));
 			});
-		}
-		verticalNav.transition({
+			verticalNav.transition({
 			'opacity' : 0
-		}, 500, 'linear', function () {
-			verticalNav.css('display', 'none');
-		});
+			}, 500, 'linear', function () {
+				verticalNav.css('display', 'none');
+			});
+		}
+		
 	},
 	doScrollUp = function (promoElement) {
 		win.off('scroll');
@@ -324,7 +325,18 @@ var gaspi = (function ($) {
 			scrollDown(promoElements.filter('.active'));
 		});
 	},
-	pageScroller= function () {
+	disableScrolling = function() {
+		window.onmousewheel = document.onmousewheel = function(e) {
+			e = e || window.event;
+			if (e.preventDefault)
+				e.preventDefault();
+			e.returnValue = false;
+		};
+	},
+	enableScrolling = function () {
+		window.onmousewheel = document.onmousewheel = null;
+	},
+	pageScroller = function () {
 		body.find('a[href*="#"]').click(function(event) {
 			event.preventDefault();
 			var target = $("[name=" + $(this).attr("href").slice(1) + "]"),
