@@ -137,6 +137,7 @@ def main():
     # copy stuff over
     copytree('../js', config.getPath('js'))
     copytree('../css', config.getPath('css'))
+    copytree('../img', config.getPath('images'))
 
     #load promoted content
     promotedDirs = listdir(config.getPath('promoted'))

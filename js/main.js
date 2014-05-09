@@ -117,6 +117,7 @@ var gaspi = (function ($) {
 		body = $("body"),
 		main = $('#main'),
 		navElements = main.find('li'),
+		nav = $('nav'),
 		tops = $('.top'),
 		verticalNav = $('#verticalNav'),
 		scrollIndicator = $('#scrollIndicator'),
@@ -201,7 +202,6 @@ var gaspi = (function ($) {
 				loader.setActiveParent($('#main li.active').attr('id'));
 				verticalNav.find('i.' + c.circle).toggleClass(c.circle).toggleClass(c.empty);
 				e.find('i').toggleClass(c.empty).toggleClass(c.circle);
-				console.log(navElements.find('i.' + c.circle));
 				
 				if(e.find('i').hasClass(c.overview)) {
 					main.transition({
@@ -290,7 +290,7 @@ var gaspi = (function ($) {
 		});
 		overview.transition({
 			'opacity' : 1
-		}, duration + 500, 'linear')
+		}, duration + 500, 'linear');
 	},
 	clickHandlers = function (winHeight) {
 		win.on('scroll', function(event) {
@@ -310,6 +310,16 @@ var gaspi = (function ($) {
 	},
 	enableScrolling = function () {
 		window.onmousewheel = document.onmousewheel = null;
+	},
+	hideMainMenu = function (callback) {
+		toggleMainMenu(callback);
+	},
+	showMainMenu = function (callback) {
+		toggleMainMenu(callback);
+	},
+	toggleMainMenu = function (callback) {
+		nav.toggleClass(c.hide);
+		if(callback) win.setTimeout(callback, 750);
 	},
 	hideVerticalNav = function (callback) {
 		verticalNav.transition({
