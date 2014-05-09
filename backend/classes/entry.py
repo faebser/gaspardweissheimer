@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import markdown2 as markdown
 
 class Entry(object):
 
@@ -78,4 +78,4 @@ class Entry(object):
         if 'subtitle' in jsonDict:
             self.setSubtitle(jsonDict['subtitle'])
         if 'text' in jsonDict:
-            self.setText(jsonDict['text'])
+            self.setText(unicode(markdown.markdown(jsonDict['text'])))
