@@ -434,14 +434,7 @@ $scrollDuration: 0.75s;
                 margin-bottom: 13em;                
                 overflow: hidden;
                 background-color: $background;
-                @include transition(height 0.1s linear);
-                p {
-                    float: none;
-                    width: 100%;
-                    text-align: center;
-                    font-size: 1em;
-                    margin: 1em 0;
-                }
+                height: 10px;
             }
             &.small {
                 height: 0;

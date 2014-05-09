@@ -125,7 +125,6 @@ var gaspi = (function ($) {
 		promoElements = $('.promo'),
 		overview = $("#overview"),
 		scrollUpThreshold = 0,
-		scrollTimeOut = 0,
 		bullets = {
 			"active" : $('<i/>').attr({
 				"class" : "icon-circle",
@@ -247,6 +246,7 @@ var gaspi = (function ($) {
 		var e = promoElement,
 			state = e.find(c_('top')).hasClass(c.big);
 		if(state && win.scrollTop() > 20) {
+			disableScrolling();
 			e.find(c_('top')).addClass(c.small).removeClass(c.big);
 			e.find(c_('low')).addClass(c.big);
 			var scroll = e.find(c_('scrollHeader')).height();
@@ -255,11 +255,11 @@ var gaspi = (function ($) {
 			win.on('scroll', function(event) {
 				scrollUp(promoElements.filter('.active'));
 			});
-			hideVerticalNav();
+			hideVerticalNav(enableScrolling);
 		}
-		
 	},
 	doScrollUp = function (promoElement) {
+		disableScrolling();
 		win.off('scroll');
 		var e = promoElement;
 		e.find(c_('low')).addClass(c.small).removeClass(c.big);
@@ -269,6 +269,7 @@ var gaspi = (function ($) {
 			win.scroll('on', function(event) {
 				scrollDown(promoElements.filter('.active'));
 			});
+			enableScrolling();
 		});
 	},
 	scrollUp = function (promoElement) {
@@ -278,22 +279,6 @@ var gaspi = (function ($) {
 			var scrollValue = win.scrollTop();
 			if(scrollValue === 0) {
 				doScrollUp(e);
-				if(scrollTimeOut !== 0) window.clearTimeout(scrollTimeOut);
-			}
-			else {
-				if(scrollTimeOut !== 0) window.clearTimeout(scrollTimeOut);
-				scrollTimeOut = window.setTimeout(function() {
-					var scrollHeaderHeight = e.find(c_('scrollHeader')).height();
-					if(scrollValue < 5) {
-						// scrollToTop
-						doScrollUp(e);
-					}
-					else if (scrollValue > 5 && scrollValue < scrollHeaderHeight) {
-						body.animate({
-							scrollTop: scrollHeaderHeight,
-						}, 750);
-					}
-				}, 700);
 			}
 		}
 	},
@@ -329,7 +314,7 @@ var gaspi = (function ($) {
 	hideVerticalNav = function (callback) {
 		verticalNav.transition({
 			'opacity' : 0
-		}, 500, 'linear', function () {
+		}, 800, 'linear', function () {
 			verticalNav.css('display', 'none');
 			if(callback) callback();
 		});
@@ -338,7 +323,7 @@ var gaspi = (function ($) {
 		verticalNav.css('display', 'block');
 		verticalNav.transition({
 			'opacity' : 1
-		}, 500, 'linear', function() {
+		}, 800, 'linear', function() {
 			if(callback) callback();
 		});
 	},
