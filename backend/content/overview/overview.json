@@ -1,8 +1,8 @@
 {
     "rows" : [
         {
-            "type" : "0-50",
-            "entries" : [ "19_spielzeugmuseum_riehen"]
+            "type" : "50-25-25",
+            "entries" : [ "19_spielzeugmuseum_riehen", "15_notitzbuch", "17_woistluna"]
         },
         {
             "type" : "50-25-25",
@@ -23,10 +23,6 @@
         {
             "type" : "25-25-50",
             "entries" : [ "08_theglue_gluebalisation", "09_jkf2013", "10_imfluss2013"]
-        },
-        {
-            "type" : "60-40",
-            "entries" : [ "15_notitzbuch", "17_woistluna"]
         },
         {
             "type" : "50-25-25",

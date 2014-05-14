@@ -3,10 +3,10 @@
 	"subtitle" : "Fotografie",
 	"text" : "Fotografische Dokumentation der Eröffnungsfeier zur neuen Ausstellung 'Seifenblasen' im Spielzeugmuseum Riehen. Dabei sollte das 'Spielen' mit den vorhandenen und diversen Möglichkeiten des Seifenblasenbildens stimmungsvoll eingefangen werden.",
 	"posterImage" : {
-	    "files/20140511_gw_spielzeugmuseum__MG_2098.jpg" : ["normal", "mobile", "highres", "landscape"]
+	    "files/20140511_gw_spielzeugmuseum__MG_2289.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"overviewImage" : {
-		"files/20140511_gw_spielzeugmuseum__MG_2289.jpg" : ["normal", "mobile", "highres", "landscape"]
+		"files/20140511_gw_spielzeugmuseum__MG_2098.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"images" : "files/"
 }
