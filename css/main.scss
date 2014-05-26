@@ -336,7 +336,11 @@ body {
         float: right;
         position: relative;
         @include transatStandard;
+        @include transition(opacity 0.75s linear);
         font-size: 1.125em;
+        &.hide {
+            opacity: 0;
+        }
         ul {
             list-style-type: none;
             padding: 0;
@@ -414,6 +418,7 @@ $scrollDuration: 0.75s;
                 @extend .headerLine;
                 text-shadow: 0 0 20px #fff;
                 color: #fff;
+                background: url("../img/static/kreuz.png") center center no-repeat;
             }
             h1 {
                 @extend .headerLineH1;
@@ -434,14 +439,7 @@ $scrollDuration: 0.75s;
                 margin-bottom: 13em;                
                 overflow: hidden;
                 background-color: $background;
-                @include transition(height 0.1s linear);
-                p {
-                    float: none;
-                    width: 100%;
-                    text-align: center;
-                    font-size: 1em;
-                    margin: 1em 0;
-                }
+                height: 10px;
             }
             &.small {
                 height: 0;

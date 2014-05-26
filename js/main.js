@@ -117,6 +117,7 @@ var gaspi = (function ($) {
 		body = $("body"),
 		main = $('#main'),
 		navElements = main.find('li'),
+		nav = $('nav'),
 		tops = $('.top'),
 		verticalNav = $('#verticalNav'),
 		scrollIndicator = $('#scrollIndicator'),
@@ -125,7 +126,6 @@ var gaspi = (function ($) {
 		promoElements = $('.promo'),
 		overview = $("#overview"),
 		scrollUpThreshold = 0,
-		scrollTimeOut = 0,
 		bullets = {
 			"active" : $('<i/>').attr({
 				"class" : "icon-circle",
@@ -202,7 +202,6 @@ var gaspi = (function ($) {
 				loader.setActiveParent($('#main li.active').attr('id'));
 				verticalNav.find('i.' + c.circle).toggleClass(c.circle).toggleClass(c.empty);
 				e.find('i').toggleClass(c.empty).toggleClass(c.circle);
-				console.log(navElements.find('i.' + c.circle));
 				
 				if(e.find('i').hasClass(c.overview)) {
 					main.transition({
@@ -247,6 +246,7 @@ var gaspi = (function ($) {
 		var e = promoElement,
 			state = e.find(c_('top')).hasClass(c.big);
 		if(state && win.scrollTop() > 20) {
+			disableScrolling();
 			e.find(c_('top')).addClass(c.small).removeClass(c.big);
 			e.find(c_('low')).addClass(c.big);
 			var scroll = e.find(c_('scrollHeader')).height();
@@ -255,25 +255,21 @@ var gaspi = (function ($) {
 			win.on('scroll', function(event) {
 				scrollUp(promoElements.filter('.active'));
 			});
+			hideVerticalNav(enableScrolling);
 		}
-		verticalNav.transition({
-			'opacity' : 0
-		}, 500, 'linear', function () {
-			verticalNav.css('display', 'none');
-		});
 	},
 	doScrollUp = function (promoElement) {
+		disableScrolling();
 		win.off('scroll');
 		var e = promoElement;
 		e.find(c_('low')).addClass(c.small).removeClass(c.big);
 		e.find(c_('top')).addClass(c.big).removeClass(c.small);
 		verticalNav.css('display', 'block');
-		verticalNav.transition({
-			'opacity' : 1
-		}, 500, 'linear', function() {
+		showVerticalNav(function() {
 			win.scroll('on', function(event) {
 				scrollDown(promoElements.filter('.active'));
 			});
+			enableScrolling();
 		});
 	},
 	scrollUp = function (promoElement) {
@@ -283,38 +279,18 @@ var gaspi = (function ($) {
 			var scrollValue = win.scrollTop();
 			if(scrollValue === 0) {
 				doScrollUp(e);
-				if(scrollTimeOut !== 0) window.clearTimeout(scrollTimeOut);
-			}
-			else {
-				if(scrollTimeOut !== 0) window.clearTimeout(scrollTimeOut);
-				scrollTimeOut = window.setTimeout(function() {
-					var scrollHeaderHeight = e.find(c_('scrollHeader')).height();
-					if(scrollValue < 5) {
-						// scrollToTop
-						doScrollUp(e);
-					}
-					else if (scrollValue > 5 && scrollValue < scrollHeaderHeight) {
-						body.animate({
-							scrollTop: scrollHeaderHeight,
-						}, 750);
-					}
-				}, 700);
 			}
 		}
 	},
 	activateOverview = function (duration) {
-		verticalNav.transition({
-			'opacity' : 0
-		}, 500, 'linear', function () {
-			verticalNav.css('display', 'none');
-		});
+		hideVerticalNav();
 		overview.css({
 			'height' : 'auto',
 			'overflow' : 'visible'
 		});
 		overview.transition({
 			'opacity' : 1
-		}, duration + 500, 'linear')
+		}, duration + 500, 'linear');
 	},
 	clickHandlers = function (winHeight) {
 		win.on('scroll', function(event) {
@@ -324,7 +300,44 @@ var gaspi = (function ($) {
 			scrollDown(promoElements.filter('.active'));
 		});
 	},
-	pageScroller= function () {
+	disableScrolling = function() {
+		window.onmousewheel = document.onmousewheel = function(e) {
+			e = e || window.event;
+			if (e.preventDefault)
+				e.preventDefault();
+			e.returnValue = false;
+		};
+	},
+	enableScrolling = function () {
+		window.onmousewheel = document.onmousewheel = null;
+	},
+	hideMainMenu = function (callback) {
+		toggleMainMenu(callback);
+	},
+	showMainMenu = function (callback) {
+		toggleMainMenu(callback);
+	},
+	toggleMainMenu = function (callback) {
+		nav.toggleClass(c.hide);
+		if(callback) win.setTimeout(callback, 750);
+	},
+	hideVerticalNav = function (callback) {
+		verticalNav.transition({
+			'opacity' : 0
+		}, 800, 'linear', function () {
+			verticalNav.css('display', 'none');
+			if(callback) callback();
+		});
+	},
+	showVerticalNav = function (callback) {
+		verticalNav.css('display', 'block');
+		verticalNav.transition({
+			'opacity' : 1
+		}, 800, 'linear', function() {
+			if(callback) callback();
+		});
+	},
+	pageScroller = function () {
 		body.find('a[href*="#"]').click(function(event) {
 			event.preventDefault();
 			var target = $("[name=" + $(this).attr("href").slice(1) + "]"),
