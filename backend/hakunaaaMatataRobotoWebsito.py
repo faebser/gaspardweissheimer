@@ -2,9 +2,9 @@
 import pystache
 import logging as log
 import markdown2 as markdown
-from bs4 import BeautifulSoup as soup
+from bs4 import BeautifulSoup as Soup
 from os import path, walk, remove, makedirs, listdir
-from shutil import copytree
+from shutil import copytree, copyfile
 import json
 from multiprocessing import Pool
 from multiprocessing.dummy import Pool as ThreadPool
@@ -87,6 +87,8 @@ def main():
     # time it
     starttime = time.time()
     # paths
+    config = Config()
+    global config
     currentPath = path.dirname(path.realpath(__file__))
     config.addPath("templatePath", path.join(currentPath, "templates"))
     config.addPath("partialsPath", path.join(currentPath, "templates", "partials"))
@@ -154,7 +156,7 @@ def main():
             }
         ]
     }
-    promoAmount = 1 # add one for overview
+    promoAmount = 1  # add one for overview
     cssContent = ''
     pages = []
 
@@ -223,6 +225,7 @@ def main():
     pagesDir = listdir(config.getPath('pages'))
     pageColorContent = ''
     pagesDir.sort()
+    makedirs(path.join(config.getPath('images'), 'pages'), 0755)
     for currentDir in pagesDir:
         if currentDir.startswith('.'):
             pass
@@ -242,7 +245,24 @@ def main():
                 })
                 pageColorContent += renderer.render_name('pageColor', page)
                 with codecs.open(path.join(config.getPath("website"), page['name'].lower() + ".html"), 'w+', encoding='utf-8') as indexFile:
-                    indexFile.write(renderer.render_name('page', page))
+                    rendered_page = Soup(renderer.render_name('page', page))
+                    makedirs(path.join(config.getPath('images'), 'pages', currentDir), 0755)
+                    targetPath = path.join(config.getPath('images'), 'pages', currentDir)
+                    img = rendered_page.find_all('img')
+                    for tag in img:
+                        # get path and copy file to new destination
+                        # change path to new destination
+                        copyfile(path.join(config.getPath('pages'), currentDir, tag['src']), path.join(targetPath, tag['src']))
+                        tag['src'] = path.relpath(path.join(targetPath, tag['src']), config.getPath("website"))
+                    a = rendered_page.find_all('a')
+                    for tag in a:
+                        try:
+                            if not tag['href'].startswith(('http', 'mailto',)) and tag['href'].endswith(('pdf', )):
+                                copyfile(path.join(config.getPath('pages'), currentDir, tag['href']), path.join(targetPath, tag['href']))
+                                tag['href'] = path.relpath(path.join(targetPath, tag['href']), config.getPath("website"))
+                        except KeyError:
+                            pass
+                    indexFile.write(rendered_page.prettify())
     # add colors from pages to template
     cssPageColorsFile = codecs.open(path.join(config.getPath('css'), 'pageColor.scss'), 'w+', encoding='utf-8')
     cssPageColorsFile.write(pageColorContent)
