@@ -64,7 +64,7 @@ var loader = (function ($) {
 	setMediaState = function (Modernizr) {
 		// test mediaqueries
 		// set state
-		//state = 'mobile';
+		// state = 'mobile';
 	};
 	// public methods
 	module.checkForImages = function(parent) {
