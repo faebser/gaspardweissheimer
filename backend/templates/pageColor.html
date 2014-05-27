@@ -4,6 +4,16 @@
 		textarea {
 			border: 1px solid {{color}};
 		}
+		a,
+		a:visited {
+			@include transatMedium;
+			text-decoration: none;
+			@include transition(color 0.2s linear);
+			color: #222;
+		}
+		a:hover {
+			color: {{color}};
+		}
 	}
 	form {
 		button {
@@ -20,11 +30,15 @@
 		@include boxes({{color}});
 		@include boxes-active({{color}});
 	}
-	p {
+	#mainContent p {
 		a[href*="#"],
 		a[href*="#"]:visited {
+			color: {{color}}; 
 			@include boxes({{color}});
 			@include boxes-hover({{color}});
+			&:last-of-type {
+					margin-right: 0;
+			}
 		}
 	}
 }

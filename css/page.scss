@@ -3,7 +3,7 @@ body.page {
 		padding: 0 1.875em 0 1.875em;
 		max-width: 1200px;
 		margin: 12.5em auto 0 auto;
-		@include transatBold;
+		@include transatStandard;
 		text-align: center;
 		text-transform: uppercase;
 		p,
@@ -11,6 +11,9 @@ body.page {
 			font-size: 1.25em;
 			line-height: 1.75em;
 			padding: 0;
+		}
+		strong {
+			@include transatBold;
 		}
 		ul {
 			li {
@@ -33,7 +36,7 @@ body.page {
 				display: block;
 				//border: 1px solid $pageColor;
 				background-color: transparent;
-				@include transatBold;
+				@include transatStandard;
 				font-size: 1.25em;
 				margin: 0 auto 0.7em auto;
 				padding: 0.53125em 0 0.53125em 0.5em;
@@ -75,19 +78,9 @@ body.page {
 				top: -61px;
 			}
 		}
-		p {
-			a[href*="#"],
-			a[href*="#"]:visited {
-				//@extend %boxes;
-				//@extend %boxes-hover;
-				&:last-of-type {
-					margin-right: 0;
-				}
-			}
-			img {
-				width: 100%;
-				height: auto;
-			}
+		img {
+			width: 100%;
+			height: auto;
 		}
 	}
 }
