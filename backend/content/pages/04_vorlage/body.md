@@ -1,21 +1,26 @@
-WEISSHEIMER Grafik Design ist ein Designstudio aus Basel in der Schweiz.
+**WEISSHEIMER** Grafik Design ist ein Designstudio aus Basel in der Schweiz.
 Bitte kontaktieren Sie mich für Projektanfragen in den Bereichen Grafik Design, Print, Siebdruck oder Fotografie. Gerne suche ich auch nach geeigneten Lösungen welche über das Kernangebot hinausgehen und arbeite nach Bedarf mit professionellen Partener zusammen.
 
 [GRAFIKDESIGN](#GRAFIKDESIGN) [FOTOGRAFIE](#FOTOGRAFIE) [SIEBDRUCK](#SIEBDRUCK) [RISOGRAPHIE](#RISOGRAPHIE)
 
-![test image](20140214_gw_gluebalisation__MG_0418.jpg)
+![test image](_MG_8939.jpg)
+[Preisliste DRUCKBUS](Preisliste_DRUCKBUS_Nutzung_2014.pdf)
 
 ## <a name="GRAFIKDESIGN"></a>GRAFIKDESIGN
 
-![test image](20140214_gw_gluebalisation__MG_0418.jpg)
+![test image](_MG_8939.jpg)
 
 dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium
 
 ## <a name="FOTOGRAFIE"></a>FOTOGRAFIE 
 
+![test image](_MG_8939.jpg)
+
 dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium
 
 ## <a name="SIEBDRUCK"></a>SIEBDRUCK 
+
+![test image](_MG_8939.jpg)
 
 DRUCKBUS ist eine mobile Siebdruckanlage für den grafischen Siebdruck. Sie erfüllt alle Anforderungen für einen qualitativ hochstehenden Siebdruckprozess für kleinere bis mittlere Auflagen. 
 Durch ihre Mobilität kann sie an jedem beliebigen Ort in Form von Workshops oder Auftritten eingesetzt werden und den Umgang mit einem einfachen, haPtischen Druckhandwerk aufzeigen, was in der Regel hinter Ateliertüren oder industriellen Anlagen der Öffentlichkeit verborgen bleibt. Ziele sind die Vermittlung des Siebdruckhandwerks sowie die Auseinandersetzung und Bewusstseinsschärfung für kreative Entstehungsprozesse.
