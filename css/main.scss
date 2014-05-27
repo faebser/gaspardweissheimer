@@ -468,6 +468,17 @@ $scrollDuration: 0.75s;
                     @include transatStandard;
                     font-size: 1.25em;
                 }
+                p {
+                    a {
+                        @include transatStandard;
+                        color: #222;
+                        text-decoration: none;
+                        &:hover,
+                        &:visited {
+                            color: #222;
+                        }
+                    }
+                }
             }
             p {
                 margin-top: 0;
