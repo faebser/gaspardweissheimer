@@ -1,0 +1,200 @@
+@font-face {
+  font-family: 'Transat Black';
+  src: url("font/transat-black/transat-black.eot");
+  src: url("font/transat-black/transat-black.eot?#iefix") format("embedded-opentype"), url("font/transat-black/transat-black.woff") format("woff"), url("font/transat-black/transat-black.ttf") format("truetype"), url("font/transat-black/transat-black.svg#ywftsvg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Transat Standard Oblique';
+  src: url("font/transat-standard-oblique/transat-standard-oblique.eot");
+  src: url("font/transat-standard-oblique/transat-standard-oblique.eot?#iefix") format("embedded-opentype"), url("font/transat-standard-oblique/transat-standard-oblique.woff") format("woff"), url("font/transat-standard-oblique/transat-standard-oblique.ttf") format("truetype"), url("font/transat-standard-oblique/transat-standard-oblique.svg#ywftsvg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Transat Light';
+  src: url("font/transat-light/transat-light.eot");
+  src: url("font/transat-light/transat-light.eot?#iefix") format("embedded-opentype"), url("font/transat-light/transat-light.woff") format("woff"), url("font/transat-light/transat-light.ttf") format("truetype"), url("font/transat-light/transat-light.svg#ywftsvg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Transat Bold';
+  src: url("font/transat-bold/transat-bold.eot");
+  src: url("font/transat-bold/transat-bold.eot?#iefix") format("embedded-opentype"), url("font/transat-bold/transat-bold.woff") format("woff"), url("font/transat-bold/transat-bold.ttf") format("truetype"), url("font/transat-bold/transat-bold.svg#ywftsvg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Transat Standard';
+  src: url("font/transat-standard/transat-standard.eot");
+  src: url("font/transat-standard/transat-standard.eot?#iefix") format("embedded-opentype"), url("font/transat-standard/transat-standard.woff") format("woff"), url("font/transat-standard/transat-standard.ttf") format("truetype"), url("font/transat-standard/transat-standard.svg#ywftsvg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Transat Medium';
+  src: url("font/transat-medium/transat-medium.eot");
+  src: url("font/transat-medium/transat-medium.eot?#iefix") format("embedded-opentype"), url("font/transat-medium/transat-medium.woff") format("woff"), url("font/transat-medium/transat-medium.ttf") format("truetype"), url("font/transat-medium/transat-medium.svg#ywftsvg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+*, *:before, *:after {
+  /* sane box model */
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body input,
+body textarea {
+  border: 1px solid #c1004f; }
+body form button {
+  line-height: 1;
+  display: inline-block;
+  font-family: 'Transat Bold', arial;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  border: 1px solid #c1004f;
+  color: #c1004f;
+  text-decoration: none;
+  padding: 0.5em 0.3em 0.3em 0.3em;
+  margin-right: 0.3em;
+  -moz-box-shadow: 0.1em 0.1em 0 0 #c1004f;
+  -webkit-box-shadow: 0.1em 0.1em 0 0 #c1004f;
+  -o-box-shadow: 0.1em 0.1em 0 0 #c1004f;
+  box-shadow: 0.1em 0.1em 0 0 #c1004f;
+  background-color: #c1004f;
+  -moz-box-shadow: 0.1em 0.1em 0 0 #f6f5ee, 0.2em 0.2em 0 0 #c1004f;
+  -webkit-box-shadow: 0.1em 0.1em 0 0 #f6f5ee, 0.2em 0.2em 0 0 #c1004f;
+  -o-box-shadow: 0.1em 0.1em 0 0 #f6f5ee, 0.2em 0.2em 0 0 #c1004f;
+  box-shadow: 0.1em 0.1em 0 0 #f6f5ee, 0.2em 0.2em 0 0 #c1004f; }
+body h2 {
+  line-height: 1;
+  display: inline-block;
+  font-family: 'Transat Bold', arial;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  border: 1px solid #c1004f;
+  color: #c1004f;
+  text-decoration: none;
+  padding: 0.5em 0.3em 0.3em 0.3em;
+  margin-right: 0.3em;
+  -moz-box-shadow: 0.1em 0.1em 0 0 #c1004f;
+  -webkit-box-shadow: 0.1em 0.1em 0 0 #c1004f;
+  -o-box-shadow: 0.1em 0.1em 0 0 #c1004f;
+  box-shadow: 0.1em 0.1em 0 0 #c1004f;
+  -webkit-transition: box-shadow 0.5s linear;
+  -moz-transition: box-shadow 0.5s linear;
+  -ms-transition: box-shadow 0.5s linear;
+  -o-transition: box-shadow 0.5s linear;
+  transition: box-shadow 0.5s linear;
+  -moz-box-shadow: 0.1em 0.1em 0 0 #f6f5ee;
+  -webkit-box-shadow: 0.1em 0.1em 0 0 #f6f5ee;
+  -o-box-shadow: 0.1em 0.1em 0 0 #f6f5ee;
+  box-shadow: 0.1em 0.1em 0 0 #f6f5ee; }
+  body h2.active {
+    -moz-box-shadow: 0.1em 0.1em 0 0 #c1004f;
+    -webkit-box-shadow: 0.1em 0.1em 0 0 #c1004f;
+    -o-box-shadow: 0.1em 0.1em 0 0 #c1004f;
+    box-shadow: 0.1em 0.1em 0 0 #c1004f; }
+body p a[href*="#"],
+body p a[href*="#"]:visited {
+  line-height: 1;
+  display: inline-block;
+  font-family: 'Transat Bold', arial;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  border: 1px solid #c1004f;
+  color: #c1004f;
+  text-decoration: none;
+  padding: 0.5em 0.3em 0.3em 0.3em;
+  margin-right: 0.3em;
+  -moz-box-shadow: 0.1em 0.1em 0 0 #c1004f;
+  -webkit-box-shadow: 0.1em 0.1em 0 0 #c1004f;
+  -o-box-shadow: 0.1em 0.1em 0 0 #c1004f;
+  box-shadow: 0.1em 0.1em 0 0 #c1004f;
+  -webkit-transition: box-shadow 0.5s linear;
+  -moz-transition: box-shadow 0.5s linear;
+  -ms-transition: box-shadow 0.5s linear;
+  -o-transition: box-shadow 0.5s linear;
+  transition: box-shadow 0.5s linear;
+  -moz-box-shadow: 0.1em 0.1em 0 0 #f6f5ee;
+  -webkit-box-shadow: 0.1em 0.1em 0 0 #f6f5ee;
+  -o-box-shadow: 0.1em 0.1em 0 0 #f6f5ee;
+  box-shadow: 0.1em 0.1em 0 0 #f6f5ee; }
+  body p a[href*="#"]:hover,
+  body p a[href*="#"]:visited:hover {
+    -moz-box-shadow: 0.1em 0.1em 0 0 #c1004f;
+    -webkit-box-shadow: 0.1em 0.1em 0 0 #c1004f;
+    -o-box-shadow: 0.1em 0.1em 0 0 #c1004f;
+    box-shadow: 0.1em 0.1em 0 0 #c1004f; }
+
+body {
+  padding: 0 1.875em 0 1.875em;
+  max-width: 1200px;
+  margin: 12.5em auto 0 auto;
+  font-family: 'Transat Bold', arial;
+  font-weight: normal;
+  font-style: normal;
+  text-align: center;
+  text-transform: uppercase; }
+  body p,
+  body li {
+    font-size: 1.25em;
+    line-height: 1.75em;
+    padding: 0; }
+  body ul li {
+    list-style-type: none; }
+  body form {
+    width: 51.228070175%;
+    margin: 1em auto; }
+    body form hr {
+      border-top: 1px dotted #ccc;
+      margin: 1em 0 2em 0; }
+    body form input + hr {
+      margin: 2em 0; }
+    body form input,
+    body form textarea {
+      width: 90%;
+      display: block;
+      background-color: transparent;
+      font-family: 'Transat Bold', arial;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 1.25em;
+      margin: 0 auto 0.7em auto;
+      padding: 0.53125em 0 0.53125em 0.5em;
+      text-align: center;
+      text-transform: uppercase; }
+      body form input:focus,
+      body form textarea:focus {
+        text-align: left; }
+    body form button {
+      font-size: 1.25em;
+      color: #f6f5ee;
+      text-align: center;
+      margin-right: 0;
+      margin-top: 0.7em;
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+      -o-box-shadow: none;
+      box-shadow: none;
+      text-transform: uppercase; }
+  body h2 {
+    margin-right: 0;
+    margin-top: 3.2em;
+    position: relative; }
+    body h2 a {
+      display: block;
+      position: absolute;
+      top: -61px; }
+  body p a[href*="#"]:last-of-type,
+  body p a[href*="#"]:visited:last-of-type {
+    margin-right: 0; }
+  body p img {
+    width: 100%;
+    height: auto; }

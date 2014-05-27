@@ -1,0 +1,282 @@
+@font-face {
+    font-family: 'Transat Black';
+    src: url('font/transat-black/transat-black.eot');
+    src: url('font/transat-black/transat-black.eot?#iefix') format('embedded-opentype'),
+         url('font/transat-black/transat-black.woff') format('woff'),
+         url('font/transat-black/transat-black.ttf') format('truetype'),
+         url('font/transat-black/transat-black.svg#ywftsvg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Transat Standard Oblique';
+    src: url('font/transat-standard-oblique/transat-standard-oblique.eot');
+    src: url('font/transat-standard-oblique/transat-standard-oblique.eot?#iefix') format('embedded-opentype'),
+         url('font/transat-standard-oblique/transat-standard-oblique.woff') format('woff'),
+         url('font/transat-standard-oblique/transat-standard-oblique.ttf') format('truetype'),
+         url('font/transat-standard-oblique/transat-standard-oblique.svg#ywftsvg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Transat Light';
+    src: url('font/transat-light/transat-light.eot');
+    src: url('font/transat-light/transat-light.eot?#iefix') format('embedded-opentype'),
+         url('font/transat-light/transat-light.woff') format('woff'),
+         url('font/transat-light/transat-light.ttf') format('truetype'),
+         url('font/transat-light/transat-light.svg#ywftsvg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Transat Bold';
+    src: url('font/transat-bold/transat-bold.eot');
+    src: url('font/transat-bold/transat-bold.eot?#iefix') format('embedded-opentype'),
+         url('font/transat-bold/transat-bold.woff') format('woff'),
+         url('font/transat-bold/transat-bold.ttf') format('truetype'),
+         url('font/transat-bold/transat-bold.svg#ywftsvg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Transat Standard';
+    src: url('font/transat-standard/transat-standard.eot');
+    src: url('font/transat-standard/transat-standard.eot?#iefix') format('embedded-opentype'),
+         url('font/transat-standard/transat-standard.woff') format('woff'),
+         url('font/transat-standard/transat-standard.ttf') format('truetype'),
+         url('font/transat-standard/transat-standard.svg#ywftsvg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Transat Medium';
+    src: url('font/transat-medium/transat-medium.eot');
+    src: url('font/transat-medium/transat-medium.eot?#iefix') format('embedded-opentype'),
+         url('font/transat-medium/transat-medium.woff') format('woff'),
+         url('font/transat-medium/transat-medium.ttf') format('truetype'),
+         url('font/transat-medium/transat-medium.svg#ywftsvg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@mixin transatBlack {
+    font-family: 'Transat Black', arial;
+    font-weight: normal;
+    font-style: normal;
+}
+
+@mixin transatStdObl {
+    font-family: 'Transat Standard Oblique', arial;
+    font-weight: normal;
+    font-style: normal;
+}
+
+@mixin transatLight {
+    font-family: 'Transat Light', arial;
+    font-weight: normal;
+    font-style: normal;
+}
+
+@mixin transatBold {
+    font-family: 'Transat Bold', arial;
+    font-weight: normal;
+    font-style: normal;
+}
+@mixin transatStandard {
+    font-family: 'Transat Standard', arial;
+    font-weight: normal;
+    font-weight: normal;
+}
+@mixin transatMedium {
+    font-family: 'Transat Medium', arial;
+    font-weight: normal;
+    font-weight: normal;
+}
+
+@mixin transition ($input...) {
+    -webkit-transition: $input;
+    -moz-transition: $input;
+    -ms-transition: $input;
+    -o-transition: $input;
+    transition: $input;
+}
+
+$background: #F6F5EE;
+
+@mixin boxes ($color) {
+    line-height: 1;
+    display: inline-block;
+    @include transatBold;
+    font-size: 2em;
+    border: 1px solid $color;
+    color: $color;
+    text-decoration: none;
+    padding: 0.5em 0.3em 0.3em 0.3em;
+    margin-right: 0.3em;
+    -moz-box-shadow: 0.1em 0.1em 0 0 $color;
+    -webkit-box-shadow: 0.1em 0.1em 0 0 $color;
+    -o-box-shadow: 0.1em 0.1em 0 0 $color;
+    box-shadow: 0.1em 0.1em 0 0 $color;
+}
+
+@mixin boxes-hover ($color) {
+    @include transition(box-shadow 0.5s linear);
+    -moz-box-shadow: 0.1em 0.1em 0 0 $background;
+    -webkit-box-shadow: 0.1em 0.1em 0 0 $background;
+    -o-box-shadow: 0.1em 0.1em 0 0 $background;
+    box-shadow: 0.1em 0.1em 0 0 $background;
+    &:hover {
+        -moz-box-shadow: 0.1em 0.1em 0 0 $color;
+        -webkit-box-shadow: 0.1em 0.1em 0 0 $color;
+        -o-box-shadow: 0.1em 0.1em 0 0 $color;
+        box-shadow: 0.1em 0.1em 0 0 $color;
+    }
+}
+
+@mixin boxes-active ($color) {
+    @include transition(box-shadow 0.5s linear);
+    -moz-box-shadow: 0.1em 0.1em 0 0 $background;
+    -webkit-box-shadow: 0.1em 0.1em 0 0 $background;
+    -o-box-shadow: 0.1em 0.1em 0 0 $background;
+    box-shadow: 0.1em 0.1em 0 0 $background;
+    &.active {
+        -moz-box-shadow: 0.1em 0.1em 0 0 $color;
+        -webkit-box-shadow: 0.1em 0.1em 0 0 $color;
+        -o-box-shadow: 0.1em 0.1em 0 0 $color;
+        box-shadow: 0.1em 0.1em 0 0 $color;
+    }
+}
+
+*, *:before, *:after { /* sane box model */
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+$color: #c1004f;
+
+body {
+    input,
+    textarea {
+        border: 1px solid $color;
+    }
+    form {
+        button {
+            @include boxes($color);
+            background-color: $color;
+            $shadow: 0.1em 0.1em 0 0 $background, 0.2em 0.2em 0 0 $color;
+            -moz-box-shadow: $shadow;
+            -webkit-box-shadow: $shadow;
+            -o-box-shadow: $shadow;
+            box-shadow: $shadow;
+        }
+    }
+    h2 {
+        @include boxes($color);
+        @include boxes-active($color);
+    }
+    p {
+        a[href*="#"],
+        a[href*="#"]:visited {
+            @include boxes($color);
+            @include boxes-hover($color);
+        }
+    }
+}
+
+
+
+body {
+    padding: 0 1.875em 0 1.875em;
+    max-width: 1200px;
+    margin: 12.5em auto 0 auto;
+    @include transatBold;
+    text-align: center;
+    text-transform: uppercase;
+    p,
+    li {
+        font-size: 1.25em;
+        line-height: 1.75em;
+        padding: 0;
+    }
+    ul {
+        li {
+            list-style-type: none;
+        }
+    }
+    form {
+        width: 51.228070175%;
+        margin: 1em auto;
+        hr {
+            border-top: 1px dotted #ccc;
+            margin: 1em 0 2em 0;
+        }
+        input + hr {
+            margin: 2em 0;
+        }
+        input,
+        textarea {
+            width: 90%;
+            display: block;
+            //border: 1px solid $pageColor;
+            background-color: transparent;
+            @include transatBold;
+            font-size: 1.25em;
+            margin: 0 auto 0.7em auto;
+            padding: 0.53125em 0 0.53125em 0.5em;
+            text-align: center;
+            text-transform: uppercase;
+            &:focus {
+                text-align: left;
+            }
+        }
+        button {
+            //@extend %boxes;
+            font-size: 1.25em;
+            //background-color: $pageColor;
+            color: $background;
+            text-align: center;
+            margin-right: 0;
+            margin-top: 0.7em;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+            -o-box-shadow: none;
+            box-shadow: none;
+            text-transform: uppercase;
+            //$shadow: 0.1em 0.1em 0 0 $background, 0.2em 0.2em 0 0 $pageColor;
+            //-moz-box-shadow: $shadow;
+            //-webkit-box-shadow: $shadow;
+            //-o-box-shadow: $shadow;
+            //box-shadow: $shadow;
+        }
+    }
+    h2 {
+        //@extend %boxes;
+        //@extend %boxes-active;
+        margin-right: 0;
+        margin-top: 3.2em;
+        position: relative;
+        a {
+            display: block;
+            position: absolute;
+            top: -61px;
+        }
+    }
+    p {
+        a[href*="#"],
+        a[href*="#"]:visited {
+            //@extend %boxes;
+            //@extend %boxes-hover;
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
