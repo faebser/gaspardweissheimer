@@ -1,5 +1,4 @@
-**WEISSHEIMER Grafik Design**
-
+**WEISSHEIMER Grafik Design**<br>
 Breisacherstrasse 93 / 4057 Basel
 
 Switzerland
