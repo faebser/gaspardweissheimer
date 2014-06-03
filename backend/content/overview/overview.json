@@ -2,32 +2,44 @@
     "rows" : [
         {
             "type" : "50-25-25",
-            "entries" : [ "19_spielzeugmuseum_riehen", "15_notitzbuch", "17_woistluna"]
-        },
-        {
-            "type" : "50-25-25",
             "entries" : [ "01_loeffler", "02_finkenschlag", "03_transatlantic"]
         },
-        {
-            "type" : "50-0",
-            "entries" : [ "18_knickerbockerbier"]
-        },
-        {
+       {
             "type" : "0-50",
-            "entries" : [ "16_gattonero_vk"]
+            "entries" : [ "04_kalender2014"]
         },
         {
-            "type" : "60-40",
-            "entries" : [ "06_depotbasel", "07_theglue_songbook"]
+            "type" : "40-60",
+            "entries" : [ "05_Getreideverpackung Riederenhof", "06_depotbasel"]
         },
         {
-            "type" : "25-25-50",
-            "entries" : [ "08_theglue_gluebalisation", "09_jkf2013", "10_imfluss2013"]
+            "type" : "100",
+            "entries" : [ "09_jkf2013"]
+        },
+         {
+            "type" : "50-25-25",
+            "entries" : [ "07_theglue_songbook", "11_maennerstimmen_web", "08_theglue_gluebalisation"]
+        },
+       {
+            "type" : "0-50",
+            "entries" : [ "10_imfluss2013"]
+        },
+        {
+            "type" : "40-60",
+            "entries" : [ "12_oliverrudin_web", "15_notitzbuch"]
+        },
+        {
+            "type" : "100",
+            "entries" : [ "14_maennerstimmen_cd"]
         },
         {
             "type" : "50-25-25",
-            "entries" : [ "11_maennerstimmen_web", "12_oliverrudin_web", "14_maennerstimmen_cd"]
-        }
+            "entries" : [ "18_knickerbockerbier", "16_gattonero_vk", "17_woistluna"]
+        },
+       {
+            "type" : "0-50",
+            "entries" : [ "19_spielzeugmuseum_riehen"]
+        },
     ]
 }
 
