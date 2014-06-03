@@ -1,12 +1,12 @@
 {
 	"title" : "The Glue – Songbook",
 	"subtitle" : "Grafik Design",
-	"text" : "Das Leadsheet-Buch mit 24 Eigenkompositionen von The Glue. Darauf sind unter anderem Songs wie El Topo,  Hoch über dem Strand oder Sandburgenbauen zu finden. Editert von David Rossel. Erhältlich bei 'Bider&Tanner'",
+	"text" : "Das Leadsheet-Buch mit 24 Eigenkompositionen von The Glue. Darauf sind unter anderem Songs wie EL TOPO,  HOCH ÜBER DEM STRAND oder SANDBURGENBAUEN zu finden. Editert von David Rossel. Erhältlich bei 'Bider&Tanner'",
 	"posterImage" : {
 	    "files/20140214_gw_gluebalisation__MG_0418.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"overviewImage" : {
-		"files/20140214_gw_gluebalisation__MG_0422_OW.jpg" : ["normal", "mobile", "highres", "landscape"]
+		"files/20140214_gw_gluebalisation__MG_0421.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"images" : "files/"
 }

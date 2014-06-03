@@ -3,10 +3,10 @@
 	"subtitle" : "Grafik Design",
 	"text" : "Gestaltung des CD Artworks für das zweite Album Tonträger n°2 des international erfolgreichen und preisgekrönten Männerchores Männerstimmen Basel. www.maennerstimmen.ch",
 	"posterImage" : {
-	    "files/20140106_gw_tontraeger_n2__MG_0100-Bearbeitet.jpg" : ["normal", "mobile", "highres", "landscape"]
+	    "files/20140106_gw_tontraeger_n2__MG_0138.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"overviewImage" : {
-		"files/20140106_gw_tontraeger_n2__MG_0091-Bearbeitet-2_OW.jpg" : ["normal", "mobile", "highres", "landscape"]
+		"files/20140106_gw_tontraeger_n2__MG_0100-Bearbeitet.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"images" : "files/"
 	

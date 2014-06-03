@@ -1,12 +1,12 @@
 {
-	"title" : "Jugendkultur Festival 2013",
+	"title" : "Jugendkulturfestival 2013",
 	"subtitle" : "Fotografie",
 	"text" : "Jedes zweite Jahr verwandelt sich die Basler Innenstadt am Jugendkulturfestival Basel (JKF) für zwei Tage zum Schmelztiegel der regionalen Jugendkultur. Auf 11 Bühnen präsentieren über 1700 Teilnehmende in den Sparten Musik, Tanz, Theater, Freestyle, Fashion und Sport ihr Schaffen und geben Einblick in die pulsierende Jugendkulturszene der Region.",
 	"posterImage" : {
 	    "files/20130831_gw_jkf2013__MG_7536.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"overviewImage" : {
-		"files/20130831_gw_jkf2013__MG_7527_OW.jpg" : ["normal", "mobile", "highres", "landscape"]
+		"files/20130831_gw_jkf2013__MG_7527.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"images" : "files/"
 }
