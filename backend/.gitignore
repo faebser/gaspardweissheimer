@@ -5,3 +5,4 @@ website/
 stuff/
 pystache/
 *.pyc
+env/
