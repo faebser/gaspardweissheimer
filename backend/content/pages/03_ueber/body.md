@@ -1,0 +1,12 @@
+**WEISSHEIMER** Grafik Design ist ein 2013 von Gaspard Weissheimer gegründetes Designatelier aus Basel. Die Gestaltung von schlichten visuellen Lösungen für Print und Web, sowie fotografische Dokumentationen diverser Veranstaltungen und Unternehmungen liegen mir am Herzen. Von Hand gefertigte Siebdrucke auf Papier, Textilien und weitere Druckträger und die Herstellung von Risographien runden das Angebot ab.
+Für Siebdruck-Events steht [DRUCKBUS](www.druckbus.ch) zur Verfügung. Die mobile Einrichtung kann für Workshops und Veranstaltungen gebucht werden. Mehr Infos >> [DRUCKBUS](www.druckbus.ch)
+
+
+![test image](weissheimer_ueber.jpg)
+
+<br>
+* Gaspard Weissheimer
+* 19.09.1985 / Karlsruhe (D)* 2013 Gründung der Einzelfirma [**WEISSHEIMER** Grafik Design](http://www.weissheimer.ch/)
+* 2012 Bachelor of Arts Fhnw, Produkt- und Industriedesign mit Vertiefung Prozessgestaltung* Seit 2011 Vizepräsident und PR-Verantwortlicher bei [Männerstimmen Basel](http://maennerstimmen.ch/de/)* Bachelorarbeit: [DRUCKBUS - Die mobile Siebdruckstation](http://www.druckbus.ch/)* 2009 – 2012 Bachelor Studium HGK FHNW, [Institut Hyperwerk](http://www.hyperwerk.ch/), Abschluss: September 2012 * Seit 2009 Sänger der [Männerstimmen Basel](http://maennerstimmen.ch/de/)* 2009 April–Juli Praktikum bei [Stauffenegger + Stutz, Basel](http://www.st-st.ch/index.php?id=aktuell-dorfzentrum-riehen-1)* Seit 2008 OK-Mitglied und PR-Verantwortlicher Verein Jugendprojekte [Transatlantic](http://www.vereinjugendprojekte.ch/index.php?id=322)
+* 2007 – 2008 Teilnehmer Projekt [Transatlantic](http://www.fossailing.org/index.php?id=46)* 2004–2007 Reiseleiter von 4-6-wöchigen Fahrradtouren mit Jugebdlichen im Mittelmeerraum* 2005 – 2006 [Gestalterischer Vorkurs](http://www.sfgb-b.ch/web/sfgb/de/bildungsangebote/vkpp/vkpp_bern_biel.html), Schule für Gestaltung Biel* 2002–2005 Fahrradkurier bei Veloexpress GmbH, Basel* 2004 4 Monate mit selbstgebautem Liegerad unterwegs: 7‘400km von Basel bis Irland und wieder zurück* 2003–2004 Abschlussarbeit FOS Mittelschule: Entwurf und Herstellung eines outdoor-tauglichen Zeltes* 2001–2004 [FOS Mittelschule](http://www.fosmittelschule.ch/) / Abschluss Juli 2004* 1992–2001 Rudolf Steiner Schule Münchenstein
+* 2003 Teilnehmer Projekt [FOSvelos](http://www.fosvelos.ch/index.php?id=104)* 2002 6 – monatiger Auslandaufenthalt in Südafrika, Max Stibbe Waldorf School, Pretoria

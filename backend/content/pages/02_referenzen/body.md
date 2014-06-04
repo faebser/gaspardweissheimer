@@ -1,6 +1,6 @@
-* Acacia - Fonds für nachhaltige Entwicklung, Basel
-* Ahoi Ahoi, Basel
-* Alte Markthalle, Basel
+* [Acacia - Fonds für nachhaltige Entwicklung](http://www.acacia-verein.ch/), Basel / Grafik Design
+* [Ahoi Ahoi](https://ahoiahoi.allyou.net/1036529/ahoi-ahoi), Basel / Siebdruck
+* [Alte Markthalle](http://www.altemarkthalle.ch/), Basel / Siebdruck
 * Artsoph, Sophie Blocher Haus, Liestal
 * Artyou, Basel
 * Avant Garden, Basel
