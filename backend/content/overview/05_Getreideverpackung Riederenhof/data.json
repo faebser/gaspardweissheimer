@@ -1,0 +1,12 @@
+{
+    "title": "Getreide Verpackung Riederenhof",
+    "subtitle": "Grafik Design",
+    "text": "Konzept und Gestaltung der Verpackung für Mehl und Getreide vom Riederenhof aus Buus.<br> Der Riederenhof ist ein nach den Richtlinien von Demeter geführter Biobauernhof in Buus (Oberbaselbiet). Auf dem nicht allzu grossen, aber vielseitigen Familienbetrieb produziert die Familie Fankhauser auf sorgfältige Art und Weise Lebensmittel.",
+    "posterImage" : {
+        "files/20140121_gw_riederenhof__MG_0270.jpg" : ["normal", "mobile", "highres", "landscape"]
+    },
+    "overviewImage" : {
+        "files/20140121_gw_riederenhof__MG_0293.jpg" : ["normal", "mobile", "highres", "landscape"]
+    },
+    "images" : "files/"
+}
