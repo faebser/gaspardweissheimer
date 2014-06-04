@@ -83,6 +83,11 @@ def buildBlockingList(posterImages, overviewImages):
     return returnList
 
 
+def replace_all(text, removables):
+    for i, j in removables.iteritems():
+        text = text.replace(i, j)
+    return text
+
 def main():
     # time it
     starttime = time.time()
@@ -231,13 +236,13 @@ def main():
         if currentDir.startswith('.'):
             pass
         else:
-            pageJson = json.loads(open(path.join(config.getPath('pages'), currentDir, 'data.json')).read())
+            pageJson = json.loads(codecs.open(path.join(config.getPath('pages'), currentDir, 'data.json'), 'r', encoding='utf-8').read())
             with codecs.open(path.join(config.getPath('pages'), currentDir, pageJson['text']), 'r', encoding='utf-8') as mdFile:
                 page = {
                     'name': currentDir,
                     'title': pageJson['title'],
                     'text': unicode(markdown.markdown(mdFile.read())),
-                    'id': pageJson['title'].lower(),
+                    'id': replace_all(pageJson['title'].lower().encode('utf-8').lstrip('1234567890_').replace(' ', '_'), {'ü': 'u', 'ä': 'a', 'ö': 'o'}),
                     'color': pageJson.get('color', '#72898F')
                 }
                 htmlContent['nav'].append({
