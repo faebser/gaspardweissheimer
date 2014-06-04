@@ -87,8 +87,8 @@ def main():
     # time it
     starttime = time.time()
     # paths
-    config = Config()
-    global config
+    #config = Config()
+    #global config
     currentPath = path.dirname(path.realpath(__file__))
     config.addPath("templatePath", path.join(currentPath, "templates"))
     config.addPath("partialsPath", path.join(currentPath, "templates", "partials"))
@@ -281,7 +281,7 @@ def main():
             '$mainWidth': str(promoAmount * 100) + '%',
             '$promoWidth': str(100 / float(promoAmount)) + '%'
         })
-        mainCssFile.write(compiler.compile(codecs.open(path.join(config.getPath('css'), 'main.scss'), 'r', encoding='utf-8').read()))
+        mainCssFile.write(compiler.compile(codecs.open(path.join(config.getPath('css'), 'main.scss'), 'w+', encoding='utf-8').read()))
 
     endtime = time.time()
     duration = endtime-starttime
