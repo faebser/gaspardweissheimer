@@ -1,3 +1,21 @@
+var indicator = (function () {
+	// javascript module pattern
+	"use strict"; // enable strict mode for javascript module
+	// private vars
+	var module = {},
+		indicator = null;
+	// private methods
+	var init = function() {
+		
+	};
+	// public methods
+	module.init = function (indi) {
+		indicator = indi;
+	};
+	//return the module
+	return module;
+}());
+
 var loader = (function ($) {
 	// javascript module pattern
 	"use strict"; // enable strict mode for javascript module
