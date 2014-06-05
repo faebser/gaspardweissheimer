@@ -230,6 +230,7 @@ def main():
     #pages - rewrite
     pagesDir = listdir(config.getPath('pages'))
     pageColorContent = ''
+    pages = []
     pagesDir.sort()
     makedirs(path.join(config.getPath('images'), 'pages'), 0755)
     for currentDir in pagesDir:
@@ -238,37 +239,41 @@ def main():
         else:
             pageJson = json.loads(codecs.open(path.join(config.getPath('pages'), currentDir, 'data.json'), 'r', encoding='utf-8').read())
             with codecs.open(path.join(config.getPath('pages'), currentDir, pageJson['text']), 'r', encoding='utf-8') as mdFile:
-                page = {
+                pages.append({
                     'name': currentDir,
                     'title': pageJson['title'],
                     'text': unicode(markdown.markdown(mdFile.read())),
                     'id': replace_all(pageJson['title'].lower().encode('utf-8').lstrip('1234567890_').replace(' ', '_'), {'ü': 'u', 'ä': 'a', 'ö': 'o'}),
-                    'color': pageJson.get('color', '#72898F')
-                }
-                htmlContent['nav'].append({
-                    'link': page['name'] + ".html",
-                    'name': page['title']
+                    'color': pageJson.get('color', '#72898F'),
+                    'path': currentDir
                 })
-                pageColorContent += renderer.render_name('pageColor', page)
-                with codecs.open(path.join(config.getPath("website"), page['name'].lower() + ".html"), 'w+', encoding='utf-8') as indexFile:
-                    rendered_page = Soup(renderer.render_name('page', page))
-                    makedirs(path.join(config.getPath('images'), 'pages', currentDir), 0755)
-                    targetPath = path.join(config.getPath('images'), 'pages', currentDir)
-                    img = rendered_page.find_all('img')
-                    for tag in img:
-                        # get path and copy file to new destination
-                        # change path to new destination
-                        copyfile(path.join(config.getPath('pages'), currentDir, tag['src']), path.join(targetPath, tag['src']))
-                        tag['src'] = path.relpath(path.join(targetPath, tag['src']), config.getPath("website"))
-                    a = rendered_page.find_all('a')
-                    for tag in a:
-                        try:
-                            if not tag['href'].startswith(('http', 'mailto',)) and tag['href'].endswith(('pdf', )):
-                                copyfile(path.join(config.getPath('pages'), currentDir, tag['href']), path.join(targetPath, tag['href']))
-                                tag['href'] = path.relpath(path.join(targetPath, tag['href']), config.getPath("website"))
-                        except KeyError:
-                            pass
-                    indexFile.write(rendered_page.prettify())
+                htmlContent['nav'].append({
+                    'link': pages[-1]['name'] + ".html",
+                    'name': pages[-1]['title']
+                })
+                pageColorContent += renderer.render_name('pageColor', pages[-1])
+    for page in pages:
+        currentDir = page['path']
+        page['nav'] = htmlContent['nav']
+        with codecs.open(path.join(config.getPath("website"), page['name'].lower() + ".html"), 'w+', encoding='utf-8') as indexFile:
+            rendered_page = Soup(renderer.render_name('page', page))
+            makedirs(path.join(config.getPath('images'), 'pages', currentDir), 0755)
+            targetPath = path.join(config.getPath('images'), 'pages', currentDir)
+            img = rendered_page.find_all('img')
+            for tag in img:
+                # get path and copy file to new destination
+                # change path to new destination
+                copyfile(path.join(config.getPath('pages'), currentDir, tag['src']), path.join(targetPath, tag['src']))
+                tag['src'] = path.relpath(path.join(targetPath, tag['src']), config.getPath("website"))
+            a = rendered_page.find_all('a')
+            for tag in a:
+                try:
+                    if not tag['href'].startswith(('http', 'mailto',)) and tag['href'].endswith(('pdf', )):
+                        copyfile(path.join(config.getPath('pages'), currentDir, tag['href']), path.join(targetPath, tag['href']))
+                        tag['href'] = path.relpath(path.join(targetPath, tag['href']), config.getPath("website"))
+                except KeyError:
+                    pass
+            indexFile.write(rendered_page.prettify())
     # add colors from pages to template
     cssPageColorsFile = codecs.open(path.join(config.getPath('css'), 'pageColor.scss'), 'w+', encoding='utf-8')
     cssPageColorsFile.write(pageColorContent)

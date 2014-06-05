@@ -259,6 +259,7 @@ textarea {
 }
 
 $background: #F6F5EE;
+$link-color: #00958e;
 
 *, *:before, *:after { /* sane box model */
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
@@ -471,11 +472,11 @@ $scrollDuration: 0.75s;
                 p {
                     a {
                         @include transatStandard;
-                        color: #222;
+                        color: $link-color;
                         text-decoration: none;
                         &:hover,
                         &:visited {
-                            color: #222;
+                            color: #00958e;
                         }
                     }
                 }
