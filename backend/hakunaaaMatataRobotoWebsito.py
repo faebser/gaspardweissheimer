@@ -286,8 +286,8 @@ def main():
             '$mainWidth': str(promoAmount * 100) + '%',
             '$promoWidth': str(100 / float(promoAmount)) + '%'
         })
-        mainCssFile.write(compiler.compile(codecs.open(path.join(config.getPath('css'), 'main.scss'), 'w+', encoding='utf-8').read()))
 
+        mainCssFile.write(compiler.compile(codecs.open(path.join(config.getPath('css'), 'main.scss'), 'r', encoding='utf-8').read()))
     endtime = time.time()
     duration = endtime-starttime
 
