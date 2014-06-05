@@ -248,14 +248,14 @@ def main():
                     'path': currentDir
                 })
                 htmlContent['nav'].append({
-                    'link': pages[-1]['name'] + ".html",
+                    'link': pages[-1]['id'] + ".html",
                     'name': pages[-1]['title']
                 })
                 pageColorContent += renderer.render_name('pageColor', pages[-1])
     for page in pages:
         currentDir = page['path']
         page['nav'] = htmlContent['nav']
-        with codecs.open(path.join(config.getPath("website"), page['name'].lower() + ".html"), 'w+', encoding='utf-8') as indexFile:
+        with codecs.open(path.join(config.getPath("website"), page['id'] + ".html"), 'w+', encoding='utf-8') as indexFile:
             rendered_page = Soup(renderer.render_name('page', page))
             makedirs(path.join(config.getPath('images'), 'pages', currentDir), 0755)
             targetPath = path.join(config.getPath('images'), 'pages', currentDir)
