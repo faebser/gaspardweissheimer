@@ -157,8 +157,9 @@ def main():
         'bodyId': 'home',
         'nav': [
             {
-                'link': 'someJsCode',
-                'name': 'Arbeiten'
+                'link': '#',
+                'name': 'Arbeiten',
+                'id': 'resetAndShowWorks'
             }
         ]
     }
@@ -249,7 +250,8 @@ def main():
                 })
                 htmlContent['nav'].append({
                     'link': pages[-1]['id'] + ".html",
-                    'name': pages[-1]['title']
+                    'name': pages[-1]['title'],
+                    'id': pages[-1]['id']
                 })
                 pageColorContent += renderer.render_name('pageColor', pages[-1])
     for page in pages:

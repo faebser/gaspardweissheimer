@@ -1,20 +1,62 @@
-var indicator = (function () {
+var indicator = (function ($) {
 	// javascript module pattern
 	"use strict"; // enable strict mode for javascript module
 	// private vars
 	var module = {},
-		indicator = null;
+		indicator = null,
+		cookie = $.cookie,
+		cookieName = 'linkId',
+		parent = $('#navAndLogo .wrapper'),
+		config = {
+			'path': '/'
+		},
+		startValue = 'logo';
 	// private methods
-	var init = function() {
-		
+	var init = function(indi) {
+		indicator = indi;
+		if(typeof getCookie() === "undefined") {
+			reset();
+		}
+		console.log(getCookie());
+		newPos(getCookie());
+		parent.find('a').click(function() {
+			//event.preventDefault();
+			console.log($(this));
+			setCookie($(this).attr('id'));
+			newPos(getCookie());
+		});
+	},
+	newPos = function (id) {
+			var el = parent.find('#' + id);
+			var offset = el.position();
+			indicator.css({
+				'left': offset.left,
+				'width': el.width()
+			});
+	},
+	setCookie = function (value) {
+		cookie(cookieName, value, config);
+	},
+	getCookie = function () {
+		return cookie(cookieName);
+	},
+	reset = function () {
+		console.log(startValue);
+		setCookie(startValue);
 	};
 	// public methods
 	module.init = function (indi) {
-		indicator = indi;
+		init(indi);
+	},
+	module.setCookie = function (value) {
+		setCookie(value);
+	},
+	module.resetCookie = function () {
+		reset();
 	};
 	//return the module
 	return module;
-}());
+}(jQuery));
 
 var loader = (function ($) {
 	// javascript module pattern
@@ -191,6 +233,8 @@ var gaspi = (function ($) {
 			pageScroller();
 		}
 		clickHandlers(winHeight);
+		// reset handler in nav
+		$('#resetAndShowWorks').click(reset);
 	},
 	verticalNavInit = function (winHeight) {
 		var length = navElements.length,
@@ -224,13 +268,13 @@ var gaspi = (function ($) {
 				if(e.find('i').hasClass(c.overview)) {
 					main.transition({
 						'x' : $(this).data("scroll") * -1 + "%"
-					}, 1500, 'snap');
+					}, 1500, 'ease-in-out');
 					activateOverview(1500);
 				}
 				else {
 					main.transition({
 						'x' : $(this).data("scroll") * -1 + "%"
-					}, 1500, 'snap');
+					}, 1500, 'ease-in-out');
 				}
 				// TODO recode this shit & init
 				var color = "";
@@ -371,6 +415,9 @@ var gaspi = (function ($) {
         		}, 2000);
         	});
 		});
+	},
+	reset = function () {
+		console.log("stuff");
 	};
 	// public methods
 	module.init = function () {
@@ -384,4 +431,5 @@ jQuery(document).ready(function($) {
 	loader.init(Modernizr);
 	loader.setActiveParent($('#main li.active').attr('id'));
 	gaspi.init();
+	indicator.init($('#indicator'));
 });

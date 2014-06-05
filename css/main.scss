@@ -331,11 +331,21 @@ body {
     position: fixed;
     z-index: 10;
     color: #000;
-
+    .wrapper {
+        position: relative;
+    }
+    #indicator {
+        @include transition(background-color 1.3s ease, left 0.5s linear, width 0.5s linear);
+        width: 4.8125em;
+        height: 0.0625em;
+        position: absolute;
+        bottom: 0.2em;
+        left: 0;
+        background-color: #000;
+    }
     nav {
         text-transform: uppercase;
         float: right;
-        position: relative;
         @include transatStandard;
         @include transition(opacity 0.75s linear);
         font-size: 1.125em;
@@ -360,17 +370,10 @@ body {
                 }
             }
         }
-        #indicator {
-            @include transition(background-color 1.3s ease);
-            width: 4.8125em;
-            height: 0.0625em;
-            position: absolute;
-            bottom: 0.2em;
-            left: 0;
-            background-color: #000;
-        }
+        
     }
     #logo {
+        width: 270px;
         text-transform: uppercase;
         float: left;
         font-size: 1.25em;
