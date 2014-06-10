@@ -48,7 +48,6 @@ var indicator = (function ($) {
 		}
 		indicator.addClass(c.rdy);
 		indicator.css(pos);
-		console.log(pos);
 		indicator.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function() {
 			setPos(pos);
 		});
