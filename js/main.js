@@ -6,43 +6,74 @@ var indicator = (function ($) {
 		indicator = null,
 		cookie = $.cookie,
 		cookieName = 'linkId',
+		posName = 'linkPos',
 		parent = $('#navAndLogo .wrapper'),
 		config = {
 			'path': '/'
 		},
-		startValue = 'logo';
+		c = {
+			'rdy': 'ready'
+		},
+		startValue = 'logo',
+		defaultPos = {
+			'left': 0,
+			'width': 270
+		};
 	// private methods
 	var init = function(indi) {
+		cookie.json = true;
 		indicator = indi;
-		if(typeof getCookie() === "undefined") {
+		if(typeof getCookie() === "undefined" || window.location.pathname === '/gaspi/') {
 			reset();
 		}
-		console.log(getCookie());
-		newPos(getCookie());
-		parent.find('a').click(function() {
-			//event.preventDefault();
-			console.log($(this));
-			setCookie($(this).attr('id'));
+		startPos(getPos());
+		$(window).load(function(){
 			newPos(getCookie());
 		});
+		clickHandlers();
+	},
+	startPos = function (pos) {
+		indicator.css({ 
+			'left': pos.left,
+			'width': pos.width
+		});
+		
 	},
 	newPos = function (id) {
-			var el = parent.find('#' + id);
-			var offset = el.position();
-			indicator.css({
-				'left': offset.left,
-				'width': el.width()
-			});
+		var el = parent.find('#' + id);
+		var offset = el.position();
+		var pos = {
+			'left': offset.left,
+			'width': el.width() - 5
+		}
+		indicator.addClass(c.rdy);
+		indicator.css(pos);
+		console.log(pos);
+		indicator.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function() {
+			setPos(pos);
+		});
 	},
 	setCookie = function (value) {
 		cookie(cookieName, value, config);
+	},
+	setPos = function (pos) {
+		cookie(posName, pos, config);
+	},
+	getPos = function () {
+		return cookie(posName);	
 	},
 	getCookie = function () {
 		return cookie(cookieName);
 	},
 	reset = function () {
-		console.log(startValue);
 		setCookie(startValue);
+		setPos(defaultPos);
+	},
+	clickHandlers = function () {
+		parent.find('a').click(function() {
+			setCookie($(this).attr('id'));
+			newPos(getCookie());
+		});
 	};
 	// public methods
 	module.init = function (indi) {

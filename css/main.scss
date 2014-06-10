@@ -335,13 +335,15 @@ body {
         position: relative;
     }
     #indicator {
-        @include transition(background-color 1.3s ease, left 0.5s linear, width 0.5s linear);
         width: 4.8125em;
         height: 0.0625em;
         position: absolute;
         bottom: 0.2em;
         left: 0;
         background-color: #000;
+        &.ready {
+            @include transition(background-color 1.3s ease, left 0.5s linear, width 0.5s linear);
+        }
     }
     nav {
         text-transform: uppercase;
