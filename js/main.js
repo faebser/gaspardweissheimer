@@ -44,7 +44,7 @@ var indicator = (function ($) {
 		var offset = el.position();
 		var pos = {
 			'left': offset.left,
-			'width': el.width() - 5
+			'width': (id !== 'logo') ? el.width() -5 : el.width()
 		}
 		indicator.addClass(c.rdy);
 		indicator.css(pos);
