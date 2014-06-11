@@ -216,6 +216,8 @@ var gaspi = (function ($) {
 		promoElements = $('.promo'),
 		overview = $("#overview"),
 		scrollUpThreshold = 0,
+		State = null,
+		baseUrl = '/gaspi',
 		bullets = {
 			"active" : $('<i/>').attr({
 				"class" : "icon-circle",
@@ -265,6 +267,51 @@ var gaspi = (function ($) {
 		clickHandlers(winHeight);
 		// reset handler in nav
 		$('#resetAndShowWorks').click(reset);
+		// history.js
+		(function(window,undefined){
+		    // Bind to StateChange Event
+		    History.Adapter.bind(window,'statechange', historyStateChange); // Note: We are using statechange instead of popstate
+		})(window);
+		State = History.getState();
+		// promo item requested
+		if (State.hash.indexOf('promo') != -1) {
+			// split string
+			var splitted = State.hash.split('/');
+			var promoE = promoElements.filter('#' + splitted[splitted.length - 1]);
+			var navE = verticalNav.find('li').eq(promoElements.index(promoE));
+			
+			setPromoElementActive(promoE);
+			setVerticalNavElementActive(navE);
+
+			mainMoveNormal(navE.data("scroll") * -1 + "%");
+		};
+		if(State.hash.indexOf('overview') != -1) {
+			console.log("found overview");
+			mainMoveNormal(verticalNav.find('li').last().data('scroll') * -1 + "%");
+			activateOverview(0);
+		};
+	},
+	historyStateChange = function () {
+		State = History.getState();
+		if (State.hash.indexOf('promo') != -1) {
+			// split string
+			var splitted = State.hash.split('/');
+			var promoE = promoElements.filter('#' + splitted[splitted.length - 1]);
+			var navE = verticalNav.find('li').eq(promoElements.index(promoE));
+			
+			setPromoElementActive(promoE);
+			setVerticalNavElementActive(navE);
+
+			mainMoveWithTransition(navE.data("scroll") * -1 + "%");
+			if(verticalNav.css('display') === 'none') {
+				deactiveOverview(1500);
+			}
+		};
+		if(State.hash.indexOf('overview') != -1) {
+			console.log("found overview");
+			mainMoveWithTransition(verticalNav.find('li').last().data('scroll') * -1 + "%");
+			activateOverview(0);
+		};
 	},
 	verticalNavInit = function (winHeight) {
 		var length = navElements.length,
@@ -289,37 +336,7 @@ var gaspi = (function ($) {
 			ul.append(li);
 			li.click(function () {
 				var e = $(this);
-				promoElements.removeClass('active');
-				promoElements.eq(e.index()).addClass('active');
-				loader.setActiveParent($('#main li.active').attr('id'));
-				verticalNav.find('i.' + c.circle).toggleClass(c.circle).toggleClass(c.empty);
-				e.find('i').toggleClass(c.empty).toggleClass(c.circle);
-				
-				if(e.find('i').hasClass(c.overview)) {
-					main.transition({
-						'x' : $(this).data("scroll") * -1 + "%"
-					}, 1500, 'ease-in-out');
-					activateOverview(1500);
-				}
-				else {
-					main.transition({
-						'x' : $(this).data("scroll") * -1 + "%"
-					}, 1500, 'ease-in-out');
-				}
-				// TODO recode this shit & init
-				var color = "";
-				if (typeof $(this).data("color") === 'undefined') {
-					color = "#000"
-				}
-				else {
-					color = $(this).data("color");
-				};
-				topElementsToSwitchColor.css({
-					"color" : color
-				});
-				topElementsToSwitchBack.css({
-					"background-color" : color
-				});
+				verticalNavClick(e);
 				return;
 			});
 			width += parseInt(li.outerWidth(true));
@@ -333,6 +350,54 @@ var gaspi = (function ($) {
 		scrollIndicator.css({
 			"top" : winHeight - 90 - 100
 		});
+	},
+	verticalNavClick = function (e) {
+		//promoElements.removeClass('active');
+		//promoElements.eq(e.index()).addClass('active');
+		loader.setActiveParent($('#main li.active').attr('id'));
+		//verticalNav.find('i.' + c.circle).toggleClass(c.circle).toggleClass(c.empty);
+		//e.find('i').toggleClass(c.empty).toggleClass(c.circle);
+		
+		//mainMoveWithTransition(e.data("scroll") * -1 + "%");
+		if(e.find('i').hasClass(c.overview)) {
+			History.pushState(null, null, baseUrl + '/overview');
+			activateOverview(1500);
+		}
+		else {
+			History.pushState(null, null, baseUrl + '/promo/' + promoElements.eq(e.index()).attr('id'));
+		}
+		// TODO recode this shit & init
+		var color = "";
+		if (typeof $(this).data("color") === 'undefined') {
+			color = "#000"
+		}
+		else {
+			color = $(this).data("color");
+		};
+		topElementsToSwitchColor.css({
+			"color" : color
+		});
+		topElementsToSwitchBack.css({
+			"background-color" : color
+		});	
+	},
+	mainMoveWithTransition = function (percent) {
+		main.transition({
+			'x' : percent
+		}, 1500, 'ease-in-out');
+	},
+	mainMoveNormal = function (percent) {
+		main.transition({
+			'x' : percent
+		}, 0, 'linear');
+	},
+	setPromoElementActive = function (e) {
+		promoElements.removeClass(c.active);
+		e.addClass(c.active);
+	},
+	setVerticalNavElementActive = function (e) {
+		verticalNav.find('i.' + c.circle).toggleClass(c.circle).toggleClass(c.empty);
+		e.find('i').toggleClass(c.empty).toggleClass(c.circle);
 	},
 	scrollDown = function (promoElement) {
 		var e = promoElement,
@@ -383,6 +448,18 @@ var gaspi = (function ($) {
 		overview.transition({
 			'opacity' : 1
 		}, duration + 500, 'linear');
+	},
+	deactiveOverview = function (duration) {
+		showVerticalNav();
+		overview.transition
+		overview.transition({
+			'opacity' : 0
+		}, duration, 'linear', function() {
+			overview.css({
+				'height' : '0',
+				'overflow' : 'hidden'
+			});
+		});
 	},
 	clickHandlers = function (winHeight) {
 		win.on('scroll', function(event) {
