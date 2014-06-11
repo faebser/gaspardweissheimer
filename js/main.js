@@ -139,7 +139,6 @@ var loader = (function ($) {
 			e.removeClass(c.notLoaded);
 		});
 		images[activeParentId].splice(0, 1);
-		console.log(images[activeParentId]);
 	},
 	addImage = function (el, parent) {
 		var id = parent.attr('id');
@@ -160,6 +159,7 @@ var loader = (function ($) {
 	module.checkForImages = function(parent) {
 		parent.find('li').each(function(index, parent) {
 			var p = $(parent);
+			var chromeBugHeight = p.find('img').not(selector).first().height();
 			p.find(selector).each(function(cIndex, el){
 				var e = $(el);
 				addImage(e, p);
@@ -172,12 +172,16 @@ var loader = (function ($) {
 					}).data(state + '-src', data.path).attr('src', '').addClass(c.notLoaded);
 				}
 				else {
-					e.css('height', e.height()).data('normal-src', e.attr('src')).attr('src', '').addClass(c.notLoaded); // the height is the same for all images
+					//chrome fix
+					var height = e.height();
+					if(height === 0) {
+						height = chromeBugHeight;
+					}
+					e.css('height', height).data('normal-src', e.attr('src')).attr('src', '').addClass(c.notLoaded); // the height is the same for all images
 				}
 			});
 			return;
 		});
-		console.log(images);
 		$(document).on('scroll', check);
 	},
 	module.reset = function() {
@@ -354,7 +358,6 @@ var gaspi = (function ($) {
 	verticalNavClick = function (e) {
 		//promoElements.removeClass('active');
 		//promoElements.eq(e.index()).addClass('active');
-		loader.setActiveParent($('#main li.active').attr('id'));
 		//verticalNav.find('i.' + c.circle).toggleClass(c.circle).toggleClass(c.empty);
 		//e.find('i').toggleClass(c.empty).toggleClass(c.circle);
 		
@@ -366,6 +369,7 @@ var gaspi = (function ($) {
 		else {
 			History.pushState(null, null, baseUrl + '/promo/' + promoElements.eq(e.index()).attr('id'));
 		}
+		loader.setActiveParent($('#main li.active').attr('id'));
 		// TODO recode this shit & init
 		var color = "";
 		if (typeof $(this).data("color") === 'undefined') {
