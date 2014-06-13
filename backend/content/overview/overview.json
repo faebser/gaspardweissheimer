@@ -39,6 +39,10 @@
        {
             "type" : "0-50",
             "entries" : [ "19_spielzeugmuseum_riehen"]
+        },
+        {
+            "type" : "100",
+            "entries" : [ "20_depotbasel_bling"]
         }
     ]
 }
