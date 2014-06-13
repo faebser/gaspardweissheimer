@@ -9,6 +9,7 @@
         <title>{{#pageTitle}}{{pageTitle}} - {{/pageTitle}}WEISSHEIMER Grafik Design</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+        <base href="http://localhost/gaspi/" />
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -19,19 +20,19 @@
     <body{{#bodyId}} id="{{bodyId}}" {{/bodyId}}>
         <div id="navAndLogo">
             <div class="wrapper clearfix">
-            <div id="logo">
-                <a href="http://www.weissheimer.ch">
-                    <p>
-                        <span>weissheimer</span> Grafik Design
-                    </p>
-                </a>
-            </div>
+                <div id="indicator">
+                </div>
+                <div id="logo">
+                    <a href="http://www.weissheimer.ch">
+                        <p>
+                            <span>weissheimer</span> Grafik Design
+                        </p>
+                    </a>
+                </div>
                 <nav>
                     <ul>
                         {{> nav}}
                     </ul>
-                    <div id="indicator">
-                    </div>
                 </nav>
             </div>
         </div>
@@ -85,8 +86,8 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/vendor/jquery.history.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-
     </body>
 </html>

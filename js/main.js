@@ -1,20 +1,92 @@
-var indicator = (function () {
+var indicator = (function ($) {
 	// javascript module pattern
 	"use strict"; // enable strict mode for javascript module
 	// private vars
 	var module = {},
-		indicator = null;
+		indicator = null,
+		cookie = $.cookie,
+		cookieName = 'linkId',
+		posName = 'linkPos',
+		parent = $('#navAndLogo .wrapper'),
+		config = {
+			'path': '/'
+		},
+		c = {
+			'rdy': 'ready'
+		},
+		startValue = 'logo',
+		defaultPos = {
+			'left': 0,
+			'width': 270
+		};
 	// private methods
-	var init = function() {
+	var init = function(indi) {
+		cookie.json = true;
+		indicator = indi;
+		if(typeof getCookie() === "undefined" || window.location.pathname === '/gaspi/') {
+			reset();
+		}
+		startPos(getPos());
+		$(window).load(function(){
+			newPos(getCookie());
+		});
+		clickHandlers();
+	},
+	startPos = function (pos) {
+		indicator.css({ 
+			'left': pos.left,
+			'width': pos.width
+		});
 		
+	},
+	newPos = function (id) {
+		var el = parent.find('#' + id);
+		var offset = el.position();
+		var pos = {
+			'left': offset.left,
+			'width': (id !== 'logo') ? el.width() -5 : el.width()
+		}
+		indicator.addClass(c.rdy);
+		indicator.css(pos);
+		indicator.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function() {
+			setPos(pos);
+		});
+	},
+	setCookie = function (value) {
+		cookie(cookieName, value, config);
+	},
+	setPos = function (pos) {
+		cookie(posName, pos, config);
+	},
+	getPos = function () {
+		return cookie(posName);	
+	},
+	getCookie = function () {
+		return cookie(cookieName);
+	},
+	reset = function () {
+		setCookie(startValue);
+		setPos(defaultPos);
+	},
+	clickHandlers = function () {
+		parent.find('a').click(function() {
+			setCookie($(this).attr('id'));
+			newPos(getCookie());
+		});
 	};
 	// public methods
 	module.init = function (indi) {
-		indicator = indi;
+		init(indi);
+	},
+	module.setCookie = function (value) {
+		setCookie(value);
+	},
+	module.resetCookie = function () {
+		reset();
 	};
 	//return the module
 	return module;
-}());
+}(jQuery));
 
 var loader = (function ($) {
 	// javascript module pattern
@@ -67,7 +139,6 @@ var loader = (function ($) {
 			e.removeClass(c.notLoaded);
 		});
 		images[activeParentId].splice(0, 1);
-		console.log(images[activeParentId]);
 	},
 	addImage = function (el, parent) {
 		var id = parent.attr('id');
@@ -88,6 +159,7 @@ var loader = (function ($) {
 	module.checkForImages = function(parent) {
 		parent.find('li').each(function(index, parent) {
 			var p = $(parent);
+			var chromeBugHeight = p.find('img').not(selector).first().height();
 			p.find(selector).each(function(cIndex, el){
 				var e = $(el);
 				addImage(e, p);
@@ -100,12 +172,16 @@ var loader = (function ($) {
 					}).data(state + '-src', data.path).attr('src', '').addClass(c.notLoaded);
 				}
 				else {
-					e.css('height', e.height()).data('normal-src', e.attr('src')).attr('src', '').addClass(c.notLoaded); // the height is the same for all images
+					//chrome fix
+					var height = e.height();
+					if(height === 0) {
+						height = chromeBugHeight;
+					}
+					e.css('height', height).data('normal-src', e.attr('src')).attr('src', '').addClass(c.notLoaded); // the height is the same for all images
 				}
 			});
 			return;
 		});
-		console.log(images);
 		$(document).on('scroll', check);
 	},
 	module.reset = function() {
@@ -144,6 +220,8 @@ var gaspi = (function ($) {
 		promoElements = $('.promo'),
 		overview = $("#overview"),
 		scrollUpThreshold = 0,
+		State = null,
+		baseUrl = '/gaspi',
 		bullets = {
 			"active" : $('<i/>').attr({
 				"class" : "icon-circle",
@@ -191,6 +269,53 @@ var gaspi = (function ($) {
 			pageScroller();
 		}
 		clickHandlers(winHeight);
+		// reset handler in nav
+		$('#resetAndShowWorks').click(reset);
+		// history.js
+		(function(window,undefined){
+		    // Bind to StateChange Event
+		    History.Adapter.bind(window,'statechange', historyStateChange); // Note: We are using statechange instead of popstate
+		})(window);
+		State = History.getState();
+		// promo item requested
+		if (State.hash.indexOf('promo') != -1) {
+			// split string
+			var splitted = State.hash.split('/');
+			var promoE = promoElements.filter('#' + splitted[splitted.length - 1]);
+			var navE = verticalNav.find('li').eq(promoElements.index(promoE));
+			
+			setPromoElementActive(promoE);
+			setVerticalNavElementActive(navE);
+
+			mainMoveNormal(navE.data("scroll") * -1 + "%");
+		};
+		if(State.hash.indexOf('overview') != -1) {
+			console.log("found overview");
+			mainMoveNormal(verticalNav.find('li').last().data('scroll') * -1 + "%");
+			activateOverview(0);
+		};
+	},
+	historyStateChange = function () {
+		State = History.getState();
+		if (State.hash.indexOf('promo') != -1) {
+			// split string
+			var splitted = State.hash.split('/');
+			var promoE = promoElements.filter('#' + splitted[splitted.length - 1]);
+			var navE = verticalNav.find('li').eq(promoElements.index(promoE));
+			
+			setPromoElementActive(promoE);
+			setVerticalNavElementActive(navE);
+
+			mainMoveWithTransition(navE.data("scroll") * -1 + "%");
+			if(verticalNav.css('display') === 'none') {
+				deactiveOverview(1500);
+			}
+		};
+		if(State.hash.indexOf('overview') != -1) {
+			console.log("found overview");
+			mainMoveWithTransition(verticalNav.find('li').last().data('scroll') * -1 + "%");
+			activateOverview(0);
+		};
 	},
 	verticalNavInit = function (winHeight) {
 		var length = navElements.length,
@@ -215,37 +340,7 @@ var gaspi = (function ($) {
 			ul.append(li);
 			li.click(function () {
 				var e = $(this);
-				promoElements.removeClass('active');
-				promoElements.eq(e.index()).addClass('active');
-				loader.setActiveParent($('#main li.active').attr('id'));
-				verticalNav.find('i.' + c.circle).toggleClass(c.circle).toggleClass(c.empty);
-				e.find('i').toggleClass(c.empty).toggleClass(c.circle);
-				
-				if(e.find('i').hasClass(c.overview)) {
-					main.transition({
-						'x' : $(this).data("scroll") * -1 + "%"
-					}, 1500, 'snap');
-					activateOverview(1500);
-				}
-				else {
-					main.transition({
-						'x' : $(this).data("scroll") * -1 + "%"
-					}, 1500, 'snap');
-				}
-				// TODO recode this shit & init
-				var color = "";
-				if (typeof $(this).data("color") === 'undefined') {
-					color = "#000"
-				}
-				else {
-					color = $(this).data("color");
-				};
-				topElementsToSwitchColor.css({
-					"color" : color
-				});
-				topElementsToSwitchBack.css({
-					"background-color" : color
-				});
+				verticalNavClick(e);
 				return;
 			});
 			width += parseInt(li.outerWidth(true));
@@ -259,6 +354,54 @@ var gaspi = (function ($) {
 		scrollIndicator.css({
 			"top" : winHeight - 90 - 100
 		});
+	},
+	verticalNavClick = function (e) {
+		//promoElements.removeClass('active');
+		//promoElements.eq(e.index()).addClass('active');
+		//verticalNav.find('i.' + c.circle).toggleClass(c.circle).toggleClass(c.empty);
+		//e.find('i').toggleClass(c.empty).toggleClass(c.circle);
+		
+		//mainMoveWithTransition(e.data("scroll") * -1 + "%");
+		if(e.find('i').hasClass(c.overview)) {
+			History.pushState(null, null, baseUrl + '/overview');
+			activateOverview(1500);
+		}
+		else {
+			History.pushState(null, null, baseUrl + '/promo/' + promoElements.eq(e.index()).attr('id'));
+		}
+		loader.setActiveParent($('#main li.active').attr('id'));
+		// TODO recode this shit & init
+		var color = "";
+		if (typeof $(this).data("color") === 'undefined') {
+			color = "#000"
+		}
+		else {
+			color = $(this).data("color");
+		};
+		topElementsToSwitchColor.css({
+			"color" : color
+		});
+		topElementsToSwitchBack.css({
+			"background-color" : color
+		});	
+	},
+	mainMoveWithTransition = function (percent) {
+		main.transition({
+			'x' : percent
+		}, 1500, 'ease-in-out');
+	},
+	mainMoveNormal = function (percent) {
+		main.transition({
+			'x' : percent
+		}, 0, 'linear');
+	},
+	setPromoElementActive = function (e) {
+		promoElements.removeClass(c.active);
+		e.addClass(c.active);
+	},
+	setVerticalNavElementActive = function (e) {
+		verticalNav.find('i.' + c.circle).toggleClass(c.circle).toggleClass(c.empty);
+		e.find('i').toggleClass(c.empty).toggleClass(c.circle);
 	},
 	scrollDown = function (promoElement) {
 		var e = promoElement,
@@ -309,6 +452,18 @@ var gaspi = (function ($) {
 		overview.transition({
 			'opacity' : 1
 		}, duration + 500, 'linear');
+	},
+	deactiveOverview = function (duration) {
+		showVerticalNav();
+		overview.transition
+		overview.transition({
+			'opacity' : 0
+		}, duration, 'linear', function() {
+			overview.css({
+				'height' : '0',
+				'overflow' : 'hidden'
+			});
+		});
 	},
 	clickHandlers = function (winHeight) {
 		win.on('scroll', function(event) {
@@ -371,6 +526,9 @@ var gaspi = (function ($) {
         		}, 2000);
         	});
 		});
+	},
+	reset = function () {
+		console.log("stuff");
 	};
 	// public methods
 	module.init = function () {
@@ -384,4 +542,5 @@ jQuery(document).ready(function($) {
 	loader.init(Modernizr);
 	loader.setActiveParent($('#main li.active').attr('id'));
 	gaspi.init();
+	indicator.init($('#indicator'));
 });
