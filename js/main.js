@@ -165,7 +165,7 @@ var loader = (function ($) {
 				var offset = p.find('.low img').first().position().top;
 				p.find(selector).each(function(cIndex, el){
 					var e = $(el);
-					var ratio = parseInt(e.attr('width')) / parentWidth;
+					var ratio = parentWidth / parseInt(e.attr('width'));
 					var height = ratio * parseInt(e.attr('height'));
 					offset += height;
 					addImage(e, p, offset);
