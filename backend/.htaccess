@@ -1,12 +1,5 @@
 RewriteEngine On
-RewriteBase /
-# ----------------------------------------------------------------------
-#  General Rule
-# ----------------------------------------------------------------------
- 
-# Redirect all files and paths to index.html
-RewriteRule ^index.html(.*)$ - [L,QSA]
- 
+
 # ----------------------------------------------------------------------
 #  Exception to the general rule 
 # ----------------------------------------------------------------------
@@ -14,10 +7,23 @@ RewriteRule ^index.html(.*)$ - [L,QSA]
 # Declare path and files where don't apply general rules
  
 # js/./../* -  not apply general rule redirect of all folders and files to path "/js"
-# css/./../* -  not apply general rule redirect of all folders and files to path "/css"
-# img/./../* -  not apply general rule redirect of all folders and files to path "/img"
 RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-d
 RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f
 RewriteRule js/(.*)$ js/$1 [L,QSA]
+ 
+# img/./../* -  not apply general rule redirect of all folders and files to path "/img"
+RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f
 RewriteRule img/(.*)$ img/$1 [L,QSA]
+ 
+# css/./../* -  not apply general rule redirect of all folders and files to path "/css"
+RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f
 RewriteRule css/(.*)$ css/$1 [L,QSA]
+
+# ----------------------------------------------------------------------
+#  General Rule
+# ----------------------------------------------------------------------
+ 
+# Redirect all files and paths to index.html
+RewriteRule (.*) index.html [L]
