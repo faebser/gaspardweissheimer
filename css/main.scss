@@ -321,7 +321,7 @@ body {
 }
 
 .wrapper {
-        max-width: 1200px;
+        max-width: 1260px;
         margin: 0 auto;
         padding: 2.0625em 1.875em 0em 1.875em;
     }
@@ -425,21 +425,25 @@ $scrollDuration: 0.75s;
                 text-shadow: 0 0 20px #fff;
                 color: #fff;
                 background: url("../img/static/kreuz.png") center center no-repeat;
+                min-height: 213px;
+                padding-top: 58px;
             }
             h1 {
                 @extend .headerLineH1;
-                font-size: 3.125em;
+                font-size: 2.925em;
+                margin-top: 0;
             }
             h2 {
                 @extend .headerLineH2;
-                font-size: 1.875em;
+                font-size: 1.675em;
+                margin-bottom: 0;
             }
         }
         .low {
             position: relative;
             overflow: hidden;
             padding: 0 1.875em 0 1.875em;
-            max-width: 1200px;
+            max-width: 1260px;
             margin: 0 auto 0 auto;
             .scrollHeader {
                 margin-bottom: 13em;                

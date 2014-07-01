@@ -137,16 +137,17 @@ var loader = (function ($) {
 		var e = image.element;
 		e.attr('src', e.data(state + '-src')).imagesLoaded(function (instance) {
 			e.removeClass(c.notLoaded);
+			e.css('height', 'auto');
 		});
 		images[activeParentId].splice(0, 1);
 	},
-	addImage = function (el, parent) {
+	addImage = function (el, parent, offset) {
 		var id = parent.attr('id');
 		if(!images.hasOwnProperty(id)) {
 			images[id] = [];
 		}
 		images[id].push({
-			'offset' : el.position().top - smallOffset,
+			'offset' : offset - smallOffset,
 			'element' : el
 		});
 	},
@@ -158,28 +159,30 @@ var loader = (function ($) {
 	// public methods
 	module.checkForImages = function(parent) {
 		parent.find('li').each(function(index, parent) {
-			var p = $(parent);
-			var chromeBugHeight = p.find('img').not(selector).first().height();
-			p.find(selector).each(function(cIndex, el){
-				var e = $(el);
-				addImage(e, p);
-				if (state !== 'normal') {
-					// unpack values
-					var data = e.data(state);
-					e.css( {
-						'height' : data.height,
-						'width' : data.width
-					}).data(state + '-src', data.path).attr('src', '').addClass(c.notLoaded);
-				}
-				else {
-					//chrome fix
-					var height = e.height();
-					if(height === 0) {
-						height = chromeBugHeight;
+			if($(parent).attr('id') !== 'overview') {
+				var p = $(parent);
+				var parentWidth = p.find('.lowerHeadline').width();
+				var offset = p.find('.low img').first().position().top;
+				p.find(selector).each(function(cIndex, el){
+					var e = $(el);
+					var ratio = parseInt(e.attr('width')) / parentWidth;
+					var height = ratio * parseInt(e.attr('height'));
+					offset += height;
+					addImage(e, p, offset);
+					if (state !== 'normal') {
+						// unpack values
+						var data = e.data(state);
+						e.css( {
+							'height' : data.height,
+							'width' : data.width
+						}).data(state + '-src', data.path).attr('src', '').addClass(c.notLoaded);
 					}
-					e.css('height', height).data('normal-src', e.attr('src')).attr('src', '').addClass(c.notLoaded); // the height is the same for all images
-				}
-			});
+					else {
+						//chrome fix
+						e.css('height', height).data('normal-src', e.attr('src')).attr('src', '').addClass(c.notLoaded); // the height is the same for all images
+					}
+				});
+			}
 			return;
 		});
 		$(document).on('scroll', check);
@@ -221,7 +224,7 @@ var gaspi = (function ($) {
 		overview = $("#overview"),
 		scrollUpThreshold = 0,
 		State = null,
-		baseUrl = '/gaspi',
+		baseUrl = '',
 		bullets = {
 			"active" : $('<i/>').attr({
 				"class" : "icon-circle",
@@ -271,6 +274,9 @@ var gaspi = (function ($) {
 		clickHandlers(winHeight);
 		// reset handler in nav
 		$('#resetAndShowWorks').click(reset);
+		if(window.location.host === 'localhost') {
+			baseUrl = '/gaspi';
+		}
 		// history.js
 		(function(window,undefined){
 		    // Bind to StateChange Event
@@ -279,6 +285,7 @@ var gaspi = (function ($) {
 		State = History.getState();
 		// promo item requested
 		if (State.hash.indexOf('promo') != -1) {
+
 			// split string
 			var splitted = State.hash.split('/');
 			var promoE = promoElements.filter('#' + splitted[splitted.length - 1]);
@@ -288,6 +295,7 @@ var gaspi = (function ($) {
 			setVerticalNavElementActive(navE);
 
 			mainMoveNormal(navE.data("scroll") * -1 + "%");
+			loader.setActiveParent($('#main li.active').attr('id'));
 		};
 		if(State.hash.indexOf('overview') != -1) {
 			console.log("found overview");

@@ -191,9 +191,7 @@ def main():
             htmlContent['promo'] += renderer.render_name('promoEntryAndPage', currentEntry)
             cssContent += renderer.render_name('backgrounds', currentEntry)
             promoAmount += 1
-    cssBackgroundsFile = codecs.open(path.join(config.getPath('css'), 'backgrounds.scss'), 'w+', encoding='utf-8')
-    cssBackgroundsFile.write(cssContent)
-    cssBackgroundsFile.close()
+
 
     #load overview content
     overviewJsonFile = json.loads(open(path.join(config.getPath('overview'), 'overview.json')).read())
@@ -220,6 +218,7 @@ def main():
                 templateContent['entry-' + str(index)].overViewImage = iterateOverOverviewImages(projectName, currentProjectPath, currentJsonFile['overviewImage'])
                 templateContent['entry-' + str(index)].images = iterateOverAllImages(projectName, currentProjectPath, currentJsonFile['images'], buildBlockingList(currentJsonFile['posterImage'], currentJsonFile['overviewImage']))
                 templateContent['entry-' + str(index)].path = templateContent['entry-' + str(index)].getId() + ".html"
+                cssContent += renderer.render_name('backgrounds', templateContent['entry-' + str(index)])
                 with codecs.open(path.join(config.getPath("website"), templateContent['entry-' + str(index)].getId() + ".html"), 'w+', encoding='utf-8') as indexFile:
                     indexFile.write(renderer.render_name('skeleton', {
                             "promo": renderer.render_name('promoEntryAndPage', templateContent['entry-' + str(index)]),
@@ -280,6 +279,11 @@ def main():
     cssPageColorsFile = codecs.open(path.join(config.getPath('css'), 'pageColor.scss'), 'w+', encoding='utf-8')
     cssPageColorsFile.write(pageColorContent)
     cssPageColorsFile.close()
+
+    # add backgrounds from pages and promo
+    cssBackgroundsFile = codecs.open(path.join(config.getPath('css'), 'backgrounds.scss'), 'w+', encoding='utf-8')
+    cssBackgroundsFile.write(cssContent)
+    cssBackgroundsFile.close()
 
     # generate index page with content from overview and promoted
     with codecs.open(path.join(config.getPath("website"), 'index.html'), 'w+', encoding='utf-8') as indexFile:
