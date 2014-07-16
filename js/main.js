@@ -1,3 +1,6 @@
+// google tracking stuff
+var _gaq = _gaq || []; 
+
 var indicator = (function ($) {
 	// javascript module pattern
 	"use strict"; // enable strict mode for javascript module
@@ -296,10 +299,11 @@ var gaspi = (function ($) {
 
 			mainMoveNormal(navE.data("scroll") * -1 + "%");
 			loader.setActiveParent($('#main li.active').attr('id'));
+			_gaq.push(['_trackEvent', 'Navigation', 'Visit', promoE.find('.top.big hgroup h1').html()]);
 		};
 		if(State.hash.indexOf('overview') != -1) {
-			console.log("found overview");
 			mainMoveNormal(verticalNav.find('li').last().data('scroll') * -1 + "%");
+			_gaq.push(['_trackEvent', 'Navigation', 'Visit', 'Overview']);
 			activateOverview(0);
 		};
 	},
@@ -318,9 +322,10 @@ var gaspi = (function ($) {
 			if(verticalNav.css('display') === 'none') {
 				deactiveOverview(1500);
 			}
+			_gaq.push(['_trackEvent', 'Navigation', 'Visit', promoE.find('.top.big hgroup h1').html()]);
 		};
 		if(State.hash.indexOf('overview') != -1) {
-			console.log("found overview");
+			_gaq.push(['_trackEvent', 'Navigation', 'Visit', 'Overview']);
 			mainMoveWithTransition(verticalNav.find('li').last().data('scroll') * -1 + "%");
 			activateOverview(0);
 		};
@@ -415,6 +420,8 @@ var gaspi = (function ($) {
 		var e = promoElement,
 			state = e.find(c_('top')).hasClass(c.big);
 		if(state && win.scrollTop() > 20) {
+			_gaq.push(['_trackEvent', 'Navigation', 'Scroll Down', promoElement.find('.top.big hgroup h1').html()]);
+			console.log(promoElement.find('.top.big hgroup h1').html());
 			disableScrolling();
 			e.find(c_('top')).addClass(c.small).removeClass(c.big);
 			e.find(c_('low')).addClass(c.big);
