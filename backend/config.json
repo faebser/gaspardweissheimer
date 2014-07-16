@@ -1,8 +1,8 @@
 {
     "imageSizes" : {
-		"normal" : ["width", 1260],
-		"mobile" : ["height", 200],
-		"landscape" : ["width", 10],
+		"normal" : ["width", 1400],
+		"mobile" : ["width", 800],
+		"landscape" : ["width", 1200],
 		"highres" : ["width", 2000]
     },
     "rowTypes" : {
