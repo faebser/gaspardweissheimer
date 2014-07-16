@@ -453,6 +453,7 @@ var gaspi = (function ($) {
 	},
 	activateOverview = function (duration) {
 		hideVerticalNav();
+		win.off('scroll');
 		overview.css({
 			'height' : 'auto',
 			'overflow' : 'visible'
@@ -463,7 +464,6 @@ var gaspi = (function ($) {
 	},
 	deactiveOverview = function (duration) {
 		showVerticalNav();
-		overview.transition
 		overview.transition({
 			'opacity' : 0
 		}, duration, 'linear', function() {
@@ -472,6 +472,7 @@ var gaspi = (function ($) {
 				'overflow' : 'hidden'
 			});
 		});
+		clickHandlers();
 	},
 	clickHandlers = function (winHeight) {
 		win.on('scroll', function(event) {
@@ -540,6 +541,9 @@ var gaspi = (function ($) {
 	};
 	// public methods
 	module.init = function () {
+		$(document.links).filter(function() { // open all external links in new tab
+		    return this.hostname != window.location.hostname;
+		}).attr('target', '_blank');
 		init();
 	};
 	//return the module

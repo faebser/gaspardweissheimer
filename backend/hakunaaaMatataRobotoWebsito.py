@@ -157,7 +157,7 @@ def main():
         'bodyId': 'home',
         'nav': [
             {
-                'link': '#',
+                'link': 'overview',
                 'name': 'Arbeiten',
                 'id': 'resetAndShowWorks'
             }

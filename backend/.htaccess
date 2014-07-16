@@ -26,4 +26,6 @@ RewriteRule css/(.*)$ css/$1 [L,QSA]
 # ----------------------------------------------------------------------
  
 # Redirect all files and paths to index.html
+RewriteCond %{REQUEST_URI} !-f
+RewriteCond %{REQUEST_URI} !-d
 RewriteRule (.*) index.html [L]

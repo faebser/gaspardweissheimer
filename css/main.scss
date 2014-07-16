@@ -575,6 +575,14 @@ $scrollDuration: 0.75s;
             font-size: 1em;
         }
     }
+    .middle {
+        h1 {
+            font-size: 1.5em;
+        }
+        h2 {
+            font-size: 1.25em;
+        }
+    }
     &.order50-25-25 {
         .entry-1 {
             width: 50%;
@@ -630,6 +638,7 @@ $scrollDuration: 0.75s;
         .entry-1 {
             width: 39.5%;
             margin-right: $margin;
+            @extend .middle;
         }
         .entry-2 {
             width: 59.5%;
@@ -640,6 +649,7 @@ $scrollDuration: 0.75s;
             }
             .entry-2 {
                 width: 39.5%;
+                @extend .middle;
             }
         }
     }
