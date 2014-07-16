@@ -1,4 +1,5 @@
 RewriteEngine On
+#LogLevel alert rewrite:trace1
 
 # ----------------------------------------------------------------------
 #  Exception to the general rule 
@@ -25,7 +26,7 @@ RewriteRule css/(.*)$ css/$1 [L,QSA]
 #  General Rule
 # ----------------------------------------------------------------------
  
-# Redirect all files and paths to index.html
-RewriteCond %{REQUEST_URI} !-f
-RewriteCond %{REQUEST_URI} !-d
-RewriteRule (.*) index.html [L]
+# Redirect all files and paths to index.html but only if file not found
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule (.*) index.html [L,QSA]

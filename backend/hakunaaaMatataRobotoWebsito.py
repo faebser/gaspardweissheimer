@@ -248,7 +248,7 @@ def main():
                     'path': currentDir
                 })
                 htmlContent['nav'].append({
-                    'link': pages[-1]['id'] + ".html",
+                    'link': "/" + pages[-1]['id'] + ".html",
                     'name': pages[-1]['title'],
                     'id': pages[-1]['id']
                 })
