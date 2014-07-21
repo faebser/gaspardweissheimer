@@ -552,6 +552,13 @@ var gaspi = (function ($) {
 		    return this.hostname != window.location.hostname;
 		}).attr('target', '_blank');
 		init();
+		if($('#mobileOverlay').length != 0 && $('#mobileOverlay').css('display') === "block") {
+			disableScrolling();
+			$(body).css({
+				'overflow': 'hidden',
+				'height': $('#mobileOverlay').height()
+			});
+		}
 	};
 	//return the module
 	return module;
