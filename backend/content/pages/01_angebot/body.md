@@ -9,7 +9,7 @@ Schlichte und stark visuelle Produkte mit klaren Formen und Charme // Für Print
 ![test image](20131130_gw_finkenschlag__MG_9692.jpg)
 
 ## <a name="FOTOGRAFIE"></a>FOTOGRAFIE 
-Ob Kunstvernissage oder Atlantiküberquerung, ob Theater Premiere oder Boxkampf. Die wichtigsten Momente aus dem Alltag und von besonderen Anlässen in narrativen Bildern festgehalten: Zu Projekten:
+Ob Kunstvernissage oder Atlantiküberquerung, ob Theater Premiere oder Boxkampf. Die wichtigsten Momente aus dem Alltag und von besonderen Anlässen in narrativen Bildern festgehalten. [Zu Projekten:](http://weissheimer.jbrogramming.ch/angebot.html)
 
 ![test image](20140511_gw_spielzeugmuseum__MG_2098.jpg)
 
