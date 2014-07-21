@@ -1,62 +1,68 @@
-* [Acacia - Fonds für nachhaltige Entwicklung](http://www.acacia-verein.ch/), Basel / Grafik Design
-* [Ahoi Ahoi](https://ahoiahoi.allyou.net/1036529/ahoi-ahoi), Basel / Siebdruck
-* [Alte Markthalle](http://www.altemarkthalle.ch/), Basel / Siebdruck
-* Artsoph, Sophie Blocher Haus, Liestal
-* Artyou, Basel
+* [Acacia - Fonds für nachhaltige Entwicklung, Basel](http://www.acacia-verein.ch/)
+* [Ahoi Ahoi, Basel](https://ahoiahoi.allyou.net/1036529/ahoi-ahoi)
+* [Alte Markthalle, Basel](http://www.altemarkthalle.ch/)
+* [Artsoph Sophie Blocher Haus, Liestal](http://www.artsoph.ch/)
+* [Artyou, Basel](http://www.artyou.ch/)
 * Avant Garden, Basel
-* Adreas Meier - Dirigent, Zürich
-* Anina Jenddreyko - Schauspielerin Basel
-* Basler Münster ERK, BASEL
-* Basler Papiermühle, Basel
-* Brauerei Fischerstube, Basel
-* Breuer AG, Basel
-* Burner Motion AG, Basel
-* Cargobar, Basel
-* Cycling Emotion, Basel
-* Depot Basel, Basel
-* Digitalwerkstatt GmbH, Basel
-* Ensemble Liberté, Basel
-* FAKT, Basel
-* FOS Freie Mittelschule, Muttenz BL
-* Frauen Boxteam Basel, Basel
+* [Andreas Meier - Dirigent, Zürich](http://www.andreas-meier.com/)
+* [Anina Jendreyko - Schauspielerin, Basel](http://www.jendreyko.ch/)
+* [Basler Münster ERK](http://www.baslermuenster.ch)
+* [Basler Papiermühle](http://www.papiermuseum.ch)
+* [Bildrausch Filmfest, Basel](https://www.bildrausch.ch)
+* [Brauerei Fischerstube, Basel](http://www.uelibier.ch)
+* [Breuer AG, Basel](https://plus.google.com/109404339053857072557/about?gl=ch&hl=deh/)
+* [Burner Motion AG, Basel](http://www.burnermotion.ch/)
+* [Cargobar, Basel](http://www.cargobar.ch)
+* [Cycling Emotion, Basel](http://www.cyclingemotion.ch)
+* [Depot Basel](http://www.depotbasel.ch)
+* [Digitalwerkstatt GmbH, Basel](http://www.digitalwerkstatt.ch)
+* [Ensemble Liberté, Basel](http://www.ensembleliberte.ch)
+* [FOS Freie Mittelschule, Muttenz BL](http://www.fosbl.ch)
+* [Frauen Boxteam Basel](http://www.frauenboxteam-basel.ch)
+* [Fumetto Internationales Comix-Festival, Luzern](https://www.fumetto.ch)
 * Gatto Nero, Basel
-* Gospelchor am Münster, Basel
-* Grünliberale Partei, Basel
-* Hämisegger Schreinerei, Oberwil
+* [Gospelchor am Münster, Basel](http://www.gospelchorammuenster.ch)
+* [Grünliberale Basel Stadt](http://www.bs.grunliberale.ch)
+* [Hämisegger Solutions, Oberwil](http://www.haemisegger.ch)
 * Hirzenpavillon, Riehen
-* Hochschule Offenburg, Offenburg
-* Im Fluss - Kulturfloss, Basel
-* Imagine Festival, Basel
-* Institut HyperWerk, HGK FHNW, Basel
-* Jonas Löffler, Gittarist, Basel/Köln
-* Jugendkulturfestival, Basel
-* Klischée, Electroswing Band, Schweiz, Bern
-* Lauterfestival, Zürich
-* LUNAS CRÊPES, BERN
-* Männerstimmen Basel, Basel
+* [Hochschule Offenburg](http://www.fh-offenburg.de)
+* [Im Fluss - Kulturfloss, Basel](http://www.imfluss.ch)
+* [Imagine Festival, Basel](http://www.imagine.ch)
+* [Institut HyperWerk HGK FHNW, Basel](http://www.hyperwerk.ch)
+* [Jonas Löffler, Basel/Köln](https://myspace.com/jonasloeffler)
+* [Jugendkulturfestival, Basel](https://www.jkf.ch)
+* [Klischée - Electroswing Band Schweiz, Bern](https://www.leklischee.ch)
+* [Kulturbüro Basel](https://www.kulturbuero.ch/bs/)
+* [Lauterfestival, Zürich](https://www.lauter.ch)
+* [Lunas Crêpes, Bern](https://www.lunas-crepes.ch)
+* [Männerstimmen Basel](https://www.maennerstimmen.ch)
 * Männerchor St. Johann, Basel
-* Mesmer Société, Basel
-* NIF, New Israel Fund, Schweiz
-* Oliver Rudin - Musiker/Dirigent, Basel
-* One Sentence. Supervisor, Band, Baden
-* Open Air Basel, Basel
+* [Mesmer Société, Basel](https://www.mesmersociete.com)
+* [New Israel Fund, Schweiz](https://www.nif.org)
+* [Oliver Rudin - Musiker/Dirigent, Basel](https://www.oliverrudin.ch)
+* [One Sentence. Supervisor](https://www.onesentencesupervisor.ch)
+* [Openair Basel](https://www.openairbs.ch)
 * Paul Schatz Stiftung, Basel
-* Parzelle 403, Basel
-* Pour Choeur, Projektchor, Schweiz
-* RFV, BASEL
+* [Parzelle 403, Basel](https://www.parzelle403.ch)
+* [Pourchoeur, Basel](https://www.pourchoeur.ch)
+* [Rock Förderverein Basel](https://www.rfv.ch)
 * Riederenhof, Buus
-* Snakefilm GmbH, Zürich
-* The Glue - Band, Basel
-* Tarzan GmbH, Basel, Zürich
-* The Collective
-* Theater Freiburg, Freiburg (D)
-* Thismade, Schreinerei, Basel
-* Tulisulka GmbH, Basel
+* [Snakefilm GmbH, Zürich](https://www.snakefilm.ch)
+* [Spielzeugmuseum Riehen](https://www.spielzeugmuseumriehen.ch)
+* [Taktil Work/Shop, Basel](https://www.taktil.ch)
+* [The Glue - Band, Basel](https://www.theglue.ch)
+* [Tarzan GmbH, Basel](https://www.tarzan.ch)
+* [Theaterfestival Basel](https://www.theaterfestival.ch)
+* [The Collective, Basel](https://www.arthandling.net)
+* [Theater Freiburg (D)](https://www.theater-freiburg.de)
+* [Thismade Schreinerei, Basel](https://www.thismade.ch)
+* [Tulisulka GmbH, Basel](https://www.tulisulka.ch)
 * Tumasch Clalüna - Regisseur/Musiker, Basel
-* Verein Jugendprojekte, Muttenz
-* Verein Landestelle, Basel
+* [Verein Jugendprojekte, Muttenz](https://www.vereinjugendprojekte.ch)
+* [Verein Landestelle, Basel](https://www.landestelle.ch)
 * Vita Terra AG, Dornach
-* Viva Con Augua, Schweiz
-* Voces Suaves - Barrockensemble, Schweiz
-* Weleda, Arlesheim
-* Wolf & Wolf GmbH
+* [Viva con Agua, Schweiz](https://www.vivaconagua.ch)
+* [Voces Suaves - Barrockensemble, Schweiz](https://www.voces-suaves.ch)
+* [Volksbühne Basel](https://www.volksbuehne.ch)
+* [Weleda, Arlesheim](https://www.weleda.ch)
+* [Wolf & Wolf GmbH, Muttenz](https://www.wolfundwolf.ch)
