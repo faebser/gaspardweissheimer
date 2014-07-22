@@ -10,7 +10,7 @@
         },
         {
             "type" : "40-60",
-            "entries" : [ "05_Getreideverpackung_Riederenhof", "06_depotbasel"]
+            "entries" : [ "21_markthall", "06_depotbasel"]
         },
         {
             "type" : "100",
@@ -41,8 +41,8 @@
             "entries" : [ "19_spielzeugmuseum_riehen"]
         },
         {
-            "type" : "100",
-            "entries" : [ "20_depotbasel_bling"]
+            "type" : "40-60",
+            "entries" : [ "22_acacia", "20_depotbasel_bling"]
         }
     ]
 }
