@@ -8,36 +8,5 @@
 	"overviewImage" : {
 		"files/20131215_gw_kalender__MG_9759.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
-	"images" : [
-		{
-            "files/20131212_gw_kalender__MG_9738.jpg" : ["normal", "mobile", "highres"]
-	    },
-	    {
-            "files/20131212_gw_kalender__MG_9741.jpg" : ["normal", "mobile", "highres"]
-	    },
-	    {
-            "files/20131212_gw_kalender__MG_9747.jpg" : ["normal", "mobile", "highres"]
-	    },
-	    {
-            "files/20131215_gw_kalender__MG_9756.jpg" : ["normal", "mobile", "highres"]
-	    },
-	    {
-            "files/20131215_gw_kalender__MG_9759.jpg" : ["normal", "mobile", "highres"]
-	    },
-	    {
-            "files/20131215_gw_kalender__MG_9766.jpg" : ["normal", "mobile", "highres"]
-	    },
-	    {
-            "files/20131215_gw_kalender__MG_9768.jpg" : ["normal", "mobile", "highres"]
-	    },
-	    {
-            "files/20131215_gw_kalender__MG_9780.jpg" : ["normal", "mobile", "highres"]
-	    },
-	    {
-            "files/20131215_gw_kalender__MG_9789.jpg" : ["normal", "mobile", "highres"]
-	    },
-	    {
-            "files/dias_kalender2_0010.jpg" : ["normal", "mobile", "highres"]
-	    }
-	]
+	"images" : "files/"    
 }

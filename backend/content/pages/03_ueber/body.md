@@ -2,7 +2,7 @@
 Für Siebdruck-Events steht [DRUCKBUS](www.druckbus.ch) zur Verfügung. Die mobile Einrichtung kann für Workshops und Veranstaltungen gebucht werden. Mehr Infos >> [DRUCKBUS](www.druckbus.ch)
 
 
-![test image](weissheimer_ueber.jpg)
+![WEISSHEIMER Grafik Design](weissheimer_ueber.jpg)
 
 <br>
 * Gaspard Weissheimer

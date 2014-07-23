@@ -1,7 +1,7 @@
-**WEISSHEIMER Grafik Design**<br>
+#WEISSHEIMER Grafik Design<br>
 Breisacherstrasse 93 / 4057 Basel
 
-Switzerland
+Switzerlan
 
 +41 (0)77 423 14 51 / mail@weissheimer.ch
 
