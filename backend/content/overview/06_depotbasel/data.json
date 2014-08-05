@@ -8,16 +8,5 @@
 	"overviewImage" : {
 		"files/20130817_gw_depotbasel__MG_3627.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
-	"images" : [
-		{
-            "files/20130817_gw_depotbasel__MG_3566.jpg" : ["normal", "mobile", "highres"]
-	    },
-	    {
-            "files/20130817_gw_depotbasel__MG_3531.jpg" : ["normal", "mobile", "highres"]
-	    },
-	    {
-            "files/20130817_gw_depotbasel__MG_3549.jpg" : ["normal", "mobile", "highres"]
-	    }
-          
-	]
+	"images" : "files/"
 }
