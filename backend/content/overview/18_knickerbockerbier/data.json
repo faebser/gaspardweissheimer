@@ -1,12 +1,12 @@
 {
-	"title" : "KNICKERBOCKERBIER",
+	"title" : "Knickerbockerbier",
 	"subtitle" : "Grafik Design",
-	"text" : "Konzept und Gestaltung für das erste Flaschenbier **Knikcerbockerbier** der Männerstimmen Basel, gebraut in der Brauerei Fischerstube in Basel. **Produkt ausverkauft**",
+	"text" : "Konzept und Gestaltung für das erste Flaschenbier **Knickerbockerbier** der Männerstimmen Basel, gebraut in der [Brauerei Fischerstube](http://www.ueibier.ch) in Basel. Bier ausverkauft.",
 	"posterImage" : {
 	    "files/_MG_1809-knickerbocker.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"overviewImage" : {
-		"files/_MG_1759-knickerbocker_OW.jpg" : ["normal", "mobile", "highres", "landscape"]
+		"files/_MG_1810-knickerbocker_ow.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"images" : "files/"
 }

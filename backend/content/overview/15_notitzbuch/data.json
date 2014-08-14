@@ -1,12 +1,12 @@
 {
-	"title" : "Notitzbuch",
+	"title" : "Notitzbücher",
 	"subtitle" : "Objekte",
-	"text" : "Notitzbücher aus wiederverwendeten Druck-Makulaturen. Limitierte Auflage von 100 Stück. Erhältlich direkt im Atelier, im **Taktilworkshop**, oder auf [Tumblr Blog](http://notizbuch-basel.tumblr.com/) bestellen.",
+	"text" : "Notitzbücher aus wiederverwendeten Druck-Makulaturen. Limitierte Auflage von 100 Stück. Erhältlich im Atelier, im [Taktil Work/Shop](http://www.taktilworkshop.ch) oder im Shop der Basler Papiermühle.",
 	"posterImage" : {
 	    "files/20140311_gw_lampe__MG_0536-2.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"overviewImage" : {
-		"files/20140311_gw_lampe__MG_0535-2.jpg" : ["normal", "mobile", "highres", "landscape"]
+		"files/20140311_gw_lampe__MG_0537_ow.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"images" : "files/"
 }

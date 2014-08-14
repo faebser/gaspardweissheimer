@@ -1,12 +1,12 @@
 {
 	"title" : "Im Fluss 2013",
 	"subtitle" : "Fotografie",
-	"text" : "Das Kulturfloss legt vom 29. Juli bis 16. August 2014 mit seinen Open Air Konzerten wieder am Basler Rheinufer an. [Im Fluss](www.imfluss.ch)",
+	"text" : "Fotodokumentation des Basler [Im Fluss](http://www.imfluss.ch). Das Kulturfloss legt vom 29. Juli bis 16. August 2014 mit seinen Open Air Konzerten wieder am Basler Rheinufer an.",
 	"posterImage" : {
 	    "files/20130814_gw_lesreinesprochaines__MG_2207.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"overviewImage" : {
-		"files/20130806_gw_babyjail__MG_0468.jpg" : ["normal", "mobile", "highres", "landscape"]
+		"files/20130806_gw_babyjail__MG_0468_ow.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"images" : "files/"
 }
