@@ -686,8 +686,11 @@ $scrollDuration: 0.75s;
     }
     &.order50-50 {
         .entry-1 {
-            width: 50%;
-            float: right;
+          float: right;
+          width: 49%;
+        }
+        .entry-2 {
+          width: 50%;
         }
         &.rtl {
             .entry-1 {
