@@ -6,7 +6,7 @@
 	    "files/20140214_gw_gluebalisation__MG_0418_hks.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"overviewImage" : {
-		"files/20140214_gw_gluebalisation__MG_0418_ow.jpg.jpg" : ["normal", "mobile", "highres", "landscape"]
+		"files/20140214_gw_gluebalisation__MG_0418_ow.jpg" : ["normal", "mobile", "highres", "landscape"]
 	},
 	"images" : "files/"
 }
