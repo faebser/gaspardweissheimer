@@ -14,11 +14,11 @@ Ob Kunstvernissage oder Atlantiküberquerung – ob Theater Premiere oder Boxkam
 ![Fotograf Fotografie](20140511_gw_spielzeugmuseum__MG_2098.jpg)
 
 ## <a name="SIEBDRUCK"></a>SIEBDRUCK 
-Vistenkarten auf extradickem Papier, Einkaufstaschen für Ihre Firma, T-Shirts für den Webshop: 
+Vistenkarten auf extra dickem Papier, Einkaufstaschen für deine Firma, T-Shirts für den Webshop: 
 
 **Die kleine Siebdruckerei ganz in deiner Nähe oder wenn du wünscht, direkt bei dir vor Ort!** 
 
-[Inormationen dazu finest du durch klicken auf diesen Link](http://www.druckbus.ch) 
+Inormationen dazu finest du durch klicken auf [diesen Link](http://www.druckbus.ch) 
 
 ![Siebdruck Basel](20131218_gw_ahoiahoi__MG_9802.jpg)
 
