@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2014 by original authors @ fontello.com</metadata>
+<defs>
+<font id="up" horiz-adv-x="1000" >
+<font-face font-family="up" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="up-circle" unicode="&#xe800;" d="m18 350q0 185 130 316t316 131q185 0 316-131t131-316-131-315-315-132-316 132-131 315z m670 2l-224 222-222-222 167 0 0-225 112 0 0 225 167 0z" horiz-adv-x="928" />
+<glyph glyph-name="up-circle-1" unicode="&#xe801;" d="m1000 349q0-136-67-251t-182-182-251-67-251 67-182 182-67 251 67 251 182 182 251 67 251-67 182-182 67-251z m-339-118l71 71-232 233-232-233 71-71 161 161z" horiz-adv-x="1000" />
+<glyph glyph-name="up-open-big" unicode="&#xe802;" d="m804 130l-372 358-370-358q-26-22-50 0-24 24 0 50l396 390q26 26 48 0l396-390q24-26 0-50-26-22-48 0z" horiz-adv-x="864" />
+</font>
+</defs>
+</svg>

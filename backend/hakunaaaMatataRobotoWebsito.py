@@ -121,7 +121,10 @@ def main():
     partials = {"entry-1": open(path.join(config.getPath("partialsPath"), "partial-entry-1.html")).read(),
                 "entry-2": open(path.join(config.getPath("partialsPath"), "partial-entry-2.html")).read(),
                 "entry-3": open(path.join(config.getPath("partialsPath"), "partial-entry-3.html")).read(),
-                "nav": open(path.join(config.getPath("partialsPath"), "nav.html")).read()}
+                "nav": open(path.join(config.getPath("partialsPath"), "nav.html")).read(),
+                "contact": open(path.join(config.getPath("partialsPath"), "contact.html")).read(),
+                "link": open(path.join(config.getPath("partialsPath"), "top-link.html")).read(),
+                "anal": open(path.join(config.getPath("partialsPath"), "anal.html")).read()}
 
     # pystache renderer init
     renderer = pystache.Renderer(search_dirs=config.getPath("templatePath"), file_extension="html", partials=partials)
@@ -275,6 +278,7 @@ def main():
                 except KeyError:
                     pass
             indexFile.write(rendered_page.prettify())
+
     # add colors from pages to template
     cssPageColorsFile = codecs.open(path.join(config.getPath('css'), 'pageColor.scss'), 'w+', encoding='utf-8')
     cssPageColorsFile.write(pageColorContent)

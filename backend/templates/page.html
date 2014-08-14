@@ -35,7 +35,10 @@
 
                 <p>Mit herzlichen Gr&uuml;ssen</p>
                 <p>Gaspard Weissheimer</p>
+
+                {{> contact}}
             </div>
+
         </div>
         <div id="navAndLogo">
             <div class="wrapper clearfix">
@@ -59,41 +62,15 @@
             <div id="mainContent">
                     {{{text}}}
             </div>
+
+            {{> link}}
+
             <footer>
-                <div class="wrapper clearfix">
-                    <ul>
-                        <li>
-                            <h3><span>Weissheimer</span> Grafik Design</h3>
-                            <p>Breischerstrasse 93</p>
-                            <p>4057 Basel</p>
-                        </li>
-                        <li>
-                            <p><a href="mailto:mail@weissheimer.ch">mail@weissheimer.ch</a></p>
-                            <p>+41 (0)77 423 14 51</p>
-                            <p><a href="facebook.com" title="facebook">Facebook</a></p>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h3><span>Druckbus</span></h3>
-                            <p>Breischerstrasse 93</p>
-                            <p>4057 Basel</p>
-                        </li>
-                        <li>
-                            <p><a href="mailto:mail@druckbus.ch">mail@druckbus.ch</a></p>
-                            <p>+41 (0)77 423 14 51</p>
-                            <p><a href="facebook.com" title="facebook">Facebook</a></p>
-                        </li>
-                    </ul>
-                </div>
+                {{> contact}}
             </footer>
         </div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script src="js/vendor/jquery.history.js"></script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        {{> anal}}
 
     </body>
 </html>
