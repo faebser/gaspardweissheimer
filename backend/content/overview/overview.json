@@ -9,7 +9,7 @@
             "entries" : [ "04_kalender2014"]
         },
         {
-            "type" : "50-50",
+            "type" : "40-60",
             "entries" : [ "21_markthall", "06_depotbasel"]
         },
         {
@@ -41,7 +41,7 @@
             "entries" : [ "19_spielzeugmuseum_riehen"]
         },
         {
-            "type" : "50-50",
+            "type" : "40-60",
             "entries" : [ "22_acacia", "20_depotbasel_bling"]
         }
     ]
