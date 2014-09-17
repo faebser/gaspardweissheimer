@@ -121,7 +121,10 @@ def main():
     partials = {"entry-1": open(path.join(config.getPath("partialsPath"), "partial-entry-1.html")).read(),
                 "entry-2": open(path.join(config.getPath("partialsPath"), "partial-entry-2.html")).read(),
                 "entry-3": open(path.join(config.getPath("partialsPath"), "partial-entry-3.html")).read(),
-                "nav": open(path.join(config.getPath("partialsPath"), "nav.html")).read()}
+                "nav": open(path.join(config.getPath("partialsPath"), "nav.html")).read(),
+                "contact": open(path.join(config.getPath("partialsPath"), "contact.html")).read(),
+                "link": open(path.join(config.getPath("partialsPath"), "top-link.html")).read(),
+                "anal": open(path.join(config.getPath("partialsPath"), "anal.html")).read()}
 
     # pystache renderer init
     renderer = pystache.Renderer(search_dirs=config.getPath("templatePath"), file_extension="html", partials=partials)
@@ -193,39 +196,6 @@ def main():
             promoAmount += 1
 
 
-    #load overview content
-    overviewJsonFile = json.loads(open(path.join(config.getPath('overview'), 'overview.json')).read())
-    for row in overviewJsonFile['rows']:
-        templateContent = {'type': config.getRowTypeOrNone(row['type'])}
-        if templateContent['type'] is None:
-            log.error("Invalid Type with value: " + row['type'] + " in overview.json")
-        else:
-            for index, entry in enumerate(row['entries'], 1):
-                log.debug("entry and index: " + str(index) + " / " + str(entry))
-                try:
-                    currentJsonFile = json.loads(open(path.join(config.getPath('overview'), entry, 'data.json')).read())
-                except ValueError:
-                    log.exception("Error while reading json-file: " + path.join(config.getPath('overview'), entry, 'data.json'))
-                    exit(1)
-                currentProjectPath = path.join(config.getPath('overview'), entry)
-                projectName = entry
-                templateContent['entry-' + str(index)] = Entry()
-                templateContent['entry-' + str(index)].simpleFillWithDict(currentJsonFile)
-                templateContent['entry-' + str(index)].setId(projectName)
-                templateContent['entry-' + str(index)].addClass('promo')
-                templateContent['entry-' + str(index)].addClass('active')
-                templateContent['entry-' + str(index)].posterImage = iterateOverPosterImages(projectName, currentProjectPath, currentJsonFile['posterImage'])
-                templateContent['entry-' + str(index)].overViewImage = iterateOverOverviewImages(projectName, currentProjectPath, currentJsonFile['overviewImage'])
-                templateContent['entry-' + str(index)].images = iterateOverAllImages(projectName, currentProjectPath, currentJsonFile['images'], buildBlockingList(currentJsonFile['posterImage'], currentJsonFile['overviewImage']))
-                templateContent['entry-' + str(index)].path = templateContent['entry-' + str(index)].getId() + ".html"
-                cssContent += renderer.render_name('backgrounds', templateContent['entry-' + str(index)])
-                with codecs.open(path.join(config.getPath("website"), templateContent['entry-' + str(index)].getId() + ".html"), 'w+', encoding='utf-8') as indexFile:
-                    indexFile.write(renderer.render_name('skeleton', {
-                            "promo": renderer.render_name('promoEntryAndPage', templateContent['entry-' + str(index)]),
-                            "bodyId": 'page',
-                            "pageTitle": templateContent['entry-' + str(index)].title
-                    }))
-            htmlContent['overview'] += renderer.render_name('overviewRow', templateContent)
 
     #pages - rewrite
     pagesDir = listdir(config.getPath('pages'))
@@ -275,6 +245,42 @@ def main():
                 except KeyError:
                     pass
             indexFile.write(rendered_page.prettify())
+
+    # load overview content
+    overviewJsonFile = json.loads(open(path.join(config.getPath('overview'), 'overview.json')).read())
+    for row in overviewJsonFile['rows']:
+        templateContent = {'type': config.getRowTypeOrNone(row['type'])}
+        if templateContent['type'] is None:
+            log.error("Invalid Type with value: " + row['type'] + " in overview.json")
+        else:
+            for index, entry in enumerate(row['entries'], 1):
+                log.debug("entry and index: " + str(index) + " / " + str(entry))
+                try:
+                    currentJsonFile = json.loads(open(path.join(config.getPath('overview'), entry, 'data.json')).read())
+                except ValueError:
+                    log.exception("Error while reading json-file: " + path.join(config.getPath('overview'), entry, 'data.json'))
+                    exit(1)
+                currentProjectPath = path.join(config.getPath('overview'), entry)
+                projectName = entry
+                templateContent['entry-' + str(index)] = Entry()
+                templateContent['entry-' + str(index)].simpleFillWithDict(currentJsonFile)
+                templateContent['entry-' + str(index)].setId(projectName)
+                templateContent['entry-' + str(index)].addClass('promo')
+                templateContent['entry-' + str(index)].addClass('active')
+                templateContent['entry-' + str(index)].posterImage = iterateOverPosterImages(projectName, currentProjectPath, currentJsonFile['posterImage'])
+                templateContent['entry-' + str(index)].overViewImage = iterateOverOverviewImages(projectName, currentProjectPath, currentJsonFile['overviewImage'])
+                templateContent['entry-' + str(index)].images = iterateOverAllImages(projectName, currentProjectPath, currentJsonFile['images'], buildBlockingList(currentJsonFile['posterImage'], currentJsonFile['overviewImage']))
+                templateContent['entry-' + str(index)].path = templateContent['entry-' + str(index)].getId() + ".html"
+                cssContent += renderer.render_name('backgrounds', templateContent['entry-' + str(index)])
+                with codecs.open(path.join(config.getPath("website"), templateContent['entry-' + str(index)].getId() + ".html"), 'w+', encoding='utf-8') as indexFile:
+                    indexFile.write(renderer.render_name('skeleton', {
+                            "promo": renderer.render_name('promoEntryAndPage', templateContent['entry-' + str(index)]),
+                            "bodyId": 'page',
+                            "pageTitle": templateContent['entry-' + str(index)].title,
+                            "nav": htmlContent['nav']
+                    }))
+            htmlContent['overview'] += renderer.render_name('overviewRow', templateContent)
+
     # add colors from pages to template
     cssPageColorsFile = codecs.open(path.join(config.getPath('css'), 'pageColor.scss'), 'w+', encoding='utf-8')
     cssPageColorsFile.write(pageColorContent)

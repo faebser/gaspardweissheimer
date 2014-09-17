@@ -17,6 +17,30 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body class="page" id="{{id}}">
+        <div id="mobileOverlay">
+            <div class="center">
+                <div id="logo">
+                    <a href="http://www.weissheimer.ch">
+                        <p>
+                            <span>weissheimer</span> Grafik Design
+                        </p>
+                    </a>
+                </div>
+                <h2>Lieber Besucher, vielen Dank f&uuml;r deinen Besuch.</h2>
+                <p>
+                    Die mobile Version dieser Webseite ist leider noch in Bearbeitung.
+                    Ein Besuch der Webseite von deinem Laptop oder Heimcomputer aus, solltest du dir dennoch nicht entgehen lassen. Es erwarten dich hochaufl&ouml;sende Bilder und Informationen zu WEISSHEIMER Grafik Design.
+                </p>
+                <p>Ich freue mich auf ein Wiedersehen. </p>
+
+                <p>Mit herzlichen Gr&uuml;ssen</p>
+                <p>Gaspard Weissheimer</p>
+                 <p><a href="mailto:mail@weissheimer.ch">mail@weissheimer.ch</a></p>
+                <p>+41 (0)77 423 14 51</p>
+                <p><a href="https://www.facebook.com/WEISSHEIMERBASEL" title="facebook">Facebook</a></p>
+            </div>
+
+        </div>
         <div id="navAndLogo">
             <div class="wrapper clearfix">
             <div id="logo">
@@ -39,41 +63,15 @@
             <div id="mainContent">
                     {{{text}}}
             </div>
+
+            {{> link}}
+
             <footer>
-                <div class="wrapper clearfix">
-                    <ul>
-                        <li>
-                            <h3><span>Weissheimer</span> Grafik Design</h3>
-                            <p>Breischerstrasse 93</p>
-                            <p>4057 Basel</p>
-                        </li>
-                        <li>
-                            <p><a href="mailto:mail@weissheimer.ch">mail@weissheimer.ch</a></p>
-                            <p>+41 (0)77 423 14 51</p>
-                            <p><a href="facebook.com" title="facebook">Facebook</a></p>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h3><span>Druckbus</span></h3>
-                            <p>Breischerstrasse 93</p>
-                            <p>4057 Basel</p>
-                        </li>
-                        <li>
-                            <p><a href="mailto:mail@druckbus.ch">mail@druckbus.ch</a></p>
-                            <p>+41 (0)77 423 14 51</p>
-                            <p><a href="facebook.com" title="facebook">Facebook</a></p>
-                        </li>
-                    </ul>
-                </div>
+                {{> contact}}
             </footer>
         </div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script src="js/vendor/jquery.history.js"></script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        {{> anal}}
 
     </body>
 </html>

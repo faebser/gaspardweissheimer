@@ -228,6 +228,7 @@ var gaspi = (function ($) {
 		scrollUpThreshold = 0,
 		State = null,
 		baseUrl = '',
+		topLink = $('#top-link'),
 		bullets = {
 			"active" : $('<i/>').attr({
 				"class" : "icon-circle",
@@ -429,6 +430,7 @@ var gaspi = (function ($) {
 			win.scrollTop(scroll);
 			win.off('scroll');
 			win.on('scroll', function(event) {
+				topLinkChecker();
 				scrollUp(promoElements.filter('.active'));
 			});
 			hideVerticalNav(enableScrolling);
@@ -456,6 +458,15 @@ var gaspi = (function ($) {
 			if(scrollValue === 0) {
 				doScrollUp(e);
 			}
+		}
+	},
+	topLinkChecker = function () {
+		var doc = $(document).scrollTop();
+		if(doc > 600 && !topLink.hasClass(c.show)) {
+			topLink.addClass(c.show);
+		}
+		else if(doc <= 600 && topLink.hasClass(c.show)) {
+			topLink.removeClass(c.show);
 		}
 	},
 	activateOverview = function (duration) {
@@ -487,6 +498,11 @@ var gaspi = (function ($) {
 		});
 		scrollIndicator.click(function() {
 			scrollDown(promoElements.filter('.active'));
+		});
+		topLink.on('click', function(event){
+			$('body, html').animate({
+				'scrollTop': 15
+			}, 1000);
 		});
 	},
 	disableScrolling = function() {
@@ -552,6 +568,13 @@ var gaspi = (function ($) {
 		    return this.hostname != window.location.hostname;
 		}).attr('target', '_blank');
 		init();
+		if($('#mobileOverlay').length != 0 && $('#mobileOverlay').css('display') === "block") {
+			disableScrolling();
+			$(body).css({
+				'overflow': 'hidden',
+				'height': $('#mobileOverlay').height()
+			});
+		}
 	};
 	//return the module
 	return module;
