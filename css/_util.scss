@@ -3,7 +3,10 @@
 	text-align: center;
 	&:before {
 		content: ' ';
-		@include inline-block;
+		display: inline-block;
+		*vertical-align: auto;
+		zoom: 1;
+    	display: inline;
 		height: 100%;
 		vertical-align: middle;
 		margin-right: -0.25em; /* Adjusts for spacing */

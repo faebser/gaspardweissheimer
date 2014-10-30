@@ -228,6 +228,7 @@ var gaspi = (function ($) {
 		scrollUpThreshold = 0,
 		State = null,
 		baseUrl = '',
+		isTouch = Modernizr.touch,
 		topLink = $('#top-link'),
 		bullets = {
 			"active" : $('<i/>').attr({
@@ -352,11 +353,13 @@ var gaspi = (function ($) {
 				"color" : navElements.eq(i).attr("class")
 			});
 			ul.append(li);
-			li.click(function () {
-				var e = $(this);
-				verticalNavClick(e);
-				return;
-			});
+			if (!isTouch) {
+				li.click(function () {
+					var e = $(this);
+					verticalNavClick(e);
+					return;
+				});
+			}
 			width += parseInt(li.outerWidth(true));
 		}
 		ul.css({
@@ -420,9 +423,8 @@ var gaspi = (function ($) {
 	scrollDown = function (promoElement) {
 		var e = promoElement,
 			state = e.find(c_('top')).hasClass(c.big);
-		if(state && win.scrollTop() > 20) {
+		if(state && (win.scrollTop() > 20 || isTouch)) {
 			_gaq.push(['_trackEvent', 'Navigation', 'Scroll Down', promoElement.find('.top.big hgroup h1').html()]);
-			console.log(promoElement.find('.top.big hgroup h1').html());
 			disableScrolling();
 			e.find(c_('top')).addClass(c.small).removeClass(c.big);
 			e.find(c_('low')).addClass(c.big);
@@ -494,7 +496,7 @@ var gaspi = (function ($) {
 	},
 	clickHandlers = function (winHeight) {
 		win.on('scroll', function(event) {
-			scrollDown(promoElements.filter('.active'));
+		scrollDown(promoElements.filter('.active'));
 		});
 		scrollIndicator.click(function() {
 			scrollDown(promoElements.filter('.active'));
@@ -504,6 +506,39 @@ var gaspi = (function ($) {
 				'scrollTop': 15
 			}, 1000);
 		});
+	},
+	swipeHandlers = function () {
+		$(document).swipe({
+		  swipe:function(event, direction, distance, duration, fingerCount) {
+		    return false;
+		  }
+		});
+		promoElements.find('.big').swipe({
+			swipe: function(event, direction, distance, duraction, fingerCount) {
+				console.log(event);
+				console.log(direction);
+				if(direction == 'up') {
+					var e = promoElements.filter('.active');
+					var state = e.find(c_('top')).hasClass(c.big);
+			    	if (state) scrollDown(e);
+			    	return false;
+				}
+				if(direction == 'left') {
+					var e = verticalNav.find('i.icon-circle').parent().next();
+					if(e != verticalNav.find('li').last()) {
+						verticalNavClick(e);
+					}
+					return false;
+				}
+				if(direction == 'right') {
+					var e = verticalNav.find('i.icon-circle').parent().prev();
+					if(e != verticalNav.find('li').first()) {
+						verticalNavClick(e);
+					}
+					return false;
+				}
+			}
+		})
 	},
 	disableScrolling = function() {
 		window.onmousewheel = document.onmousewheel = function(e) {
@@ -568,12 +603,9 @@ var gaspi = (function ($) {
 		    return this.hostname != window.location.hostname;
 		}).attr('target', '_blank');
 		init();
-		if($('#mobileOverlay').length != 0 && $('#mobileOverlay').css('display') === "block") {
+		if(isTouch) {
 			disableScrolling();
-			$(body).css({
-				'overflow': 'hidden',
-				'height': $('#mobileOverlay').height()
-			});
+			swipeHandlers();
 		}
 	};
 	//return the module

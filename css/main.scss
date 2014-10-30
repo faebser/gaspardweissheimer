@@ -23,6 +23,7 @@ textarea {
 body {
     font-size: 1em;
     line-height: 1.4;
+
 }
 
 /*
@@ -88,6 +89,28 @@ textarea {
    Author's custom styles
    fabian.frei@esf-frei.ch
    ========================================================================== */
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+
+@mixin breakpoint($point) {
+  @if $point == highres {
+    @media (max-width: 1600px) { @content; }
+  }
+  @else if $point == landscape {
+    @media (max-width: 1250px) { @content; }
+  }
+  @else if $point == navi-mobile {
+    @media (max-width: 900px)  { @content; }
+  }
+  @else if $point == content-onecol {
+    @media (max-width: 550px)  { @content; }
+  }
+}
 
 /* fontello */
 
@@ -368,6 +391,12 @@ body {
     background-color: $background;
 }
 
+body {
+    @include breakpoint(navi-mobile) {
+      font-size: 0.75em;
+    }
+}
+
 #main {
     height: 100%;
     width: 100%;
@@ -384,7 +413,7 @@ body {
         max-width: 1260px;
         margin: 0 auto;
         padding: 2.0625em 1.875em 0em 1.875em;
-    }
+}
 
 #navAndLogo {
     width: 100%;
@@ -404,13 +433,19 @@ body {
         &.ready {
             @include transition(background-color 1.3s ease, left 0.5s linear, width 0.5s linear);
         }
+        @include breakpoint(navi-mobile) {
+          display: none;
+        }
     }
     nav {
         text-transform: uppercase;
         float: right;
         @include transatStandard;
         @include transition(opacity 0.75s linear);
-        font-size: 1.125em;
+        font-size: 1.2em;
+        @include breakpoint(navi-mobile) {
+          float: none;
+        }
         &.hide {
             opacity: 0;
         }
@@ -432,7 +467,6 @@ body {
                 }
             }
         }
-        
     }
 }
 
@@ -440,9 +474,13 @@ body {
     width: 270px;
     text-transform: uppercase;
     float: left;
-    font-size: 1.25em;
+    font-size: 1.4em;
     @include transition(color 1.3s ease);
     @include transatLight;
+    @include breakpoint(navi-mobile) {
+      float: none;
+      margin-bottom: 0.5em;
+    }
     a {
         text-decoration: none;
         color: black;
@@ -475,6 +513,7 @@ $scrollDuration: 0.75s;
         .top {
             width: 100%;
             background-size: cover;
+            background-position: center;
             &.small {
                 height: 0 !important;
                 opacity: 0;
@@ -488,6 +527,9 @@ $scrollDuration: 0.75s;
                 background: url("../img/static/kreuz.png") center center no-repeat;
                 min-height: 213px;
                 padding-top: 58px;
+                @include breakpoint(content-onecol) {
+                  font-size: 0.6em;
+                }
             }
             h1 {
                 @extend .headerLineH1;
@@ -499,6 +541,7 @@ $scrollDuration: 0.75s;
                 font-size: 1.675em;
                 margin-bottom: 0;
             }
+
         }
         .low {
             position: relative;
@@ -550,6 +593,22 @@ $scrollDuration: 0.75s;
                         }
                     }
                 }
+                @include breakpoint(content-onecol) {
+                  hgroup {
+                    float: none;
+                    width: 100%;
+                    margin-bottom: 0.5em;
+                    h1,
+                    h2 {
+                      font-size: 1.4em;
+                    }
+                  }
+                  p {
+                    float: none;
+                    width: 100%;
+                    font-size: 1.6em;
+                  }
+                }
             }
             p {
                 margin-top: 0;
@@ -597,6 +656,11 @@ $scrollDuration: 0.75s;
             //&:last-child {
               //  margin-right: 0;
             //}
+            @include breakpoint(navi-mobile) {
+              i {
+                font-size: 0.5em;
+              }
+            }
         }
     }
     #scrollIndicator {
@@ -1035,24 +1099,7 @@ footer {
     *zoom: 1;
 }
 
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
 
-
-@mixin breakpoint($point) {
-  @if $point == highres {
-    @media (max-width: 1600px) { @content; }
-  }
-  @else if $point == landscape {
-    @media (max-width: 1250px) { @content; }
-  }
-  @else if $point == mobile {
-    @media (max-width: 800px)  { @content; }
-  }
-}
 
 /* overlay */
 
@@ -1066,7 +1113,7 @@ footer {
     z-index: 1000;
     display: none;
     @include breakpoint(mobile) { 
-        display: block;
+        //display: block;
     }
     #logo {
         float: none;
