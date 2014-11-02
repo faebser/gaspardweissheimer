@@ -110,6 +110,9 @@ textarea {
   @else if $point == content-onecol {
     @media (max-width: 550px)  { @content; }
   }
+  @else if $point == overview-onecol {
+    @media (max-width: 750px) { @content}
+  }
 }
 
 /* fontello */
@@ -657,6 +660,8 @@ $scrollDuration: 0.75s;
               //  margin-right: 0;
             //}
             @include breakpoint(navi-mobile) {
+              padding: 0 0.6em 0 0.6em;
+              margin: 0;
               i {
                 font-size: 0.5em;
               }
@@ -687,8 +692,8 @@ $scrollDuration: 0.75s;
 }
 
 .overviewRow {
-    $margin: 0.711914063em;
-    margin-bottom: $margin;
+    $margin: 1%;
+    margin-bottom: 0.711914063em;
     a {
         display: block;
     }
@@ -708,17 +713,35 @@ $scrollDuration: 0.75s;
             font-size: 1.25em;
         }
     }
+    .mobile {
+      .entry-1,
+      .entry-2,
+      .entry-3 {
+        @include breakpoint(overview-onecol) {
+          width: 100%;
+        }
+      }
+    }
     &.order50-25-25 {
         .entry-1 {
             width: 50%;
             margin-right: $margin;
+            @include breakpoint(overview-onecol) {
+              width: 100%;
+            }
         }
         .entry-2 {
             width: 24%;
             margin-right: $margin;
+            @include breakpoint(overview-onecol) {
+              width: 100%;
+            }
         }
         .entry-3 {
             width: 24%;
+            @include breakpoint(overview-onecol) {
+              width: 100%;
+            }
         }
         .entry-2,
         .entry-3 {
@@ -859,6 +882,7 @@ $scrollDuration: 0.75s;
             @include transition(opacity 0.75s ease-in);
             hgroup {
                 @extend .headerLine;
+                max-width: 99%;
             }
             h1 {
                 @extend .headerLineH1;

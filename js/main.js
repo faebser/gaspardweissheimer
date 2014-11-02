@@ -353,13 +353,12 @@ var gaspi = (function ($) {
 				"color" : navElements.eq(i).attr("class")
 			});
 			ul.append(li);
-			if (!isTouch) {
-				li.click(function () {
-					var e = $(this);
-					verticalNavClick(e);
-					return;
-				});
-			}
+			li.click(function () {
+				var e = $(this);
+				console.log(e);
+				verticalNavClick(e);
+				return;
+			});
 			width += parseInt(li.outerWidth(true));
 		}
 		ul.css({
@@ -386,6 +385,7 @@ var gaspi = (function ($) {
 		else {
 			History.pushState(null, null, baseUrl + '/promo/' + promoElements.eq(e.index()).attr('id'));
 		}
+		console.log(baseUrl + '/promo/' + promoElements.eq(e.index()).attr('id'))
 		loader.setActiveParent($('#main li.active').attr('id'));
 		// TODO recode this shit & init
 		var color = "";
@@ -508,37 +508,31 @@ var gaspi = (function ($) {
 		});
 	},
 	swipeHandlers = function () {
-		$(document).swipe({
-		  swipe:function(event, direction, distance, duration, fingerCount) {
-		    return false;
-		  }
+		promoElements.find('.top').swipe({
+			//'swipeLeft': mainSwipeLeft,
+			//'swipeRight': mainSwipeRight,
+			'swipeUp': mainSwipeUp
 		});
-		promoElements.find('.big').swipe({
-			swipe: function(event, direction, distance, duraction, fingerCount) {
-				console.log(event);
-				console.log(direction);
-				if(direction == 'up') {
-					var e = promoElements.filter('.active');
-					var state = e.find(c_('top')).hasClass(c.big);
-			    	if (state) scrollDown(e);
-			    	return false;
-				}
-				if(direction == 'left') {
-					var e = verticalNav.find('i.icon-circle').parent().next();
-					if(e != verticalNav.find('li').last()) {
-						verticalNavClick(e);
-					}
-					return false;
-				}
-				if(direction == 'right') {
-					var e = verticalNav.find('i.icon-circle').parent().prev();
-					if(e != verticalNav.find('li').first()) {
-						verticalNavClick(e);
-					}
-					return false;
-				}
-			}
-		})
+	},
+	mainSwipeLeft = function (event, direction, distance, duration, fingerCount) {
+		console.log(direction);
+		var e = verticalNav.find('i.icon-circle').parent().next();
+		if(e != verticalNav.find('li').last()) {
+			verticalNavClick(e);
+		}
+	},
+	mainSwipeRight = function (event, direction, distance, duration, fingerCount) {
+		console.log(direction);
+		var e = verticalNav.find('i.icon-circle').parent().prev();
+		if(e != verticalNav.find('li').first()) {
+			verticalNavClick(e);
+		}
+	},
+	mainSwipeUp = function (event, direction, distance, duration, fingerCount) {
+		console.log(direction);
+		var e = promoElements.filter('.active');
+		var state = e.find(c_('top')).hasClass(c.big);
+    	if (state) scrollDown(e);
 	},
 	disableScrolling = function() {
 		window.onmousewheel = document.onmousewheel = function(e) {
@@ -604,13 +598,14 @@ var gaspi = (function ($) {
 		}).attr('target', '_blank');
 		init();
 		if(isTouch) {
-			disableScrolling();
+			//disableScrolling();
 			swipeHandlers();
 		}
 	};
 	//return the module
 	return module;
 }(jQuery));
+
 
 jQuery(document).ready(function($) {
 	loader.init(Modernizr);
