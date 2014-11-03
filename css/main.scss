@@ -1,4 +1,5 @@
 @import 'normalize.css';
+@import 'util';
 
 /*
  * HTML5 Boilerplate
@@ -168,9 +169,7 @@ textarea {
   /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
-
-/* icons 2 */
-
+ 
 .icon-circle:before { content: '\e800'; } /* '' */
 .icon-circle-empty:before { content: '\e801'; } /* '' */
 .icon-layout:before { content: '\e802'; } /* '' */
@@ -178,62 +177,6 @@ textarea {
 .icon-th-thumb-empty:before { content: '\e804'; } /* '' */
 .icon-cancel:before { content: '\e805'; } /* '' */
 
-@font-face {
-  font-family: 'up';
-  src: url('font/icons2/up.eot?918782');
-  src: url('font/icons2/up.eot?918782#iefix') format('embedded-opentype'),
-       url('font/icons2/up.woff?918782') format('woff'),
-       url('font/icons2/up.ttf?918782') format('truetype'),
-       url('font/icons2/up.svg?918782#up') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'up';
-    src: url('../font/up.svg?918782#up') format('svg');
-  }
-}
-*/
- 
- [class^="icon2-"]:before, [class*=" icon-"]:before {
-  font-family: "up";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
- 
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-  /* opacity: .8; */
- 
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-     
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
- 
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: .2em;
- 
-  /* you can be more comfortable with increased icons size */
-  /* font-size: 120%; */
- 
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
-}
- 
-.icon2-up-circle:before { content: '\e800'; } /* '' */
-.icon2-up-circle-1:before { content: '\e801'; } /* '' */
-.icon2-up-open-big:before { content: '\e802'; } /* '' */
- 
 @font-face {
     font-family: 'Transat Black';
     src: url('font/transat-black/transat-black.eot');
@@ -344,8 +287,6 @@ textarea {
 
 $background: #F6F5EE;
 $link-color: #00958e;
-
-@import "util";
 
 *, *:before, *:after { /* sane box model */
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
@@ -477,12 +418,13 @@ body {
     width: 270px;
     text-transform: uppercase;
     float: left;
-    font-size: 1.4em;
+    font-size: 1.25em;
     @include transition(color 1.3s ease);
     @include transatLight;
     @include breakpoint(navi-mobile) {
       float: none;
       margin-bottom: 0.5em;
+      font-size: 1.4em;
     }
     a {
         text-decoration: none;
@@ -491,8 +433,6 @@ body {
             span {
                 @include transatMedium;
             }
-            margin: 0;
-            padding: 0;
         }
     }
 }
@@ -773,11 +713,8 @@ $scrollDuration: 0.75s;
     }
     &.order50-50 {
         .entry-1 {
-          float: right;
-          width: 49%;
-        }
-        .entry-2 {
-          width: 50%;
+            width: 50%;
+            float: right;
         }
         &.rtl {
             .entry-1 {
@@ -986,42 +923,6 @@ footer {
     }
 }
 
-#top-link {
-    position: fixed;
-    right: -70px;
-    top: 75%;
-    font-size: 2.5em;
-    background-color: $link-color;
-    border-bottom-left-radius: 1.25em;
-    border-top-left-radius: 1.25em;
-    color: $background;
-    background-color: $link-color;
-    width: 70px;
-    cursor: pointer;
-    @include transition(right 0.5s linear);
-    &.show {
-        right: 0;
-    }
-    &:before {
-        color: $background;
-    }
-    &:hover {
-        color: darken($background, 1);
-    }
-    span {
-        border: 0;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px;
-    }
-}
-
-
-
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -1160,9 +1061,9 @@ footer {
           color: $link-color;
         }
     }
-}
+  }
 
-@import 'backgrounds';
+
 
 /* ==========================================================================
    Print styles.

@@ -228,8 +228,11 @@ var gaspi = (function ($) {
 		scrollUpThreshold = 0,
 		State = null,
 		baseUrl = '',
+<<<<<<< HEAD
 		isTouch = Modernizr.touch,
 		topLink = $('#top-link'),
+=======
+>>>>>>> b09a5c1a844ac7231050aeb12985ca08d1a2a9c5
 		bullets = {
 			"active" : $('<i/>').attr({
 				"class" : "icon-circle",
@@ -432,7 +435,6 @@ var gaspi = (function ($) {
 			win.scrollTop(scroll);
 			win.off('scroll');
 			win.on('scroll', function(event) {
-				topLinkChecker();
 				scrollUp(promoElements.filter('.active'));
 			});
 			hideVerticalNav(enableScrolling);
@@ -460,15 +462,6 @@ var gaspi = (function ($) {
 			if(scrollValue === 0) {
 				doScrollUp(e);
 			}
-		}
-	},
-	topLinkChecker = function () {
-		var doc = $(document).scrollTop();
-		if(doc > 600 && !topLink.hasClass(c.show)) {
-			topLink.addClass(c.show);
-		}
-		else if(doc <= 600 && topLink.hasClass(c.show)) {
-			topLink.removeClass(c.show);
 		}
 	},
 	activateOverview = function (duration) {
@@ -500,11 +493,6 @@ var gaspi = (function ($) {
 		});
 		scrollIndicator.click(function() {
 			scrollDown(promoElements.filter('.active'));
-		});
-		topLink.on('click', function(event){
-			$('body, html').animate({
-				'scrollTop': 15
-			}, 1000);
 		});
 	},
 	swipeHandlers = function () {
@@ -597,10 +585,13 @@ var gaspi = (function ($) {
 		    return this.hostname != window.location.hostname;
 		}).attr('target', '_blank');
 		init();
+<<<<<<< HEAD
 		if(isTouch) {
 			//disableScrolling();
 			swipeHandlers();
 		}
+=======
+>>>>>>> b09a5c1a844ac7231050aeb12985ca08d1a2a9c5
 	};
 	//return the module
 	return module;

@@ -17,29 +17,6 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body{{#bodyId}} id="{{bodyId}}" {{/bodyId}}>
-        <div id="mobileOverlay">
-            <div class="center">
-                <div id="logo">
-                    <a href="http://www.weissheimer.ch">
-                        <p>
-                            <span>weissheimer</span> Grafik Design
-                        </p>
-                    </a>
-                </div>
-                <h2>Lieber Besucher, vielen Dank f&uuml;r deinen Besuch.</h2>
-                <p>
-                    Die mobile Version dieser Webseite ist leider noch in Bearbeitung.
-                    Ein Besuch der Webseite von deinem Laptop oder Heimcomputer aus, solltest du dir dennoch nicht entgehen lassen. Es erwarten dich hochaufl&ouml;sende Bilder und Informationen zu WEISSHEIMER Grafik Design.
-                </p>
-                <p>Ich freue mich auf ein Wiedersehen. </p>
-
-                <p>Mit herzlichen Gr&uuml;ssen</p>
-                            <p>Gaspard Weissheimer</p>
-                             <p><a href="mailto:mail@weissheimer.ch">mail@weissheimer.ch</a></p>
-            <p>+41 (0)77 423 14 51</p>
-            <p><a href="https://www.facebook.com/WEISSHEIMERBASEL" title="facebook">Facebook</a></p>
-            </div>
-        </div>
         <div id="navAndLogo">
             <div class="wrapper clearfix">
                 <div id="indicator">
@@ -76,13 +53,53 @@
                 </div>
             </div>
 
-            {{> link}}
-
-            <footer test="test">
-               {{> contact}}
+            <footer>
+                <div class="wrapper clearfix">
+                    <ul>
+                        <li>
+                            <h3><span>Weissheimer</span> Grafik Design</h3>
+                            <p>Breischerstrasse 93</p>
+                            <p>4057 Basel</p>
+                        </li>
+                        <li>
+                            <p><a href="mailto:mail@weissheimer.ch">mail@weissheimer.ch</a></p>
+                            <p>+41 (0)77 423 14 51</p>
+                            <p><a href="facebook.com" title="facebook">Facebook</a></p>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h3><span>Druckbus</span></h3>
+                            <p>Breischerstrasse 93</p>
+                            <p>4057 Basel</p>
+                        </li>
+                        <li>
+                            <p><a href="mailto:mail@druckbus.ch">mail@druckbus.ch</a></p>
+                            <p>+41 (0)77 423 14 51</p>
+                            <p><a href="facebook.com" title="facebook">Facebook</a></p>
+                        </li>
+                    </ul>
+                </div>
             </footer>
         </div>
 
-        {{> anal}}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/vendor/jquery.history.js"></script>
+        <script src="js/plugins.js"></script>
+
+        !-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','47875489-1');ga('send','pageview');
+        </script>
+
+        <script src="js/main.js"></script>
+
+        <
     </body>
 </html>
