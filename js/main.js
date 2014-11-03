@@ -228,11 +228,8 @@ var gaspi = (function ($) {
 		scrollUpThreshold = 0,
 		State = null,
 		baseUrl = '',
-<<<<<<< HEAD
 		isTouch = Modernizr.touch,
 		topLink = $('#top-link'),
-=======
->>>>>>> b09a5c1a844ac7231050aeb12985ca08d1a2a9c5
 		bullets = {
 			"active" : $('<i/>').attr({
 				"class" : "icon-circle",
@@ -585,13 +582,10 @@ var gaspi = (function ($) {
 		    return this.hostname != window.location.hostname;
 		}).attr('target', '_blank');
 		init();
-<<<<<<< HEAD
 		if(isTouch) {
 			//disableScrolling();
 			swipeHandlers();
 		}
-=======
->>>>>>> b09a5c1a844ac7231050aeb12985ca08d1a2a9c5
 	};
 	//return the module
 	return module;
