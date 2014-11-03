@@ -631,9 +631,10 @@ $scrollDuration: 0.75s;
     }
 }
 
+$margin: 1%;
+$margin-bottom: 0.711914063em;
 .overviewRow {
-    $margin: 1%;
-    margin-bottom: 0.711914063em;
+    margin-bottom: $margin-bottom;
     a {
         display: block;
     }
@@ -653,39 +654,49 @@ $scrollDuration: 0.75s;
             font-size: 1.25em;
         }
     }
-    .mobile {
-      .entry-1,
-      .entry-2,
-      .entry-3 {
-        @include breakpoint(overview-onecol) {
-          width: 100%;
-        }
-      }
-    }
     &.order50-25-25 {
         .entry-1 {
             width: 50%;
             margin-right: $margin;
-            @include breakpoint(overview-onecol) {
-              width: 100%;
-            }
         }
         .entry-2 {
             width: 24%;
             margin-right: $margin;
-            @include breakpoint(overview-onecol) {
-              width: 100%;
-            }
         }
         .entry-3 {
             width: 24%;
             @include breakpoint(overview-onecol) {
               width: 100%;
+              h1 {
+                  font-size: 1.25em;
+              }
+              h2 {
+                  font-size: 1em;
+              }
             }
         }
         .entry-2,
         .entry-3 {
-            @extend .small;
+            h1 {
+            font-size: 1.25em;
+            }
+            h2 {
+                font-size: 1em;
+            }
+        }
+        .entry-1,
+        .entry-2 {
+          @include breakpoint(overview-onecol) {
+            width: 100%;
+          }
+          margin-bottom: $margin-bottom;
+          margin-right: 0;
+          h1 {
+                  font-size: 1.25em;
+              }
+              h2 {
+                  font-size: 1em;
+              }
         }
         &.rtl {
             .entry {
@@ -693,7 +704,12 @@ $scrollDuration: 0.75s;
             }
             .entry-1 {
                 width: 24%;
-                @extend .small;
+                h1 {
+                  font-size: 1.25em;
+              }
+              h2 {
+                  font-size: 1em;
+              }
             }
             .entry-2 {
                 width: 24%;
@@ -715,6 +731,17 @@ $scrollDuration: 0.75s;
         .entry-1 {
             width: 50%;
             float: right;
+            @include breakpoint(overview-onecol) {
+              width: 100%;
+              float: none;
+              margin-bottom: $margin-bottom;
+              h1 {
+                  font-size: 1.25em;
+              }
+              h2 {
+                  font-size: 1em;
+              }
+            }
         }
         &.rtl {
             .entry-1 {
@@ -727,10 +754,31 @@ $scrollDuration: 0.75s;
             width: 39.5%;
             margin-right: $margin;
             @extend .middle;
+            @include breakpoint(overview-onecol) {
+              margin-bottom: $margin-bottom;
+              h1 {
+                  font-size: 1.25em;
+              }
+              h2 {
+                  font-size: 1em;
+              }
+            } 
         }
         .entry-2 {
             width: 59.5%;
         }
+        .entry-1,
+        .entry-2 {
+          @include breakpoint(overview-onecol) {
+            width: 100%;
+            h1 {
+                  font-size: 1.25em;
+              }
+              h2 {
+                  font-size: 1em;
+              }
+          }  
+        }        
         &.rtl {
             .entry-1 {
                 width: 59.5%;
@@ -745,11 +793,33 @@ $scrollDuration: 0.75s;
         .entry-1 {
             width: 39.5%;
             margin-right: $margin;
+            @include breakpoint(overview-onecol) {
+              width: 100%;
+              margin-bottom: $margin-bottom;
+              h1 {
+                  font-size: 1.25em;
+              }
+              h2 {
+                  font-size: 1em;
+              }
+            }
         }
         .entry-container {
             width: 59.5%;
             display: inline-block;
             vertical-align: top;
+            @include breakpoint(overview-onecol) {
+              width: 100%;
+              .entry-2 {
+                margin-bottom: $margin-bottom;
+                h1 {
+                  font-size: 1.25em;
+              }
+              h2 {
+                  font-size: 1em;
+              }
+              }
+            }
             .entry-2 {
                 margin-bottom: 0.5em;
             }
@@ -769,6 +839,16 @@ $scrollDuration: 0.75s;
     &.order60-0 {
         .entry-1 {
             width: 60%;
+            @include breakpoint(overview-onecol) {
+              width: 100%;
+              float: none;
+              h1 {
+                  font-size: 1.25em;
+              }
+              h2 {
+                  font-size: 1em;
+              }
+            }
         }
         &.rtl {
             .entry-1 {
@@ -779,6 +859,16 @@ $scrollDuration: 0.75s;
     &.order50-0 {
         .entry-1 {
             width: 50%;
+            @include breakpoint(overview-onecol) {
+              width: 100%;
+              float: none;
+              h1 {
+                  font-size: 1.25em;
+              }
+              h2 {
+                  font-size: 1em;
+              }
+            }
         }
         &.rtl {
             .entry-1 {
@@ -797,7 +887,8 @@ $scrollDuration: 0.75s;
         &.first {
             margin-left: 0;
         }
-        &:hover {
+        &:hover,
+        a.touch {
             .hover {
                 opacity: 1;
             }
@@ -1063,7 +1154,7 @@ footer {
     }
   }
 
-
+@import 'backgrounds';
 
 /* ==========================================================================
    Print styles.

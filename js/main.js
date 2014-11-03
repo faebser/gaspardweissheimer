@@ -256,7 +256,9 @@ var gaspi = (function ($) {
 			'empty' : 'icon-circle-empty',
 			'circle' : 'icon-circle',
 			'scrollHeader': 'scrollHeader',
-			'page' : 'page'
+			'page' : 'page',
+			'entry': 'entry',
+			'touch': 'touch'
 		},
 		c_ = function(selector) {
 			return '.' + c[selector];
@@ -491,6 +493,24 @@ var gaspi = (function ($) {
 		scrollIndicator.click(function() {
 			scrollDown(promoElements.filter('.active'));
 		});
+		if(isTouch) {
+			overview.find('.' + c.entry + ' .hover').on('click', function(event) {
+				event.preventDefault();
+				var e = $(this).parent();
+				var list = overview.find('.' + c.entry + ' a');
+				console.log(list.length);
+				list.filter(function(index) {
+					return $(this).attr('href') !== e.attr('href');
+				}).attr('class', '');
+				if(e.hasClass(c.touch)) {
+					e.removeClass(c.touch);
+					window.location.href = e.attr('href');
+				}
+				else {
+					e.addClass(c.touch);
+				}
+			});
+		}
 	},
 	swipeHandlers = function () {
 		promoElements.find('.top').swipe({
@@ -498,20 +518,6 @@ var gaspi = (function ($) {
 			//'swipeRight': mainSwipeRight,
 			'swipeUp': mainSwipeUp
 		});
-	},
-	mainSwipeLeft = function (event, direction, distance, duration, fingerCount) {
-		console.log(direction);
-		var e = verticalNav.find('i.icon-circle').parent().next();
-		if(e != verticalNav.find('li').last()) {
-			verticalNavClick(e);
-		}
-	},
-	mainSwipeRight = function (event, direction, distance, duration, fingerCount) {
-		console.log(direction);
-		var e = verticalNav.find('i.icon-circle').parent().prev();
-		if(e != verticalNav.find('li').first()) {
-			verticalNavClick(e);
-		}
 	},
 	mainSwipeUp = function (event, direction, distance, duration, fingerCount) {
 		console.log(direction);
