@@ -97,7 +97,6 @@ textarea {
    Modify as content requires.
    ========================================================================== */
 
-
 @mixin breakpoint($point) {
   @if $point == highres {
     @media (max-width: 1600px) { @content; }
@@ -115,6 +114,8 @@ textarea {
     @media (max-width: 750px) { @content}
   }
 }
+
+// @import 'breakpoints';
 
 /* fontello */
 
@@ -371,7 +372,7 @@ body {
         width: 4.8125em;
         height: 0.0625em;
         position: absolute;
-        bottom: 0.2em;
+        bottom: 1.2em;
         left: 0;
         background-color: #000;
         &.ready {
@@ -387,6 +388,7 @@ body {
         @include transatStandard;
         @include transition(opacity 0.75s linear);
         font-size: 1.2em;
+        margin: 1em 0;
         @include breakpoint(navi-mobile) {
           float: none;
         }

@@ -498,7 +498,6 @@ var gaspi = (function ($) {
 				event.preventDefault();
 				var e = $(this).parent();
 				var list = overview.find('.' + c.entry + ' a');
-				console.log(list.length);
 				list.filter(function(index) {
 					return $(this).attr('href') !== e.attr('href');
 				}).attr('class', '');
@@ -567,8 +566,10 @@ var gaspi = (function ($) {
 			event.preventDefault();
 			var target = $("[name=" + $(this).attr("href").slice(1) + "]"),
 				href = $(this).attr("href");
+			var target_position = target.offset().top - 50;
+			console.log(target_position);
 			$('html,body').animate({
-          		scrollTop: target.offset().top
+          		scrollTop: target_position
         	}, 1000, function () {
         		location.hash = href;
         		body.find(c_(c.active)).removeClass(c.active);
