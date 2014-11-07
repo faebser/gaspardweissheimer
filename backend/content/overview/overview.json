@@ -1,6 +1,10 @@
 {
     "rows" : [
         {
+            "type" : "100",
+            "entries" : [ "00_poppreis2014"]
+        },
+        {
             "type" : "50-25-25",
             "entries" : [ "01_loeffler", "02_finkenschlag", "03_transatlantic"]
         },

@@ -1,0 +1,12 @@
+{
+	"title" : "Pop Preis 2014",
+	"subtitle" : "Fotografie",
+	"text" : "Der Basler Pop-Preis wird seit 2009 jährlich von einer unabhängigen Fachjury im Auftrag des [RFV Basel](http://www.rfv.ch) an einen aktuell herausragenden, professionell arbeitenden Popmusikschaffenden vergeben. Diesjähriger Gewinner ist [James Gruntz](http://www.jamesgruntz.com). ",
+	"posterImage" : {
+	    "files/weissheimer_poppreis2014__MG_1151.jpg" : ["normal", "mobile", "highres", "landscape"]
+	},
+	"overviewImage" : {
+		"files/weissheimer_poppreis2014__MG_1140-2.jpg" : ["normal", "mobile", "highres", "landscape"]
+	},
+	"images" : "files/"
+}
