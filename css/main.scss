@@ -690,9 +690,9 @@ $margin-bottom: 0.711914063em;
         .entry-2 {
           @include breakpoint(overview-onecol) {
             width: 100%;
+            margin-bottom: $margin-bottom;
+            margin-right: 0;
           }
-          margin-bottom: $margin-bottom;
-          margin-right: 0;
           h1 {
                   font-size: 1.25em;
               }
@@ -733,10 +733,10 @@ $margin-bottom: 0.711914063em;
         .entry-1 {
             width: 50%;
             float: right;
+            margin-bottom: $margin-bottom;
             @include breakpoint(overview-onecol) {
               width: 100%;
               float: none;
-              margin-bottom: $margin-bottom;
               h1 {
                   font-size: 1.25em;
               }

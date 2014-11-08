@@ -593,6 +593,9 @@ var gaspi = (function ($) {
 			//disableScrolling();
 			swipeHandlers();
 		}
+	}
+	module.load = function () {
+		if(isTouch) window.scrollTo(0, 1);
 	};
 	//return the module
 	return module;
@@ -604,4 +607,8 @@ jQuery(document).ready(function($) {
 	loader.setActiveParent($('#main li.active').attr('id'));
 	gaspi.init();
 	indicator.init($('#indicator'));
+});
+
+jQuery(document).load(function ($) {
+	gaspi.load();
 });
